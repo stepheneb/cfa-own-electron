@@ -1,0 +1,894 @@
+{
+  "title": "Observing With NASA",
+  "subtitle": "Learn how to enhance real NASA data. Choose a challenge below.",
+  "splash": {
+    "title1": "Welcome To",
+    "title2": "Observing With NASA",
+    "begin": "Touch to Begin"
+  },
+  "action": "Choose an Image",
+  "telescopeData": {
+    "prologue": "This image was taken with the",
+    "telescopes": [
+      {
+        "key": "hubble",
+        "name": "Hubble",
+        "image": "images/telescopes/hst-sm4.jpg",
+        "image-credits": "NASA",
+        "image-source": "https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/hst-sm4.jpg",
+        "description": "Launched in 1990, Hubble has been visited by astronauts four times in order to make repairs and add new instruments. Each instrument that flies on Hubble has special features that let astronomers study the heavens in different ways. Hubble’s unique capabilities can also be partnered with other space observatories and those on the ground to enable scientists to explore the universe in ways that no single mission could ever accomplish alone."
+      },
+      {
+        "key": "chandra",
+        "name": "Chandra",
+        "image": "images/telescopes/deploy2-72l.jpg",
+        "image-credits": "NASA",
+        "image-source": "https://www.chandra.harvard.edu/graphics/resources/illustrations/deploy/deploy2-72l.jpg",
+        "description": "NASA's Chandra X-ray Observatory is a telescope specially designed to detect X-ray emission from very hot regions of the Universe such as exploded stars, clusters of galaxies, and matter around black holes. Because X-rays are absorbed by Earth's atmosphere, Chandra must orbit above it, up to an altitude of 139,000 km (86,500 mi) in space. The Smithsonian's Astrophysical Observatory in Cambridge, MA, hosts the Chandra X-ray Center which operates the satellite, processes the data, and distributes it to scientists around the world for analysis. The Center maintains an extensive public web site about the science results and an education program."
+      },
+      {
+        "key": "spitzer",
+        "name": "Spitzer",
+        "image": "images/telescopes/hd_spitzer_side_visible_small.jpg",
+        "image-credits": "NASA",
+        "image-source": "https://www.nasa.gov/sites/default/files/thumbnails/image/hd_spitzer_side_visible.jpg",
+        "description": "The Spitzer Space Telescope is a technological marvel, featuring many innovations never before used on a space mission. It stands about 4 meters (13 feet) tall, and weighs approximately 865 kilograms (1,906 pounds).<br><br>Since Spitzer is designed to detect infrared radiation, or heat - its detectors and telescope must be cooled to only about 5 degrees above absolute zero (-450 degrees Fahrenheit, or -268 degrees Celsius). This will ensure that the observatory's 'body heat' does not interfere with its observations of relatively cold cosmic objects.<br><br>While parts of Spitzer must be kept cold to function properly, other electronics onboard the spacecraft need to operate near room temperature. To achieve this balance of warm and cold, the telescope is compartmentalized into two components: <br><br>The Cryogenic Telescope Assembly - houses Spitzer's cold components, including the 0.85-meter telescope and three scientific instruments.<br><br>The Spacecraft - contains the relatively warm components, including solar panels, telescope controls and tools to communicate scientific information with Earth.<br><br>Innovations - other creative ways scientists and engineers achieved this temperature balance."
+      },
+      {
+        "key": "lro",
+        "name": "LRO",
+        "image": "images/telescopes/314490main_LROstill_1_small.jpg",
+        "image-credits": "NASA",
+        "image-source": "https://www.nasa.gov/sites/default/files/images/314490main_LROstill_1_full.jpg",
+        "description": "The Lunar Reconnaissance Orbiter (LRO) was launched with the Lunar Crater Observation and Sensing Satellite (LCROSS) on the first U.S. mission to the Moon in over 10 years. Both were part of NASA’s now-canceled Lunar Precursor Robotic Program.<br>LRO’s primary goal was to make a 3D map of the Moon’s surface from lunar polar orbit as part of a high-resolution mapping program to identify landing sites and potential resources, to investigate the radiation environment, and to prove new technologies in anticipation of future automated and human missions to the surface of the Moon.<br>The Centaur upper stage boosted both LRO and LCROSS into high apogee orbits soon after launch. At 11:27 UT June 23, 2009, LRO successfully entered orbit around the Moon, having fired its rocket motor on the far side of the Moon. Initial orbital parameters were roughly 19 x 134 miles (30 × 216 kilometers).<br>A series of four engine firings over the next four days left LRO in its optimal orbit—roughly circular at 31 miles (50 kilometers)—allowing the satellite to begin its primary mission Sept. 25, 2009. The primary mission was expected to last one year and was overseen by NASA’s Exploration Systems Mission Directorate (ESMD).<br>LRO gathered information on day-night temperature maps, contributed data for a global geodetic grid, and conducted high-resolution imaging. The spacecraft paid particular emphasis to the Moon’s polar regions where scientists suspected there might be water in the permanently shadowed areas."
+      },
+      {
+        "key": "juno",
+        "name": "Juno",
+        "image": "images/telescopes/juno.png",
+        "image-credits": "NASA",
+        "image-source": "https://www.jpl.nasa.gov/news/press_kits/juno/pdf/juno-lores.pdf",
+        "description": "The Juno spacecraft launched aboard an Atlas V-551 rocket from Cape Canaveral, Fla., on Aug. 5, 2011, and will reach Jupiter in July 2016. The spacecraft will orbit Jupiter 32 times, skimming to within 3,100 miles (5,000 kilometers) above the planet's cloud tops, for approximately one year.<br>Juno uses a spinning solar-powered spacecraft in a highly elliptical polar orbit that avoids most of Jupiter's high radiation regions. The designs of the individual instruments are straightforward and the mission does not require the development of any new technologies.<br>Juno's scientific payload includes:<ul><li>A gravity/radio science system (Gravity Science)</li><li>A six-wavelength microwave radiometer for atmospheric sounding and composition (MWR)</li><li>A vector magnetometer (MAG)</li><li>Plasma and energetic particle detectors (JADE and JEDI)</li><li>A radio/plasma wave experiment (Waves)</li><li>An ultraviolet imager/spectrometer (UVS)</li><li>An infrared imager/spectrometer (JIRAM)</li><li>The spacecraft will also carry a color camera, called JunoCam, to provide the public with the first detailed glimpse of Jupiter's poles</li></ul>"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "type": "rgb",
+      "title": "What's Red + Green + Blue?",
+      "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
+      "menuimage": "images/menu-whats-red-green-blue.jpg",
+      "pages": [
+        {
+          "name": "whats-red-green-blue",
+          "poster": "whats-red-green-blue",
+          "title": "Lagoon Nebula",
+          "subtitle": "Use this image to combine 3 color-filtered images from NASA spacecraft. The result represents the range of colors actually emitted by the target object.",
+          "selectfiltertext": "Select and adjust each of the light wave images",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Lagoon Nebula",
+            "about": {
+              "telescopes": [
+                "hubble"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 650,
+                "ny": 625
+              },
+              "medium": {
+                "nx": 1300,
+                "ny": 1250
+              },
+              "large": {
+                "nx": 2600,
+                "ny": 2500
+              }
+            },
+            "maximumBrightness": 2,
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Red",
+                "path": {
+                  "small": "rawdata/HST_Lagoon/650x625/HST_Lagoon_f658Red.bmp",
+                  "medium": "rawdata/HST_Lagoon/1300x1250/HST_Lagoon_f658Red.bmp",
+                  "large": "rawdata/HST_Lagoon/2600x2500/HST_Lagoon_f658Red.bmp"
+                },
+                "filter": "red",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Green",
+                "path": {
+                  "small": "rawdata/HST_Lagoon/650x625/HST_Lagoon_f656Green.bmp",
+                  "medium": "rawdata/HST_Lagoon/1300x1250/HST_Lagoon_f656Green.bmp",
+                  "large": "rawdata/HST_Lagoon/2600x2500/HST_Lagoon_f656Green.bmp"
+                },
+                "filter": "green",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Blue",
+                "path": {
+                  "small": "rawdata/HST_Lagoon/650x625/HST_Lagoon_f502Blue.bmp",
+                  "medium": "rawdata/HST_Lagoon/1300x1250/HST_Lagoon_f502Blue.bmp",
+                  "large": "rawdata/HST_Lagoon/2600x2500/HST_Lagoon_f502Blue.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "m51-whirlpool",
+          "poster": "m51-whirlpool",
+          "title": "Messier 51 (The Whirlpool Galaxy)",
+          "subtitle": "Use this image to combine 3 color-filtered images from NASA spacecraft. The result represents the range of colors actually emitted by the target object.",
+          "selectfiltertext": "Select and adjust each of the light wave images",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Whirlpool Galaxy",
+            "about": {
+              "telescopes": [
+                "hubble"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 596,
+                "ny": 900
+              },
+              "medium": {
+                "nx": 1192,
+                "ny": 1800
+              },
+              "large": {
+                "nx": 2384,
+                "ny": 3600
+              }
+            },
+            "maximumBrightness": 2,
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Red",
+                "path": {
+                  "small": "rawdata/m51/596x900/m51_optical_R.bmp",
+                  "medium": "rawdata/m51/1192x1800/m51_optical_R.bmp",
+                  "large": "rawdata/m51/2384x3600/m51_optical_R.bmp"
+                },
+                "filter": "red",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Green",
+                "path": {
+                  "small": "rawdata/m51/596x900/m51_optical_G.bmp",
+                  "medium": "rawdata/m51/1192x1800/m51_optical_G.bmp",
+                  "large": "rawdata/m51/2384x3600/m51_optical_G.bmp"
+                },
+                "filter": "green",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Blue",
+                "path": {
+                  "small": "rawdata/m51/596x900/m51_optical_B.bmp",
+                  "medium": "rawdata/m51/1192x1800/m51_optical_B.bmp",
+                  "large": "rawdata/m51/2384x3600/m51_optical_B.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "heic2007a",
+          "poster": "heic2007a",
+          "title": "NGC 2014, NGC 2020",
+          "subtitle": "Use this image to combine 3 color-filtered images from NASA spacecraft. The result represents the range of colors actually emitted by the target object.",
+          "selectfiltertext": "Select and adjust each of the light wave images",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Cosmic Reef Nebulae",
+            "source": "https://www.spacetelescope.org/images/heic2007a/",
+            "about": {
+              "telescopes": [
+                "hubble"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 532,
+                "ny": 366
+              },
+              "medium": {
+                "nx": 1065,
+                "ny": 732
+              },
+              "large": {
+                "nx": 2130,
+                "ny": 1464
+              }
+            },
+            "maximumBrightness": 2,
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Red",
+                "path": {
+                  "small": "rawdata/heic2007a/532x366/heic2007a-R.bmp",
+                  "medium": "rawdata/heic2007a/1065x732/heic2007a-R.bmp",
+                  "large": "rawdata/heic2007a/2130x1464/heic2007a-R.bmp"
+                },
+                "filter": "red",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Green",
+                "path": {
+                  "small": "rawdata/heic2007a/532x366/heic2007a-G.bmp",
+                  "medium": "rawdata/heic2007a/1065x732/heic2007a-G.bmp",
+                  "large": "rawdata/heic2007a/2130x1464/heic2007a-G.bmp"
+                },
+                "filter": "green",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Blue",
+                "path": {
+                  "small": "rawdata/heic2007a/532x366/heic2007a-B.bmp",
+                  "medium": "rawdata/heic2007a/1065x732/heic2007a-B.bmp",
+                  "large": "rawdata/heic2007a/2130x1464/heic2007a-B.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "potw1345a",
+          "poster": "potw1345a",
+          "title": "Antennae Galaxies, NGC 4038, NGC 4039",
+          "subtitle": "Use this image to combine 3 color-filtered images from NASA spacecraft. The result represents the range of colors actually emitted by the target object.",
+          "selectfiltertext": "Select and adjust each of the light wave images",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Antennae Galaxies",
+            "source": "https://www.spacetelescope.org/images/potw1345a/",
+            "about": {
+              "telescopes": [
+                "hubble"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 530,
+                "ny": 526
+              },
+              "medium": {
+                "nx": 1060,
+                "ny": 1052
+              },
+              "large": {
+                "nx": 2120,
+                "ny": 2105
+              }
+            },
+            "maximumBrightness": 2,
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Red",
+                "path": {
+                  "small": "rawdata/potw1345a/530x526/potw1345a-R.bmp",
+                  "medium": "rawdata/potw1345a/1060x1052/potw1345a-R.bmp",
+                  "large": "rawdata/potw1345a/2120x2105/potw1345a-R.bmp"
+                },
+                "filter": "red",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Green",
+                "path": {
+                  "small": "rawdata/potw1345a/530x526/potw1345a-G.bmp",
+                  "medium": "rawdata/potw1345a/1060x1052/potw1345a-G.bmp",
+                  "large": "rawdata/potw1345a/2120x2105/potw1345a-G.bmp"
+                },
+                "filter": "green",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Blue",
+                "path": {
+                  "small": "rawdata/potw1345a/530x526/potw1345a-B.bmp",
+                  "medium": "rawdata/potw1345a/1060x1052/potw1345a-B.bmp",
+                  "large": "rawdata/potw1345a/2120x2105/potw1345a-B.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "juno-jupiter-set6",
+          "poster": "juno-jupiter-set6",
+          "title": "Jupiter",
+          "subtitle": "Use this image to combine 3 color-filtered images from NASA spacecraft. The result represents the range of colors actually emitted by the target object.",
+          "selectfiltertext": "Select and adjust each of the light wave images",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Jupiter",
+            "source": "",
+            "about": {
+              "telescopes": [
+                "juno"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 400,
+                "ny": 400
+              },
+              "medium": {
+                "nx": 800,
+                "ny": 800
+              },
+              "large": {
+                "nx": 1600,
+                "ny": 1600
+              }
+            },
+            "maximumBrightness": 2,
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Red",
+                "path": {
+                  "small": "rawdata/Juno_Jupiter_Set6/400x400/JNCE_2016346_03C00118_V02-red.bmp",
+                  "medium": "rawdata/Juno_Jupiter_Set6/800x800/JNCE_2016346_03C00118_V02-red.bmp",
+                  "large": "rawdata/Juno_Jupiter_Set6/1600x1600/JNCE_2016346_03C00118_V02-red.bmp"
+                },
+                "filter": "red",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Green",
+                "path": {
+                  "small": "rawdata/Juno_Jupiter_Set6/400x400/JNCE_2016346_03C00118_V02-green.bmp",
+                  "medium": "rawdata/Juno_Jupiter_Set6/800x800/JNCE_2016346_03C00118_V02-green.bmp",
+                  "large": "rawdata/Juno_Jupiter_Set6/1600x1600/JNCE_2016346_03C00118_V02-green.bmp"
+                },
+                "filter": "green",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Blue",
+                "path": {
+                  "small": "rawdata/Juno_Jupiter_Set6/400x400/JNCE_2016346_03C00118_V02-blue.bmp",
+                  "medium": "rawdata/Juno_Jupiter_Set6/800x800/JNCE_2016346_03C00118_V02-blue.bmp",
+                  "large": "rawdata/Juno_Jupiter_Set6/1600x1600/JNCE_2016346_03C00118_V02-blue.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "multi-wave",
+      "title": "Reveal an Image using “Invisible Light”",
+      "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
+      "menuimage": "images/menu-invisible-light.jpg",
+      "pages": [
+        {
+          "name": "m82",
+          "poster": "m82",
+          "title": "Reveal an Image using 'Invisible Light",
+          "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
+          "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Cigar Galaxy",
+            "source": "",
+            "about": {
+              "telescopes": [
+                "spitzer",
+                "hubble",
+                "chandra"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 635,
+                "ny": 635
+              },
+              "medium": {
+                "nx": 1270,
+                "ny": 1270
+              },
+              "large": {
+                "nx": 1200,
+                "ny": 1200
+              }
+            },
+            "maximumBrightness": 1,
+            "selectedSourceNumber": 0,
+            "selectedMainLayers": "100",
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Infrared",
+                "path": {
+                  "small": "rawdata/M82/635x635/M82_Spitzer_mid_Infrared.bmp",
+                  "medium": "rawdata/M82/1270x1270/M82_Spitzer_mid_Infrared.bmp",
+                  "large": "rawdata/M82/1270x1270/M82_Spitzer_mid_Infrared.bmp"
+                },
+                "filter": "red",
+                "min": 0,
+                "max": 15,
+                "scaling": "log",
+                "brightness": 0.75,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Optical",
+                "path": {
+                  "small": "rawdata/M82/635x635/M82_Hubble_Optical.bmp",
+                  "medium": "rawdata/M82/1270x1270/M82_Hubble_Optical.bmp",
+                  "large": "rawdata/M82/1270x1270/M82_Hubble_Optical.bmp"
+                },
+                "filter": "green",
+                "min": 0,
+                "max": 10,
+                "scaling": "log",
+                "brightness": 0.5,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "X-Ray",
+                "path": {
+                  "small": "rawdata/M82/635x635/M82_Chandra_Xray_mid_energy.bmp",
+                  "medium": "rawdata/M82/1270x1270/M82_Chandra_Xray_mid_energy.bmp",
+                  "large": "rawdata/M82/1270x1270/M82_Chandra_Xray_mid_energy.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 0.5,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "m51",
+          "poster": "m51",
+          "title": "Reveal an Image using 'Invisible Light",
+          "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
+          "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Whirlpool Galaxy",
+            "source": "",
+            "about": {
+              "telescopes": [
+                "spitzer",
+                "hubble",
+                "chandra"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 387,
+                "ny": 554
+              },
+              "medium": {
+                "nx": 775,
+                "ny": 1168
+              },
+              "large": {
+                "nx": 775,
+                "ny": 1168
+              }
+            },
+            "maximumBrightness": 2,
+            "selectedSourceNumber": 0,
+            "selectedMainLayers": "100",
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Infrared",
+                "path": {
+                  "small": "rawdata/m51-multi/387x584/Spitzer_M51_Infrared_lowerRes.bmp",
+                  "medium": "rawdata/m51-multi/775x1168/Spitzer_M51_Infrared_lowerRes.bmp",
+                  "large": "rawdata/m51-multi/775x1168/Spitzer_M51_Infrared_lowerRes.bmp"
+                },
+                "filter": "red",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "Optical",
+                "path": {
+                  "small": "rawdata/m51-multi/387x584/Hubble_M51_Green_lowerRes.bmp",
+                  "medium": "rawdata/m51-multi/775x1168/Hubble_M51_Green_lowerRes.bmp",
+                  "large": "rawdata/m51-multi/775x1168/Hubble_M51_Green_lowerRes.bmp"
+                },
+                "filter": "green",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "X-Ray",
+                "path": {
+                  "small": "rawdata/m51-multi/387x584/Chandra_M51_Xray_lowerRes.bmp",
+                  "medium": "rawdata/m51-multi/775x1168/Chandra_M51_Xray_lowerRes.bmp",
+                  "large": "rawdata/m51-multi/775x1168/Chandra_M51_Xray_lowerRes.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 10,
+                "scaling": "log",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "masterpiece",
+      "title": "Create Your Own Masterpiece",
+      "subtitle": "Use this software to enhance and bring out details in the image the same way NASA scientists do.",
+      "menuimage": "images/menu-masterpiece.jpg",
+      "pages": [
+        {
+          "name": "m51-whirlpool",
+          "poster": "m51",
+          "title": "Messier 51 (The Whirlpool Galaxy)",
+          "subtitle": "Use this software to enhance and bring out details in the image the same way NASA scientists do.",
+          "selectfiltertext": "Select and adjust each of the light wave images",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Whirlpool Galaxy",
+            "about": {
+              "telescopes": [
+                "hubble"
+              ]
+            },
+            "size": "large",
+            "dimensions": {
+              "small": {
+                "nx": 596,
+                "ny": 900
+              },
+              "medium": {
+                "nx": 1192,
+                "ny": 1800
+              },
+              "large": {
+                "nx": 2384,
+                "ny": 3600
+              }
+            },
+            "maximumBrightness": 2,
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Green",
+                "path": {
+                  "small": "rawdata/m51/596x900/m51_optical_G.bmp",
+                  "medium": "rawdata/m51/1192x1800/m51_optical_G.bmp",
+                  "large": "rawdata/m51/2384x3600/m51_optical_G.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Green"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "wacgl000",
+          "poster": "wacgl000",
+          "title": "The Near Side of the Moon",
+          "subtitle": "Use this software to enhance and bring out details in the image the same way NASA scientists do.",
+          "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Moon - Near Side",
+            "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
+            "about": {
+              "telescopes": [
+                "lro"
+              ]
+            },
+            "size": "x2large",
+            "dimensions": {
+              "small": {
+                "nx": 543,
+                "ny": 543
+              },
+              "medium": {
+                "nx": 1086,
+                "ny": 1086
+              },
+              "large": {
+                "nx": 2172,
+                "ny": 2172
+              },
+              "x2large": {
+                "nx": 4344,
+                "ny": 4344
+              }
+            },
+            "maximumBrightness": 2,
+            "selectedSourceNumber": 0,
+            "selectedMainLayers": "111",
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Gray",
+                "path": {
+                  "small": "rawdata/WAC_GL000/543x543/wac_gl000-R.bmp",
+                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000-R.bmp",
+                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000-R.bmp",
+                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000-R.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Gray"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "wacgl180",
+          "poster": "wacgl180",
+          "title": "The Far Side of the Moon",
+          "subtitle": "Use this software to enhance and bring out details in the image the same way NASA scientists do.",
+          "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "image": {
+            "name": "Moon - Far Side",
+            "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
+            "about": {
+              "telescopes": [
+                "lro"
+              ]
+            },
+            "size": "x2large",
+            "dimensions": {
+              "small": {
+                "nx": 543,
+                "ny": 543
+              },
+              "medium": {
+                "nx": 1086,
+                "ny": 1086
+              },
+              "large": {
+                "nx": 2172,
+                "ny": 2172
+              },
+              "x2large": {
+                "nx": 4344,
+                "ny": 4344
+              }
+            },
+            "maximumBrightness": 2,
+            "selectedSourceNumber": 0,
+            "selectedMainLayers": "111",
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Gray",
+                "path": {
+                  "small": "rawdata/WAC_GL180/543x543/wac_gl180_0.125-R.bmp",
+                  "medium": "rawdata/WAC_GL180/1086x1086/wac_gl180_0.125-R.bmp",
+                  "large": "rawdata/WAC_GL180/2172x2172/wac_gl180_0.125-R.bmp",
+                  "x2large": "rawdata/WAC_GL180/4344x4344/wac_gl180_0.125-R.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Gray"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
