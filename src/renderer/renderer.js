@@ -26,7 +26,8 @@
  * ```
  */
 
-import styles from './sass/main';
+import 'bootstrap';
+import './sass/main';
 
 import main from './main.js';
 

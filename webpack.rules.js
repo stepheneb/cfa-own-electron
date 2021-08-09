@@ -60,16 +60,23 @@ module.exports = [
         loader: 'css-loader',
         options: {
           modules: true,
-          sourceMap: isDevelopment
+          sourceMap: true
         }
       },
       {
-        loader: 'resolve-url-loader'
+        loader: 'resolve-url-loader',
+        options: {
+          root: '',
+          debug: true
+        }
       },
       {
         loader: 'sass-loader',
         options: {
-          sourceMap: isDevelopment
+          sourceMap: true,
+          sassOptions: {
+            linefeed: 'lf',
+          },
         }
       }
     ]
@@ -86,7 +93,10 @@ module.exports = [
       {
         loader: 'sass-loader',
         options: {
-          sourceMap: isDevelopment
+          sourceMap: true,
+          sassOptions: {
+            linefeed: 'lf',
+          },
         }
       }
     ]
