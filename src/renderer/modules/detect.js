@@ -85,7 +85,7 @@ if (!version) {
 
 if (platform === 'MacIntel' || platform === 'MacPPC') {
   os = 'Mac OS X';
-  osversion = /10[\.\_\d]+/.exec(ua)[0];
+  osversion = /1\d[\.\_\d]+/.exec(ua)[0];
   if (/[\_]/.test(osversion)) {
     osversion = osversion.split('_').join('.');
   }

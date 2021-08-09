@@ -2,7 +2,7 @@
 /*global app  */
 
 import layerHistogram from './layerHistogram.js';
-import utilities from './utilities.js';
+import u from './utilities.js';
 
 let logger = {};
 
@@ -19,27 +19,37 @@ let printTable = msg => {
 };
 
 logger.imageData = (canvasImage, source) => {
-  let data = canvasImage.selectedSourcePixelData;
-  let h = utilities.histogram(data, 64, 0, 256);
-  let [min, max] = utilities.forLoopMinMax(data);
-  let str = `
-    Histogram (canvas uint8Data): name: ${source.name}, min: ${min}, max: ${max}
-    hmin: ${utilities.roundNumber(source.min, 4)}, hmax: ${utilities.roundNumber(source.max, 4)}
-    brightness: ${utilities.roundNumber(source.brightness, 4)}
-    contrast: ${utilities.roundNumber(source.contrast, 4)}
-    scaling: ${source.scaling}
-  `;
-  print(str);
-  printTable(h);
-  layerHistogram.update(h, source.scaling);
+  if (app.dev) {
+    let rgbData = canvasImage.selectedSourcePixelData;
+    let h = u.histogram(rgbData, 64, 0, 256);
+    let [min, max] = u.forLoopMinMax(rgbData);
+    let str = `
+      Histogram (canvas uint8Data): name: ${source.name}, min: ${min}, max: ${max}
+      hmin: ${u.roundNumber(source.min, 4)}, hmax: ${u.roundNumber(source.max, 4)}
+      brightness: ${u.roundNumber(source.brightness, 4)}
+      contrast: ${u.roundNumber(source.contrast, 4)}
+      scaling: ${source.scaling}
+    `;
+    print(str);
+    printTable(h);
+    layerHistogram.update(h, source);
+
+    let rawdata = canvasImage.rawDataForSource(source);
+    [min, max] = u.forLoopMinMax(rawdata);
+    h = u.histogram(rawdata, 64, min, max);
+    layerHistogram.updateRawData(h, source);
+
+  }
 };
 
 logger.rawData = (canvasImage, source) => {
-  let rawdata = canvasImage.rawDataForSource(source);
-  let h = utilities.histogram(rawdata, 30, source.min, source.max);
-  let [min, max] = utilities.forLoopMinMax(rawdata);
-  print(`Histogram (raw data): name: ${source.name}, min: ${utilities.roundNumber(min, 3)}, max: ${utilities.roundNumber(max, 3)}, hmin: ${utilities.roundNumber(source.min, 4)}, hmax: ${utilities.roundNumber(source.max, 4)}, contrast: ${utilities.roundNumber(source.contrast, 4)}`);
-  printTable(h);
+  if (app.dev) {
+    let rawdata = canvasImage.rawDataForSource(source);
+    let h = u.histogram(rawdata, 30, source.min, source.max);
+    let [min, max] = u.forLoopMinMax(rawdata);
+    print(`Histogram (raw data): name: ${source.name}, min: ${u.roundNumber(min, 3)}, max: ${u.roundNumber(max, 3)}, hmin: ${u.roundNumber(source.min, 4)}, hmax: ${u.roundNumber(source.max, 4)}, contrast: ${u.roundNumber(source.contrast, 4)}`);
+    printTable(h);
+  }
 };
 
 export default logger;

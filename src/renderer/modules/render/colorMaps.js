@@ -12,14 +12,6 @@ colorMaps.render = (page, registeredCallbacks) => {
     cmapNameGroups.push([names[i], names[i + 1]]);
   }
 
-  // let cmaps = [
-  //   ['grey', 'plasma'],
-  //   ['rainbow', 'firesky'],
-  //   ['inferno', 'watermelon'],
-  //   ['bluegreen', 'red'],
-  //   ['cool', 'green'],
-  //   ['magma', 'blue'],
-  // ];
   let getId = cmap => `select-cmap-${cmap}`;
   let cmapsHtml = '';
   cmapNameGroups.forEach(row => {
@@ -40,7 +32,7 @@ colorMaps.render = (page, registeredCallbacks) => {
     cmapsHtml += '</div>';
   });
   let html = `
-    <div id="select-colormaps" class='control-collection color-maps'>
+    <div id="select-colormaps" class='color-maps'>
       <div class='title'>Color Maps</div>
       <div class='subtitle'><span class="solid-right-arrow">&#11157</span>Select a color range to add color to your image</div>
       ${cmapsHtml}
@@ -50,7 +42,8 @@ colorMaps.render = (page, registeredCallbacks) => {
   return html;
 
   function callback() {
-
+    let gray = document.getElementById(getId('gray'));
+    gray.classList.add('selected');
     cmapNameGroups.forEach(row => {
       row.forEach(cmapName => {
         id = getId(cmapName);
@@ -61,7 +54,6 @@ colorMaps.render = (page, registeredCallbacks) => {
           event.currentTarget.classList.add('selected');
           let id = event.currentTarget.dataset.cmap;
           page.image.cmapName = cmapName;
-          // page.canvasImages.renderCanvasRGB();
           page.canvasImages.scheduleCmap(cmapName);
           page.canvasImages.renderMasterpiece();
           console.log(`${id} clicked`);

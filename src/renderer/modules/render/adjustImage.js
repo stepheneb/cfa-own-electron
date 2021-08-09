@@ -1,51 +1,59 @@
 /*jshint esversion: 8 */
+/*global app */
 
+import u from '../utilities.js';
 import logger from '../logger.js';
+import svg from './svg.js';
 
 let adjustImage = {};
 
-let brightness = page => {
+let stepSize = 0.05;
+
+let brightness = () => {
+  let min = 0;
+  let max = 2;
+  let val = 1;
   let html = `
-    <div class='row adjust-filter'>
-      <div class='col-4'>
-        <label for='brightness'>Brightness</label>
-      </div>
-      <div class='col-8 adjust-layer'>
-        <input type='range' id='brightness' name='brightness'  min='0' max='${page.image.maximumBrightness}' value='${page.image.maximumBrightness / 2}'
-          step='0.05'>
-      </div>
+    <div class='adjust-filter '>
+      <label for='brightness'>Brightness</label>
+      <div id='brightness-step-down' class='slider-icon step-down' data-step='down'>${svg.minusIcon}</div>
+      <input type='range' id='brightness' name='brightness'  min='${min}' max='${max}' value='${val}' step='${stepSize}' oninput='brightnessvalue.value=value'/>
+      <div id='brightness-step-up' class='slider-icon step-up'  data-step='up'>${svg.plusIcon}</div>
+      <output id="brightnessvalue">${val}</output>
     </div>
   `;
   return html;
 };
 
 let contrast = () => {
+  let min = 0;
+  let max = 2;
+  let val = 1;
   let html = `
-    <div class=' row adjust-filter'>
-      <div class='col-4'>
-        <label for='contrast'>Contrast</label>
-      </div>
-      <div class='col-8'>
-        <input type='range' id='contrast' name='contrast' min='0.04' max='1.96' value='1' step='0.01'>
-      </div>
+    <div class='adjust-filter'>
+      <label for='contrast'>Contrast</label>
+      <div id='contrast-step-down' class='slider-icon step-down' data-step='down'>${svg.minusIcon}</div>
+      <input type='range' id='contrast' name='contrast'  min='${min}' max='${max}' value='${val}' step='${stepSize}' oninput='contrastvalue.value=value'/>
+      <div id='contrast-step-up' class='slider-icon step-up' data-step='up'>${svg.plusIcon}</div>
+      <output id="contrastvalue">${val}</output>
     </div>
   `;
   return html;
 };
 
-let colorShift = () => {
-  let html = `
-    <div class='row adjust-filter'>
-      <div class='col-4'>
-        <label for='color-shift'>Color Shift</label>
-      </div>
-      <div class='col-8'>
-        <input type='range' id='color-shift' name='color-shift' min='0' max='10' value='5' disabled>
-      </div>
-    </div>
-  `;
-  return html;
-};
+// let colorShift = () => {
+//   let html = `
+//     <div class='row adjust-filter'>
+//       <div class='col-4'>
+//         <label for='color-shift'>Color Shift</label>
+//       </div>
+//       <div class='col-8'>
+//         <input type='range' id='color-shift' name='color-shift' min='0' max='10' value='5' step='${stepSize} disabled>
+//       </div>
+//     </div>
+//   `;
+//   return html;
+// };
 
 let scaling = page => {
   let scale = page.selectedSource.scaling;
@@ -56,8 +64,8 @@ let scaling = page => {
   }
 
   let html = `
-    <div id="scaling-control" class='row developer'>
-      <div class='col-4'>
+    <div id="scaling-control" class='row'>
+      <div class='col-4 ps-0'>
         <label>Scaling</label>
       </div>
       <div class="col-8">
@@ -82,135 +90,167 @@ let scaling = page => {
 
 };
 
-let html = page => {
+adjustImage.renderScaling = page => {
   return `
-    <div class='control-collection adjust-layer'>
-      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}</div>
-      ${brightness(page)}
-      ${contrast(page)}
-      ${colorShift(page)}
-      ${scaling(page)}
-    </div>
+    ${scaling(page)}
   `;
 };
 
-adjustImage.renderRGB = (page, registeredCallbacks) => {
+adjustImage.processCallback = (page, renderFunc) => {
   let source = page.selectedSource;
+  let debounceTime = 125;
 
-  registeredCallbacks.push(callback);
-  return `
-    <div class='control-collection adjust-layer'>
-      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}</div>
-      ${brightness(page)}
-      ${contrast(page)}
-      ${colorShift(page)}
-      ${scaling(page)}
-    </div>
-  `;
+  let brightnessElem = document.getElementById("brightness");
+  let contrastElem = document.getElementById("contrast");
 
-  function callback() {
-    let elem;
+  let brightnessStepDownElem = document.getElementById("brightness-step-down");
+  let brightnessStepUpElem = document.getElementById("brightness-step-up");
+  let brightnessValueElem = document.getElementById("brightnessvalue");
 
-    elem = document.getElementById("brightness");
-    elem.addEventListener('input', (e) => {
-      source = page.selectedSource;
-      let brightness = e.target.valueAsNumber;
-      source.brightness = brightness;
-      render(source);
-    });
+  let contrastStepDownElem = document.getElementById("contrast-step-down");
+  let contrastStepUpElem = document.getElementById("contrast-step-up");
+  let contrastValueElem = document.getElementById("contrastvalue");
 
-    elem = document.getElementById("contrast");
-    elem.addEventListener('input', (e) => {
-      source = page.selectedSource;
-      source.contrast = e.target.valueAsNumber;
-      let contrastShift = (source.originalRange * source.contrast - source.originalRange) / 2;
-      source.max = source.originalMax - contrastShift;
-      source.min = Math.max(0, source.originalMin + contrastShift);
-      render(source);
-    });
+  const listenerDebounceBrightness = u.debounce((e) => {
+    source = page.selectedSource;
+    let brightness = e.target.valueAsNumber;
+    source.brightness = brightness;
+    renderFunc(page);
+  }, debounceTime);
 
-    elem = document.getElementById("color-shift");
-    elem.addEventListener('input', () => {});
+  const listenerDebounceContrast = u.debounce((e) => {
+    source = page.selectedSource;
+    source.contrast = e.target.valueAsNumber;
+    renderFunc(page);
+  }, debounceTime);
 
-    elem = document.getElementById("scaling");
+  const listenerBrightnessStep = (e) => {
+    let source = page.selectedSource;
+    let direction = e.target.dataset.step;
+    let brightness = source.brightness;
+    if (direction == 'up') {
+      brightness += 0.05;
+    } else {
+      brightness -= 0.05;
+    }
+    brightness = Math.min(2, Math.max(0, brightness));
+    source.brightness = brightness;
+    brightnessElem.valueAsNumber = brightness;
+    brightnessValueElem.innerText = u.roundNumber(brightness, 3);
+    renderFunc(page);
+  };
+
+  const listenerContrastStep = (e) => {
+    let source = page.selectedSource;
+    let direction = e.target.dataset.step;
+    let contrast = source.contrast;
+    if (direction == 'up') {
+      contrast += 0.05;
+    } else {
+      contrast -= 0.05;
+    }
+    contrast = Math.min(2, Math.max(0, contrast));
+    source.contrast = contrast;
+    contrastElem.valueAsNumber = contrast;
+    contrastValueElem.innerText = u.roundNumber(contrast, 3);
+    renderFunc(page);
+  };
+
+  brightnessElem.addEventListener('input', listenerDebounceBrightness);
+  contrastElem.addEventListener('input', listenerDebounceContrast);
+
+  brightnessStepDownElem.addEventListener('click', listenerBrightnessStep);
+  brightnessStepUpElem.addEventListener('click', listenerBrightnessStep);
+
+  contrastStepDownElem.addEventListener('click', listenerContrastStep);
+  contrastStepUpElem.addEventListener('click', listenerContrastStep);
+
+  // elem = document.getElementById("color-shift");
+  // elem.addEventListener('input', () => {});
+
+  let elem;
+  elem = document.getElementById("scaling");
+  if (elem) {
     elem.addEventListener('change', () => {
       source = page.selectedSource;
       source.scaling = event.target.value;
-      render(source);
+      renderFunc(page);
     });
+  }
+};
 
-    function render(source) {
-      let canvas = page.canvasImages.layerCanvasNamed(source.filter);
-      page.canvasImages.renderCanvasLayer(source, canvas);
-      page.canvasImages.renderCanvasRGB();
-      page.canvasImages.renderPreview(source);
-      logger.imageData(page.canvasImages, source);
+adjustImage.renderRGB = (page, registeredCallbacks) => {
+  registeredCallbacks.push(callback);
+  return `
+    <div class='adjust-layer'>
+      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}</div>
+      ${brightness(page)}
+      ${contrast(page)}
+    </div>
+  `;
+
+  function callback(page) {
+    adjustImage.processCallback(page, render);
+
+    function render(page) {
+      let source = page.selectedSource;
+      adjustImage.renderRGBUpdate(page, source);
     }
   }
 };
 
+adjustImage.renderRGBUpdate = (page, source) => {
+  let canvas = page.canvasImages.layerCanvasNamed(source.filter);
+  page.canvasImages.renderCanvasLayer(source, canvas);
+  page.canvasImages.renderCanvasRGB(page.type);
+  page.canvasImages.renderPreview(source);
+  if (app.dev) {
+    logger.imageData(page.canvasImages, source);
+    page.imageInspect.connectUpdate(page.canvasImages);
+  }
+  source.changed = false;
+};
+
 adjustImage.renderMasterpiece = (page, registeredCallbacks) => {
   registeredCallbacks.push(callback);
-  return html(page);
+  return `
+    <div class='adjust-layer'>
+      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}</div>
+      ${brightness(page)}
+      ${contrast(page)}
+    </div>
+  `;
 
-  function callback() {
-    let elem;
-
-    elem = document.getElementById("brightness");
-    elem.addEventListener('input', (e) => {
-      let brightness = e.target.valueAsNumber;
-      page.canvasImages.rawdataSources.forEach(source => {
-        source.brightness = brightness;
-      });
-      render(page);
-    });
-
-    elem = document.getElementById("contrast");
-    elem.addEventListener('input', (e) => {
-      let contrast = e.target.valueAsNumber;
-      page.canvasImages.rawdataSources.forEach(source => {
-        source.contrast = contrast;
-        let contrastShift = (source.originalRange * source.contrast - source.originalRange) / 2;
-        source.max = source.originalMax - contrastShift;
-        source.min = Math.max(0, source.originalMin + contrastShift);
-      });
-      render(page);
-    });
-
-    elem = document.getElementById("color-shift");
-    elem.addEventListener('input', () => {});
-
-    elem = document.getElementById("scaling");
-    elem.addEventListener('change', (event) => {
-      let scaling = event.target.value;
-      page.canvasImages.rawdataSources.forEach(source => {
-        source.scaling = scaling;
-      });
-      render(page);
-    });
+  function callback(page) {
+    adjustImage.processCallback(page, render);
 
     function render(page) {
-      page.canvasImages.spinner.show("running filter");
-      page.redraw = requestAnimationFrame(() => {
-        setTimeout(() => {
-          render2().then(() => {
-            page.canvasImages.spinner.hide();
-          });
-        });
-      });
-
+      adjustImage.renderMasterpieceUpdate(page);
     }
+  }
+};
 
-    async function render2() {
-      let canvas;
-      page.canvasImages.rawdataSources.forEach(source => {
-        canvas = page.canvasImages.layerCanvasNamed(source.filter);
-        page.canvasImages.renderCanvasLayer(source, canvas);
+adjustImage.renderMasterpieceUpdate = (page) => {
+  page.canvasImages.spinner.show("running filter");
+  page.redraw = requestAnimationFrame(() => {
+    setTimeout(() => {
+      render2().then(() => {
+        page.canvasImages.spinner.hide();
       });
-      page.canvasImages.renderCanvasRGB();
-      if (page.type == 'masterpiece') {
-        page.canvasImages.renderMasterpiece();
+    });
+  });
+  async function render2() {
+    let canvas;
+    page.canvasImages.rawdataSources.forEach(source => {
+      canvas = page.canvasImages.layerCanvasNamed(source.filter);
+      page.canvasImages.renderCanvasLayer(source, canvas);
+    });
+    page.canvasImages.renderCanvasRGB(page.type);
+    if (page.type == 'masterpiece') {
+      page.canvasImages.renderMasterpiece();
+      if (app.dev) {
         logger.imageData(page.canvasImages, page.canvasImages.selectedSource);
+        page.imageInspect.connectUpdate(page.canvasImages);
       }
     }
   }
@@ -220,8 +260,11 @@ adjustImage.update = page => {
   let source = page.selectedSource;
   document.getElementById("brightness").value = source.brightness;
   document.getElementById("contrast").value = source.contrast;
-  let radios = document.getElementById("scaling").elements.scaling;
-  radios.value = source.scaling;
+  let scalingElem = document.getElementById("scaling");
+  if (scalingElem) {
+    let radios = document.getElementById("scaling").elements.scaling;
+    radios.value = source.scaling;
+  }
 };
 
 export default adjustImage;

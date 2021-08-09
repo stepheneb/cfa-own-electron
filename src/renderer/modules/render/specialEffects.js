@@ -33,7 +33,7 @@ specialEffects.render = (page, registeredCallbacks) => {
     effectsHtml += '</div>';
   });
   let html = `
-    <div class='control-collection special-effects'>
+    <div class='special-effects'>
       <div class='title'>Special Effects</div>
       <div class='subtitle'><span class="solid-right-arrow">&#11157</span>Try an effect to enhance your image</div>
       <form id="${formId}">
@@ -60,7 +60,7 @@ specialEffects.render = (page, registeredCallbacks) => {
       if (filters.length > 0) {
         page.canvasImages.renderMasterpiece();
       } else {
-        page.canvasImages.renderCanvasRGB();
+        page.canvasImages.renderCanvasRGB(page.type);
         page.canvasImages.renderMasterpiece();
       }
     });

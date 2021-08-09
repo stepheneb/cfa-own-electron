@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */
+/*jshint esversion: 7 */
 
 //
 // Utilities
@@ -18,7 +18,7 @@ utilities.containsAll = (arr1, arr2) =>
   arr2.every(arr2Item => arr1.includes(arr2Item));
 
 utilities.sameMembers = (arr1, arr2) =>
-  containsAll(arr1, arr2) && containsAll(arr2, arr1);
+  utilities.containsAll(arr1, arr2) && utilities.containsAll(arr2, arr1);
 
 utilities.forLoopMinMax = (array) => {
   let min = array[0],
@@ -59,6 +59,42 @@ utilities.histogram = (array, numbuckets, min, max) => {
     }
   }
   return buckets;
+};
+
+utilities.getLastItem = thePath => thePath.substring(thePath.lastIndexOf('/') + 1);
+
+// event listener wrapper: discard events until <wait> time has passed
+// https://www.joshwcomeau.com/snippets/javascript/debounce/
+utilities.debounce = (callback, wait) => {
+  let timeoutId = null;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, wait);
+  };
+};
+
+utilities.getMonthDayStr = (d) => {
+  return (d.getMonth() + 1).toString().padStart(2, '0') + (d.getDay() + 1).toString().padStart(2, '0');
+};
+
+utilities.getMonthDayStrNow = () => {
+  let now = new Date();
+  return utilities.getMonthDayStr(now);
+};
+
+utilities.getMonthDayNow = () => {
+  let now = new Date();
+  return Number.parseInt(utilities.getMonthDayStr(now));
+};
+
+utilities.bytesToSize = (bytes) => {
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  if (bytes === 0) return 'n/a';
+  const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+  if (i === 0) return `${bytes} ${sizes[i]})`;
+  return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`;
 };
 
 export default utilities;
