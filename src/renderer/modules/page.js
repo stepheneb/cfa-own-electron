@@ -1,6 +1,5 @@
 /*jshint esversion: 6 */
 /*global app  defaultApp */
-/*global bootstrap  */
 
 // https://stackoverflow.com/questions/38127416/is-it-possible-to-destructure-instance-member-variables-in-a-javascript-construc
 

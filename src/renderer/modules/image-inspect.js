@@ -1,5 +1,4 @@
 /*jshint esversion: 6 */
-/*global bootstrap  */
 
 import { Tooltip } from 'bootstrap';
 import layerHistogram from './layerHistogram.js';
