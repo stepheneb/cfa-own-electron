@@ -9,7 +9,10 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "debug": "electron-forge start  --inspect-electron",
+    "debug-stop": "yarn start -- -- --inspect-brk",
+    "env": "echo \"node --version: \"; node --version; echo \"electron --version: \"; electron --version; echo \"electron-forge --version: \"; electron-forge --version"
   },
   "keywords": [],
   "author": {
@@ -71,7 +74,8 @@
     "@popperjs/core": "^2.9.3",
     "bootstrap": "^5.1.0",
     "electron-settings": "^4.0.2",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "simple-keyboard": "^3.2.35"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.59",

@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 /*global bootstrap  */
 
+import { Tooltip } from 'bootstrap';
 import layerHistogram from './layerHistogram.js';
 import adjustImage from './render/adjustImage.js';
 import logger from './logger.js';
@@ -301,14 +302,14 @@ class ImageInspect {
       function callback(page) {
         let elem = document.getElementById(id);
         if (elem) {
-          let b = new bootstrap.Tooltip(elem);
+          let b = new Tooltip(elem);
           elem.addEventListener('mouseleave', function () {
             b.hide();
           });
           elem.addEventListener('click', () => {
             that.sourceFilterForceGray.checked = false;
             page.reset();
-            let b = bootstrap.Tooltip.getInstance(elem);
+            let b = Tooltip.getInstance(elem);
             elem.setAttribute('data-bs-original-title', tooltipDone);
             b.show();
             elem.setAttribute('data-bs-original-title', tooltip);
@@ -336,7 +337,7 @@ class ImageInspect {
         const { ClipboardItem } = window;
         let elem = document.getElementById(id);
         if (elem) {
-          let b = new bootstrap.Tooltip(elem);
+          let b = new Tooltip(elem);
           elem.addEventListener('mouseleave', function () {
             b.hide();
           });
@@ -351,7 +352,7 @@ class ImageInspect {
               function () {
                 /* success */
                 // console.log('success');
-                let b = bootstrap.Tooltip.getInstance(elem);
+                let b = Tooltip.getInstance(elem);
                 elem.setAttribute('data-bs-original-title', tooltipDone);
                 b.show();
                 elem.setAttribute('data-bs-original-title', tooltip);

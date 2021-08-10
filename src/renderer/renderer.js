@@ -27,6 +27,9 @@
  */
 
 import 'bootstrap';
+
+import 'simple-keyboard/build/css/index.css';
+
 import './sass/main';
 
 import main from './main.js';

@@ -1,12 +1,14 @@
-/*jshint esversion: 6 */
+/*jshint esversion: 8 */
 
 const { app, BrowserWindow } = require("electron");
 
-// export const isMac = process.platform === "darwin";
-// export const isWindows = process.platform === "win32";
-// export const isSource = fs.existsSync("package.json");
+const fs = require("fs");
 
-const windowStateKeeper = require("./window-state-keeper");
+export const isMac = process.platform === "darwin";
+export const isWindows = process.platform === "win32";
+export const isSource = fs.existsSync("package.json");
+
+import { windowStateKeeper } from './window-state-keeper';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -23,8 +25,10 @@ let mainWindow;
  *
  * @return {type} Description
  */
-const createMainWindow = () => {
-  const mainWindowStateKeeper = windowStateKeeper("main");
+
+const createMainWindow = async () => {
+  const mainWindowStateKeeper = await windowStateKeeper('main');
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
     title: "main",

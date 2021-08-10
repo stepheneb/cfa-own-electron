@@ -4,6 +4,7 @@
 
 // https://stackoverflow.com/questions/38127416/is-it-possible-to-destructure-instance-member-variables-in-a-javascript-construc
 
+import { Modal, Offcanvas } from 'bootstrap';
 import CanvasImages from './canvas-images.js';
 import ImageInspect from './image-inspect.js';
 import events from './events.js';
@@ -350,7 +351,7 @@ class Page {
   hideAllObservationModalsAndRenderMenu() {
     this.observationModals = document.querySelectorAll('div.observation.modal');
     this.observationModals.forEach(elem => {
-      let bs = bootstrap.Modal.getInstance(elem);
+      let bs = Modal.getInstance(elem);
       if (bs._isShown) {
         bs.hide();
       }
@@ -361,7 +362,7 @@ class Page {
   hideAllSaveAndSendModalsAndRenderMenu() {
     this.saveAndSendModals = document.querySelectorAll('div.save-and-send.modal');
     this.saveAndSendModals.forEach(elem => {
-      let bs = bootstrap.Modal.getInstance(elem);
+      let bs = Modal.getInstance(elem);
       if (bs._isShown) {
         bs.hide();
       }
@@ -372,7 +373,7 @@ class Page {
   renderDevSideBar(page, registeredCallbacks) {
     if (app.dev) {
       this.devSideBar = document.getElementById('developerToolsSideBar');
-      this.bsDevSideBar = new bootstrap.Offcanvas(this.devSideBar);
+      this.bsDevSideBar = new Offcanvas(this.devSideBar);
       this.devSideBarBody = document.getElementById('developerToolsSideBar-body');
       this.devSideBarBody.insertAdjacentHTML('beforeend', `
         ${this.imageInspect.render(this, this.registeredCallbacks)}

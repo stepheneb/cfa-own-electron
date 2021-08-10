@@ -1,6 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+const path = require('path');
+
 module.exports = [
   // Add support for native node modules
   {
@@ -28,7 +30,7 @@ module.exports = [
 
   {
     test: /\.(png|svg|jpe?g|gif)$/,
-    include: /images/,
+    include: path.resolve(__dirname, "images"),
     use: [{
       loader: 'file-loader',
       options: {
@@ -41,7 +43,7 @@ module.exports = [
 
   {
     test: /\.(woff|ttf)$/,
-    include: /fonts/,
+    include: path.resolve(__dirname, "fonts"),
     use: [{
       loader: 'file-loader',
       options: {
@@ -65,10 +67,6 @@ module.exports = [
       },
       {
         loader: 'resolve-url-loader',
-        options: {
-          root: '',
-          debug: true
-        }
       },
       {
         loader: 'sass-loader',
@@ -100,6 +98,11 @@ module.exports = [
         }
       }
     ]
+  },
+
+  {
+    test: /\.css$/i,
+    use: ["style-loader", "css-loader"],
   },
 
 ];

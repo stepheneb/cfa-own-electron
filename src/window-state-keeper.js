@@ -1,80 +1,51 @@
-const appConfig = require("electron-settings");
+import { screen } from 'electron';
+import settings from 'electron-settings';
 
-/**
- * windowStateKeeper - Description
- *
- * @param {type} windowName Description
- *
- * @return {type} Description
- */
-function windowStateKeeper(windowName) {
+export const windowStateKeeper = async (windowName) => {
   let window, windowState;
 
-  function setBounds() {
+  const setBounds = async () => {
     // Restore from appConfig
-    if (appConfig.has(`windowState.${windowName}`)) {
-      windowState = appConfig.get(`windowState.${windowName}`);
-      // we also need to check if the screen x and y
-      // would end up on is available, and if not fix it
-      // app is ready at this point, we can use screen
-      const { screen } = require("electron");
-
-      let positionIsValid = false;
-      for (let display of screen.getAllDisplays()) {
-        let lowestX = display.bounds.x;
-        let highestX = lowestX + display.bounds.width;
-
-        let lowestY = display.bounds.y;
-        let highestY = lowestY + display.bounds.height;
-        if (
-          lowestX < windowState.x &&
-          windowState.x < highestX &&
-          lowestY < windowState.y &&
-          windowState.y < highestY
-        ) {
-          positionIsValid = true;
-        }
-      }
-      if (!positionIsValid) {
-        windowState.x = 10;
-        windowState.y = 10;
-        // or some default other values
-      }
-
+    if (await settings.has(`windowState.${windowName}`)) {
+      windowState = await settings.get(`windowState.${windowName}`);
       return;
     }
+
+    const size = screen.getPrimaryDisplay().workAreaSize;
+
     // Default
     windowState = {
       x: undefined,
       y: undefined,
-      width: 800,
-      height: 600
+      width: size.width / 2,
+      height: size.height / 2,
     };
-  }
+  };
 
-  function saveState() {
+  const saveState = async () => {
+    // bug: lots of save state events are called. they should be debounced
     if (!windowState.isMaximized) {
       windowState = window.getBounds();
     }
     windowState.isMaximized = window.isMaximized();
-    appConfig.set(`windowState.${windowName}`, windowState);
-  }
+    await settings.set(`windowState.${windowName}`, windowState);
+  };
 
-  function track(win) {
+  const track = async (win) => {
     window = win;
-    ["resize", "move", "close"].forEach(event => {
+    ['resize', 'move', 'close'].forEach((event) => {
       win.on(event, saveState);
     });
-  }
-  setBounds();
+  };
+
+  await setBounds();
+
   return {
     x: windowState.x,
     y: windowState.y,
     width: windowState.width,
     height: windowState.height,
     isMaximized: windowState.isMaximized,
-    track
+    track,
   };
-}
-
-module.exports = windowStateKeeper;
+};

@@ -1,5 +1,7 @@
 /*jshint esversion: 8 */
 
+import Keyboard from 'simple-keyboard';
+
 let emailKeyboard = {};
 
 emailKeyboard.render = (page, registeredCallbacks) => {
@@ -7,7 +9,7 @@ emailKeyboard.render = (page, registeredCallbacks) => {
   return '<div class="simple-keyboard"></div>';
 
   function callback() {
-    const Keyboard = window.SimpleKeyboard.default;
+    // const Keyboard = window.SimpleKeyboard.default;
 
     let keyboard = new Keyboard({
       onChange: input => onChange(input),

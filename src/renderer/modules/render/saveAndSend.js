@@ -2,6 +2,7 @@
 /*global app  */
 /*global bootstrap  */
 
+import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 
 let saveandsend = {};
@@ -159,9 +160,9 @@ saveandsend.render = (page, registeredCallbacks) => {
     let modal2CloseButton = document.getElementById(modalId2 + '-button');
     let modal3CloseButton = document.getElementById(modalId3 + '-button');
 
-    let bsModal1 = new bootstrap.Modal(modal1, {});
-    let bsModal2 = new bootstrap.Modal(modal2, {});
-    let bsModal3 = new bootstrap.Modal(modal3, {});
+    let bsModal1 = new Modal(modal1, {});
+    let bsModal2 = new Modal(modal2, {});
+    let bsModal3 = new Modal(modal3, {});
 
     let saveAndSendButton = document.getElementById(saveAndSendButtonId);
 
