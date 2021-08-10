@@ -42,7 +42,7 @@ module.exports = [
   },
 
   {
-    test: /\.(woff|ttf)$/,
+    test: /\.ttf$/,
     include: path.resolve(__dirname, "fonts"),
     use: [{
       loader: 'file-loader',
@@ -52,6 +52,19 @@ module.exports = [
         publicPath: 'fonts/'
       }
     }]
+  },
+
+  {
+    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    include: path.resolve(__dirname, '../node_modules/bootstrap-icons/font/fonts'),
+    use: {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+        outputPath: 'fonts/',
+        publicPath: 'fonts/',
+      },
+    }
   },
 
   {
@@ -104,18 +117,5 @@ module.exports = [
     test: /\.css$/i,
     use: ["style-loader", "css-loader"],
   },
-
-  {
-    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    include: path.resolve(__dirname, './node_modules/bootstrap-icons/font/fonts'),
-    use: {
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]',
-        outputPath: 'webfonts',
-        publicPath: '../webfonts',
-      },
-    }
-  }
 
 ];
