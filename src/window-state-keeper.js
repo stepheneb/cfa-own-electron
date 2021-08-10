@@ -15,10 +15,10 @@ export const windowStateKeeper = async (windowName) => {
 
     // Default
     windowState = {
-      x: undefined,
-      y: undefined,
-      width: size.width / 2,
-      height: size.height / 2,
+      x: 10,
+      y: 10,
+      width: Math.min(size.width, 1920),
+      height: Math.min(size.height, 1080)
     };
   };
 
