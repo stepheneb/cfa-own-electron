@@ -9,36 +9,47 @@ Successfully built with:
 
 On macOS I typically use nvm to manage multiple versions of node: https://github.com/nvm-sh/nvm
 
+### Install dependencies
+
 After cloning repository install the dependencies for building and running.
 ```
 $ npm install
 ```
 
-Start the Electron application locally.
+### Start the Electron application locally.
 ```
 $ npm start
 ```
 
-Build production Electron application locally.
-```
-$ npm run makes
-```
-
-Build production Electron application locally.
+### Build production Electron application locally.
 ```
 $ npm run make
 ```
 
-Publishing a new release.
+### Run the production application.
+
+#### macos
+```
+$ open out/cfa-own-electron-darwin-x64
+```
+Run **cfa-own-electron**
+
+#### Windows
+```
+cfa-own-electron> explorer out\cfa-own-electron-win32-x64
+```
+Run **cfa-own-electron.exe**
+
+### Publish a new release.
 
 Edit `package.json` to update the version.
 
 Create the appropriate git tag.
 ```
-git tag -a 1.0.0-beta-1 -m "inital beta release"
+$ git tag -a 1.0.0-beta-1 -m "inital beta release"
 ```
 
-Make sure running the application created by running `npm run make` works correctly.
+Note: Make sure running the application created by running `npm run make` works correctly first.
 
 Commit and push changes to github.
 
