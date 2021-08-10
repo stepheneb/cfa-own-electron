@@ -9,14 +9,6 @@ module.exports = [
     test: /\.node$/,
     use: 'node-loader',
   },
-  // {
-  //   test: /\.(png|jpg)$/,
-  //   loader: 'url-loader'
-  // },
-  // {
-  //   test: "/images/background.jpg",
-  //   loader: 'url-loader'
-  // },
   {
     test: /\.(m?js|node)$/,
     parser: { amd: false },
@@ -30,13 +22,14 @@ module.exports = [
 
   {
     test: /\.(png|svg|jpe?g|gif)$/,
+    type: 'javascript/auto',
     include: path.resolve(__dirname, "images"),
     use: [{
       loader: 'file-loader',
       options: {
         name: '[name].[ext]',
         outputPath: 'images/',
-        publicPath: 'images/'
+        publicPath: '../images/'
       }
     }]
   },
@@ -70,7 +63,7 @@ module.exports = [
   {
     test: /\.module\.s(a|c)ss$/,
     use: [
-      isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+      MiniCssExtractPlugin.loader,
       {
         loader: 'css-loader',
         options: {
@@ -97,7 +90,7 @@ module.exports = [
     test: /\.s(a|c)ss$/,
     exclude: /\.module.(s(a|c)ss)$/,
     use: [
-      isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader',
+      MiniCssExtractPlugin.loader, 'css-loader',
       {
         loader: 'resolve-url-loader'
       },
