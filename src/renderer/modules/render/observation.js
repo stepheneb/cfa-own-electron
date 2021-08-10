@@ -38,7 +38,7 @@ observation.render = (page, registeredCallbacks) => {
   function telescope() {
     return `
       <div class="image-container telescope">
-        <img src='./images/micro-observatory.jpg'>
+        <img src='../images/micro-observatory.jpg'>
         <div class='label'>Our Telescope</div>
       </div>
       `;
@@ -47,7 +47,7 @@ observation.render = (page, registeredCallbacks) => {
   function image() {
     return `
       <div class="image-container">
-        <img src=${page.poster}>
+        <img src='../${page.poster}'>
         <div class='label'>${page.title}</div>
       </div>
       `;

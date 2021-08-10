@@ -229,7 +229,7 @@ renderMenu.activityCategory = () => {
     let type = category.type;
     html += `
         <div class="category col"  id="menu-category-${type}" data-num="${i}">
-          <img src="${category.menuimage}"  id="menu-category-${type}-image"></img>
+          <img src="../${category.menuimage}"  id="menu-category-${type}-image"></img>
           <div id="menu-activity-${type}-title" class="menu-activity-category-title">
             <header class="menu-activity-category-title">${category.title}</header>
           </div>
@@ -390,7 +390,7 @@ renderMenu.categoryPageCollection = category => {
       html += `
         <div id="${id}" class="menu-category-page">
           <div class="image-wrapper">
-            <img src="images/page-images/${type}-${page.poster}.jpg"></img>
+            <img src="../images/page-images/${type}-${page.poster}.jpg"></img>
           </div>
           <div class="name">${page.title}</div>
           <div class="telescope">${telescopes}</div>
@@ -404,7 +404,7 @@ renderMenu.categoryPageCollection = category => {
       html += `
           <div id="${id}" class="menu-category-page  ${hide}">
             <div class="image-wrapper">
-              <img src="${page.poster}"></img>
+              <img src="../${page.poster}"></img>
             </div>
             <div class="name">${page.title}</div>
           </div>

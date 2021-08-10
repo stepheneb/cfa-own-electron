@@ -191,7 +191,7 @@ class CanvasImages {
     let rawdata;
     let rawDataSources = this.sources.filter(s => s.type == 'rawdata');
     Promise.all(
-      rawDataSources.map(source => fetch(source.path[this.size]))
+      rawDataSources.map(source => fetch('../' + source.path[this.size]))
     ).then(responses => {
       return Promise.all(responses.map(response => response.arrayBuffer()));
     }).then(arrayBuffers => {

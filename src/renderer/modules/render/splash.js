@@ -15,7 +15,7 @@ splash.show = () => {
   let splashElem = document.getElementById('splash');
   if (!app.splashRendered) {
     splashElem.innerHTML = `
-      <img src="images/splash.jpg"></img>
+      <img src="../images/splash.jpg"></img>
       <div id="splash-center">
         <div class="title-container">
           <div class="title1">${app.splash.title1}</div>
@@ -51,7 +51,7 @@ splash.show = () => {
   let splash2Elem = document.getElementById('splash2');
   if (!app.splash2Rendered) {
     splash2Elem.innerHTML = `
-      <img src="images/splash2.jpg"></img>
+      <img src="../images/splash2.jpg"></img>
       ${splash2ContentHtml}
     `;
     app.splash2Rendered = true;
@@ -65,7 +65,7 @@ splash.show = () => {
   let elem = document.getElementById('splash');
   if (!app.splashRendered) {
     elem.innerHTML = `
-      <img src="images/splash.jpg"></img>
+      <img src="../images/splash.jpg"></img>
       <div id="splash-center">
         <div class="title-container">
           <div class="title1">${app.splash.title1}</div>

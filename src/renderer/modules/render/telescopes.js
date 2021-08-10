@@ -46,7 +46,7 @@ telescopes.render = (page, registeredCallbacks) => {
       <div id="${id}" class="telescope-container" data-bs-toggle="modal" data-bs-target="#${modalId}">
         <div class="about-telescope">${scope.name} Telescope</div>
         <div id="${scope.key}-container" class="telescope-image-container">
-          <img src="${scope.image}"></img>
+          <img src="../${scope.image}"></img>
         </div>
       </div>
     `;
@@ -58,7 +58,7 @@ telescopes.render = (page, registeredCallbacks) => {
             <div class="modal-header">
               <h5 class="modal-title" id="${modalId}-title">About the ${scope.name} Telescope</h5>
               <div class="image-container">
-                <img src="${scope.image}"></img>
+                <img src="../${scope.image}"></img>
               </div>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
