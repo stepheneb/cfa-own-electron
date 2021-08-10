@@ -36,9 +36,9 @@ const createMainWindow = async () => {
     y: mainWindowStateKeeper.y,
     width: mainWindowStateKeeper.width,
     height: mainWindowStateKeeper.height,
-    // webPreferences: {
-    //   preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
-    // }
+    webPreferences: {
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
+    }
   });
   mainWindowStateKeeper.track(mainWindow);
 
