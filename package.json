@@ -24,6 +24,18 @@
   "config": {
     "forge": {
       "packagerConfig": {},
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "stepheneb",
+              "name": "cfa-own-electron"
+            },
+            "prerelease": true
+          }
+        }
+      ],
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
