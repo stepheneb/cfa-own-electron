@@ -1,8 +1,8 @@
 {
-  "name": "cfa-owns-electron",
-  "productName": "cfa-owns-electron",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "name": "cfa-own-electron",
+  "productName": "cfa-own-electron",
+  "version": "1.0.0-beta-1",
+  "description": "Explore NASA images",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -36,6 +36,13 @@
           "platforms": [
             "darwin"
           ]
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "background": "src/images/background.jpg",
+            "format": "ULFO"
+          }
         },
         {
           "name": "@electron-forge/maker-deb",
@@ -81,10 +88,12 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.59",
     "@electron-forge/maker-deb": "^6.0.0-beta.59",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.59",
     "@electron-forge/maker-rpm": "^6.0.0-beta.59",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
     "@electron-forge/maker-zip": "^6.0.0-beta.59",
     "@electron-forge/plugin-webpack": "^6.0.0-beta.59",
+    "@electron-forge/publisher-github": "^6.0.0-beta.59",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "autoprefixer": "^10.3.1",
     "copy-webpack-plugin": "^9.0.1",
