@@ -12,7 +12,8 @@
     "lint": "echo \"No linting configured\"",
     "debug": "electron-forge start  --inspect-electron",
     "debug-stop": "yarn start -- -- --inspect-brk",
-    "env": "echo \"node --version: \"; node --version; echo \"electron --version: \"; electron --version; echo \"electron-forge: \"; npm list webpack"
+    "env": "echo \"node --version: \"; node --version; echo \"electron --version: \"; electron --version; echo \"electron-forge: \"; npm list webpack",
+    "help": "electron-forge --help"
   },
   "keywords": [],
   "author": {
