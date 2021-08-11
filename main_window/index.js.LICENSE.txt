@@ -1,0 +1,17 @@
+/*!
+  * Bootstrap v5.1.0 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+  */
+
+/*!
+ * 
+ *   simple-keyboard v3.2.35
+ *   https://github.com/hodgef/simple-keyboard
+ *
+ *   Copyright (c) Francisco Hodge (https://github.com/hodgef) and project contributors.
+ *
+ *   This source code is licensed under the MIT license found in the
+ *   LICENSE file in the root directory of this source tree.
+ *
+ */

@@ -1,0 +1,2 @@
+(()=>{var r={933:r=>{"use strict";r.exports=require("electron")}},e={};function t(o){var n=e[o];if(void 0!==n)return n.exports;var i=e[o]={exports:{}};return r[o](i,i.exports,t),i.exports}(()=>{const{ipcRenderer:r}=t(933);window.ipcRenderer=r})()})();
+//# sourceMappingURL=preload.js.map
