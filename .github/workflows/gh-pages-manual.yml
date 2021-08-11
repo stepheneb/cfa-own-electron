@@ -1,0 +1,21 @@
+name: GitHub Pages Manual
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@master
+      with:
+        node-version: 14
+    - name: install dependencies
+      run: npm install
+    - name: package
+      run: npm run package
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./.webpack/renderer
