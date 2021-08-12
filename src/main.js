@@ -10,6 +10,8 @@ export const isSource = fs.existsSync("package.json");
 
 import { windowStateKeeper } from './window-state-keeper';
 
+export const appMenu = require("./app-menu");
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   // eslint-disable-line global-require
@@ -72,11 +74,6 @@ const createMainWindow = async () => {
 // Some APIs can only be used after this event occurs.
 app.on("ready", () => {
   createMainWindow();
-  let quit = Menu.getApplicationMenu().items.find((item) => item.role === "quit");
-  if (quit) {
-    console.log(quit);
-    quit.accelerator = 'Control+Q';
-  }
 });
 
 // Quit when all windows are closed.
