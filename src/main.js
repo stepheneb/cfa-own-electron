@@ -30,12 +30,19 @@ const createMainWindow = async () => {
   const mainWindowStateKeeper = await windowStateKeeper('main');
 
   // Create the browser window.
+  //
+  // when kiosk mode is true can't exit application
+  //     kiosk: true,
+  //
+  //     frame: false,
+
   mainWindow = new BrowserWindow({
     title: "main",
     x: mainWindowStateKeeper.x,
     y: mainWindowStateKeeper.y,
     width: mainWindowStateKeeper.width,
     height: mainWindowStateKeeper.height,
+    fullscreen: true,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
