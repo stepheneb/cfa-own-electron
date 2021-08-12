@@ -44,8 +44,6 @@ const createMainWindow = async () => {
     y: mainWindowStateKeeper.y,
     width: mainWindowStateKeeper.width,
     height: mainWindowStateKeeper.height,
-    fullscreen: true,
-    frame: false,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
@@ -60,12 +58,20 @@ const createMainWindow = async () => {
     mainWindow.webContents.openDevTools();
   }
 
-  mainWindow.on("leave-full-screen", () => {
-    mainWindow.frame = true;
+  mainWindow.on("enter-full-screen", () => {
+    if (isWindows) {
+      mainWindow.setSkipTaskBar(true);
+    }
+    mainWindow.setAutoHideMenuBar(true);
+    mainWindow.setMenuBarVisibility(false);
   });
 
-  mainWindow.on("enter-full-screen", () => {
-    mainWindow.frame = false;
+  mainWindow.on("leave-full-screen", () => {
+    if (isWindows) {
+      mainWindow.setSkipTaskBar(false);
+    }
+    mainWindow.setAutoHideMenuBar(false);
+    mainWindow.setMenuBarVisibility(true);
   });
 
   // Emitted when the window is closed.
