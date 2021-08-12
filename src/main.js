@@ -10,7 +10,8 @@ export const isSource = fs.existsSync("package.json");
 
 import { windowStateKeeper } from './window-state-keeper';
 
-export const appMenu = require("./app-menu");
+import { appMenu } from './app-menu';
+
 Menu.setApplicationMenu(appMenu);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
