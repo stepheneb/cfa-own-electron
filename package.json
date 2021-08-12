@@ -33,7 +33,8 @@
               "owner": "stepheneb",
               "name": "cfa-own-electron"
             },
-            "prerelease": true
+            "prerelease": true,
+            "draft": true
           }
         }
       ],
