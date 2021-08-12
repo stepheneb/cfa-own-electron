@@ -29,32 +29,24 @@ $ npm run make
 
 ### Run the production application.
 
-#### macos
-```
-$ open out/cfa-own-electron-darwin-x64
-```
-Run **cfa-own-electron**
+Open the directory that contains the packaged application:
 
-#### Windows
-```
-cfa-own-electron> explorer out\cfa-own-electron-win32-x64
-```
-Run **cfa-own-electron.exe**
+1. macos: `$ open out/cfa-own-electron-darwin-x64`
+2. Windows: `cfa-own-electron> explorer out\cfa-own-electron-win32-x64`
+
+Run **cfa-own-electron** or **cfa-own-electron.exe**
 
 ### Publish a new release.
 
-Edit `package.json` to update the version.
+1. Test and push all code changes.
+2. Run `npm version prerelease` which will perform the following tasks:
 
-Create the appropriate git tag.
-```
-$ git tag -a 1.0.0-beta-1 -m "inital beta release"
-```
+   1. Update the prerelease version number in package.json and package-log.json and generates a git commit.
+   2. Creates a new tag with the new version number.
 
-Note: Make sure running the application created by running `npm run make` works correctly first.
+3. Push the latest commit with the changes in package.json et al
+4. Push the new tag: `git push --follow-tags`
 
-Commit and push changes to github.
+Pushing the tag to github will kickoff the `release.yml` github workflow which uses github OS containers running npm and electron-forge to build and publish releases for Windows, macOS, and Linux.
 
-Perform the publish task.
-```
-$ npm run publish
-```
+Publishing a new release takes about 30 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions
