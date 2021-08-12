@@ -1,6 +1,6 @@
 /*jshint esversion: 8 */
 
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 
 const fs = require("fs");
 
@@ -43,6 +43,7 @@ const createMainWindow = async () => {
     width: mainWindowStateKeeper.width,
     height: mainWindowStateKeeper.height,
     fullscreen: true,
+    frame: false,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
@@ -69,7 +70,14 @@ const createMainWindow = async () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", createMainWindow);
+app.on("ready", () => {
+  createMainWindow();
+  let quit = Menu.getApplicationMenu().items.find((item) => item.role === "quit");
+  if (quit) {
+    console.log(quit);
+    quit.accelerator = 'Control+Q';
+  }
+});
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
