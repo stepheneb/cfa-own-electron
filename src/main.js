@@ -11,6 +11,7 @@ export const isSource = fs.existsSync("package.json");
 import { windowStateKeeper } from './window-state-keeper';
 
 export const appMenu = require("./app-menu");
+Menu.setApplicationMenu(appMenu);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -59,19 +60,21 @@ const createMainWindow = async () => {
   }
 
   mainWindow.on("enter-full-screen", () => {
-    if (isWindows) {
-      mainWindow.setSkipTaskBar(true);
-    }
     mainWindow.setAutoHideMenuBar(true);
     mainWindow.setMenuBarVisibility(false);
+    if (isWindows) {
+      mainWindow.setSkipTaskBar(true);
+      Menu.setApplicationMenu(null);
+    }
   });
 
   mainWindow.on("leave-full-screen", () => {
-    if (isWindows) {
-      mainWindow.setSkipTaskBar(false);
-    }
     mainWindow.setAutoHideMenuBar(false);
     mainWindow.setMenuBarVisibility(true);
+    if (isWindows) {
+      mainWindow.setSkipTaskBar(false);
+      Menu.setApplicationMenu(appMenu);
+    }
   });
 
   // Emitted when the window is closed.
