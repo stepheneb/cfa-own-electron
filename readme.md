@@ -50,3 +50,7 @@ Run **cfa-own-electron** or **cfa-own-electron.exe**
 Pushing the tag to github will kickoff the `release.yml` github workflow which uses github OS containers running npm and electron-forge to build and publish releases for Windows, macOS, and Linux.
 
 Publishing a new release takes about 30 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions
+
+References:
+- https://dev.to/erikhofer/build-and-publish-a-multi-platform-electron-app-on-github-3lnd
+- https://docs.github.com/en/actions
