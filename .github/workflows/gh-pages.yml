@@ -6,6 +6,7 @@ on:
       - main  # Set a branch name to trigger deployment
     paths-ignore:
       - 'readme.md'
+      - '.github/workflows/**'
 
 jobs:
   deploy:
