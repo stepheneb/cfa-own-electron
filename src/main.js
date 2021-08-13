@@ -46,6 +46,8 @@ const createMainWindow = async () => {
     y: mainWindowStateKeeper.y,
     width: mainWindowStateKeeper.width,
     height: mainWindowStateKeeper.height,
+    menuBarVisible: true,
+    autoHideMenuBar: false,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
