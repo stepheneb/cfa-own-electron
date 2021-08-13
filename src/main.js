@@ -10,9 +10,7 @@ export const isSource = fs.existsSync("package.json");
 
 import { windowStateKeeper } from './window-state-keeper';
 
-import { appMenu } from './app-menu';
-
-// Menu.setApplicationMenu(appMenu);
+import { menu, template } from './menu';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -113,14 +111,16 @@ app.on("activate", () => {
   }
 });
 
-ipcMain.on('ctrl-esc', () => {
+ipcMain.on('ctrl-backtic', () => {
   if (mainWindow.isFullScreen()) {
     mainWindow.setFullScreen(false);
     mainWindow.setAutoHideMenuBar(false);
     mainWindow.setMenuBarVisibility(true);
     if (isWindows) {
-      mainWindow.setSkipTaskBar(false);
-      Menu.setApplicationMenu(appMenu);
+      if (typeof mainWindow.setSkipTaskBar == 'function') {
+        mainWindow.setSkipTaskBar(false);
+      }
+      Menu.setApplicationMenu(Menu.buildFromTemplate(template));
     }
   }
 });

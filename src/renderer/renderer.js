@@ -41,10 +41,10 @@ console.log('👋 This message is being logged by "renderer.js", included via we
 
 document.addEventListener("keydown", function (event) {
 
-  if (event.ctrlKey && event.keyCode == 27) {
+  if (event.ctrlKey && event.keyCode == 192) {
     event.stopPropagation();
     event.preventDefault();
-    console.log("CTRL + ESC was pressed.");
-    ipcRenderer.send('ctrl-esc');
+    console.log("control + backtic was pressed.");
+    ipcRenderer.send('ctrl-backtic');
   }
 });
