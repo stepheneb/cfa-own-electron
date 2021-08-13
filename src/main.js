@@ -1,6 +1,6 @@
 /*jshint esversion: 8 */
 
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 
 const fs = require("fs");
 
@@ -110,5 +110,17 @@ app.on("activate", () => {
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
     createMainWindow();
+  }
+});
+
+ipcMain.on('ctrl-esc', () => {
+  if (mainWindow.isFullScreen()) {
+    mainWindow.setFullScreen(false);
+    mainWindow.setAutoHideMenuBar(false);
+    mainWindow.setMenuBarVisibility(true);
+    if (isWindows) {
+      mainWindow.setSkipTaskBar(false);
+      Menu.setApplicationMenu(appMenu);
+    }
   }
 });

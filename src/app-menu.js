@@ -22,7 +22,7 @@ const template = [
   {
     label: 'File',
     submenu: [
-      isMac ? { role: 'close' } : { role: 'quit', accelerator: 'Ctrl+Q' }
+      isMac ? { role: 'close', accelerator: 'Command+Q' } : { role: 'quit', accelerator: 'Ctrl+Q' }
     ]
   },
   // { role: 'editMenu' }

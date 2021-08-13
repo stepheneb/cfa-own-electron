@@ -38,3 +38,13 @@ import main from './main.js';
 main.start();
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
+
+document.addEventListener("keydown", function (event) {
+
+  if (event.ctrlKey && event.keyCode == 27) {
+    event.stopPropagation();
+    event.preventDefault();
+    console.log("CTRL + ESC was pressed.");
+    ipcRenderer.send('ctrl-esc');
+  }
+});
