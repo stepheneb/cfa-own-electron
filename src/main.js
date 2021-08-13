@@ -12,7 +12,7 @@ import { windowStateKeeper } from './window-state-keeper';
 
 import { appMenu } from './app-menu';
 
-Menu.setApplicationMenu(appMenu);
+// Menu.setApplicationMenu(appMenu);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {

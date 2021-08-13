@@ -98,4 +98,4 @@ const template = [
 ];
 
 export const menu = Menu.buildFromTemplate(template);
-// Menu.setApplicationMenu(menu);
+Menu.setApplicationMenu(menu);
