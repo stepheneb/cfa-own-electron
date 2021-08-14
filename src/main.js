@@ -204,11 +204,9 @@ if (admin) {
   });
 } else {
   ipcMain.on('ctrl-backtic', () => {
-    if (mainWindow.isFullScreen()) {
-      mainWindow.setFullScreen(false);
-      supportFullScreenLeave();
-      app.relaunch({ args: argsAddAdmin() });
-      app.quit(0);
-    }
+    mainWindow.setFullScreen(false);
+    supportFullScreenLeave();
+    app.relaunch({ args: argsAddAdmin() });
+    app.quit(0);
   });
 }

@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 /*global app  */
+/*global ELECTRON  */
 
 // Splash page
 
@@ -11,6 +12,18 @@ let splash = {};
 let splashElem = document.getElementById('splash');
 let splash2Elem = document.getElementById('splash2');
 
+let ctrlBacktick = () => {
+  let html = '';
+  if (ELECTRON) {
+    html = `
+      <div id='ctrl-backtick'>
+        Press control-backtick to open the admin window.
+      </div>
+    `;
+  }
+  return html;
+};
+
 splash.show = () => {
   let splashElem = document.getElementById('splash');
   if (!app.splashRendered) {
@@ -21,6 +34,7 @@ splash.show = () => {
           <div class="title1">${app.splash.title1}</div>
           <div class="title2">${app.splash.title2}</div>
         </div>
+        ${ctrlBacktick()}
       </div>
       <div id="splash-footer" class="fixed-bottom d-flex flex-row justify-content-center">
         <div class="ps-1 pe-1">
