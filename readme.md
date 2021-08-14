@@ -35,7 +35,7 @@ macOS:
 
 Windows:
 
-**`cfa-own-electron> out\cfa-own-electron-win32-x64\cfa-own-electron.exe`**
+**`"cfa-own-electron>"out\CfA OWN Electron-win32-x64\CfA OWN Electron.exe"`**
 
 ### Publish a new release.
 
