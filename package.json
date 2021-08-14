@@ -1,6 +1,6 @@
 {
   "name": "cfa-own-electron",
-  "productName": "cfa-own-electron",
+  "productName": "CfA OWN Electron",
   "version": "1.0.0-beta.4",
   "description": "Explore NASA images",
   "main": ".webpack/main",
@@ -11,7 +11,7 @@
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
     "debug": "electron-forge start  --inspect-electron",
-    "debug-stop": "yarn start -- -- --inspect-brk",
+    "debug-stop": "electron-forge start  -- --inspect-brk",
     "env": "echo \"node --version: \"; node --version; echo \"electron --version: \"; electron --version; echo \"electron-forge: \"; npm list webpack",
     "help": "electron-forge --help"
   },
@@ -80,6 +80,14 @@
                   "html": "./src/renderer/index.html",
                   "js": "./src/renderer/renderer.js",
                   "name": "main_window",
+                  "preload": {
+                    "js": "./src/renderer/preload.js"
+                  }
+                },
+                {
+                  "html": "./src/renderer/admin.html",
+                  "js": "./src/renderer/admin_renderer.js",
+                  "name": "admin_window",
                   "preload": {
                     "js": "./src/renderer/preload.js"
                   }

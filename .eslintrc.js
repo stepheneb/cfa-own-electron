@@ -12,7 +12,9 @@ module.exports = {
   },
   "globals": {
     "MAIN_WINDOW_WEBPACK_ENTRY": false,
-    "MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY": false
+    "MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY": false,
+    "ADMIN_WINDOW_WEBPACK_ENTRY": false,
+    "ADMIN_WINDOW_PRELOAD_WEBPACK_ENTRY": false
   },
   "rules": {}
 };
