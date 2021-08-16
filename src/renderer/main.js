@@ -1,4 +1,4 @@
-/*global app */
+/*global app, defaultApp */
 
 import router from './router.js';
 

@@ -33,4 +33,4 @@ import './sass/main';
 
 console.log('👋 This message is being logged by "admin_renderer.js", included via webpack');
 
-import admin from './admin.js';
+require('./admin.js');
