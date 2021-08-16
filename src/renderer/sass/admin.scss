@@ -1,6 +1,10 @@
 .content.admin {
-  font-size: 1.5vw;
-  button {
-    font-size: 100%;
+  padding: 10px 20px;
+  .header {
+    font-size: 1.5vw;
+    color: var(--bright-green);
+    button {
+      font-size: 100%;
+    }
   }
 }

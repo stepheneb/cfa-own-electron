@@ -1,7 +1,5 @@
 /*jshint esversion: 8 */
 
-debugger;
-
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 
 const fs = require("fs");
@@ -201,6 +199,9 @@ if (admin) {
   ipcMain.on('restart', () => {
     app.relaunch({ args: argsRemoveAdmin() });
     app.exit(0);
+  });
+  ipcMain.on('quit', () => {
+    app.quit();
   });
 } else {
   ipcMain.on('ctrl-backtic', () => {
