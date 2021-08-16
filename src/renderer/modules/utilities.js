@@ -97,4 +97,8 @@ utilities.bytesToSize = (bytes) => {
   return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`;
 };
 
+utilities.runningInElectron = () => {
+  return (typeof ELECTRON !== 'undefined');
+};
+
 export default utilities;

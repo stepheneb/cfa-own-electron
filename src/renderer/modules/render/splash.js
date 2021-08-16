@@ -1,11 +1,11 @@
 /*jshint esversion: 6 */
 /*global app  */
-/*global ELECTRON  */
 
 // Splash page
 
 import router from '../../router.js';
 import renderMenu from './menu.js';
+import u from '../utilities';
 
 let splash = {};
 
@@ -14,7 +14,7 @@ let splash2Elem = document.getElementById('splash2');
 
 let ctrlBacktick = () => {
   let html = '';
-  if (ELECTRON) {
+  if (u.runningInElectron()) {
     html = `
       <div id='ctrl-backtick'>
         Press control-backtick to open the admin window.

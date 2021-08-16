@@ -29,6 +29,8 @@
  * ```
  */
 
+import u from './modules/utilities';
+
 import 'bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -42,12 +44,14 @@ main.start();
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
-document.addEventListener("keydown", function (event) {
+if (u.runningInElectron()) {
+  document.addEventListener("keydown", function (event) {
 
-  if (event.ctrlKey && event.keyCode == 192) {
-    event.stopPropagation();
-    event.preventDefault();
-    console.log("control + backtic was pressed.");
-    ipcRenderer.send('ctrl-backtic');
-  }
-});
+    if (event.ctrlKey && event.keyCode == 192) {
+      event.stopPropagation();
+      event.preventDefault();
+      console.log("control + backtic was pressed.");
+      ipcRenderer.send('ctrl-backtic');
+    }
+  });
+}
