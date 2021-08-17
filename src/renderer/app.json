@@ -741,16 +741,16 @@
             "size": "large",
             "dimensions": {
               "small": {
-                "nx": 400,
-                "ny": 400
+                "nx": 512,
+                "ny": 512
               },
               "medium": {
-                "nx": 800,
-                "ny": 800
+                "nx": 1025,
+                "ny": 1024
               },
               "large": {
-                "nx": 800,
-                "ny": 800
+                "nx": 1025,
+                "ny": 1024
               }
             },
             "maximumBrightness": 2,
@@ -760,79 +760,240 @@
                 "name": "jupiter1",
                 "telescope": "hubble",
                 "path": {
-                  "small": "rawdata/h_jupiter_01/400x400/01_h_jupiter_343_070301x_drz_sci.bmp",
-                  "medium": "rawdata/h_jupiter_01/800x800/01_h_jupiter_343_070301x_drz_sci.bmp",
-                  "large": "rawdata/h_jupiter_01/800x800/01_h_jupiter_343_070301x_drz_sci.bmp"
+                  "small": "rawdata/jupiter-animate/512x512/icsh10klq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10klq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10klq_flt.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
                 "max": 10,
                 "scaling": "linear",
                 "brightness": 1,
-                "contrast": 1,
-                "original": {
-                  "type": "FITS",
-                  "path": "source-images/fits/h_jupiter_01/01_h_jupiter_343_070301x_drz_sci.fits"
-                }
+                "contrast": 1
               },
               {
                 "type": "rawdata",
                 "name": "jupiter2",
                 "telescope": "hubble",
                 "path": {
-                  "small": "rawdata/h_jupiter_02/400x400/02_h_jupiter_410_070301x2_drz_sci.bmp",
-                  "medium": "rawdata/h_jupiter_02/800x800/02_h_jupiter_410_070301x2_drz_sci.bmp",
-                  "large": "rawdata/h_jupiter_02/800x800/02_h_jupiter_410_070301x2_drz_sci.bmp"
+                  "small": "rawdata/jupiter-animate/512x512/icsh10kmq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10kmq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10kmq_flt.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
                 "max": 10,
                 "scaling": "linear",
                 "brightness": 1,
-                "contrast": 1,
-                "original": {
-                  "type": "FITS",
-                  "path": "ssource-images/fits/h_jupiter_02/02_h_jupiter_410_070301x2_drz_sci.fits"
-                }
+                "contrast": 1
               },
               {
                 "type": "rawdata",
                 "name": "jupiter3",
                 "telescope": "hubble",
                 "path": {
-                  "small": "rawdata/h_jupiter_03/400x400/03_h_jupiter_410_070301y_drz_sci.bmp",
-                  "medium": "rawdata/h_jupiter_03/800x800/03_h_jupiter_410_070301y_drz_sci.bmp",
-                  "large": "rawdata/h_jupiter_03/800x800/03_h_jupiter_410_070301y_drz_sci.bmp"
+                  "small": "rawdata/jupiter-animate/512x512/icsh10koq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10koq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10koq_flt.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
                 "max": 10,
                 "scaling": "linear",
                 "brightness": 1,
-                "contrast": 1,
-                "original": {
-                  "type": "FITS",
-                  "path": "source-images/fits/h_jupiter_03/03_h_jupiter_410_070301y_drz_sci.fits"
-                }
+                "contrast": 1
               },
               {
                 "type": "rawdata",
                 "name": "jupiter4",
+                "telescope": "hubble",
                 "path": {
-                  "small": "rawdata/h_jupiter_04/400x400/04_h_jupiter_410_070302z_drz_sci.bmp",
-                  "medium": "rawdata/h_jupiter_04/800x800/04_h_jupiter_410_070302z_drz_sci.bmp",
-                  "large": "rawdata/h_jupiter_04/800x800/04_h_jupiter_410_070302z_drz_sci.bmp"
+                  "small": "rawdata/jupiter-animate/512x512/icsh10kqq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10kqq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10kqq_flt.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
                 "max": 10,
                 "scaling": "linear",
                 "brightness": 1,
-                "contrast": 1,
-                "original": {
-                  "type": "FITS",
-                  "path": "source-images/fits/h_jupiter_04/04_h_jupiter_410_070302z_drz_sci.fits"
-                }
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter5",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10krq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10krq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10krq_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter6",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10ktq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10ktq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10ktq_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter7",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10kuq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10kuq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10kuq_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter8",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10kwq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10kwq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10kwq_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter9",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10kzq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10kzq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10kzq_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter10",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10l1q_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10l1q_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10l1q_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter11",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10l4q_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10l4q_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10l4q_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter12",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10l5q_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10l5q_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10l5q_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter13",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10l6q_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10l6q_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10l6q_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter14",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10l8q_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10l8q_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10l8q_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
+              },
+              {
+                "type": "rawdata",
+                "name": "jupiter15",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10l9q_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10l9q_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10l9q_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1
               },
               {
                 "type": "composite",
