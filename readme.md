@@ -54,11 +54,12 @@ To debug code running in the main nodejs process:
 
 ### Publish a new release.
 
-1. Test and push all code changes.
+1. Test and push all code changes
+   - Run `npm run package` on both macOS and Windows and make sure packaged applications run correctly.
+   - Test static site deployed to gh-pages: https://stepheneb.github.io/cfa-own-electron
 2. Run `npm version prerelease` which will perform the following tasks:
-
-   1. increment the prerelease version number in package.json and package-log.json and generate a git commit.
-   2. Create a git tag with the version number.
+   - increment the prerelease version number in package.json and package-log.json and generate a git commit.
+   - Create a git tag with the version number.
 
 3. Push the latest commit with the changes in package.json et al: `git push origin main`
 4. Push the new tag: `git push --follow-tags`
@@ -66,6 +67,20 @@ To debug code running in the main nodejs process:
 Pushing the tag to github will kickoff the `release.yml` github workflow which uses github OS containers running npm and electron-forge to build and publish releases for Windows, macOS, and Linux.
 
 Publishing a new draft release takes about 30 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions. After the draft is published add release comments and remove the **draft** status to make the release available for downloading.
+
+If the release workflow fails delete the most recent tag from both local and remote repositories.
+
+```
+git tag -d v1.0.0-beta.5
+git push --delete origin v1.0.0-beta.5
+```
+
+After resolving the errors performing the **Release** workflow action recreate the local tag and push the new tag to the remote repository.
+
+```
+git tag -a v1.0.0-beta.5 -m "v1.0.0-beta.5"
+git push origin v1.0.0-beta.5
+```
 
 References:
 - https://dev.to/erikhofer/build-and-publish-a-multi-platform-electron-app-on-github-3lnd
