@@ -55,7 +55,10 @@ splash.show = () => {
   let splash2ContentHtml = `
     <div id="${splash2ContentId}">
       <div class='title'>${app.splash2.title}</div>
-      <div class='intro'>${app.splash2.intro}</div>
+      <ol class='intro'>
+        <li>${app.splash2.intro1}</li>
+        <li>${app.splash2.intro2}</li>
+      </ol>
       <button id="${splash2ContinueID}" type="submit" class="col-3 btn btn-outline-primary btn-small page-navigation-button">
         ${app.splash2.continue}
       </button>

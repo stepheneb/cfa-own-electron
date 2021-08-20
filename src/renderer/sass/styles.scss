@@ -187,6 +187,9 @@ div#splash2 {
     width: 50vw;
     color: lightgray;
     margin: 0 2vw;
+    li {
+      margin-bottom: 1em;
+    }
   }
   #splash2-continue {
     align-self: flex-end;

@@ -8,8 +8,9 @@
     "begin": "Touch to Begin"
   },
   "splash2": {
-    "title": "Be an image scientist or take your own telescope image",
-    "intro": "intro text::: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "title": "How are NASA's amazing images of space created?",
+    "intro1": "Try any challenge to select real data captured by NASA telescopes observing across the spectrum. Then make scientific or artistic choices to apply colors, manipulate the data, and email the results to yourself.",
+    "intro2": "Capture your own real earth-based telescope image using a MicroObservatory Robotic Telescope tonight. Receive it by email tomorrow.",
     "continue": "Continue >"
   },
   "telescopeData": {
@@ -69,7 +70,7 @@
     {
       "type": "find-apollo",
       "title": "Find the Apollo Site",
-      "subtitle": "The Lunar Reconnaissance Orbiter created a high-resolution map of the moon's surface. High resoultion images allow scientists to investigate small details.",
+      "subtitle": "Investigate small details in these high resolution images to locate where humans landed on the moon.",
       "menuimage": "images/menu-find-apollo.jpg",
       "action": "Choose a mission",
       "pages": [
@@ -83,7 +84,7 @@
           "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
           "context": "In July, 1969, Apollo 11 carried the first humans to the surface of the Moon. NASA chose a landing site that was flat, smooth, and with relatively few craters.",
           "image": {
-            "name": "Apollo Mission 11",
+            "name": "Apollo Mission 11 Landing Site",
             "site": "Apollo Site 11",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
@@ -166,7 +167,7 @@
           "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
           "context": "The Apollo 12 Lunar Module landed on the Moon’s surface in November of 1969. This mission achieved a precision landing, just 535 feet from an earlier robotic spacecraft named Surveyor 3.",
           "image": {
-            "name": "Apollo Mission 12",
+            "name": "Apollo Mission 12 Landing Site",
             "site": "Apollo Site 12",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
@@ -248,7 +249,7 @@
           "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
           "context": "Apollo 14 (January 31, 1971 - February 9, 1971) was the third crewed mission to land on the Moon, after an on-board explosion forced Apollo 13 to return to Earth in a dramatic rescue operation.",
           "image": {
-            "name": "Apollo Mission 14",
+            "name": "Apollo Mission 14 Landing Site",
             "site": "Apollo Site 14",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
@@ -330,7 +331,7 @@
           "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
           "context": "Apollo 15 took place from July 26, 1971 to August 7, 1971, and landed near a rugged mountain range named after the Italian Apennines. This mission was the first where astronauts used a Lunar Roving Vehicle.",
           "image": {
-            "name": "Apollo Mission 15",
+            "name": "Apollo Mission 15 Landing Site",
             "site": "Apollo Site 15",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
@@ -416,7 +417,7 @@
           "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
           "context": "Apollo 16 landed in the lunar highlands, where the astronauts collected rocks to look for evidence of volcanic activity. No such evidence was found.",
           "image": {
-            "name": "Apollo Mission 16",
+            "name": "Apollo Mission 16 Landing Site",
             "site": "Apollo Site 16",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
@@ -496,9 +497,9 @@
           "findtext": "Find the Apollo 17 site pictured below",
           "youaretext": "You are here",
           "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
-          "context": "The December, 1972 Apollo 17 mission was the last time humans walked on the Moon.",
+          "context": "The December, 1972 Apollo 17 mission was the last time humans walked on the Moon…for now",
           "image": {
-            "name": "Apollo Mission 17",
+            "name": "Apollo Mission 17 Landing Site",
             "site": "Apollo Site 17",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
@@ -582,12 +583,12 @@
         {
           "name": "m51-whirlpool",
           "poster": "m51",
-          "title": "Messier 51 (The Whirlpool Galaxy)",
+          "title": "Whirlpool Galaxy)",
           "subtitle": "Try your hand at enhancing and bringing out details in images the same way NASA scientists do.",
           "context": "A scientist might choose colors that enhance the structure of the dark spiral dust lanes.",
           "selectfiltertext": "Select and adjust each of the light wave images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
           "image": {
             "name": "Whirlpool Galaxy",
             "about": {
@@ -650,7 +651,7 @@
           "context": "A scientist might zoom in and choose colors that enhance the pattern of craters on the Moon’s backside.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Lunar Reconnaissance Orbiter - and enhanced by YOU!",
           "image": {
             "name": "Moon - Far Side",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
@@ -726,10 +727,10 @@
           "name": "jupiter",
           "poster": "jupiter",
           "title": "Jupiter",
-          "subtitle": "Scientists use sequences of images like these to investigate how objects in space form, move, and change over time",
+          "subtitle": "Look for patterns of change in a series of images the same way scientists do.",
           "animatetext": "Use the arrows to move through these images or play them on a loop. See what you can learn.",
           "context": "These images show two changing features of Jupiter over a period of hours: the motion of storms in its atmosphere and the paths and shadows of orbiting moons.",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image is one in a series taken by the Hubble Space Telescope - and explored by YOU!",
           "stepDuration": 1000,
           "image": {
             "name": "Jupiter",
@@ -1012,7 +1013,7 @@
           "subtitle": "Scientists use sequences of images like these to investigate how objects in space form, move, and change over time",
           "animatetext": "Use the arrows to move through these images or play them on a loop. See what you can learn.",
           "context": "These images show solar storms changing as the sun rotates over several days. These magnetic storms show up best in ultraviolet images like this.",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image is one in a series taken by the Solar Dynamics Observatory - and explored by YOU!",
           "stepDuration": 1000,
           "image": {
             "name": "Sun UV",
@@ -1379,7 +1380,7 @@
         {
           "name": "m51-whirlpool",
           "poster": "m51-whirlpool",
-          "title": "Messier 51 (The Whirlpool Galaxy)",
+          "title": "Whirlpool Galaxy",
           "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
           "context": "The RGB image reveals the hot blue stars and red hydrogen gas of the galaxy.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",

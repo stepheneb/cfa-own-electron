@@ -81,7 +81,6 @@ saveandsend.render = (page, registeredCallbacks) => {
                 </div>
                 <div class="context">
                   <p>${page.saveandsendtext}</p>
-                  <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
               </div>
               <div id="enter-email" class="enter-email">
