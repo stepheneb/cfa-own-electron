@@ -5,7 +5,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const assets = ['images', 'rawdata', 'fonts'];
+const assets = ['images', 'rawdata', 'fonts', 'source-images'];
 
 let patterns = assets.map(asset => {
   return {

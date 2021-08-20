@@ -129,11 +129,11 @@
                 "name": "gray",
                 "telescope": "lro",
                 "path": {
-                  "small": "rawdata/WAC_GL000/543x543/wac_gl000-R.bmp",
-                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000-R.bmp",
-                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000-R.bmp",
-                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000-R.bmp",
-                  "x4large": "rawdata/WAC_GL000/8687x8687/wac_gl000-R.bmp"
+                  "small": "rawdata/WAC_GL000/543x543/wac_gl000.bmp",
+                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000.bmp",
+                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000.bmp",
+                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000.bmp",
+                  "x4large": "rawdata/WAC_GL000/8687x8687/wac_gl000.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
@@ -212,10 +212,10 @@
                 "name": "gray",
                 "telescope": "lro",
                 "path": {
-                  "small": "rawdata/WAC_GL000/543x543/wac_gl000-R.bmp",
-                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000-R.bmp",
-                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000-R.bmp",
-                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000-R.bmp"
+                  "small": "rawdata/WAC_GL000/543x543/wac_gl000.bmp",
+                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000.bmp",
+                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000.bmp",
+                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
@@ -294,10 +294,10 @@
                 "name": "gray",
                 "telescope": "lro",
                 "path": {
-                  "small": "rawdata/WAC_GL000/543x543/wac_gl000-R.bmp",
-                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000-R.bmp",
-                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000-R.bmp",
-                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000-R.bmp"
+                  "small": "rawdata/WAC_GL000/543x543/wac_gl000.bmp",
+                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000.bmp",
+                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000.bmp",
+                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
@@ -380,10 +380,10 @@
                 "name": "gray",
                 "telescope": "lro",
                 "path": {
-                  "small": "rawdata/WAC_GL000/543x543/wac_gl000-R.bmp",
-                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000-R.bmp",
-                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000-R.bmp",
-                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000-R.bmp"
+                  "small": "rawdata/WAC_GL000/543x543/wac_gl000.bmp",
+                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000.bmp",
+                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000.bmp",
+                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
@@ -462,10 +462,10 @@
                 "name": "gray",
                 "telescope": "lro",
                 "path": {
-                  "small": "rawdata/WAC_GL000/543x543/wac_gl000-R.bmp",
-                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000-R.bmp",
-                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000-R.bmp",
-                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000-R.bmp"
+                  "small": "rawdata/WAC_GL000/543x543/wac_gl000.bmp",
+                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000.bmp",
+                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000.bmp",
+                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
@@ -544,10 +544,10 @@
                 "name": "gray",
                 "telescope": "lro",
                 "path": {
-                  "small": "rawdata/WAC_GL000/543x543/wac_gl000-R.bmp",
-                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000-R.bmp",
-                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000-R.bmp",
-                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000-R.bmp"
+                  "small": "rawdata/WAC_GL000/543x543/wac_gl000.bmp",
+                  "medium": "rawdata/WAC_GL000/1086x1086/wac_gl000.bmp",
+                  "large": "rawdata/WAC_GL000/2172x2172/wac_gl000.bmp",
+                  "x2large": "rawdata/WAC_GL000/4344x4344/wac_gl000.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
@@ -687,10 +687,10 @@
                 "name": "gray",
                 "telescope": "lro",
                 "path": {
-                  "small": "rawdata/WAC_GL180/543x543/wac_gl180_0.125-R.bmp",
-                  "medium": "rawdata/WAC_GL180/1086x1086/wac_gl180_0.125-R.bmp",
-                  "large": "rawdata/WAC_GL180/2172x2172/wac_gl180_0.125-R.bmp",
-                  "x2large": "rawdata/WAC_GL180/4344x4344/wac_gl180_0.125-R.bmp"
+                  "small": "rawdata/WAC_GL180/543x543/wac_gl180_0.125.bmp",
+                  "medium": "rawdata/WAC_GL180/1086x1086/wac_gl180_0.125.bmp",
+                  "large": "rawdata/WAC_GL180/2172x2172/wac_gl180_0.125.bmp",
+                  "x2large": "rawdata/WAC_GL180/4344x4344/wac_gl180_0.125.bmp"
                 },
                 "filter": "gray",
                 "min": 0,
