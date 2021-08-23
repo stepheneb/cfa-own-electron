@@ -51,6 +51,10 @@ router.route = () => {
   }
 };
 
+router.resetHash = () => {
+  window.location.hash = "";
+};
+
 router.getHash = (hashStr) => {
   let path = {
     action: undefined,

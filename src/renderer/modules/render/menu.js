@@ -3,6 +3,8 @@
 
 // Activity Menu page
 
+import main from '../../main.js';
+
 import events from '../events.js';
 import router from '../../router.js';
 import navigation from './navigation.js';
@@ -79,7 +81,7 @@ renderMenu.page = (categorytype) => {
 
   btnStartOver = document.getElementById('btn-start-over');
   btnStartOver.addEventListener('click', () => {
-    splash.showSplash2();
+    main.restart();
   });
 
   router.updateHash(hash);

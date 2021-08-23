@@ -4,6 +4,8 @@
 // https://stackoverflow.com/questions/38127416/is-it-possible-to-destructure-instance-member-variables-in-a-javascript-construc
 
 import { Modal, Offcanvas } from 'bootstrap';
+
+import main from '../main.js';
 import CanvasImages from './canvas-images.js';
 import ImageInspect from './image-inspect.js';
 import events from './events.js';
@@ -329,7 +331,7 @@ class Page {
 
     this.btnStartOver = document.getElementById('btn-start-over');
     this.btnStartOver.addEventListener('click', () => {
-      splash.showSplash2();
+      main.restart();
     });
 
     // this.saveAndSendModalCloseButtons = document.querySelectorAll('div.save-and-send.modal button.btn-close');

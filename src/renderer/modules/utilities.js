@@ -101,4 +101,8 @@ utilities.runningInElectron = () => {
   return (typeof ELECTRON !== 'undefined');
 };
 
+utilities.deepClone = (obj) => {
+  return JSON.parse(JSON.stringify(obj));
+};
+
 export default utilities;
