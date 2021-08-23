@@ -1385,7 +1385,7 @@
           "context": "The RGB image reveals the hot blue stars and red hydrogen gas of the galaxy.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
           "image": {
             "name": "Whirlpool Galaxy",
             "about": {
@@ -1490,7 +1490,7 @@
           "context": "The RGB image reveals the colors of the Cosmic Reef’s glowing gases.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
           "image": {
             "name": "Cosmic Reef Nebulae",
             "source": "https://www.spacetelescope.org/images/heic2007a/",
@@ -1596,7 +1596,7 @@
           "context": "The RGB image reveals the hot blue stars and red hydrogen gas of these colliding galaxies.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
           "image": {
             "name": "Antennae Galaxies",
             "source": "https://www.spacetelescope.org/images/potw1345a/",
@@ -1702,7 +1702,7 @@
           "context": "The RGB image reveals the detailed structure of the dynamic storms on Jupiter.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Juno Space Telescope - and enhanced by YOU!",
           "image": {
             "name": "Jupiter",
             "source": "",
@@ -1817,7 +1817,7 @@
           "context": "Multiwavelength images reveal the explosion of gas from the center of this galaxy.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
           "image": {
             "name": "Cigar Galaxy",
             "source": "",
@@ -1931,7 +1931,7 @@
           "context": "Infrared reveals the glowing dust in the spiral arms. X-Rays reveal the location of black holes.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ...",
+          "saveandsendtext": "This image was taken by the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
           "image": {
             "name": "Whirlpool Galaxy",
             "source": "",
@@ -2055,74 +2055,67 @@
           "description": "Resembling a pool of light in the sky, the Lagoon Nebula is a giant cloud of hot hydrogen gas glowing from the intense light of newborn stars. The Lagoon Nebula, like other star-forming regions, can give us an insight into the environment that gave birth to our own Sun 5 billion years ago. What color does the Lagoon look in your OWN color image?",
           "telescope": "hubble",
           "startdate": "0401",
-          "enddate": "1015",
-          "observationtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..."
+          "enddate": "1015"
         },
         {
           "name": "WP",
           "poster": "./images/targets/WhirlpoolGal210610045421_12_07_2021.png",
           "title": "Whirlpool Galaxy",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Description ... lLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
+          "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
           "startdate": "0101",
           "enddate": "1231",
-          "telescope": "hubble",
-          "observationtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..."
+          "telescope": "hubble"
         },
         {
           "name": "CG",
           "poster": "./images/targets/M82CigarGalaxy.png",
           "title": "Cigar Galaxy",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Description ... lLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
+          "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
           "startdate": "0101",
           "enddate": "1231",
-          "telescope": "hubble",
-          "observationtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..."
+          "telescope": "hubble"
         },
         {
           "name": "MOON",
           "poster": "./images/targets/Moon210721044224_26_07_2021.png",
           "title": "Moon",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Description ... lLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
+          "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
           "startdate": "0101",
           "enddate": "1231",
-          "telescope": "hubble",
-          "observationtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..."
+          "telescope": "hubble"
         },
         {
           "name": "SUN",
           "poster": "./images/targets/SunspotsFrame.png",
           "title": "Sun",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Description ... lLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
+          "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
           "startdate": "0101",
           "enddate": "1231",
-          "telescope": "hubble",
-          "observationtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..."
+          "telescope": "hubble"
         },
         {
           "name": "HSC",
           "poster": "./images/targets/HerculesClus210613041830_12_07_2021.png",
           "title": "Hercules Star Cluster",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Description ... lLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
+          "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
           "startdate": "0101",
           "enddate": "1231",
-          "telescope": "hubble",
-          "observationtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..."
+          "telescope": "hubble"
         },
         {
           "name": "OR",
           "poster": "./images/targets/OrionNebulaGreenM210318003031_26_07_2021.png",
           "title": "Orion Nebula",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Description ... lLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
+          "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
           "startdate": "1016",
           "enddate": "0401",
-          "telescope": "hubble",
-          "observationtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..."
+          "telescope": "hubble"
         }
       ]
     }

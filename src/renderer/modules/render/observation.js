@@ -71,7 +71,7 @@ observation.render = (page, registeredCallbacks) => {
                   We'll take your image of the <span class="image-name">${page.title}</span> tonight.
                 </div>
                 <div class="context">
-                  <p>${page.observationtext}</p>
+                  <p>${page.description}</p>
                   <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
                 <div class='column-middle-spacer'></div>
@@ -104,7 +104,7 @@ observation.render = (page, registeredCallbacks) => {
                   We'll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
                 </div>
                 <div class="context">
-                  <p>${page.observationtext}</p>
+                  <p>${page.description}</p>
                   <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
               </div>
@@ -151,7 +151,7 @@ observation.render = (page, registeredCallbacks) => {
                   We'll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
                 </div>
                 <div class="context">
-                  <p>${page.observationtext}</p>
+                  <p>${page.description}</p>
                 </div>
               </div>
               <div class="thanks">
