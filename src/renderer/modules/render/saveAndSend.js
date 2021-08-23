@@ -31,15 +31,30 @@ saveandsend.render = (page, registeredCallbacks) => {
     `;
   }
 
+  //   let modal1Close = `
+  //   <button id="${modalId1}-button" type="button" class="btn-close" aria-label="Close">
+  //     <span aria-hidden="true">×</span>
+  //   </button>
+  // `;
+  //
+  //   let modal2Close = `
+  // <button id="${modalId2}-button" type="button" class="btn-close" aria-label="Close">
+  //   <span aria-hidden="true">×</span>
+  // </button>
+  // `;
+  //
+  //   let modal3Close = `
+  //   <button id="${modalId3}-button" type="button" class="btn-close" aria-label="Close">
+  //     <span aria-hidden="true">×</span>
+  //   </button>
+  // `;
+
   let modalHtmls = `
     <div class="modal fade save-and-send" id="${modalId1}" tabindex="-1" aria-labelledby="${modalId1}-title" aria-hidden="true">
       <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="${modalId1}-title">${page.category.title}</h5>
-            <button id="${modalId1}-button" type="button" class="btn-close" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
           </div>
           <div class="modal-body one">
             <div class="row">
@@ -68,9 +83,6 @@ saveandsend.render = (page, registeredCallbacks) => {
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="${modalId2}-title">${page.category.title}</h5>
-            <button id="${modalId2}-button" type="button" class="btn-close" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
           </div>
           <div class="modal-body two">
             <div class="row">
@@ -113,9 +125,6 @@ saveandsend.render = (page, registeredCallbacks) => {
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="${modalId3}-title">${page.category.title}</h5>
-            <button id="${modalId3}-button" type="button" class="btn-close" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
           </div>
           <div class="modal-body three">
             <div class="row">
@@ -154,9 +163,9 @@ saveandsend.render = (page, registeredCallbacks) => {
     let modal2 = document.getElementById(modalId2);
     let modal3 = document.getElementById(modalId3);
 
-    let modal1CloseButton = document.getElementById(modalId1 + '-button');
-    let modal2CloseButton = document.getElementById(modalId2 + '-button');
-    let modal3CloseButton = document.getElementById(modalId3 + '-button');
+    // let modal1CloseButton = document.getElementById(modalId1 + '-button');
+    // let modal2CloseButton = document.getElementById(modalId2 + '-button');
+    // let modal3CloseButton = document.getElementById(modalId3 + '-button');
 
     let bsModal1 = new Modal(modal1, {});
     let bsModal2 = new Modal(modal2, {});
@@ -238,15 +247,15 @@ saveandsend.render = (page, registeredCallbacks) => {
       bsModal3.show();
     };
 
-    modal1CloseButton.addEventListener('click', hideAll);
-    modal2CloseButton.addEventListener('click', hideAll);
-    modal3CloseButton.addEventListener('click', hideAll);
-
-    function hideAll() {
-      bsModal1.hide();
-      bsModal2.hide();
-      bsModal3.hide();
-    }
+    // modal1CloseButton.addEventListener('click', hideAll);
+    // modal2CloseButton.addEventListener('click', hideAll);
+    // modal3CloseButton.addEventListener('click', hideAll);
+    //
+    // function hideAll() {
+    //   bsModal1.hide();
+    //   bsModal2.hide();
+    //   bsModal3.hide();
+    // }
   }
 };
 

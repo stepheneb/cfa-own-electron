@@ -317,9 +317,14 @@ class Page {
     this.registeredCallbacks.forEach(func => func(this));
 
     this.btnBack = document.getElementById('btn-back');
-    // this.btnBack.addEventListener('click', this.returnToPageMenu);
     this.btnBack.addEventListener('click', () => {
-      this.returnToPageMenu();
+      if (this.saveAndSendModalsOpen()) {
+        this.hideAllSaveAndSendModals();
+      } else if (this.observationModalsOpen()) {
+        this.hideAllObservationModalsAndRenderMenu();
+      } else {
+        this.returnToPageMenu();
+      }
     });
 
     this.btnStartOver = document.getElementById('btn-start-over');
@@ -327,15 +332,31 @@ class Page {
       splash.showSplash2();
     });
 
-    this.saveAndSendModalCloseButtons = document.querySelectorAll('div.save-and-send.modal button.btn-close');
-    this.saveAndSendModalCloseButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        this.hideAllSaveAndSendModalsAndRenderMenu();
-      });
-    });
+    // this.saveAndSendModalCloseButtons = document.querySelectorAll('div.save-and-send.modal button.btn-close');
+    // this.saveAndSendModalCloseButtons.forEach(btn => {
+    //   btn.addEventListener('click', () => {
+    //     this.hideAllSaveAndSendModalsAndRenderMenu();
+    //   });
+    // });
 
     router.updateHash(`run/${this.type}/${this.name}`);
 
+  }
+
+  saveAndSendModalsOpen() {
+    if (document.querySelector('div.modal.fade.save-and-send.show')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  observationModalsOpen() {
+    if (document.querySelector('div.modal.fade.observation.show')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   returnToPageMenu() {
@@ -367,6 +388,16 @@ class Page {
       }
     });
     renderMenu.page(this.type);
+  }
+
+  hideAllSaveAndSendModals() {
+    this.saveAndSendModals = document.querySelectorAll('div.save-and-send.modal');
+    this.saveAndSendModals.forEach(elem => {
+      let bs = Modal.getInstance(elem);
+      if (bs._isShown) {
+        bs.hide();
+      }
+    });
   }
 
   renderDevSideBar(page, registeredCallbacks) {
