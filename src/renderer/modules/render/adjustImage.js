@@ -9,10 +9,11 @@ let adjustImage = {};
 
 let stepSize = 0.05;
 
-let brightness = () => {
+let brightness = (page) => {
+  let source = page.selectedSource;
   let min = 0;
   let max = 2;
-  let val = 1;
+  let val = source.brightness;
   let html = `
     <div class='adjust-filter '>
       <label for='brightness'>Brightness</label>
@@ -25,10 +26,11 @@ let brightness = () => {
   return html;
 };
 
-let contrast = () => {
+let contrast = (page) => {
+  let source = page.selectedSource;
   let min = 0;
   let max = 2;
-  let val = 1;
+  let val = source.brightness;
   let html = `
     <div class='adjust-filter'>
       <label for='contrast'>Contrast</label>
