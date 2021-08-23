@@ -223,6 +223,10 @@ class CanvasImages {
       case 'masterpiece':
         this.initializeMainCanvases(this.type);
         this.addScalingLayer();
+        if (this.image.cmapName) {
+          this.scheduleCmap(this.image.cmapName);
+          this.renderMasterpiece();
+        }
         if (app.dev) {
           this.page.imageInspect.connect(this);
           logger.imageData(this, this.selectedSource);

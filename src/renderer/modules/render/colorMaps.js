@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */
+/*jshint esversion: 11 */
 
 import cmap from './cmap.js';
 
@@ -41,9 +41,19 @@ colorMaps.render = (page, registeredCallbacks) => {
   registeredCallbacks.push(callback);
   return html;
 
-  function callback() {
-    let gray = document.getElementById(getId('gray'));
-    gray.classList.add('selected');
+  function callback(page) {
+    let cmapName = 'gray';
+    if (page.image.cmapName) {
+      cmapName = page.image.cmapName;
+    }
+    let cmap = document.getElementById(getId(cmapName));
+    cmap.classList.add('selected');
+    page.image.cmapName = cmapName;
+
+    // /* beautify ignore:start */
+    // let cmapName = page.image?.cmapName ?? 'gray';
+    // /* beautify ignore:end */
+
     cmapNameGroups.forEach(row => {
       row.forEach(cmapName => {
         id = getId(cmapName);
