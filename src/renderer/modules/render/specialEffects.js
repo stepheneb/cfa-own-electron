@@ -5,11 +5,13 @@ import Filter from '../filter.js';
 let specialEffects = {};
 
 specialEffects.render = (page, registeredCallbacks) => {
-  let id, elem;
+  let id, name, elem;
   let formId = 'special-effects';
   let effectsHtml = '';
-  let getId = effect => `select-effect-${effect}`;
   let filters = Filter.filters;
+  let getId = key => `select-effect-${key}`;
+  let getName = key => filters[key].name;
+
   let keys = Object.keys(filters);
   let rowCount = 2;
   let filterRows = keys.reduce((all, one, i) => {
@@ -20,13 +22,12 @@ specialEffects.render = (page, registeredCallbacks) => {
   filterRows.forEach(row => {
     effectsHtml += '<div class="row special-effects">';
     row.forEach(key => {
-      // filter = filters[key];
-      // name = filter.name;
       id = getId(key);
+      name = getName(key);
       effectsHtml += `
         <div id='${id}' class="effect col-6 d-flex align-items-center" data-effect="${key}">
           <input type='checkbox' name='select-effect' value='${id}'>
-          <label for='${id}'>${key}</label>
+          <label for='${id}'>${name}</label>
         </div>
       `;
     });

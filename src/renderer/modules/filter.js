@@ -268,7 +268,7 @@ Filter.filters = {
     }
   },
   sobel: {
-    name: "Sobel",
+    name: "Edge Detect",
     filter: function (pixeldata) {
 
       function copyPixelData(pixeldata) {
