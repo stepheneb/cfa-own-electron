@@ -1,6 +1,4 @@
 
-WIP: testing github workflows with a commit and push ...
-
 ## Building
 
 Successfully built with:
@@ -10,9 +8,11 @@ Successfully built with:
 
 On macOS I typically use nvm to manage multiple versions of node: https://github.com/nvm-sh/nvm
 
+There are multiple options for equivalant functionality on Windows: [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
+
 ### Install dependencies
 
-After cloning repository install the dependencies for building and running.
+After cloning the repository install the dependencies for building and running.
 ```
 $ npm install
 ```
@@ -31,7 +31,7 @@ $ npm run make
 
 macOS:
 
-  **`$ open out/CfA\ OWN\ Electron-darwin-x64/CfA\ OWN\ Electron.app`**
+**`$ open out/CfA\ OWN\ Electron-darwin-x64/CfA\ OWN\ Electron.app`**
 
 Windows:
 
@@ -67,6 +67,12 @@ To debug code running in the main nodejs process:
 Pushing the tag to github will kickoff the `release.yml` github workflow which uses github OS containers running npm and electron-forge to build and publish releases for Windows, macOS, and Linux.
 
 Publishing a new draft release takes about 30 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions. After the draft is published add release comments and remove the **draft** status to make the release available for downloading.
+
+Display a summary of changes in the release (useful as a starting point for creating release notes).
+
+```
+git log --pretty=short v1.0.0-beta.4...v1.0.0-beta.5
+```
 
 If the release workflow fails delete the most recent tag from both local and remote repositories.
 
