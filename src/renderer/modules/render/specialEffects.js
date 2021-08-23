@@ -5,7 +5,7 @@ import Filter from '../filter.js';
 let specialEffects = {};
 
 specialEffects.render = (page, registeredCallbacks) => {
-  let id, name, elem;
+  let id, name, elem, checkboxes;
   let formId = 'special-effects';
   let effectsHtml = '';
   let filters = Filter.filters;
@@ -45,8 +45,17 @@ specialEffects.render = (page, registeredCallbacks) => {
   registeredCallbacks.push(callback);
   return html;
 
-  function callback() {
+  function callback(page) {
     elem = document.getElementById(formId);
+
+    if (page.image.filters && page.image.filters.length > 0) {
+      page.canvasImages.scheduleFilters(page.image.filters);
+      unCheckAll();
+      let effect = page.image.filters[0];
+      let target = elem.querySelector(`input[type="checkbox"][value="select-effect-${effect}"]`);
+      target.checked = true;
+    }
+
     elem.addEventListener('change', (e) => {
       let isChecked = e.target.checked;
       unCheckAll();
@@ -58,6 +67,7 @@ specialEffects.render = (page, registeredCallbacks) => {
         .map(c => c.parentElement.dataset.effect);
 
       page.canvasImages.scheduleFilters(filters);
+      page.image.filters = filters;
       if (filters.length > 0) {
         page.canvasImages.renderMasterpiece();
       } else {
