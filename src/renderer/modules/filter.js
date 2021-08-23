@@ -21,7 +21,7 @@ Filter.getPixels = function (c) {
 // Next, we need a way to filter images. How about a filterImage method
 // that takes a filter and an image and returns the filtered pixels?
 
-Filter.filterCanvas = function (filter, c, var_args) {
+Filter.filterCanvas = function (filter, c) {
   var args = [this.getPixels(c)];
   for (var i = 2; i < arguments.length; i++) {
     args.push(arguments[i]);
@@ -29,7 +29,7 @@ Filter.filterCanvas = function (filter, c, var_args) {
   return filter.apply(null, args);
 };
 
-Filter.filterPixelData = function (filter, pixeldata, var_args) {
+Filter.filterPixelData = function (filter, pixeldata) {
   var args = [pixeldata];
   for (var i = 2; i < arguments.length; i++) {
     args.push(arguments[i]);
@@ -40,7 +40,7 @@ Filter.filterPixelData = function (filter, pixeldata, var_args) {
 // Now that we have the pixel processing pipeline put together, it's time to
 // write some simple filters. To start off, let's convert the image to grayscale.
 
-Filter.grayscale = function (pixels, args) {
+Filter.grayscale = function (pixels) {
   var d = pixels.data;
   for (var i = 0; i < d.length; i += 4) {
     var r = d[i];
