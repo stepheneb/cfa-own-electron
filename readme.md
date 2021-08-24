@@ -57,6 +57,7 @@ To debug code running in the main nodejs process:
 1. Test and push all code changes
    - Run `npm run package` on both macOS and Windows and make sure packaged applications run correctly.
    - Test static site deployed to gh-pages: https://stepheneb.github.io/cfa-own-electron
+2. Make sure the git workspace is clean: `git status`.
 2. Run `npm version prerelease` which will perform the following tasks:
    - increment the prerelease version number in package.json and package-log.json and generate a git commit.
    - Create a git tag with the version number.
@@ -74,7 +75,7 @@ Display a summary of changes in the release (useful as a starting point for crea
 git log --pretty=short v1.0.0-beta.4...v1.0.0-beta.5
 ```
 
-If the release workflow fails delete the most recent tag from both local and remote repositories.
+If the release workflow fails and the failure is caused by an error in the application delete the most recent tag from both local and remote repositories.
 
 ```
 git tag -d v1.0.0-beta.5
