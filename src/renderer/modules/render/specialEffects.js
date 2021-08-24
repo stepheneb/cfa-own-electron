@@ -5,7 +5,7 @@ import Filter from '../filter.js';
 let specialEffects = {};
 
 specialEffects.render = (page, registeredCallbacks) => {
-  let id, name, elem, checkboxes;
+  let id, name, elem;
   let formId = 'special-effects';
   let effectsHtml = '';
   let filters = Filter.filters;

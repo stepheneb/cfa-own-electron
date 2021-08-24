@@ -105,12 +105,12 @@ saveandsend.render = (page, registeredCallbacks) => {
                     <input id="email-astronomical-object" type="hidden" name='astronomical-object' value="${page.title}"></input>
                     <input id="email-date" type="hidden" name='datetime_when_user_made_request_at_kiosk' value="${new Date().toISOString()}"></input>
                     <input id="email-credential" type="hidden" name='credential' value="1114c7c1d689b28d3e21178c47136be21899050022084b856fea4277966f927"></input>
-                    <button type="submit" class="btn btn-outline-primary btn-small page-navigation-button" autocomplete="none">
+                    <button type="submit" class="btn btn-outline-primary btn-small page-navigation-button" autocomplete="none" disabled>
                       SEND EMAIL
                     </button>
                   </div>
                 </form>
-                ${emailKeyboard.render(page, registeredCallbacks)}
+                ${emailKeyboard.render(page, sendEmailFormId, registeredCallbacks)}
               </div>
               ${image()}
             </div>
