@@ -1,8 +1,9 @@
 /*jshint esversion: 8 */
-/*global app  */
+/*global app  ELECTRON */
 
 import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
+import u from '../utilities.js';
 
 let saveandsend = {};
 
@@ -142,7 +143,8 @@ saveandsend.render = (page, registeredCallbacks) => {
                 <div class='details'>
                   We will send your image to <span id="your-email">yourname@website.com</span>
                 </div>
-                <a id="download-image" download="${page.title}" type="button" class="btn btn-success" disabled>Download your <span>${page.title}</span> image</a>
+                <a id="download-image" download="${page.title}" type="button" class="btn btn-success"
+                  disabled>Download your <span>${page.title}</span> image</a>
                 <div id="download-stats" class='stats'></div>
               </div>
               ${image()}
@@ -216,30 +218,42 @@ saveandsend.render = (page, registeredCallbacks) => {
     sendEmailForm.onsubmit = async (e) => {
       e.preventDefault();
 
+      let generatePngName = () => {
+        let uuid = u.UUID.generate();
+        return `${page.name}-${uuid}.png`;
+      };
+
       let email = document.getElementById('email');
-      let formData = new FormData();
-      formData.append("email", email.value);
-      formData.append("kiosk_id", app.kiosk_id);
-      formData.append("astronomical-object", page.title);
-      formData.append("datetime_when_user_made_request_at_kiosk", new Date().toISOString());
-      formData.append("credential", "1114c7c1d689b28d3e21178c47136be21899050022084b856fea4277966f927");
+      let imageFilename = generatePngName();
+      let imageData = page.canvasImages.image.pngDataUrl;
+      let datetime = new Date().toISOString();
+      let kiosk_id = app.kiosk_id;
 
-      // 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope.php
-      // observation.postUrl = 'https://lweb.cfa.harvard.edu/smgphp/otherworlds/OE/telescope.php';
-      //
-      // const response = await fetch(observation.postUrl, {
-      //   method: 'POST',
-      //   mode: 'no-cors',
-      //   body: formData
-      // });
-      //
-      // alert(response);
-      // let result = response.json();
-      // displayAlert(result);
+      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_12.php';
 
-      // function displayAlert(result) {
-      //   alert('message =' + result.message + ' \nkiosk_id = ' + result.kiosk_id + ' \nemail = ' + result.email + ' \nobservation = ' + result.observation + ' \ndatetime_when_user_made_request_at_kiosk = ' + result.datetime_when_user_made_request_at_kiosk + ' \ncredential = ' + result.credential);
-      // }
+      if (u.notRunningInElectron()) {
+        let body = {
+          img_data: imageData,
+          imageFilename: imageFilename,
+          email: email.value,
+          kiosk_id: kiosk_id,
+          datetime_when_user_made_request_at_kiosk: datetime
+        };
+        fetch(saveandsend.postUrl, {
+            method: 'POST',
+            // withCredentials: true,
+            // mode: 'no-cors',
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            body: JSON.stringify(body)
+          })
+          .then(response => response.json())
+          .then(json => alert(JSON.stringify(json, null, '\t')))
+          .catch(error => {
+            alert(`Request to send image failed: ${error}`);
+          });
+      }
 
       yourEmail.innerText = email.value;
 
