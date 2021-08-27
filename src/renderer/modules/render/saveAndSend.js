@@ -218,14 +218,14 @@ saveandsend.render = (page, registeredCallbacks) => {
     sendEmailForm.onsubmit = async (e) => {
       e.preventDefault();
 
-      let generatePngName = () => {
+      let generateImageName = (type) => {
         let uuid = u.UUID.generate();
-        return `${page.name}-${uuid}.png`;
+        return `${page.name}-${uuid}.${type}`;
       };
 
       let email = document.getElementById('email');
-      let imageFilename = generatePngName();
-      let imageData = page.canvasImages.image.pngDataUrl;
+      let imageData = page.canvasImages.image.jpgDataUrl;
+      let imageFilename = generateImageName('jpg');
       let datetime = new Date().toISOString();
       let kiosk_id = app.kiosk_id;
 
