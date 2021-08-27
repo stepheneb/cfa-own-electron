@@ -521,7 +521,7 @@ class ImageInspect {
     let original = source.original;
     if (original) {
       html += `
-        <div>Original: <a href="../${original.path}" target="_blank" download>${u.getLastItem(original.path)}</a></div>
+        <div>Original: <a href="https://stepheneb.github.io/cfa-own-source-images/${original.path}" target="_blank" download>${u.getLastItem(original.path)}</a></div>
         <div>Image size: ${nx} x ${ny}</div>
       `;
     }
