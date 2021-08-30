@@ -26,6 +26,14 @@ saveandsend.render = (page, registeredCallbacks) => {
       ${title}
     </button>`;
 
+  let downloadYourImage = '';
+
+  // let downloadYourImage = `
+  //   <a id="download-image" download="${page.title}" type="button" class="btn btn-success"
+  //     disabled>Download your <span>${page.title}</span> image</a>
+  //   <div id="download-stats" class='stats'></div>
+  // `;
+
   function image() {
     return `
       <div class="image-container save-and-send"></div>
@@ -143,9 +151,7 @@ saveandsend.render = (page, registeredCallbacks) => {
                 <div class='details'>
                   We will send your image to <span id="your-email">yourname@website.com</span>
                 </div>
-                <a id="download-image" download="${page.title}" type="button" class="btn btn-success"
-                  disabled>Download your <span>${page.title}</span> image</a>
-                <div id="download-stats" class='stats'></div>
+                ${downloadYourImage}
               </div>
               ${image()}
             </div>
@@ -231,6 +237,8 @@ saveandsend.render = (page, registeredCallbacks) => {
 
       saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_12.php';
 
+      let nocors = true;
+
       if (u.notRunningInElectron()) {
         let body = {
           img_data: imageData,
@@ -239,20 +247,43 @@ saveandsend.render = (page, registeredCallbacks) => {
           kiosk_id: kiosk_id,
           datetime_when_user_made_request_at_kiosk: datetime
         };
-        fetch(saveandsend.postUrl, {
-            method: 'POST',
-            // withCredentials: true,
-            // mode: 'no-cors',
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            },
-            body: JSON.stringify(body)
-          })
-          .then(response => response.json())
-          .then(json => alert(JSON.stringify(json, null, '\t')))
-          .catch(error => {
-            alert(`Request to send image failed: ${error}`);
-          });
+        if (nocors) {
+          fetch(saveandsend.postUrl, {
+              method: 'POST',
+              // withCredentials: true,
+              mode: 'no-cors',
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              },
+              body: JSON.stringify(body)
+            })
+            .then(response => response.text())
+            .then((data) => {
+              return data ? JSON.parse(data) : {};
+            })
+            .then(json => {
+              console.log(JSON.stringify(json, null, '\t'));
+            })
+            .catch(error => {
+              console.error(`Request to send image failed: ${error}`);
+            });
+        } else {
+          fetch(saveandsend.postUrl, {
+              method: 'POST',
+              // withCredentials: true,
+              mode: 'no-cors',
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              },
+              body: JSON.stringify(body)
+            })
+            .then(response => response.json())
+            .then(json => console.log(JSON.stringify(json, null, '\t')))
+            .catch(error => {
+              console.error(`Request to send image failed: ${error}`);
+            });
+
+        }
       }
 
       yourEmail.innerText = email.value;
