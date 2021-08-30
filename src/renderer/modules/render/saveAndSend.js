@@ -235,7 +235,7 @@ saveandsend.render = (page, registeredCallbacks) => {
       let datetime = new Date().toISOString();
       let kiosk_id = app.kiosk_id;
 
-      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_12.php';
+      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_16.php';
 
       let nocors = false;
 
