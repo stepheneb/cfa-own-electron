@@ -237,7 +237,7 @@ saveandsend.render = (page, registeredCallbacks) => {
 
       saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_12.php';
 
-      let nocors = true;
+      let nocors = false;
 
       if (u.notRunningInElectron()) {
         let body = {
@@ -271,7 +271,6 @@ saveandsend.render = (page, registeredCallbacks) => {
           fetch(saveandsend.postUrl, {
               method: 'POST',
               // withCredentials: true,
-              mode: 'no-cors',
               headers: {
                 'Content-Type': 'multipart/form-data'
               },
