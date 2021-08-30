@@ -1,5 +1,5 @@
 /*jshint esversion: 8 */
-/*global app  ELECTRON */
+/*global app */
 
 import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';

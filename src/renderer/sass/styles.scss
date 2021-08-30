@@ -193,12 +193,14 @@ div#splash2 {
   }
   #splash2-continue {
     align-self: flex-end;
-    font-size: 120%;
+    font-size: 130%;
     color: var(--bright-green);
     margin: 0 2vw;
-    width: 10vw;
+    width: 6.8em;
+    height: 2.8em;
     background-color: transparent;
     border-color: var(--bright-green);
+    border-width: 2px;
   }
 }
 
