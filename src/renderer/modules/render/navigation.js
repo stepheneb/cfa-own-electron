@@ -46,7 +46,7 @@ let btnStartOver = () => {
 let btnBack = () => {
   return `
     <div class="ps-1 pe-1">
-      <button type="button" id="btn-back" class="btn btn-outline-primary btn-small page-navigation-button">&#9664 Back</button>
+      <button type="button" id="btn-back" class="btn btn-outline-primary btn-small page-navigation-button">< Back</button>
     </div>
   `;
 };

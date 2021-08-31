@@ -29,6 +29,7 @@ html {
   --bright-pink: #f33c85;
   --bright-red: #ff0000;
   --medium-red: #800000;
+  --red-notice-arrow: #f43c86;
   --category-selected-border: #f43c86;
   --category-not-selected-border: #202e31;
   --canvas-container-border-color: lightgray;
@@ -937,7 +938,7 @@ div.control-collection {
   }
   div.select-layer {
     .row {
-      margin: 1.5vh 1vh;
+      margin: 1vh 1vh;
       max-height: 4vh;
       &.select-filter {
         display: flex;
@@ -1204,7 +1205,7 @@ div.select-cmap {
 }
 
 .solid-right-arrow {
-  color: red;
+  color: var(--red-notice-arrow);
   padding-right: 0.2rem;
 }
 
@@ -1479,12 +1480,12 @@ div.zoom-preview-content {
 
 div#preview-image-container {
   border: 2px solid var(--canvas-container-border-color);
-  margin: 1vh -1vh 3vh -1vh;
+  margin: 1vh -1vh 2vh -1vh;
 }
 
 div#preview-image-canvas-container {
   position: relative;
-  height: 24vh;
+  height: 24.5vh;
   width: 100%;
   margin: 0;
   background-color: var(--almost-black);
@@ -1516,7 +1517,7 @@ div#preview-image-canvas-container {
 canvas#preview-palette {
   position: unset;
   display: block;
-  border-top: 1px solid var(--canvas-container-border-color);
+  border-top: 2px solid var(--canvas-container-border-color);
 }
 
 #multi-wave-telescope-name,
@@ -1969,7 +1970,7 @@ div#micc-container {
 div#main-image-canvas-container {
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: 72vh;
   margin: 0;
   padding: 0;
   background-color: black;

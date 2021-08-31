@@ -1137,7 +1137,7 @@ class CanvasImages {
 
   renderPreviewPalette(source) {
     let width = this.previewPalette.width;
-    let height = 10;
+    let height = 14;
     this.renderPalette(this.previewPalette, source.filter, width, height);
   }
 
