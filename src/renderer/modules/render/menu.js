@@ -233,7 +233,7 @@ renderMenu.activityCategory = () => {
         <div class="category col"  id="menu-category-${type}" data-num="${i}">
           <img src="../${category.menuimage}"  id="menu-category-${type}-image"></img>
           <div id="menu-activity-${type}-title" class="menu-activity-category-title">
-            <header class="menu-activity-category-title">${category.title}</header>
+            <header class="menu-activity-category-title">${category.titlemainmenu}</header>
           </div>
         </div>
       `;

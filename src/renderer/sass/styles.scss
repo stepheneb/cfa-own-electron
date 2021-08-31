@@ -43,14 +43,14 @@ html {
   /* font sizes */
   --page-title: 4.4vh;
   --page-subtitle: 2.1vh;
-  --menu-page-title: 7.2vh;
-  --menu-page-subtitle: 2.6vh;
+  --menu-page-title: 7.4vh;
+  --menu-page-subtitle: 3vh;
   --menu-activity-category-title: 2.2vh;
   --menu-activity-category-page-title: 2vh;
   --menu-activity-category-page-subtitle: 1.8vh;
   --menu-category-page-name: 1.7vh;
   --menu-category-page-telescope: 1.5vh;
-  --menu-activity-page-title: 2.8vh;
+  --menu-activity-page-title: 2.7vh;
   --telescope-title: 2vh;
   --animate-icons: 3.2vh;
   --control-title: 1.8vh;
@@ -230,8 +230,8 @@ div#splash2 {
 }
 
 .menu-page-header {
-  margin: 1vh 0rem 6vh 6vh;
-  padding-top: 1vh;
+  margin: 1vh 0rem 6vh 11vh;
+  padding-top: 3vh;
 
   .title {
     font-size: var(--menu-page-title);
@@ -244,14 +244,14 @@ div#splash2 {
   .subtitle {
     font-size: var(--menu-page-subtitle);
     line-height: 120%;
-    padding: 0rem;
+    padding: 0rem 0rem 0.5rem 0rem;
     color: var(--bright-teal);
   }
 }
 
 div {
   &.menu-activity-category-title {
-    margin: 1rem 1rem;
+    margin: 1rem 0rem;
   }
 
   &.category {
@@ -289,6 +289,7 @@ div.category {
 
   > img {
     width: 100%;
+    height: 46vh;
     border: 2px solid var(--bright-green);
     border-radius: 4px;
   }

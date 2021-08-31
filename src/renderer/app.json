@@ -69,6 +69,7 @@
   "categories": [
     {
       "type": "find-apollo",
+      "titlemainmenu": "Find the Apollo Site",
       "title": "Find the Apollo Site",
       "subtitle": "Investigate small details in these high resolution images to locate where humans landed on the moon.",
       "menuimage": "images/menu-find-apollo.jpg",
@@ -575,6 +576,7 @@
     },
     {
       "type": "masterpiece",
+      "titlemainmenu": "Create Your Own Masterpiece",
       "title": "Create Your Own Masterpiece",
       "subtitle": "Try your hand at enhancing and bringing out details in images the same way NASA scientists do.",
       "menuimage": "images/menu-masterpiece.jpg",
@@ -718,6 +720,7 @@
     },
     {
       "type": "animate",
+      "titlemainmenu": "Animate Images<br>Over Time",
       "title": "Animate Images Over Time",
       "subtitle": "Look for patterns of change in a series of images the same way scientists do.",
       "menuimage": "images/menu-animate.jpg",
@@ -1267,7 +1270,8 @@
     },
     {
       "type": "rgb",
-      "title": "What's Red + Green + Blue?",
+      "titlemainmenu": "What’s Red +<br> Green + Blue?",
+      "title": "What’s Red + Green + Blue?",
       "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
       "menuimage": "images/menu-whats-red-green-blue.jpg",
       "action": "Choose A Celestial Object",
@@ -1804,6 +1808,7 @@
     },
     {
       "type": "multi-wave",
+      "titlemainmenu": "Reveal an<br>Image using “Invisible Light”",
       "title": "Reveal an Image using “Invisible Light”",
       "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
       "menuimage": "images/menu-invisible-light.jpg",
@@ -2041,6 +2046,7 @@
     },
     {
       "type": "observation",
+      "titlemainmenu": "Take Your Own Telescope Image",
       "title": "Take Your Own Telescope Image",
       "title2": "Take Your Image Tonight",
       "subtitle": "Request your own telescope observation and have the image emailed to you.",
