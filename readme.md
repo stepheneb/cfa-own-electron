@@ -65,6 +65,14 @@ To debug code running in the main nodejs process:
 3. Push the latest commit with the changes in package.json et al: `git push origin main`
 4. Push the new tag: `git push --follow-tags`
 
+All in one place:
+```
+git status
+npm version prerelease
+git push origin main
+git push --follow-tags
+```
+
 Pushing the tag to github will kickoff the `release.yml` github workflow which uses github OS containers running npm and electron-forge to build and publish releases for Windows, macOS, and Linux.
 
 Publishing a new draft release takes about 30 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions. After the draft is published add release comments and remove the **draft** status to make the release available for downloading.
