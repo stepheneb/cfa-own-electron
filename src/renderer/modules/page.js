@@ -479,13 +479,8 @@ class Page {
     }
     this.canvasImages.renderPreview(this.selectedSource);
 
-    // if (this.type == "multi-wave") {
-    //   let telescopeName = document.getElementById('multi-wave-telescope-name');
-    //   telescopeName.textContent = this.telescopes.find(t => t.key == this.selectedSource.telescope).name;
-    // }
-
-    let filterName = document.getElementById('filter-name');
-    filterName.textContent = this.selectedSource.filter;
+    let filterNameElem = document.getElementById('filter-name');
+    filterNameElem.textContent = this.filterName(this);
 
     if (app.dev) {
       logger.imageData(this.canvasImages, this.canvasImages.selectedSource);
@@ -544,26 +539,27 @@ class Page {
     return `
       <div id="preview-image-container" class="">
         <div id="preview-image-canvas-container" class="row d-flex justify-content-center">
-          ${filterName(this)}
+          ${filterNameHtml(this)}
         </div>
       </div>
     `;
 
-    function filterName(page) {
+    function filterNameHtml(page) {
+      let label = page.filterName(page);
       return `
       <div id="filter-name" class="label">
-        ${page.selectedSource.filter}
+        ${label}
       </div>
       `;
     }
+  }
 
-    // function multiWaveTelescopeName(page) {
-    //   return `
-    //   <div id="multi-wave-telescope-name" class="label">
-    //     ${page.telescopes.find(t => t.key == page.selectedSource.telescope).name}
-    //   </div>
-    //   `;
-    // }
+  filterName(page) {
+    let label = `${page.selectedSource.filter} Filter`;
+    if (page.type == 'multi-wave') {
+      label = page.selectedSource.name;
+    }
+    return label;
   }
 
   renderApolloLandingLeftColumn() {
