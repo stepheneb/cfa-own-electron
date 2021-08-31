@@ -481,11 +481,9 @@ class CanvasImages {
 
     let updateDownload = async (destinationCanvas) => {
       let download = document.getElementById('download-image');
+      this.image.jpgDataUrl = await destinationCanvas.toDataURL("image/jpeg");
       if (download) {
         let downloadStats = document.getElementById('download-stats');
-        this.image.pngDataUrl = await destinationCanvas.toDataURL("image/png");
-        this.image.pngOctetStream = this.image.pngDataUrl.replace("image/png", "image/octet-stream");
-        this.image.jpgDataUrl = await destinationCanvas.toDataURL("image/jpeg");
         this.image.jpgOctetStream = this.image.jpgDataUrl.replace("image/jpeg", "image/octet-stream");
         download.setAttribute("href", this.image.pngOctetStream);
         download.classList.remove('disabled');
