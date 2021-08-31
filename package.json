@@ -21,7 +21,7 @@
     "email": "stephen.bannasch@gmail.com"
   },
   "license": "UNLICENSED",
-  "private": true,
+  "private": false,
   "config": {
     "forge": {
       "packagerConfig": {},
