@@ -46,8 +46,9 @@ html {
   --menu-page-title: 7.4vh;
   --menu-page-subtitle: 3vh;
   --menu-activity-category-title: 2.2vh;
-  --menu-activity-category-page-title: 2vh;
-  --menu-activity-category-page-subtitle: 1.8vh;
+  --menu-activity-category-page-title: 2.4vh;
+  --menu-activity-category-page-subtitle: 2vh;
+  --menu-activity-category-page-action: 1.8vh;
   --menu-category-page-name: 1.7vh;
   --menu-category-page-telescope: 1.5vh;
   --menu-activity-page-title: 2.7vh;
@@ -387,11 +388,11 @@ div {
   &.menu-category-pages {
     display: none;
     position: relative;
-    height: 38vh;
+    height: 44vh;
     width: fit-content;
-    padding: 2vh 2rem 0vh 2rem;
-    border: 2px solid var(--category-selected-border);
-    border-radius: 4px;
+    padding: 3vh 5rem 0vh 5rem;
+    border: 3px solid var(--category-selected-border);
+    border-radius: 6px;
 
     &.selected {
       display: block;
@@ -438,20 +439,20 @@ div {
 
     .title {
       font-size: var(--menu-activity-category-page-title);
-      padding-bottom: 0.5rem;
+      padding-bottom: 1rem;
       color: var(--bright-green);
       text-transform: uppercase;
     }
 
     .subtitle {
-      font-size: var(--menu-activity-category-subtitle);
+      font-size: var(--menu-activity-category-page-subtitle);
       line-height: 120%;
-      padding: 0rem 0rem 0.5rem 0rem;
+      padding: 0rem 0rem 1rem 0rem;
       color: white;
     }
 
     .action {
-      font-size: var(--menu-activity-category-subtitle);
+      font-size: var(--menu-activity-category-page-action);
       font-weight: bold;
       line-height: 120%;
       padding: 0rem 0rem 0.5rem 0rem;
@@ -461,9 +462,9 @@ div {
   }
 
   &.menu-category-page {
-    width: 14vw;
-    min-width: 14em;
-    max-width: 14em;
+    width: 15.5vw;
+    min-width: 15.5em;
+    max-width: 15.5em;
     margin-right: 1rem;
     text-overflow: ellipsis;
     overflow: hidden;
