@@ -515,7 +515,7 @@ img.menu-activity-page-title {
 }
 
 div.offcanvas {
-  height: 92vh;
+  height: 90vh;
   background-color: black;
   color: lightgray;
   border: 1px solid var(--dark-teal);
@@ -530,7 +530,7 @@ div.offcanvas-header {
 }
 
 div.offcanvas-end {
-  width: 16.5vw;
+  width: 16vw;
   top: 10px;
   right: 5px;
 }
@@ -687,7 +687,7 @@ header.menu-activity-page-title {
 }
 
 .activity-page {
-  margin: 5vh 4vw 0vh 4vw;
+  margin: 5vh 3vw 0vh 4vw;
   height: 92vh;
   z-index: 1;
 }
@@ -695,22 +695,22 @@ header.menu-activity-page-title {
 .col-main-content {
   flex: 0 0 auto;
   width: 87%;
+  .col-left {
+    flex: 0 0 auto;
+    padding-right: 0.75vw;
+    width: 30%;
+  }
+  .col-main {
+    flex: 0 0 auto;
+    padding: 0vh 0.5vw 0vh 0.75vw;
+    width: 70%;
+  }
 }
 
 .col-right-content {
   flex: 0 0 auto;
   width: 13%;
   height: 83vh;
-}
-
-.col-left {
-  flex: 0 0 auto;
-  width: 31%;
-}
-
-.col-main {
-  flex: 0 0 auto;
-  width: 69%;
 }
 
 .activity-page-menu > .row {
