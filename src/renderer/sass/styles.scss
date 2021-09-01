@@ -822,7 +822,7 @@ div.zoom {
   align-items: center;
   justify-content: flex-start;
   z-index: 1;
-  margin: 0.5vh 0.5vh 0.5vh 1vh;
+  margin: 0vh 0.5vh 0vh 1vh;
 
   label {
     font-size: 2vh;
@@ -1326,7 +1326,7 @@ div.main-image-content {
 
 div.under-main-layer-controls {
   margin: 0;
-  padding: 1vh;
+  padding: 0.5vh 1vh;
   width: 74%;
   &.rgb {
     width: 68%;
