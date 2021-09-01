@@ -1527,7 +1527,8 @@ canvas#preview-palette {
 }
 
 #multi-wave-telescope-name,
-#filter-name {
+#filter-name,
+#main-image-filter-name {
   margin-top: 0.75vh;
   margin-left: -0vh;
   z-index: 10;
@@ -1535,7 +1536,8 @@ canvas#preview-palette {
   font-size: 115%;
 }
 
-#filter-name {
+#filter-name,
+#main-image-filter-name {
   text-transform: uppercase;
 }
 
@@ -1980,6 +1982,12 @@ div#main-image-canvas-container {
   margin: 0;
   padding: 0;
   background-color: black;
+  .label {
+    position: absolute;
+    margin-top: 1vh;
+    margin-left: 1vw;
+    float: left;
+  }
   &:fullscreen {
     width: 90vw;
     height: 80vh;

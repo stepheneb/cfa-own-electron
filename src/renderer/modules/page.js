@@ -290,6 +290,7 @@ class Page {
       this.controllerImageSelectMainLayer();
       this.renderDevSideBar(this, this.registeredCallbacks);
       adjustImage.update(this);
+      this.renderMainImageFilterNames();
       break;
 
     case 'find-apollo':
@@ -436,7 +437,7 @@ class Page {
   renderPageHeader() {
     return `
       <div class='row page-header'>
-        <div class='col-8 p-0'>
+        <div class='col-8'>
           <div class='page-title'>${this.category.title}</div>
           <div class='page-subtitle'>${this.subtitle}</div>
         </div>
@@ -599,8 +600,9 @@ class Page {
       <div id='main-image-content' class='main-image-content col-main'>
         <div id="micc-container">
           <div id='${this.miccCanvasContainerId}' class="">
-              ${renderDev.fullScreenButton(this.miccCanvasContainerId, '#micc', this.registeredCallbacks, optionalFunc)}
-              ${this.renderSpinner()}
+            <div id='main-image-filter-name' class='label'></div>
+            ${renderDev.fullScreenButton(this.miccCanvasContainerId, '#micc', this.registeredCallbacks, optionalFunc)}
+            ${this.renderSpinner()}
           </div>
         </div>
         ${this.renderUnderMainImageRow(this.type, this.registeredCallbacks)}
@@ -627,11 +629,40 @@ class Page {
       checkboxes = Array.from(e.currentTarget.querySelectorAll('input[type="checkbox"'));
       this.image.selectedMainLayers = checkboxes.map(elem => elem.checked ? '1' : '0').join('');
       this.canvasImages.renderCanvasRGB();
+      this.renderMainImageFilterNames();
       telescopes.updateVisibility(this);
       if (app.dev) {
         this.imageInspect.connectUpdate(this.canvasImages);
       }
     });
+  }
+
+  renderMainImageFilterNames() {
+    let filterNamesElem = document.getElementById("main-image-filter-name");
+    let filterNames = '';
+    for (let i = 0; i < 3; i++) {
+      let char = this.image.selectedMainLayers[i];
+      if (char == '1') {
+        let source = this.canvasImages.sources[i];
+        if (i > 0 && filterNames.length > 0) {
+          filterNames += ` + ${getName(source, this.type)}`;
+        } else {
+          filterNames = getName(source, this.type);
+        }
+      }
+    }
+    if (filterNames.length == 0) {
+      filterNames = 'no image layers selected';
+    }
+    filterNamesElem.innerText = filterNames;
+
+    function getName(source, type) {
+      if (type == 'rgb') {
+        return source.filter;
+      } else {
+        return source.name;
+      }
+    }
   }
 
   renderUnderMainImageRow() {
