@@ -399,7 +399,7 @@ class Scaling {
     }
     this.scalingCanvasDrawfinished = true;
     this.mainCanvasWrapper.style.width = this.imageWidth + 'px';
-    this.mainCanvasWrapper.style.height = '70vh';
+    this.mainCanvasWrapper.style.height = '72vh';
     // console.log(this.scalingCanvasDrawArgs());
     this.sendChangeEvent();
   }
