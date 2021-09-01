@@ -57,6 +57,7 @@ html {
   --animate-icons: 3.2vh;
   --control-title: 1.8vh;
   --control-subtitle: 1.7vh;
+  --notice-subtitle: 1.6vh;
   --main-layer-selector: 2vh;
   --about-your-image: 2.8vh;
   --save-and-send-context: 2vh;
@@ -1141,6 +1142,10 @@ div.control-collection {
     font-size: var(--control-subtitle);
     font-weight: 500;
     padding: 0vh 0vh 0.5vh 0.5vh;
+    &.notice {
+      font-size: var(--notice-subtitle);
+      font-weight: 400;
+    }
   }
   .name {
     text-transform: uppercase;

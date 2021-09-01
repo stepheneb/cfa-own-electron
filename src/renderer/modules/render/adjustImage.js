@@ -185,7 +185,9 @@ adjustImage.renderRGB = (page, registeredCallbacks) => {
   registeredCallbacks.push(callback);
   return `
     <div class='adjust-layer'>
-      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}</div>
+      <div class='subtitle notice'>
+        <span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}
+      </div>
       ${brightness(page)}
       ${contrast(page)}
     </div>
@@ -217,7 +219,9 @@ adjustImage.renderMasterpiece = (page, registeredCallbacks) => {
   registeredCallbacks.push(callback);
   return `
     <div class='adjust-layer'>
-      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}</div>
+      <div class='subtitle notice'>
+        <span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}
+      </div>
       ${brightness(page)}
       ${contrast(page)}
     </div>

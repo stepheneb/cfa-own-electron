@@ -36,7 +36,9 @@ specialEffects.render = (page, registeredCallbacks) => {
   let html = `
     <div class='special-effects'>
       <div class='title'>Special Effects</div>
-      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>Try an effect to enhance your image</div>
+      <div class='subtitle notice'>
+        <span class="solid-right-arrow">&#11157</span>Try an effect to enhance your image
+      </div>
       <form id="${formId}">
         ${effectsHtml}
       </form>

@@ -34,7 +34,9 @@ colorMaps.render = (page, registeredCallbacks) => {
   let html = `
     <div id="select-colormaps" class='color-maps'>
       <div class='title'>Color Maps</div>
-      <div class='subtitle'><span class="solid-right-arrow">&#11157</span>Select a color range to add color to your image</div>
+      <div class='subtitle notice'>
+        <span class="solid-right-arrow">&#11157</span>Select a color range to add color to your image
+      </div>
       ${cmapsHtml}
     </div>
   `;

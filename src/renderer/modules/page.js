@@ -178,7 +178,7 @@ class Page {
 
     case 'find-apollo':
       this.leftColumnHtml = `
-        <div class='col-left pr-1 m-0'>
+        <div class='col-left'>
           ${this.renderApolloLandingLeftColumn()}
         </div>
       `;
@@ -189,7 +189,7 @@ class Page {
 
     case 'rgb':
       this.leftColumnHtml = `
-          <div class='col-left pr-1 m-0'>
+          <div class='col-left'>
             <div class="control-collection">
               ${this.renderImageSelectFilterLayerToAdjust()}
               ${this.renderImageLayerPreview()}
@@ -205,7 +205,7 @@ class Page {
 
     case 'multi-wave':
       this.leftColumnHtml = `
-            <div class='col-left pr-1 m-0'>
+            <div class='col-left'>
               <div class="control-collection">
                 ${this.renderImageSelectFilterLayerToAdjust()}
                 ${this.renderImageLayerPreview()}
@@ -221,7 +221,7 @@ class Page {
 
     case 'masterpiece':
       this.leftColumnHtml = `
-        <div class='col-left pr-1 m-0'>
+        <div class='col-left'>
           <div class='control-collection'>
             ${colorMaps.render(this, this.registeredCallbacks)}
             ${specialEffects.render(this, this.registeredCallbacks)}
@@ -237,9 +237,11 @@ class Page {
 
     case 'animate':
       this.leftColumnHtml = `
-        <div class='left-column col-left pr-1 m-0'>
+        <div class='left-column col-left'>
           <div class="control-collection">
-            <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${this.animatetext}</div>
+            <div class='subtitle notice'>
+              <span class="solid-right-arrow">&#11157</span>${this.animatetext}
+            </div>
             ${animate.render(this, this.registeredCallbacks)}
             <div class="context">${this.context}</div>
           </div>
@@ -523,7 +525,9 @@ class Page {
     }
     return `
       <div id="image-select-filter-layer-to-adjust"  class='select-layer'>
-        <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${this.selectfiltertext}</div>
+        <div class='subtitle notice'>
+          <span class="solid-right-arrow">&#11157</span>${this.selectfiltertext}
+        </div>
         ${renderButtonsAndPalletes(this)}
       </div>
     `;
@@ -568,7 +572,9 @@ class Page {
     // let id = `${this.type}-${this.poster}`;
     return `
       <div class='control-collection'>
-        <div class='subtitle'><span class="solid-right-arrow">&#11157</span>${this.findtext}</div>
+        <div class='subtitle notice'>
+          <span class="solid-right-arrow">&#11157</span>${this.findtext}
+        </div>
         <div id="${this.findApolloSiteContainerId}" class="${this.type}">
           <canvas id="${this.findApolloSiteCanvasId}"></canvas>
           <div class="name">${this.image.site}</div>
@@ -657,9 +663,8 @@ class Page {
     let source, checkedState, name;
     let html = `
       <div class='under-main-layer-controls ${this.type}'>
-        <div class="subtitle">
-          <span class="solid-right-arrow">&#11157</span>
-          Combine to reveal a full-color image
+        <div class="subtitle notice">
+          <span class="solid-right-arrow">&#11157</span> Combine to reveal a full-color image
         </div>
         <form id="image-select-main-layer">
           <div class="d-flex flex-row justify-content-start align-items-center">
@@ -697,7 +702,9 @@ class Page {
     let html = '';
     html += `
       <div class='under-main-layer-controls masterpiece'>
-        <div class="subtitle"><span class="solid-right-arrow">&#11157</span> Pinch to zoom or pan or use the buttons</div>
+        <div class="subtitle notice">
+          <span class="solid-right-arrow">&#11157</span> Pinch to zoom or pan or use the buttons
+        </div>
         ${this.renderZoomSlider(this.registeredCallbacks)}
       </div>
       <div class="image-name pe-2">
