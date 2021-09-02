@@ -80,6 +80,7 @@ animate.render = (page, registeredCallbacks) => {
     let previewImageBackName = document.getElementById(previewImageBackNameId);
     let previewImageCenterName = document.getElementById(previewImageCenterNameId);
     let previewImageNextName = document.getElementById(previewImageNextNameId);
+    let mainImageLabel = document.getElementById("main-image-label");
 
     let stepDuration = (page.stepDuration || 250);
 
@@ -141,6 +142,7 @@ animate.render = (page, registeredCallbacks) => {
       previewImageBackName.innerText = `${page.title} ${newLayerNum(layerNum, -1)+1}`;
       previewImageCenterName.innerText = `${page.title} ${layerNum+1}`;
       previewImageNextName.innerText = `${page.title} ${newLayerNum(layerNum, 1)+1}`;
+      mainImageLabel.innerText = previewImageCenterName.innerText;
     }
   }
 };

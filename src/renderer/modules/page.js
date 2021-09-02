@@ -601,7 +601,7 @@ class Page {
       <div id='main-image-content' class='main-image-content col-main'>
         <div id="micc-container">
           <div id='${this.miccCanvasContainerId}' class="">
-            <div id='main-image-filter-name' class='label'></div>
+            <div id='main-image-label' class='label'></div>
             ${renderDev.fullScreenButton(this.miccCanvasContainerId, '#micc', this.registeredCallbacks, optionalFunc)}
             ${this.renderSpinner()}
           </div>
@@ -639,7 +639,7 @@ class Page {
   }
 
   renderMainImageFilterNames() {
-    let filterNamesElem = document.getElementById("main-image-filter-name");
+    let filterNamesElem = document.getElementById("main-image-label");
     let filterNames = '';
     for (let i = 0; i < 3; i++) {
       let char = this.image.selectedMainLayers[i];
