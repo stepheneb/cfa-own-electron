@@ -1460,8 +1460,8 @@ div.telescope-container {
 div#preview-image-center-name {
   color: var(--almost-black);
   text-transform: uppercase;
-  font-size: 120%;
-  font-weight: 600;
+  font-size: 130%;
+  font-weight: 500;
 }
 
 div#preview-image-back-name,
@@ -1469,8 +1469,8 @@ div#preview-image-next-name {
   color: var(--bright-teal);
   background-color: transparent;
   text-transform: uppercase;
-  font-size: 120%;
-  font-weight: 600;
+  font-size: 130%;
+  font-weight: 300;
 }
 
 .unselectable {
@@ -1560,12 +1560,14 @@ div#preview-image-center-canvas-container {
   height: 10vh;
   width: 100%;
   margin: 0;
+  padding: 0.25vh 0vh;
   background-color: var(--almost-black);
   border: none;
   canvas {
     position: absolute;
     padding: 0;
     margin: 0;
+    height: 9.5vh;
     object-fit: contain;
   }
 }
@@ -1576,13 +1578,16 @@ div#preview-image-next-canvas-container {
   height: 10vh;
   width: 100%;
   margin: 0;
+  padding: 0.25vh 0vh;
   background-color: var(--almost-black);
   border: none;
   canvas {
     position: absolute;
     padding: 0;
     margin: 0;
+    height: 9.5vh;
     object-fit: contain;
+    filter: brightness(50%);
   }
 }
 

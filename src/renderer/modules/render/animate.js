@@ -21,21 +21,21 @@ animate.render = (page, registeredCallbacks) => {
     <div id='${id}'>
       <div class="row">
         <div class="col-4 m-0 p-0">
-          <div class="animate-left px-2 mt-2 mb-2 pt-2 pb-2">
+          <div class="animate-left px-3 mt-2 mb-2 pt-3 pb-3">
             <div id="preview-image-back-canvas-container" class="animate"></div>
           </div>
           <div class="d-flex justify-content-center">
             <div id="${previewImageBackNameId}" class="px-2 pt- pb-1">name</div>
           </div>
         </div>
-        <div class="col-4 animate-center px-2 pt-3 pb-2">
+        <div class="col-4 animate-center px-2 pt-4 pb-3">
           <div id="preview-image-center-canvas-container" class="animate"></div>
           <div class="d-flex justify-content-center">
-            <div id="${previewImageCenterNameId}" class="px-2 pt-3 pb-1">name</div>
+            <div id="${previewImageCenterNameId}" class="px-2 pt-4 pb-2">name</div>
           </div>
         </div>
         <div class="col-4 m-0 p-0">
-          <div class="animate-right px-2 mt-2 mb-2 pt-2 pb-2">
+          <div class="animate-right px-3 mt-2 mb-2 pt-3 pb-3">
             <div id="preview-image-next-canvas-container" class="animate"></div>
           </div>
           <div class="d-flex justify-content-center">
