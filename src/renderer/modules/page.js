@@ -255,18 +255,18 @@ class Page {
     }
 
     let html = `
-      <div id='${this.id}' class='activity-page row' data-categorytype="${this.type}" data-pagename="${this.name}">
-        <div class="col-main-content">
-
-          ${this.renderPageHeader(this)}
-          <div class="row">
-            ${this.leftColumnHtml}
-            ${this.mainImageHtml}
+      <div id='${this.id}' class='activity-page' data-categorytype="${this.type}" data-pagename="${this.name}">
+        ${this.renderPageHeader(this)}
+        <div class='row'>
+          <div class="col-main-content">
+            <div class="row">
+              ${this.leftColumnHtml}
+              ${this.mainImageHtml}
+            </div>
           </div>
-        </div>
-        <div class="col-right-content d-flex flex-column justify-content-start">
-          <div class="shrinking-spacer"></div>
-          ${this.rightColumnHtml}
+          <div class="col-right-content d-flex flex-column justify-content-start">
+            ${this.rightColumnHtml}
+          </div>
         </div>
       </div>
       ${navigation.page(this.registeredCallbacks)}
@@ -437,8 +437,8 @@ class Page {
 
   renderPageHeader() {
     return `
-      <div class='row page-header'>
-        <div class='col-8'>
+      <div class='page-header'>
+        <div class='left'>
           <div class='page-title'>${this.category.title}</div>
           <div class='page-subtitle'>${this.subtitle}</div>
         </div>

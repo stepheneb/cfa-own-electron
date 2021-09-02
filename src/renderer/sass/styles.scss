@@ -12,6 +12,8 @@ html {
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
 
 :root {
+  --main-image-height: 72vh;
+
   /* colors */
   --toggle-fullscreen: rgba(80, 80, 80, 128);
   --toggle-fullscreen-hover: rgba(196, 196, 196, 196);
@@ -712,7 +714,7 @@ header.menu-activity-page-title {
 .col-right-content {
   flex: 0 0 auto;
   width: 13%;
-  height: 83vh;
+  height: var(--main-image-height);
 }
 
 .activity-page-menu > .row {
@@ -792,7 +794,11 @@ button {
 }
 
 .page-header {
-  margin: 0vh 0vh 1.5vh 1.5vw;
+  width: 100%;
+  margin: 0vh 0vh 1.4vh 1.5vw;
+  .left {
+    width: 66%;
+  }
 }
 
 .page-title {
@@ -884,8 +890,8 @@ div.zoom {
 }
 
 div.control-collection {
-  height: 72vh;
-  max-height: 72vh;
+  height: var(--main-image-height);
+  max-height: var(--main-image-height);
   margin: 0;
   padding: 1vh 1vh 1vh 1vh;
   background-color: var(--darker-blue);
@@ -1987,7 +1993,7 @@ div#micc-container {
 div#main-image-canvas-container {
   position: relative;
   width: 100%;
-  height: 72vh;
+  height: var(--main-image-height);
   margin: 0;
   padding: 0;
   background-color: black;
@@ -2043,7 +2049,7 @@ div#main-image-canvas-container {
 
 div#main-canvas-wrapper {
   position: relative;
-  height: 72vh;
+  height: var(--main-image-height);
   margin: 0;
   padding: 0;
   left: 50%;
