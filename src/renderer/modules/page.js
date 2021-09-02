@@ -242,7 +242,7 @@ class Page {
             <div class='subtitle notice'>
               <span class="solid-right-arrow">&#11157</span>${this.animatetext}
             </div>
-            <div class="context">${this.context}</div>
+            <div class="context animate">${this.context}</div>
             <div id="column-middle-spacer"></div>
             ${animate.render(this, this.registeredCallbacks)}
           </div>

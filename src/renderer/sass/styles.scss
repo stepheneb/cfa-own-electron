@@ -56,7 +56,8 @@ html {
   --telescope-title: 2vh;
   --animate-icons: 3.2vh;
   --control-title: 1.8vh;
-  --control-subtitle: 1.7vh;
+  --control-context: 1.68vh;
+  --control-subtitle: 1.6vh;
   --notice-subtitle: 1.6vh;
   --main-layer-selector: 2vh;
   --about-your-image: 2.8vh;
@@ -745,13 +746,6 @@ header.menu-activity-page-title {
   border-width: 2px;
 }
 
-.left-column {
-  .subtitle,
-  .morecontext {
-    margin-bottom: 1em;
-  }
-}
-
 button.scale {
   width: 2.4em;
   height: 2.2em;
@@ -889,9 +883,8 @@ div.zoom {
 }
 
 div.control-collection {
-  &.animate {
-    height: 72vh;
-  }
+  height: 72vh;
+  max-height: 72vh;
   margin: 0;
   padding: 1vh 1vh 1vh 1vh;
   background-color: var(--darker-blue);
@@ -918,7 +911,7 @@ div.control-collection {
   div.special-effects,
   div.adjust-layer,
   div.select-layer {
-    margin: 1.5vh 0vh 3.2vh 0vh;
+    margin: 0.8vh 0vh 1.8vh 0vh;
     padding: 0;
   }
   div.color-maps {
@@ -1056,7 +1049,7 @@ div.control-collection {
 
   div.adjust-layer {
     > .subtitle {
-      margin-bottom: 1.4vh;
+      margin-bottom: 1.2vh;
     }
 
     div.adjust-filter {
@@ -1065,7 +1058,7 @@ div.control-collection {
       align-items: center;
       justify-content: flex-start;
       margin-left: 1vh;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.6rem;
 
       label {
         font-size: 1.9vh;
@@ -1145,12 +1138,12 @@ div.control-collection {
   .subtitle {
     font-size: var(--control-subtitle);
     font-weight: 500;
-    padding: 0vh 0vh 0.5vh 0.5vh;
+    padding: 0vh 0vh 0.5vh 0vh;
     &.notice {
       font-size: var(--notice-subtitle);
       font-weight: 400;
-      text-indent: -1vw;
-      margin-left: 1vw;
+      text-indent: -1.1vw;
+      margin-left: 1.4vw;
       margin-bottom: 0.5vh;
     }
   }
@@ -1158,8 +1151,12 @@ div.control-collection {
     text-transform: uppercase;
   }
   .context {
-    font-size: var(--control-subtitle);
-    margin: 0.5vh 0vh 1vh 1.2vw;
+    font-size: var(--control-context);
+    margin: 0.5vh 0vh 1vh 0.4vw;
+    &.animate {
+      margin-right: 0.2vw;
+      margin-left: 1vw;
+    }
   }
 }
 
@@ -1483,7 +1480,7 @@ div#preview-image-next-name {
 div.zoom-preview-content {
   border: 2px solid var(--bright-teal);
   padding: 0.5vh 1vh 1vh 1vh;
-  margin: 1vh -1vh 3vh -1vh;
+  margin: 1vh -1vh 2vh -1vh;
   background-color: black;
   > .label {
     float: left;
