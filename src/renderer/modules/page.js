@@ -238,12 +238,13 @@ class Page {
     case 'animate':
       this.leftColumnHtml = `
         <div class='left-column col-left'>
-          <div class="control-collection">
+          <div class="control-collection animate d-flex flex-column justify-content-start">
             <div class='subtitle notice'>
               <span class="solid-right-arrow">&#11157</span>${this.animatetext}
             </div>
-            ${animate.render(this, this.registeredCallbacks)}
             <div class="context">${this.context}</div>
+            <div id="column-middle-spacer"></div>
+            ${animate.render(this, this.registeredCallbacks)}
           </div>
         </div>
       `;

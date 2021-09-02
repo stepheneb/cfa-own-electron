@@ -889,6 +889,9 @@ div.zoom {
 }
 
 div.control-collection {
+  &.animate {
+    height: 72vh;
+  }
   margin: 0;
   padding: 1vh 1vh 1vh 1vh;
   background-color: var(--darker-blue);
@@ -1146,6 +1149,9 @@ div.control-collection {
     &.notice {
       font-size: var(--notice-subtitle);
       font-weight: 400;
+      text-indent: -1vw;
+      margin-left: 1vw;
+      margin-bottom: 0.5vh;
     }
   }
   .name {
@@ -1153,7 +1159,7 @@ div.control-collection {
   }
   .context {
     font-size: var(--control-subtitle);
-    margin: 1vh 0vh 1vh 1vh;
+    margin: 0.5vh 0vh 1vh 1.2vw;
   }
 }
 
@@ -1360,7 +1366,7 @@ form#image-select-main-layer {
 }
 
 div.shrinking-spacer {
-  height: 15%;
+  height: 12%;
   flex: 0 4 auto;
 }
 
@@ -1386,11 +1392,11 @@ div.telescope-container {
 }
 
 #animate-player {
-  margin: 6vh 0vh;
+  margin: 2vh 0vh;
 }
 
 #animate-controls {
-  margin: 2vh 0.5vh;
+  margin: 8vh 0.5vh 0vh 0.5vh;
   font-size: var(--animate-icons);
   .step {
     margin-top: 4vh;
@@ -1757,7 +1763,7 @@ div.modal.save-and-send .modal-dialog {
         font-weight: 500;
       }
       .context {
-        margin-top: 2vh;
+        margin-top: 1vh;
         font-size: var(--save-and-send-context);
         line-height: 110%;
         color: white;
