@@ -73,14 +73,14 @@ git push origin main
 git push --follow-tags
 ```
 
-Pushing the tag to github will kickoff the `release.yml` github workflow which uses github OS containers running npm and electron-forge to build and publish releases for Windows, macOS, and Linux.
+Pushing the tag to github will kickoff the `release-macos.yml` and `release-windows.yml` github workflows which use github OS containers running npm and electron-forge to build and publish releases for Windows and macOS.
 
-Publishing a new draft release takes about 30 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions. After the draft is published add release comments and remove the **draft** status to make the release available for downloading.
+Publishing a new draft release takes about 20 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions. After the draft is published add release comments and remove the **draft** status to make the release available for downloading.
 
 Display a summary of changes in the release (useful as a starting point for creating release notes).
 
 ```
-git log --pretty=short v1.0.0-beta.4...v1.0.0-beta.5
+git log --pretty=medium v1.0.0-beta.4...v1.0.0-beta.5
 ```
 
 If the release workflow fails and the failure is caused by an error in the application delete the most recent tag from both local and remote repositories.
@@ -100,6 +100,16 @@ git push origin v1.0.0-beta.5
 References:
 - https://dev.to/erikhofer/build-and-publish-a-multi-platform-electron-app-on-github-3lnd
 - https://docs.github.com/en/actions
+
+
+### Debugging a workflow action
+
+The `release-windows.yml` workflow is failing -- perhaps due to an out of memory issue.
+
+I created a github [environment](https://docs.github.com/en/actions/reference/environments)
+named `release` in the repository and added two [environmental variables](https://docs.github.com/en/actions/reference/encrypted-secrets)
+for enabling increased [debug logging](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging)
+while running a workflow.
 
 
 ## Setup for Kiosk mode on Windows
