@@ -35,6 +35,12 @@ main.setupNewApp = newApp => {
       }
     });
   });
+  newApp.telescopeData.telescopes.forEach(telescope => {
+    let description = telescope.description;
+    if (Array.isArray(description)) {
+      telescope.description = description.join('\n');
+    }
+  });
   return newApp;
 };
 
