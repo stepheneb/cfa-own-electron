@@ -19,6 +19,4 @@ jobs:
     - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        npm run publish-dry-run
-        npm run publish-from-dry-run
+      run: set DEBUG=electron-forge:* & node_modules\.bin\electron-forge publish
