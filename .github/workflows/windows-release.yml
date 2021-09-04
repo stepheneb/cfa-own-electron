@@ -1,4 +1,4 @@
-name: Release
+name: Windows Release
 on:
   push:
     tags:
@@ -6,8 +6,9 @@ on:
 
 jobs:
 
-  publish_on_mac:
-    runs-on: macos-latest
+  publish_on_win:
+    environment: release
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@master
@@ -18,4 +19,4 @@ jobs:
     - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run publish
+      run: set DEBUG=electron-forge:* & node_modules\.bin\electron-forge publish
