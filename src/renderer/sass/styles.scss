@@ -1670,8 +1670,10 @@ div.animate-center {
   max-width: unset;
   width: 40vw;
   position: absolute;
-  right: 17vw;
+  right: -5000px;
   top: 18vh;
+  transform: none;
+  transition: none;
   .modal-content {
     padding: 2.5vh 2vh;
     background-color: var(--darker-blue);
@@ -1714,6 +1716,14 @@ div.animate-center {
         }
       }
     }
+  }
+}
+
+.modal.show {
+  .modal-dialog.telescope {
+    transform: none;
+    transition: none;
+    right: 17vw;
   }
 }
 

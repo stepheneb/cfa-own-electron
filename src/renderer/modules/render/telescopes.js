@@ -26,10 +26,38 @@ telescopes.updateVisibility = page => {
     }
   });
 
+  updateAboutPositions(scopes);
+
   function visibilityOff(scopes) {
     scopes.forEach((scope) => {
       scope.visible = false;
     });
+  }
+
+  function updateAboutPositions(scopes) {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        scopes.forEach((scope) => {
+          if (scope.visible) {
+            let elemScope = document.getElementById(scope.key + '-container');
+            let bcrScope = elemScope.getBoundingClientRect();
+            let modalId = `${scope.key}-modal`;
+            let modalElem = document.getElementById(modalId).querySelector('.telescope');
+            let modalImage = modalElem.querySelector('.telescope>.modal-content>.modal-body>.image-container');
+            modalImage.style.height = bcrScope.height + 'px';
+            modalImage.style.width = bcrScope.width + 'px';
+            let top = bcrScope.top - 75;
+            modalElem.style.top = top + 'px';
+            let right = window.innerWidth - bcrScope.right - (2 + 16 + 21);
+            modalElem.style.right = `${right}px`;
+          } else {
+            elem.style.display = "none";
+            scope.bcr = null;
+          }
+        });
+      }, 100);
+    });
+
   }
 };
 
