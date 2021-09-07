@@ -48,7 +48,7 @@ To debug code running in the main nodejs process:
 3. Add a `debugger;` statement where you want the code pause.
 4. Start the application: `npm run debug-stop`. This will pause execution at the first executable statement in the nodejs context.
 5. When the application has paused an **inspect** link appears for `electron/js2c/browser_init` under **Remote Target** in the `chrome://inspect/#devices` window. Click this link to open a second Chrome devtools window associated with the main nodejs process.
-6. At this point only the source for the initial Electron packages `default_app/main.ts` is visible in the **Sources** panel and the debugger is paused at the first executable statment. This `main.js` is not the application's `src/main.js` code, instead it is code that Electron generates and runs as part of the initial application startup. Click the contiune execution button in the top right of the debugger.
+6. At this point only the source for the initial Electron packages `default_app/main.ts` is visible in the **Sources** panel and the debugger is paused at the first executable statment. This `main.js` is not the application's `src/main.js` code, instead it is code that Electron generates and runs as part of the initial application startup. Click the continue execution button in the top right of the debugger.
 7. The devtools window will next pause where you inserted the debugger statement in application code. Additional source files that have been evaluated will now be visible in the **Source** panel in the devtools window.
 8. At this point further breakpoints can be added to code visible in the **Sources** panel.
 
@@ -69,8 +69,7 @@ All in one place:
 ```
 git status
 npm version prerelease
-git push origin main
-git push --follow-tags
+git push origin main && git push --follow-tags
 ```
 
 Pushing the tag to github will kickoff the `release-macos.yml` and `release-windows.yml` github workflows which use github OS containers running npm and electron-forge to build and publish releases for Windows and macOS.
@@ -86,8 +85,7 @@ git log --pretty=medium v1.0.0-beta.4...v1.0.0-beta.5
 If the release workflow fails and the failure is caused by an error in the application delete the most recent tag from both local and remote repositories.
 
 ```
-git tag -d v1.0.0-beta.5
-git push --delete origin v1.0.0-beta.5
+git tag -d v1.0.0-beta.5 && git push --delete origin v1.0.0-beta.5
 ```
 
 After resolving the errors performing the **Release** workflow action recreate the local tag and push the new tag to the remote repository.
@@ -104,16 +102,17 @@ References:
 
 ### Debugging a workflow action
 
-The `release-windows.yml` workflow is failing -- perhaps due to an out of memory issue.
+The `windows-release.yml` workflow is failing -- perhaps due to an out of memory issue.
 
 I created a github [environment](https://docs.github.com/en/actions/reference/environments)
 named `release` in the repository and added two [environmental variables](https://docs.github.com/en/actions/reference/encrypted-secrets)
 for enabling increased [debug logging](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging)
 while running a workflow.
 
+- `ACTIONS_RUNNER_DEBUG: true`
+- `ACTIONS_STEP_DEBUG: true`
 
 ## Setup for Kiosk mode on Windows
-
 
 Disable edge swipes that bring up system UI
 https://www.tenforums.com/tutorials/48507-enable-disable-edge-swipe-screen-windows-10-a.html
