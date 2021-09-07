@@ -59,7 +59,7 @@ telescopes.render = (page, registeredCallbacks) => {
               <span aria-hidden="true">×</span>
             </button>
             <div class="modal-body">
-              <h5 class="" id="${modalId}-title">${scope.name} Telescope</h5>
+              <h5 id="${modalId}-title">${scope.name} Telescope</h5>
               <div class="image-container"><img src="../${scope.image}"></img></div>
               ${scope.description}
             </div>
