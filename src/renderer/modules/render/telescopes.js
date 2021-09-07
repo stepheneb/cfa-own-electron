@@ -53,22 +53,15 @@ telescopes.render = (page, registeredCallbacks) => {
 
     modalHtml += `
       <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="telescope modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="${modalId}-title">About the ${scope.name} Telescope</h5>
-              <div class="image-container">
-                <img src="../${scope.image}"></img>
-              </div>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
             <div class="modal-body">
+              <h5 class="" id="${modalId}-title">${scope.name} Telescope</h5>
+              <div class="image-container"><img src="../${scope.image}"></img></div>
               ${scope.description}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-small btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
