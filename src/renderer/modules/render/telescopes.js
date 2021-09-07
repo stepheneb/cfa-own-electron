@@ -52,7 +52,7 @@ telescopes.render = (page, registeredCallbacks) => {
     `;
 
     modalHtml += `
-      <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
+      <div class="modal  fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
         <div class="telescope modal-dialog">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
