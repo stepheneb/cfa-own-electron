@@ -83,9 +83,12 @@ telescopes.render = (page, registeredCallbacks) => {
       <div class="modal  fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
         <div class="telescope modal-dialog">
           <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
+          <svg type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <circle stroke-opacity='1' fill-opacity='1'/>
+            <line x1="38%" y1="33%" x2="62%" y2="67%"/>
+            <line x1="62%" y1="33%" x2="38%" y2="67%"/>
+          </svg>
+
             <div class="modal-body">
               <h5 id="${modalId}-title">${scope.name} Telescope</h5>
               <div class="image-container"><img src="../${scope.image}"></img></div>

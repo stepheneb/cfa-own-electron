@@ -1681,15 +1681,41 @@ div.animate-center {
       inset -6px -6px 24px var(--medium-blue-rgba);
     border: none;
     border-radius: 3px;
-    button.btn-close {
-      display: none;
-      float: right;
-      min-width: 3vw;
-      font-size: 6vh;
-      color: white;
+
+    svg {
+      position: absolute;
+      width: 2.9vh;
+      height: 2.9vh;
+      top: -17px;
+      right: -17px;
+      opacity: 1;
     }
-    .modal-header {
+
+    circle {
+      left: auto;
+      fill: black;
+      stroke: var(--bright-green);
+      cx: 50%;
+      cy: 50%;
+      r: 46%;
+      stroke-width: 7%;
     }
+
+    line {
+      left: auto;
+      stroke: var(--bright-green);
+      stroke-width: 7%;
+      cx: 50%;
+      cy: 50%;
+    }
+
+    svg:hover {
+      circle,
+      line {
+        stroke-width: 9%;
+      }
+    }
+
     .modal-body {
       padding-bottom: 0;
       line-height: 120%;
