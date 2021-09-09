@@ -1938,6 +1938,10 @@ div.modal.save-and-send .modal-dialog {
           width: 34vh;
         }
 
+        canvas {
+          object-fit: cover;
+        }
+
         img {
           background-color: black;
           height: 100%;

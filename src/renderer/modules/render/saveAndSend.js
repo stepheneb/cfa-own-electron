@@ -40,24 +40,6 @@ saveandsend.render = (page, registeredCallbacks) => {
     `;
   }
 
-  //   let modal1Close = `
-  //   <button id="${modalId1}-button" type="button" class="btn-close" aria-label="Close">
-  //     <span aria-hidden="true">×</span>
-  //   </button>
-  // `;
-  //
-  //   let modal2Close = `
-  // <button id="${modalId2}-button" type="button" class="btn-close" aria-label="Close">
-  //   <span aria-hidden="true">×</span>
-  // </button>
-  // `;
-  //
-  //   let modal3Close = `
-  //   <button id="${modalId3}-button" type="button" class="btn-close" aria-label="Close">
-  //     <span aria-hidden="true">×</span>
-  //   </button>
-  // `;
-
   let modalHtmls = `
     <div class="modal fade save-and-send" id="${modalId1}" tabindex="-1" aria-labelledby="${modalId1}-title" aria-hidden="true">
       <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">

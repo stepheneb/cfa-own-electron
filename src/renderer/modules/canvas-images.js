@@ -200,7 +200,6 @@ class CanvasImages {
         this.rawdata.push(rawdata);
       });
       this.rawdataSources.forEach(source => logger.rawData(this, source));
-      this.initializeSaveAndSendCanvas();
       switch (this.type) {
       case 'rgb':
       case 'multi-wave':
@@ -412,34 +411,48 @@ class CanvasImages {
     }
   }
 
-  initializeSaveAndSendCanvas() {
+  initializeOrResetSaveAndSendCanvases() {
     this.saveAndSendCanvases = [];
     this.saveAndSendContainers = document.querySelectorAll('div.save-and-send.image-container');
     this.saveAndSendContainers.forEach(div => {
-      let c = document.createElement("canvas");
-      c.classList = 'save-and-send-canvas';
-      this.initializeCanvas(c);
-      div.prepend(c);
-      c.width = this.nx;
-      c.height = this.ny;
+      let c;
+      if (div.querySelector('canvas')) {
+        c = div.querySelector('canvas');
+      } else {
+        c = document.createElement("canvas");
+        c.classList = 'save-and-send-canvas';
+        this.initializeCanvas(c);
+        div.prepend(c);
+      }
+      switch (this.type) {
+      case 'find-apollo':
+      case 'masterpiece':
+        c.width = this.scalingCanvas.width;
+        c.height = this.scalingCanvas.height;
+        break;
+      default:
+        c.width = this.nx;
+        c.height = this.ny;
+        break;
+      }
       this.saveAndSendCanvases.push(c);
     });
   }
 
   renderSaveAndSend() {
-    let getSourceCanvas, scalingEvent;
-    let drawApolloArrow = false;
-    if (this.scaling) {
-      scalingEvent = this.scaling.generateScalingEvent();
-      drawApolloArrow = this.scaling.checkIfGreaterThanOrEqualApolloSiteScale() || this.scaling.arrowDrawn;
-    }
+    this.initializeOrResetSaveAndSendCanvases();
+    let getSourceCanvas;
     switch (this.type) {
     case 'rgb':
     case 'multi-wave':
+      getSourceCanvas = () => {
+        return this.canvasRGB;
+      };
+      break;
     case 'masterpiece':
     case 'find-apollo':
       getSourceCanvas = () => {
-        return this.canvasRGB;
+        return this.scalingCanvas;
       };
       break;
     case 'animate':
@@ -451,13 +464,13 @@ class CanvasImages {
 
     let sourceCanvas = getSourceCanvas();
     let sourceCtx = sourceCanvas.getContext('2d');
-    let imageData = sourceCtx.getImageData(0, 0, this.nx, this.ny);
+    let imageData;
+    if (this.type == 'find-apollo') {
+      imageData = sourceCtx.getImageData(0, 0, sourceCanvas.width, sourceCanvas.height);
+    } else {
+      imageData = sourceCtx.getImageData(0, 0, this.nx, this.ny);
+    }
 
-    let scale = 1;
-    let arrowScale = 1;
-    let arrowImageWidth = 1;
-    let arrowImageHeight = 1;
-    let maxScale = 1;
     let sWidth = sourceCanvas.width;
     let sHeight = sourceCanvas.height;
     let sCopyWidth = sWidth;
@@ -466,18 +479,6 @@ class CanvasImages {
     let dy = 0;
     let dWidth = this.saveAndSendCanvases[0].width;
     let dHeight = this.saveAndSendCanvases[0].height;
-    if (scalingEvent && scalingEvent.scale > 1) {
-      dx = scalingEvent.delta.x;
-      dy = scalingEvent.delta.y;
-      dWidth = scalingEvent.image.width;
-      dHeight = scalingEvent.image.height;
-      sCopyWidth = scalingEvent.scaleCanvas.width;
-      sCopyHeight = scalingEvent.scaleCanvas.height;
-    }
-    if (drawApolloArrow) {
-      scale = scalingEvent.scale;
-      maxScale = this.scaling.maxScale;
-    }
 
     let updateDownload = async (destinationCanvas) => {
       let download = document.getElementById('download-image');
@@ -493,18 +494,6 @@ class CanvasImages {
 
     Promise.all(
       this.saveAndSendCanvases.map(destinationCanvas => {
-        if (drawApolloArrow) {
-          if (scale == 1) {
-            arrowScale = 32;
-            arrowImageWidth = sWidth;
-            arrowImageHeight = sHeight;
-          } else {
-            arrowImageWidth = scalingEvent.offset.x + destinationCanvas.width;
-            arrowImageHeight = scalingEvent.offset.y + destinationCanvas.height - dy;
-            arrowScale = maxScale * 0.75 / scale * arrowImageWidth / sWidth;
-            arrowScale = 5;
-          }
-        }
         destinationCanvas.width = sCopyWidth;
         destinationCanvas.height = sCopyHeight;
         this.clearCanvas(destinationCanvas);
@@ -517,9 +506,6 @@ class CanvasImages {
       return Promise.all(responses.map(([ctx, p]) => {
         p.then((imageBitmap) => {
           ctx.drawImage(imageBitmap, dx, dy, dWidth, dHeight);
-          if (drawApolloArrow) {
-            this.scaling.drawArrowAndUpdate(ctx, arrowImageWidth, arrowImageHeight, arrowScale);
-          }
           return true;
         });
       }));
