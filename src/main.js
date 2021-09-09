@@ -9,6 +9,7 @@ export const isWindows = process.platform === "win32";
 export const isSource = fs.existsSync("package.json");
 
 import { windowStateKeeper } from './window-state-keeper';
+import { kioskStateKeeper } from './kiosk-state-keeper';
 
 import { template } from './menu';
 
@@ -20,7 +21,7 @@ if (require("electron-squirrel-startup")) {
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow, adminWindow;
+let mainWindow, adminWindow, kioskState;
 
 const admin = process.argv.find((arg) => arg == '--admin') ? true : false;
 
@@ -211,3 +212,8 @@ if (admin) {
     app.quit(0);
   });
 }
+
+ipcMain.handle('getKioskState', async () => {
+  kioskState = await kioskStateKeeper();
+  return kioskState;
+});

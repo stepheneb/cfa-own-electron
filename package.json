@@ -7,6 +7,7 @@
   "scripts": {
     "preinstall": "git config core.hooksPath .githooks",
     "start": "electron-forge start",
+    "start-admin": "electron-forge start -- --admin",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -14,7 +15,9 @@
     "publish-from-dry-run": "electron-forge publish --from-dry-run",
     "lint": "echo \"No linting configured\"",
     "debug": "electron-forge start  --inspect-electron",
-    "debug-stop": "electron-forge start  -- --inspect-brk",
+    "debug-stop": "electron-forge start -- --inspect-brk",
+    "debug-admin": "electron-forge start --inspect-electron",
+    "debug-stop-admin": "electron-forge start -- --inspect-brk --admin",
     "env": "echo \"node --version: \"; node --version; echo \"electron --version: \"; electron --version; echo \"electron-forge: \"; npm list webpack",
     "help": "electron-forge --help"
   },
@@ -108,7 +111,8 @@
     "bootstrap-icons": "^1.5.0",
     "electron-settings": "^4.0.2",
     "electron-squirrel-startup": "^1.0.0",
-    "simple-keyboard": "^3.2.46"
+    "simple-keyboard": "^3.2.46",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.60",
