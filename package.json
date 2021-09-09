@@ -5,6 +5,7 @@
   "description": "Explore NASA images",
   "main": ".webpack/main",
   "scripts": {
+    "preinstall": "git config core.hooksPath .githooks",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
