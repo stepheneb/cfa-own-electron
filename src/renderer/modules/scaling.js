@@ -848,7 +848,7 @@ class Scaling {
     }
     pos.x -= targetRect.x;
     pos.y -= targetRect.y;
-    return [pos, touch];
+    return pos;
   }
 
   // Also supports
@@ -861,7 +861,7 @@ class Scaling {
     if (e.pointerId) {
       this.evCache.push(e);
     }
-    var [pos, touch] = this.pointerEvents(e);
+    var pos = this.pointerEvents(e);
 
     if (this.evCache.length < 2) {
       this.dragStarted = true;
@@ -933,7 +933,7 @@ class Scaling {
       }
       e.preventDefault();
       this.scaling = false;
-      let [pos, touch] = this.pointerEvents(e);
+      let pos = this.pointerEvents(e);
 
       if (this.canDrag() && this.dragStarted) {
         this.isDragging = true;
