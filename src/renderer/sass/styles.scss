@@ -147,6 +147,38 @@ div#splash2 {
   }
 }
 
+#window-size {
+  position: absolute;
+  z-index: 200;
+  top: 2vh;
+  right: 15vw;
+  width: 24vw;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 1vh 2vh;
+  font-size: 2.6vh;
+  font-weight: 500;
+  color: var(--almost-white);
+  letter-spacing: 0.1em;
+  text-transform: none;
+  border-radius: 1vh;
+  &.changing {
+    display: flex;
+    animation: fade 15s forwards;
+  }
+  p {
+    margin: 0.5rem 0rem;
+    &.status.correct {
+      color: var(--bright-green);
+    }
+    &.note {
+      font-size: 85%;
+      color: var(--bright-green);
+    }
+  }
+}
+
 #ctrl-backtick {
   padding: 2vh;
   font-size: 2.6vh;
@@ -154,7 +186,6 @@ div#splash2 {
   letter-spacing: 0.1em;
   text-transform: none;
   border-radius: 1vh;
-
   animation: fade 30s forwards;
 }
 

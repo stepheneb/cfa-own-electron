@@ -49,6 +49,7 @@ main.start = () => {
   Object.assign(app, main.setupNewApp(u.deepClone(data)));
   app.logger = true;
   router.addHashChangeListener();
+  setupWindowSizeListener();
   router.route();
 };
 
@@ -61,4 +62,35 @@ main.restart = () => {
   router.route();
 };
 
+function setupWindowSizeListener() {
+  let windowSizeElem = document.getElementById('window-size');
+  let status = document.querySelector('p.status');
+  let span = windowSizeElem.querySelector('span');
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  if (width != 1920 || height != 1080) {
+    updateWindowSize();
+  } else {
+    status.classList.remove('correct');
+  }
+
+  window.addEventListener('resize', updateWindowSize);
+
+  function updateWindowSize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    if (width == 1920 && height == 1080) {
+      status.classList.add('correct');
+    } else {
+      status.classList.remove('correct');
+    }
+    span.innerText = `${window.innerWidth} x ${window.innerHeight}`;
+    windowSizeElem.classList.remove('changing');
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        windowSizeElem.classList.add('changing');
+      });
+    });
+  }
+}
 export default main;
