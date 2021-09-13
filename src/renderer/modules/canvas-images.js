@@ -279,7 +279,7 @@ class CanvasImages {
     let arrowScale = 4;
     canvasUtils.canvasArrow(
       destinationCtx,
-      destinationLandingX - arrowScale * 8,
+      destinationLandingX - arrowScale * 7,
       destinationLandingY,
       destinationLandingX,
       destinationLandingY,

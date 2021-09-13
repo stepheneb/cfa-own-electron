@@ -32,10 +32,10 @@ canvasUtils.canvasArrow = (ctx, x1, y1, x2, y2, start, end, color, arrowScale) =
   ctx.moveTo(x1, y1);
   ctx.lineTo(lineX2, y2);
   ctx.stroke();
-  ctx.linecap = 'butt';
-  ctx.beginPath();
-  ctx.moveTo(lineX2, y1);
-  ctx.lineTo(lineX2 - arrowScale, y2);
+  // ctx.linecap = 'round';
+  // ctx.beginPath();
+  // ctx.moveTo(lineX2, y1);
+  // ctx.lineTo(lineX2 - arrowScale, y2);
   ctx.stroke();
   if (start) {
     canvasArrowHead(ctx, x1, y1, rot);
@@ -53,10 +53,10 @@ canvasUtils.canvasArrow = (ctx, x1, y1, x2, y2, start, end, color, arrowScale) =
     ctx.rotate(rot);
     // ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(-1.5 * arrowScale, -3 * arrowScale);
+    ctx.lineTo(-2.5 * arrowScale, -2.5 * arrowScale);
     ctx.stroke();
     ctx.moveTo(0, 0);
-    ctx.lineTo(1.5 * arrowScale, -3 * arrowScale);
+    ctx.lineTo(2.5 * arrowScale, -2.5 * arrowScale);
     ctx.stroke();
     // ctx.closePath();
     // ctx.fill();

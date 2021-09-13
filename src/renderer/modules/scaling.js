@@ -537,7 +537,7 @@ class Scaling {
 
     canvasUtils.canvasArrow(
       ctx,
-      landingX - arrowScale * 8,
+      landingX - arrowScale * 7,
       landingY,
       landingX,
       landingY,
