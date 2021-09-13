@@ -8,7 +8,7 @@
     "begin": "Touch to Begin"
   },
   "splash2": {
-    "title": "How are NASA's amazing images of space created?",
+    "title": "How are NASA’s amazing images of space created?",
     "intro1": "Try any challenge to select real data captured by NASA telescopes observing across the spectrum. Then make scientific or artistic choices to apply colors, manipulate the data, and email the results to yourself.",
     "intro2": "Capture your own real earth-based telescope image using a MicroObservatory Robotic Telescope tonight. Receive it by email tomorrow.",
     "continue": "Continue >"
@@ -58,9 +58,9 @@
         "image-source": "https://www.chandra.harvard.edu/graphics/resources/illustrations/deploy/deploy2-72l.jpg",
         "description": [
           "<p>",
-          "  NASA's Chandra X-ray Observatory is a telescope specially designed to detect X-ray emission",
+          "  NASA’s Chandra X-ray Observatory is a telescope specially designed to detect X-ray emission",
           "  from very hot regions of the Universe such as exploded stars, clusters of galaxies, and matter",
-          "  around black holes. Because <b>X-rays</b> are absorbed by Earth's atmosphere, Chandra must orbit",
+          "  around black holes. Because <b>X-rays</b> are absorbed by Earth’s atmosphere, Chandra must orbit",
           "  above it up to an altitude of 139,000 km (86,500 mi) in space.",
           "</p>",
           "<ul>",
@@ -166,7 +166,7 @@
           "<p>",
           "  The Juno spacecraft launched aboard an Atlas V-551 rocket from Cape Canaveral, Fla., on Aug. 5, 2011,",
           "  and will reach Jupiter in July 2016. The spacecraft will orbit Jupiter 32 times, skimming to  3,100 miles",
-          "  (5,000 kilometers) above the planet's cloud tops, for approximately one year.",
+          "  (5,000 kilometers) above the planet’s cloud tops, for approximately one year.",
           "</p>",
           "<ul>",
           "  <li>",
