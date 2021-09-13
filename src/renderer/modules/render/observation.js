@@ -68,7 +68,7 @@ observation.render = (page, registeredCallbacks) => {
               <div class="col-left d-flex flex-column justify-content-start">
                 <div class="salutation">Wait and See!</div>
                 <div class="about-your-image">
-                  We'll take your image of the <span class="image-name">${page.title}</span> tonight.
+                  We'll take your image of the <span class="image-name">${page.title}</span>.
                 </div>
                 <div class="context">
                   <p>${page.description}</p>
