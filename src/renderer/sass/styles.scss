@@ -928,6 +928,10 @@ div.zoom {
 }
 
 div.control-collection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   height: var(--main-image-height);
   max-height: var(--main-image-height);
   margin: 0;
@@ -956,7 +960,7 @@ div.control-collection {
   div.special-effects,
   div.adjust-layer,
   div.select-layer {
-    margin: 0.8vh 0vh 1.8vh 0vh;
+    margin: 1vh 0vh 0vh 0vh;
     padding: 0;
   }
   div.color-maps {
@@ -1542,7 +1546,7 @@ div.zoom-preview-content {
 
 div#preview-image-container {
   border: 2px solid var(--canvas-container-border-color);
-  margin: 1vh -1vh 2vh -1vh;
+  margin: 0vh -1vh 0vh -1vh;
 }
 
 div#preview-image-canvas-container {
@@ -1578,6 +1582,7 @@ div#preview-image-canvas-container {
 
 canvas#preview-palette {
   position: unset;
+  height: auto;
   display: block;
   border-top: 2px solid var(--canvas-container-border-color);
 }
