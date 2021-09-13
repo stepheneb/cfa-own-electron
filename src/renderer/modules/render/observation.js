@@ -79,8 +79,8 @@ observation.render = (page, registeredCallbacks) => {
                   ENTER EMAIL
                 </button>
               </div>
-              ${telescope()}
               ${image()}
+              ${telescope()}
             </div>
           </div>
         </div>
@@ -125,8 +125,8 @@ observation.render = (page, registeredCallbacks) => {
                 ${emailKeyboard.render(page, sendEmailFormId, registeredCallbacks)}
                 <div class="simple-keyboard"></div>
               </div>
-              ${telescope()}
               ${image()}
+              ${telescope()}
             </div>
           </div>
         </div>
@@ -160,8 +160,8 @@ observation.render = (page, registeredCallbacks) => {
                   We will send your image to <span id="your-email">yourname@website.com</span>
                 </div>
               </div>
-              ${telescope()}
               ${image()}
+              ${telescope()}
             </div>
           </div>
         </div>
