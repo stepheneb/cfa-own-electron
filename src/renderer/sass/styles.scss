@@ -13,6 +13,7 @@ html {
 
 :root {
   --main-image-height: 72vh;
+  --main-image-height-plus-bottom-border: 72.4vh;
 
   /* colors */
   --toggle-fullscreen: rgba(80, 80, 80, 128);
@@ -751,7 +752,7 @@ header.menu-activity-page-title {
 .col-right-content {
   flex: 0 0 auto;
   width: 13%;
-  height: var(--main-image-height);
+  height: var(--main-image-height-plus-bottom-border);
 }
 
 .activity-page-menu > .row {
@@ -933,8 +934,8 @@ div.control-collection {
   justify-content: space-between;
   margin: 0;
   padding: 2vh 1vh 1.5vh 1vh;
-  height: var(--main-image-height);
-  max-height: var(--main-image-height);
+  height: var(--main-image-height-plus-bottom-border);
+  max-height: var(--main-image-height-plus-bottom-border);
   background-color: var(--darker-blue);
   box-shadow: inset 6px 6px 24px var(--medium-blue-rgba),
     inset -6px -6px 24px var(--medium-blue-rgba);
