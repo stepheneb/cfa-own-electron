@@ -931,16 +931,15 @@ div.control-collection {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  margin: 0;
+  padding: 2vh 1vh 1.5vh 1vh;
   height: var(--main-image-height);
   max-height: var(--main-image-height);
-  margin: 0;
-  padding: 1vh 1vh 1vh 1vh;
   background-color: var(--darker-blue);
   box-shadow: inset 6px 6px 24px var(--medium-blue-rgba),
     inset -6px -6px 24px var(--medium-blue-rgba);
   div.find-apollo {
-    margin: 1vh -1vh 4vh -1vh;
+    margin: 1.5vh -1vh 4vh -1vh;
     height: 22vh;
     background-color: var(--almost-black);
     border: 2px solid var(--canvas-container-border-color);
@@ -960,7 +959,7 @@ div.control-collection {
   div.special-effects,
   div.adjust-layer,
   div.select-layer {
-    margin: 1vh 0vh 0vh 0vh;
+    margin: 0;
     padding: 0;
   }
   div.color-maps {
@@ -1115,6 +1114,9 @@ div.control-collection {
       justify-content: flex-start;
       margin-left: 1vh;
       margin-bottom: 1.6rem;
+      &:last-of-type {
+        margin-bottom: 0.5rem;
+      }
 
       label {
         font-size: 1.9vh;
@@ -1546,7 +1548,7 @@ div.zoom-preview-content {
 
 div#preview-image-container {
   border: 2px solid var(--canvas-container-border-color);
-  margin: 0vh -1vh 0vh -1vh;
+  margin: 0vh -1vh 1vh -1vh;
 }
 
 div#preview-image-canvas-container {
