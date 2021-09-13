@@ -735,7 +735,7 @@ class Page {
     html += `
       <div class='under-main-layer-controls masterpiece'>
         <div class="subtitle notice">
-          <span class="solid-right-arrow">&#11157</span> Pinch to zoom or pan or use the buttons
+          <span class="solid-right-arrow">&#11157</span> Pinch to zoom and pan or use the buttons
         </div>
         ${this.renderZoomSlider(this.registeredCallbacks)}
       </div>
