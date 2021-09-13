@@ -1843,9 +1843,11 @@ body:not(.dev) #btn-toggle-developer-tools-page-navigation {
 #observation-send-email-button {
   font-size: var(--save-and-send-context);
   color: var(--bright-green);
-  border-color: var(--bright-green);
+  border: 2px solid var(--bright-green);
+  border-radius: 4px;
   margin-top: 1vh;
   margin-left: 3vw;
+  padding: 1.5vh 2.2vw;
 }
 
 div.modal.observation .modal-body,
