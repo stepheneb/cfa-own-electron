@@ -1965,7 +1965,7 @@
       "type": "multi-wave",
       "titlemainmenu": "Reveal an<br>Image using “Invisible Light”",
       "title": "Reveal an Image using “Invisible Light”",
-      "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
+      "subtitle": "Reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
       "menuimage": "images/menu-invisible-light.jpg",
       "action": "Choose a Celestial Object",
       "pages": [
