@@ -207,26 +207,26 @@ div#splash2 {
 
 #splash2-content {
   position: fixed;
-  height: 40vh;
+  height: 37vh;
   background-color: var(--translucent-gray);
   width: 100%;
   left: 0;
   top: 28vh;
-  padding: 10vh 10vw;
+  padding: 10vh 6.5vw;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 
   .title {
-    font-size: 4vh;
+    font-size: 5vh;
     line-height: 1.2em;
-    width: 28vw;
+    width: 27vw;
     color: var(--bright-green);
     text-transform: uppercase;
     margin: 0 2vw;
   }
   .intro {
-    font-size: 2.5vh;
+    font-size: 2.7vh;
     line-height: 1.1em;
     width: 50vw;
     color: lightgray;
