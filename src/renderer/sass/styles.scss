@@ -315,7 +315,7 @@ div.category {
   &.selected {
     max-height: 20vh;
     overflow: hidden;
-    border: 2px solid var(--category-selected-border);
+    border: 3px solid var(--category-selected-border);
     border-radius: 4px;
   }
 
@@ -398,7 +398,7 @@ header.menu-activity-category-title {
 #menu-connnect-line {
   display: none;
   stroke: var(--category-selected-border);
-  stroke-width: 2px;
+  stroke-width: 3px;
   &.show {
     display: inline;
   }
