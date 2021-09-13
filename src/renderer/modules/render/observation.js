@@ -58,7 +58,7 @@ observation.render = (page, registeredCallbacks) => {
       <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="${modalId1}-title">${page.category.title2}</h5>
+            <h5 class="modal-title" id="${modalId1}-title">${page.category.title}</h5>
             <button id="${modalId1}-button" type="button" class="btn-close" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -91,7 +91,7 @@ observation.render = (page, registeredCallbacks) => {
       <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="${modalId2}-title">${page.category.title2}</h5>
+            <h5 class="modal-title" id="${modalId2}-title">${page.category.title}</h5>
             <button id="${modalId2}-button" type="button" class="btn-close" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -138,7 +138,7 @@ observation.render = (page, registeredCallbacks) => {
       <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="${modalId3}-title">${page.category.title2}</h5>
+            <h5 class="modal-title" id="${modalId3}-title">${page.category.title}</h5>
             <button id="${modalId3}-button" type="button" class="btn-close" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>

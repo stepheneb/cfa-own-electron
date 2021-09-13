@@ -2203,7 +2203,6 @@
       "type": "observation",
       "titlemainmenu": "Take Your Own Telescope Image",
       "title": "Take Your Own Telescope Image",
-      "title2": "Take Your Image Tonight",
       "subtitle": "Request your own telescope observation and have the image emailed to you.",
       "menuimage": "images/menu-observation.jpg",
       "action": "Choose a target",
