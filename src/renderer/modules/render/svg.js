@@ -16,4 +16,28 @@ svg.minusIcon = `
   </svg>
 `;
 
+svg.panArrowUp = `
+  <svg id="pan-arrow-up" class="pan-arrow up bi-caret-up" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+  </svg>
+`;
+
+svg.panArrowDown = `
+  <svg id="pan-arrow-down" class="pan-arrow down bi bi-caret-down" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+  </svg>
+`;
+
+svg.panArrowLeft = `
+  <svg id="pan-arrow-left" class="pan-arrow left bi-caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
+  </svg>
+`;
+
+svg.panArrowRight = `
+  <svg id="pan-arrow-right" class="pan-arrow right bi-caret-right" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+  </svg>
+`;
+
 export default svg;

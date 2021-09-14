@@ -2,10 +2,12 @@
 /*global app  */
 
 import canvasUtils from './canvasUtils.js';
+import svg from './render/svg.js';
 
 class Scaling {
-  constructor(scalingCanvas, sourceImageBitmap, previewZoomCanvas, findApolloSiteContainerId, sourceCtx, landing) {
+  constructor(scalingCanvas, panArrowLayer, sourceImageBitmap, previewZoomCanvas, findApolloSiteContainerId, sourceCtx, landing) {
     this.scalingCanvas = scalingCanvas;
+    this.panArrowLayer = panArrowLayer;
     this.findApolloSiteContainerId = findApolloSiteContainerId;
     this.mainCanvasWrapper = document.getElementById('main-canvas-wrapper');
     this.sourceCtx = sourceCtx;
@@ -166,6 +168,7 @@ class Scaling {
       this.hideTouchTooltip();
     }
 
+    this.setupPanArrowLayer();
     // Startup ...
 
     if (this.findApolloSiteContainerId) {
@@ -200,6 +203,12 @@ class Scaling {
       this.scalingCanvas.addEventListener(eventItem[0], eventItem[1]);
     });
 
+    this.panArrowEvents = [];
+
+    this.panArrowEvents.forEach((eventItem) => {
+      this.panArrowLayer.addEventListener(eventItem[0], eventItem[1]);
+    });
+
     this.previewZoomEvents = [
       ['mousedown', this.previewZoomListenerMouseDownTouchStart],
       ['touchstart', this.previewZoomListenerMouseDownTouchStart],
@@ -232,6 +241,17 @@ class Scaling {
       this.handleResize();
     });
 
+  }
+
+  setupPanArrowLayer() {
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowUp);
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowRight);
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowDown);
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowLeft);
+    this.panArrowUp = document.getElementById('pan-arrow-up');
+    this.panArrowDown = document.getElementById('pan-arrow-down');
+    this.panArrowRight = document.getElementById('pan-arrow-right');
+    this.panArrowLeft = document.getElementById('pan-arrow-left');
   }
 
   handleResize() {
@@ -317,6 +337,7 @@ class Scaling {
 
   finishScaleCanvas() {
     this.updateZoomButtons();
+    this.updatePanArrows();
     this.queueCanvasDraw();
   }
 
@@ -635,6 +656,36 @@ class Scaling {
         this.zoomOutButton.disabled = true;
         this.zoomResetButton.disabled = true;
       }
+    }
+  }
+
+  updatePanArrows() {
+    let panArrows = this.panArrowLayer.querySelectorAll('.pan-arrow');
+    if (this.scale == this.minScale) {
+      hidePanArrows();
+    } else {
+      showPanArrows();
+      // this.panArrowUp.classList.add('show');
+      // this.panArrowDown.classList.add('show');
+    }
+    if (this.scalingCanvas.width >= this.mainCanvasWrapper.parentElement.clientWidth) {
+      this.panArrowLeft.classList.remove('disabled');
+      this.panArrowRight.classList.remove('disabled');
+    } else {
+      this.panArrowLeft.classList.add('disabled');
+      this.panArrowRight.classList.add('disabled');
+    }
+
+    function hidePanArrows() {
+      panArrows.forEach((arrow) => {
+        arrow.classList.remove('show');
+      });
+    }
+
+    function showPanArrows() {
+      panArrows.forEach((arrow) => {
+        arrow.classList.add('show');
+      });
     }
   }
 

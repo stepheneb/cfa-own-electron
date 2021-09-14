@@ -293,13 +293,19 @@ class CanvasImages {
   addScalingLayer(previewZoomCanvas, findApolloSiteContainerId) {
     let sourceCtx = this.canvasRGB.getContext('2d');
     canvasUtils.createImageBitmapFromCtx(sourceCtx, 0, 0, this.nx, this.ny, (imageBitmap) => {
-      let c = document.createElement("canvas");
-      c.id = 'scaling-image-canvas';
-      c.classList = 'scaling-image-canvas';
-      this.initializeCanvas(c);
-      this.mainCanvasWrapper.append(c);
-      this.scalingCanvas = c;
-      this.scaling = new Scaling(c, imageBitmap, previewZoomCanvas, findApolloSiteContainerId, sourceCtx, this.image.landing);
+      let canvas = document.createElement("canvas");
+      canvas.id = 'scaling-image-canvas';
+      canvas.classList = 'scaling-image-canvas';
+      this.initializeCanvas(canvas);
+      this.mainCanvasWrapper.append(canvas);
+      this.scalingCanvas = canvas;
+
+      let panArrowLayer = document.createElement("div");
+      panArrowLayer.id = 'pan-arrow-layer';
+      canvas.classList = 'pan-arrow-layer';
+      this.mainCanvasWrapper.parentElement.append(panArrowLayer);
+      this.panArrowLayer = panArrowLayer;
+      this.scaling = new Scaling(canvas, panArrowLayer, imageBitmap, previewZoomCanvas, findApolloSiteContainerId, sourceCtx, this.image.landing);
       this.scalingCallbacks.forEach((callback) => {
         let [type, func] = callback;
         if (typeof func == 'function') {
