@@ -1,2 +1,2 @@
-(()=>{var e={933:e=>{"use strict";e.exports=require("electron")}},r={};function o(t){var n=r[t];if(void 0!==n)return n.exports;var i=r[t]={exports:{}};return e[t](i,i.exports,o),i.exports}(()=>{const{ipcRenderer:e,contextBridge:r}=o(933);r.exposeInMainWorld("ELECTRON",!0),r.exposeInMainWorld("ipcRenderer",e)})()})();
+(()=>{var e={298:e=>{"use strict";e.exports=require("electron")}},r={};function o(t){var n=r[t];if(void 0!==n)return n.exports;var i=r[t]={exports:{}};return e[t](i,i.exports,o),i.exports}(()=>{const{ipcRenderer:e,contextBridge:r}=o(298);r.exposeInMainWorld("ELECTRON",!0),r.exposeInMainWorld("ipcRenderer",e)})()})();
 //# sourceMappingURL=preload.js.map
