@@ -442,7 +442,7 @@ div {
     }
 
     .header {
-      max-width: 30vw;
+      max-width: 32vw;
     }
 
     svg {
@@ -477,6 +477,8 @@ div {
 
     .body {
       display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       height: 26vh;
     }
 
@@ -518,13 +520,19 @@ div {
     }
 
     .image-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
       height: 80%;
       width: 100%;
       border: 1px solid var(--bright-green);
       border-radius: 4px;
       background-color: black;
+      // margin: 10px;
+      // box-shadow: 0px 0px 10px 10px #30e530;
       img {
-        padding: 2px;
+        padding: 1px;
         height: 100%;
         width: 100%;
         object-fit: cover;
