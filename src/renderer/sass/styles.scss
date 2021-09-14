@@ -978,17 +978,74 @@ div.control-collection {
     }
   }
   div.special-effects {
-    form > .row {
-      margin: 1.5vh 1vh;
+    form > .special-effects-row {
+      margin: 0.5vh 0.5vw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
       max-height: 4vh;
     }
-    input {
-      margin: 0vh 0vh 0vh 0vh;
-      padding: 0;
-    }
-    label {
-      font-size: var(--control-subtitle);
-      padding-left: 0.5vh;
+    .effect {
+      &.c-custom-checkbox {
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        width: 6.8vw;
+
+        --checked-state-bg-color: hsl(350, 95%, 58%);
+        --checked-state-check-color: #fff;
+        --outline-color: var(--checked-state-bg-color);
+        --outline-offset: 2px;
+        svg {
+          /* set SVG dimensions in ems; i.e. relative to the font size so that it scales with the size of the font. */
+          width: 2.2em;
+          height: 2.2em;
+          margin: 0;
+          padding: 0em 0.2em;
+          align-self: center;
+          margin-right: 0.25em;
+          stroke: var(--bright-teal);
+          * {
+            transition: all 0.1s linear;
+          }
+        }
+        input[type="checkbox"] + svg > circle.selected {
+          opactity: 0.0001;
+        }
+
+        input[type="checkbox"]:checked + svg > circle.selected {
+          display: inline;
+        }
+
+        input[type="checkbox"]:not(:checked) + svg > circle.selected {
+          display: none;
+        }
+
+        // input[type="checkbox"]:focus + svg {
+        //   outline: 3px solid var(--outline-color);
+        //   outline-offset: var(--outline-offset);
+        // }
+        //
+        // input[type="checkbox"]:focus:not(:focus-visible) + svg {
+        //   outline: none;
+        // }
+
+        input[type="checkbox"] {
+          position: absolute;
+          /* set same dimensions as the SVG */
+          width: 21vw;
+          height: 2.4em;
+          /* hide it */
+          opacity: 0.00001;
+        }
+
+        label {
+          font-size: 1.7vh;
+          font-weight: 500;
+        }
+      }
     }
   }
   div.select-layer {

@@ -13,20 +13,24 @@ specialEffects.render = (page, registeredCallbacks) => {
   let getName = key => filters[key].name;
 
   let keys = Object.keys(filters);
-  let rowCount = 2;
+  let rowCount = 3;
   let filterRows = keys.reduce((all, one, i) => {
     const ch = Math.floor(i / rowCount);
     all[ch] = [].concat((all[ch] || []), one);
     return all;
   }, []);
   filterRows.forEach(row => {
-    effectsHtml += '<div class="row special-effects">';
+    effectsHtml += '<div class="special-effects-row">';
     row.forEach(key => {
       id = getId(key);
       name = getName(key);
       effectsHtml += `
-        <div id='${id}' class="effect col-6 d-flex align-items-center" data-effect="${key}">
+        <div id='${id}' class="effect c-custom-checkbox" data-effect="${key}">
           <input type='checkbox' name='select-effect' value='${id}'>
+          <svg width="36" height="36" viewBox="-10 -8 40 40" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r='16' fill="none" stroke-width="3" />
+            <circle class='selected' cx="12" cy="12" r='8' fill="white" stroke-width="0" />
+          </svg>
           <label for='${id}'>${name}</label>
         </div>
       `;
@@ -34,7 +38,7 @@ specialEffects.render = (page, registeredCallbacks) => {
     effectsHtml += '</div>';
   });
   let html = `
-    <div class='special-effects'>
+    <div class='special-effects c-custom-checkbox'>
       <div class='title'>Special Effects</div>
       <div class='subtitle notice'>
         <span class="solid-right-arrow">&#11157</span>Try an effect to enhance your image
