@@ -915,9 +915,10 @@ class Scaling {
   }
 
   listenerPanArrowMouseTouchEnd(e) {
-    e.preventDefault();
-    this.panning = 'idle';
-    console.log(`panArrow idle`);
+    if (this.panning == 'panning') {
+      e.preventDefault();
+      this.panning = 'idle';
+    }
   }
 
   listenerPanArrowMouseDownTouchStart(e) {
