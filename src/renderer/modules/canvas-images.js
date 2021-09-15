@@ -302,7 +302,7 @@ class CanvasImages {
 
       let panArrowLayer = document.createElement("div");
       panArrowLayer.id = 'pan-arrow-layer';
-      canvas.classList = 'pan-arrow-layer';
+      panArrowLayer.classList = 'pan-arrow-layer';
       this.mainCanvasWrapper.parentElement.append(panArrowLayer);
       this.panArrowLayer = panArrowLayer;
       this.scaling = new Scaling(canvas, panArrowLayer, imageBitmap, previewZoomCanvas, findApolloSiteContainerId, sourceCtx, this.image.landing);

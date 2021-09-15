@@ -58,6 +58,9 @@ class Scaling {
     this.wheeling = "idle";
     this.wheelingTimeOut = null;
 
+    this.panning = "idle";
+    this.panningTimeOut = null;
+
     this.bindCallbacks();
     this.setupButtons();
     this.touchinfo = document.querySelector('span.touchinfo');
@@ -137,7 +140,9 @@ class Scaling {
       'previewZoomListenerMouseDownTouchStart',
       'previewZoomListenerMouseMoveTouchMove',
       'previewZoomListenerMouseLeave',
-      'previewZoomListenerMouseUpTouchEnd'
+      'previewZoomListenerMouseUpTouchEnd',
+      'listenerPanArrowMouseDownTouchStart',
+      'listenerPanArrowMouseTouchEnd'
     ].forEach(method => {
       this[method] = this[method].bind(this);
     });
@@ -205,7 +210,13 @@ class Scaling {
       this.scalingCanvas.addEventListener(eventItem[0], eventItem[1]);
     });
 
-    this.panArrowEvents = [];
+    this.panArrowEvents = [
+      ['mousedown', this.listenerPanArrowMouseDownTouchStart],
+      ['touchstart', this.listenerPanArrowMouseDownTouchStart],
+      ['mouseup', this.listenerPanArrowMouseTouchEnd],
+      ['mouseleave', this.listenerPanArrowMouseTouchEnd],
+      ['touchend', this.listenerPanArrowMouseTouchEnd],
+    ];
 
     this.panArrowEvents.forEach((eventItem) => {
       this.panArrowLayer.addEventListener(eventItem[0], eventItem[1]);
@@ -271,6 +282,10 @@ class Scaling {
   close() {
     this.mainEvents.forEach((eventItem) => {
       this.scalingCanvas.removeEventListener(eventItem[0], eventItem[1]);
+    });
+
+    this.panArrowEvents.forEach((eventItem) => {
+      this.panArrowLayer.removeEventListener(eventItem[0], eventItem[1]);
     });
 
     if (this.previewZoomCanvas) {
@@ -339,7 +354,6 @@ class Scaling {
 
   finishScaleCanvas() {
     this.updateZoomButtons();
-    this.updatePanArrows();
     this.queueCanvasDraw();
   }
 
@@ -372,8 +386,8 @@ class Scaling {
     this.offsetX = (this.imageWidth - this.scalingCanvas.width) / 2.01;
     this.offsetY = (this.imageHeight - this.scalingCanvas.height) / 2.01;
 
-    let minMoveX = -(this.imageWidth - this.offsetX - this.w);
-    let minMoveY = -(this.imageHeight - this.offsetY - this.h);
+    this.minMoveX = -(this.imageWidth - this.offsetX - this.w);
+    this.minMoveY = -(this.imageHeight - this.offsetY - this.h);
 
     if (this.previousImageWidth > 0 && this.previousImageWidth != this.imageWidth) {
       this.moveX *= 1 + (this.imageWidth / this.previousImageWidth - 1);
@@ -389,18 +403,73 @@ class Scaling {
     }
 
     this.moveX = Math.min(this.moveX, this.offsetX);
-    this.moveX = Math.max(this.moveX, minMoveX);
+    this.moveX = Math.max(this.moveX, this.minMoveX);
 
     this.moveY = Math.min(this.moveY, this.offsetY);
-    this.moveY = Math.max(this.moveY, minMoveY);
+    this.moveY = Math.max(this.moveY, this.minMoveY);
 
     this.dx = -this.offsetX + this.moveX;
     this.dy = -this.offsetY + this.moveY;
   }
 
+  updatePanArrows() {
+    let panArrows = this.panArrowLayer.querySelectorAll('.pan-arrow');
+    if (this.scale == this.minScale) {
+      hidePanArrows();
+    } else {
+      showPanArrows();
+      // this.panArrowUp.classList.add('show');
+      // this.panArrowDown.classList.add('show');
+    }
+    if (this.scalingCanvas.width >= this.mainCanvasWrapper.parentElement.clientWidth) {
+      this.panArrowLeft.classList.remove('disabled');
+      this.panArrowRight.classList.remove('disabled');
+    } else {
+      this.panArrowLeft.classList.add('disabled');
+      this.panArrowRight.classList.add('disabled');
+    }
+
+    if (this.moveX >= this.offsetX) {
+      this.panArrowLeft.classList.add('disabled');
+    } else {
+      this.panArrowLeft.classList.remove('disabled');
+    }
+
+    if (this.moveX <= this.minMoveX) {
+      this.panArrowRight.classList.add('disabled');
+    } else {
+      this.panArrowRight.classList.remove('disabled');
+    }
+
+    if (this.moveY >= this.offsetY) {
+      this.panArrowUp.classList.add('disabled');
+    } else {
+      this.panArrowUp.classList.remove('disabled');
+    }
+
+    if (this.moveY <= this.minMoveY) {
+      this.panArrowDown.classList.add('disabled');
+    } else {
+      this.panArrowDown.classList.remove('disabled');
+    }
+
+    function hidePanArrows() {
+      panArrows.forEach((arrow) => {
+        arrow.classList.remove('show');
+      });
+    }
+
+    function showPanArrows() {
+      panArrows.forEach((arrow) => {
+        arrow.classList.add('show');
+      });
+    }
+  }
+
   scalingCanvasDraw() {
     this.checkIfMatchingApolloSiteScale();
     this.calcMainWidthsHeightsLimitMoves();
+    this.updatePanArrows();
     // console.log(`scalingCanvasDraw: move: ${this.moveX}, ${this.moveY}, offset: ${this.offsetX}, ${this.offsetY}`);
     this.ctx.drawImage(
       this.sourceImageBitmap,
@@ -661,36 +730,6 @@ class Scaling {
     }
   }
 
-  updatePanArrows() {
-    let panArrows = this.panArrowLayer.querySelectorAll('.pan-arrow');
-    if (this.scale == this.minScale) {
-      hidePanArrows();
-    } else {
-      showPanArrows();
-      // this.panArrowUp.classList.add('show');
-      // this.panArrowDown.classList.add('show');
-    }
-    if (this.scalingCanvas.width >= this.mainCanvasWrapper.parentElement.clientWidth) {
-      this.panArrowLeft.classList.remove('disabled');
-      this.panArrowRight.classList.remove('disabled');
-    } else {
-      this.panArrowLeft.classList.add('disabled');
-      this.panArrowRight.classList.add('disabled');
-    }
-
-    function hidePanArrows() {
-      panArrows.forEach((arrow) => {
-        arrow.classList.remove('show');
-      });
-    }
-
-    function showPanArrows() {
-      panArrows.forEach((arrow) => {
-        arrow.classList.add('show');
-      });
-    }
-  }
-
   /// Event Handling ...
 
   removePointerEvent(e) {
@@ -845,6 +884,7 @@ class Scaling {
           }
           break;
         }
+
         // console.log(`pan dx, dy: ${dx}, ${dy}`);
         dx = Math.sign(dx) * Math.min(24, Math.abs(dx));
         dy = Math.sign(dy) * Math.min(24, Math.abs(dy));
@@ -867,6 +907,75 @@ class Scaling {
 
       }
     }
+  }
+
+  listenerPanArrowMouseTouchEnd(e) {
+    e.preventDefault();
+    clearInterval(this.panningInterval);
+    this.processPan(this.panArrowStep / 2);
+    this.panning = 'idle';
+    console.log(`panArrow end`);
+  }
+
+  listenerPanArrowMouseDownTouchStart(e) {
+    e.preventDefault();
+    this.panArrowStep = 4;
+    let arrow = e.target;
+    this.panArrowDirection = arrow.dataset.direction;
+
+    this.processPan(this.panArrowStep / 2);
+    // and start an interval to run processPan until
+    // mouseup, mouseleave, or touchend
+    this.panningInterval = setInterval(() => {
+      this.processPan(this.panArrowStep);
+    }, 30);
+  }
+
+  processPan(delta) {
+    let dx = 0,
+      dy = 0;
+    this.lastMove = {
+      x: this.moveX,
+      y: this.moveY
+    };
+    this.lastPreviewZoomMove = {
+      x: this.previewZoomMoveX,
+      y: this.previewZoomMoveY
+    };
+
+    console.log(this.panArrowDirection);
+    switch (this.panArrowDirection) {
+    case 'up':
+      dy = delta;
+      break;
+    case 'down':
+      dy = -delta;
+      break;
+    case 'right':
+      dx = -delta;
+      break;
+    case 'left':
+      dx = delta;
+      break;
+    }
+
+    // console.log(`pan dx, dy: ${dx}, ${dy}`);
+    dx = Math.sign(dx) * Math.min(24, Math.abs(dx));
+    dy = Math.sign(dy) * Math.min(24, Math.abs(dy));
+
+    dx = this.dxOld + (dx - this.dxOld * 0.5);
+    dy = this.dyOld + (dy - this.dyOld * 0.5);
+
+    this.moveX += dx;
+    this.moveY += dy;
+    this.dxOld = dx;
+    this.dxOld = dx;
+
+    this.queueCanvasDraw();
+    // this.redraw = requestAnimationFrame(this.scalingCanvasDraw);
+
+    this.previewZoomMoveX = this.applyScaleToMoveX(this.moveX);
+    this.previewZoomMoveY = this.applyScaleToMoveX(this.moveY);
   }
 
   /*
