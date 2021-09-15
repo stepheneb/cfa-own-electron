@@ -422,35 +422,40 @@ class Scaling {
       // this.panArrowDown.classList.add('show');
     }
     if (this.scalingCanvas.width >= this.mainCanvasWrapper.parentElement.clientWidth) {
-      this.panArrowLeft.classList.remove('disabled');
-      this.panArrowRight.classList.remove('disabled');
+      checkLeftRight(this);
     } else {
       this.panArrowLeft.classList.add('disabled');
       this.panArrowRight.classList.add('disabled');
     }
 
-    if (this.moveX >= this.offsetX) {
-      this.panArrowLeft.classList.add('disabled');
-    } else {
-      this.panArrowLeft.classList.remove('disabled');
+    checkUpDown(this);
+
+    function checkUpDown(scaling) {
+      if (scaling.moveY >= scaling.offsetY) {
+        scaling.panArrowUp.classList.add('disabled');
+      } else {
+        scaling.panArrowUp.classList.remove('disabled');
+      }
+
+      if (scaling.moveY <= scaling.minMoveY) {
+        scaling.panArrowDown.classList.add('disabled');
+      } else {
+        scaling.panArrowDown.classList.remove('disabled');
+      }
     }
 
-    if (this.moveX <= this.minMoveX) {
-      this.panArrowRight.classList.add('disabled');
-    } else {
-      this.panArrowRight.classList.remove('disabled');
-    }
+    function checkLeftRight(scaling) {
+      if (scaling.moveX >= scaling.offsetX) {
+        scaling.panArrowLeft.classList.add('disabled');
+      } else {
+        scaling.panArrowLeft.classList.remove('disabled');
+      }
 
-    if (this.moveY >= this.offsetY) {
-      this.panArrowUp.classList.add('disabled');
-    } else {
-      this.panArrowUp.classList.remove('disabled');
-    }
-
-    if (this.moveY <= this.minMoveY) {
-      this.panArrowDown.classList.add('disabled');
-    } else {
-      this.panArrowDown.classList.remove('disabled');
+      if (scaling.moveX <= scaling.minMoveX) {
+        scaling.panArrowRight.classList.add('disabled');
+      } else {
+        scaling.panArrowRight.classList.remove('disabled');
+      }
     }
 
     function hidePanArrows() {
@@ -911,23 +916,35 @@ class Scaling {
 
   listenerPanArrowMouseTouchEnd(e) {
     e.preventDefault();
-    clearInterval(this.panningInterval);
-    this.processPan(this.panArrowStep / 2);
     this.panning = 'idle';
-    console.log(`panArrow end`);
+    console.log(`panArrow idle`);
   }
 
   listenerPanArrowMouseDownTouchStart(e) {
     e.preventDefault();
-    this.panArrowStep = 4;
+    this.maxPanArrowStep = 5;
+    this.currentPanArrowStep = 1;
     let arrow = e.target;
     this.panArrowDirection = arrow.dataset.direction;
-
-    this.processPan(this.panArrowStep / 2);
+    this.panning = 'panning';
     // and start an interval to run processPan until
     // mouseup, mouseleave, or touchend
     this.panningInterval = setInterval(() => {
-      this.processPan(this.panArrowStep);
+      if (this.panning == 'panning') {
+        this.processPan(this.currentPanArrowStep);
+        if (this.currentPanArrowStep < this.maxPanArrowStep) {
+          ++this.currentPanArrowStep;
+        }
+      } else {
+        if (this.currentPanArrowStep > 0) {
+          --this.currentPanArrowStep;
+          if (this.currentPanArrowStep == 0) {
+            clearInterval(this.panningInterval);
+          } else {
+            this.processPan(this.currentPanArrowStep);
+          }
+        }
+      }
     }, 30);
   }
 
