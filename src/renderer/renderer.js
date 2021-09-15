@@ -31,6 +31,8 @@
 
 import u from './modules/utilities';
 
+import 'platform';
+
 import 'bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 

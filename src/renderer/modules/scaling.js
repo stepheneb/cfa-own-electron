@@ -4,6 +4,8 @@
 import canvasUtils from './canvasUtils.js';
 import svg from './render/svg.js';
 
+const platform = require('platform');
+
 class Scaling {
   constructor(scalingCanvas, panArrowLayer, sourceImageBitmap, previewZoomCanvas, findApolloSiteContainerId, sourceCtx, landing) {
     this.scalingCanvas = scalingCanvas;
@@ -782,7 +784,7 @@ class Scaling {
       if (e.ctrlKey) {
         // zoom
         dy = e.deltaY;
-        if (window.ui.os == 'Windows' && (window.ui.browser == 'Chrome' || window.ui.browser == 'Edge')) {
+        if (platform.os.family == 'Windows' && (platform.name == 'Chrome' || platform.name == 'Edge')) {
           dy /= 20;
         }
         this.scaling = true;
@@ -798,9 +800,9 @@ class Scaling {
         // pan
         this.scaling = false;
 
-        switch (window.ui.os) {
+        switch (platform.os.family) {
         case 'Windows':
-          switch (window.ui.browser) {
+          switch (platform.name) {
           case 'Edge':
             dx = e.deltaX * 0.25;
             dy = e.deltaY * 0.25;
@@ -818,8 +820,8 @@ class Scaling {
             break;
           }
           break;
-        case 'Mac OS X':
-          switch (window.ui.browser) {
+        case 'OS X':
+          switch (platform.name) {
           case 'Chrome':
             dx = e.deltaX;
             dy = e.deltaY;
@@ -831,7 +833,7 @@ class Scaling {
           }
           break;
         case 'Linux':
-          switch (window.ui.browser) {
+          switch (platform.name) {
           case 'Chrome':
             dx = e.deltaX;
             dy = e.deltaY;
