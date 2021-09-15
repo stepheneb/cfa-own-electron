@@ -258,12 +258,13 @@ class CanvasImages {
     let clientHeight = newHeight;
     let scale_x = clientWidth / this.mainContainer.clientWidth;
     scale_x *= 0.85;
-    // let scale_y = clientHeight / this.mainContainer.clientHeight;
+    let scale_y = clientHeight / this.mainContainer.clientHeight;
+    scale_y *= 0.85;
 
-    let dx = -(sourceLandingX * scale_x - clientWidth / 2);
-    let dy = -(sourceLandingY * scale_x - clientHeight / 2);
+    let dx = -(sourceLandingX * scale_x - clientWidth / 2.5);
+    let dy = -(sourceLandingY * scale_y - clientHeight / 2);
     let dWidth = this.nx * scale_x;
-    let dHeight = this.ny * scale_x;
+    let dHeight = this.ny * scale_y;
     destinationCtx.drawImage(this.canvasRGB, dx, dy, dWidth, dHeight);
 
     // destinationCtx.strokeStyle = 'rgba(255, 255, 255, 0.75)';
@@ -273,7 +274,7 @@ class CanvasImages {
     // destinationCtx.arc(clientWidth / 2, clientHeight / 2, clientWidth / 30, 0, 2 * Math.PI);
     // destinationCtx.stroke();
 
-    let destinationLandingX = clientWidth / 2;
+    let destinationLandingX = clientWidth / 2.5;
     let destinationLandingY = clientHeight / 2;
     let color = 'rgba(243, 60, 143, 1.0)';
     let arrowScale = 4;
