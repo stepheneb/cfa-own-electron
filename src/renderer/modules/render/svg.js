@@ -16,6 +16,20 @@ svg.minusIcon = `
   </svg>
 `;
 
+svg.stepNext = `
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
+    <rect x="31" y="17" width="3" height="16"/>
+    <polygon points="27,25 15,17 15,33 "/>
+  </svg>
+`;
+
+svg.stepBack = `
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
+    <rect x="15" y="17" width="3" height="16"/>
+    <polygon points="22,25 34,33 34,17 "/>
+  </svg>
+`;
+
 svg.panArrowUp = `
   <svg id="pan-arrow-up" class="pan-arrow up" data-direction="up" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
    <polygon transform="rotate(0, 25, 25)" points="33.82,31.84 25.42,23.44 17.03,31.84 14.2,29.01 25.42,17.79 36.65,29.01"/>

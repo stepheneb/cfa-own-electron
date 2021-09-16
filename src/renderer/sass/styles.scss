@@ -1597,6 +1597,14 @@ div.telescope-container {
   .animate-control {
     color: var(--green);
     padding: 0.1rem 0.5rem;
+
+    svg {
+      color: var(--bright-green);
+      fill: currentColor;
+      width: 54px;
+      height: 54px;
+    }
+
     .label {
       font-size: 55%;
       text-transform: uppercase;

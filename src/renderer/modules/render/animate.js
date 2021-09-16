@@ -4,6 +4,8 @@
 // Animate Images Over Time
 //
 
+import svg from './svg.js';
+
 let animate = {};
 
 animate.render = (page, registeredCallbacks) => {
@@ -48,7 +50,7 @@ animate.render = (page, registeredCallbacks) => {
 
         <div type="button" id="${stepBackId}" class="animate-control step back unselectable d-flex flex-row align-items-center">
           <div class="label">back</div>
-          <div class="bi bi-skip-start-fill"></div>
+          <div>${svg.stepBack}</div>
         </div>
 
         <div id="${playId}" class="animate-control playpause unselectable">
@@ -59,8 +61,8 @@ animate.render = (page, registeredCallbacks) => {
           <i class="bi bi-pause-circle"></i>
         </div>
 
-        <div id="${stepForwardId}"  type="button" class="animate-control animate-control step next unselectable d-flex flex-row align-items-center">
-          <div class="bi bi-skip-end-fill"></div>
+        <div id="${stepForwardId}"  type="button" class="animate-control step next unselectable d-flex flex-row align-items-center">
+          <div>${svg.stepNext}</div>
           <div class="label">next</div>
         </div>
       </div>
