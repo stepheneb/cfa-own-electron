@@ -141,8 +141,8 @@ class Scaling {
       'previewZoomListenerMouseMoveTouchMove',
       'previewZoomListenerMouseLeave',
       'previewZoomListenerMouseUpTouchEnd',
-      'listenerPanArrowMouseDownTouchStart',
-      'listenerPanArrowMouseTouchEnd'
+      'scalinglistenerPanArrowStart',
+      'listenerPanArrowEnd'
     ].forEach(method => {
       this[method] = this[method].bind(this);
     });
@@ -211,11 +211,10 @@ class Scaling {
     });
 
     this.panArrowEvents = [
-      ['mousedown', this.listenerPanArrowMouseDownTouchStart],
-      ['touchstart', this.listenerPanArrowMouseDownTouchStart],
-      ['mouseup', this.listenerPanArrowMouseTouchEnd],
-      ['mouseleave', this.listenerPanArrowMouseTouchEnd],
-      ['touchend', this.listenerPanArrowMouseTouchEnd],
+      ['pointerdown', this.scalinglistenerPanArrowStart],
+      ['pointerup', this.listenerPanArrowEnd],
+      ['pointerout', this.listenerPanArrowEnd],
+      ['pointerleave', this.listenerPanArrowEnd]
     ];
 
     this.panArrowEvents.forEach((eventItem) => {
@@ -914,14 +913,14 @@ class Scaling {
     }
   }
 
-  listenerPanArrowMouseTouchEnd(e) {
+  listenerPanArrowEnd(e) {
     if (this.panning == 'panning') {
       e.preventDefault();
       this.panning = 'idle';
     }
   }
 
-  listenerPanArrowMouseDownTouchStart(e) {
+  scalinglistenerPanArrowStart(e) {
     e.preventDefault();
     this.maxPanArrowStep = 5;
     this.currentPanArrowStep = 1;
@@ -946,7 +945,7 @@ class Scaling {
           }
         }
       }
-    }, 30);
+    }, 50);
   }
 
   processPan(delta) {
@@ -961,7 +960,6 @@ class Scaling {
       y: this.previewZoomMoveY
     };
 
-    console.log(this.panArrowDirection);
     switch (this.panArrowDirection) {
     case 'up':
       dy = delta;
@@ -1084,7 +1082,7 @@ class Scaling {
     if (this.evCache.length == 2) {
 
       if (app.dev) {
-        console.log('evCache.length == 2');
+        // console.log('evCache.length == 2');
       }
 
       // Calculate the distance between the two pointers
