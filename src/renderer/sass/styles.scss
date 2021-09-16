@@ -25,6 +25,7 @@ html {
   --dim-green: #67845d;
   --bright-green: #bff5aa;
   --brighter-green: #cfffbb;
+  --hover-green: #6bfb3f;
   --bright-teal: #3ddaf6;
   --dark-teal: #2b88ac;
   --dark-blue: #053852;
@@ -1411,8 +1412,11 @@ div.filter-palette {
     display: none;
     color: var(--bright-green);
     fill: currentColor;
-    width: 32px;
-    height: 32px;
+    width: 54px;
+    height: 54px;
+    polygon {
+      pointer-events: none;
+    }
     &.show {
       display: block;
       pointer-events: auto;
@@ -1422,24 +1426,27 @@ div.filter-palette {
         touch-action: none;
         pointer-events: none;
       }
+      &:hover:not(.disabled) {
+        color: var(--hover-green);
+      }
     }
     &.up {
-      top: 1%;
+      top: -3px;
       left: 50%;
       margin-right: -50%;
     }
     &.down {
-      bottom: 1%;
+      bottom: -3px;
       left: 50%;
       margin-right: -50%;
     }
     &.left {
-      left: 1%;
+      left: -3px;
       top: 50%;
       margin-bottom: -50%;
     }
     &.right {
-      right: 1%;
+      right: -3px;
       top: 50%;
       margin-bottom: -50%;
     }
