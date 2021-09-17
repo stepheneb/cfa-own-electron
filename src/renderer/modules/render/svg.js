@@ -25,7 +25,7 @@ svg.stepNext = `
 
 svg.stepBack = `
   <svg class='back' xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 30 30">
-    <rect x="6" y="7" width="3" height="16"/>
+    <rect x="8" y="7" width="3" height="16"/>
     <polygon points="15,15 27,23 27,7 "/>
   </svg>
 `;
