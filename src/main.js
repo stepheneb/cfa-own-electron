@@ -9,7 +9,7 @@ export const isWindows = process.platform === "win32";
 export const isSource = fs.existsSync("package.json");
 
 import { windowStateKeeper } from './window-state-keeper';
-import { kioskStateKeeper } from './kiosk-state-keeper';
+import { kioskdb } from './kioskdb';
 
 import { template } from './menu';
 
@@ -238,6 +238,6 @@ if (admin) {
 }
 
 ipcMain.handle('getKioskState', async () => {
-  kioskState = await kioskStateKeeper();
+  kioskState = await kioskdb();
   return kioskState;
 });

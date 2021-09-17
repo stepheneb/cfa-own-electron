@@ -21,7 +21,7 @@ if (u.runningInElectron()) {
   ipcRenderer.invoke('getKioskState').then((kioskState) => {
     admin.kioskState = kioskState;
     let kiosk_id = document.getElementById('kiosk_id');
-    kiosk_id.innerText = kioskState.kiosk_id;
+    kiosk_id.innerText = kioskState.id;
   });
 }
 
