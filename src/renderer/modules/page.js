@@ -335,6 +335,11 @@ class Page {
 
     this.btnStartOver = document.getElementById('btn-start-over');
     this.btnStartOver.addEventListener('click', () => {
+      if (this.saveAndSendModalsOpen()) {
+        this.hideAllSaveAndSendModals();
+      } else if (this.observationModalsOpen()) {
+        this.hideAllObservationModalsAndRenderMenu();
+      }
       main.restart();
     });
 
@@ -375,6 +380,11 @@ class Page {
   }
 
   hideAllObservationModalsAndRenderMenu() {
+    this.hideAllObservationModals();
+    renderMenu.page(this.type);
+  }
+
+  hideAllObservationModals() {
     this.observationModals = document.querySelectorAll('div.observation.modal');
     this.observationModals.forEach(elem => {
       let bs = Modal.getInstance(elem);
@@ -382,7 +392,6 @@ class Page {
         bs.hide();
       }
     });
-    renderMenu.page(this.type);
   }
 
   hideAllSaveAndSendModalsAndRenderMenu() {
