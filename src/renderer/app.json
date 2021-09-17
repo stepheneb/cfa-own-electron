@@ -224,7 +224,7 @@
   "categories": [
     {
       "type": "find-apollo",
-      "titlemainmenu": "Find the Apollo Site",
+      "titlemainmenu": "Find the<br>Apollo Site",
       "title": "Find the Apollo Site",
       "subtitle": "Investigate small details in these high resolution images to locate where humans landed on the moon.",
       "menuimage": "images/menu-find-apollo.jpg",
