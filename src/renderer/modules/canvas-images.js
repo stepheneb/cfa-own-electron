@@ -535,6 +535,10 @@ class CanvasImages {
     c.width = this.nx;
     c.height = this.ny;
 
+    let div = document.createElement("div");
+    div.classList = 'preview-image-layer';
+    this.animatePreviewBackContainer.append(div);
+
     c = document.createElement("canvas");
     c.id = 'preview-animate-image-center-canvas';
     c.classList = 'preview-image-canvas';
@@ -552,6 +556,10 @@ class CanvasImages {
     this.animatePreviewNextCanvas = c;
     c.width = this.nx;
     c.height = this.ny;
+
+    div = document.createElement("div");
+    div.classList = 'preview-image-layer';
+    this.animatePreviewNextContainer.append(div);
 
     this.renderAnimatePreviews(source);
     return c;

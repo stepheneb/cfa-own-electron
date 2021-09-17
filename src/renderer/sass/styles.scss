@@ -28,6 +28,7 @@ html {
   --hover-green: #6bfb3f;
   --bright-teal: #3ddaf6;
   --dark-teal: #2b88ac;
+  --dark-teal-filter: rgba(43, 136, 172, 0.5);
   --dark-blue: #053852;
   --darker-blue: #032741;
   --bright-blue: #1197f9;
@@ -1790,16 +1791,23 @@ div#preview-image-next-canvas-container {
   height: 10vh;
   width: 100%;
   margin: 0;
-  padding: 0.25vh 0vh;
   background-color: var(--almost-black);
   border: none;
   canvas {
     position: absolute;
+    padding: 4px;
+    margin: 0;
+    height: 10vh;
+    object-fit: contain;
+  }
+  div.preview-image-layer {
+    z-index: 1;
+    position: absolute;
     padding: 0;
     margin: 0;
-    height: 9.5vh;
-    object-fit: contain;
-    filter: brightness(50%);
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-teal-filter);
   }
 }
 
