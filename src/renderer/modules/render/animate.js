@@ -48,7 +48,7 @@ animate.render = (page, registeredCallbacks) => {
 
       <div id="${idControls}" class="d-flex flex-row justify-content-evenly align-items-center">
 
-        <div type="button" id="${stepBackId}" class="animate-control step back unselectable d-flex flex-row align-items-center">
+        <div type="button" id="${stepBackId}" class="animate-control step back unselectable d-flex flex-row">
           <div class="label">back</div>
           <div>${svg.stepBack}</div>
         </div>
@@ -61,7 +61,7 @@ animate.render = (page, registeredCallbacks) => {
           <i class="bi bi-pause-circle"></i>
         </div>
 
-        <div id="${stepForwardId}"  type="button" class="animate-control step next unselectable d-flex flex-row align-items-center">
+        <div id="${stepForwardId}"  type="button" class="animate-control step next unselectable d-flex flex-row">
           <div>${svg.stepNext}</div>
           <div class="label">next</div>
         </div>

@@ -256,10 +256,10 @@ class Scaling {
   }
 
   setupPanArrowLayer() {
-    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowUp);
-    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowRight);
-    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowDown);
-    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrowLeft);
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrow('up', 0));
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrow('right', 90));
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrow('down', 180));
+    this.panArrowLayer.insertAdjacentHTML('beforeend', svg.panArrow('left', 270));
     this.panArrowUp = document.getElementById('pan-arrow-up');
     this.panArrowDown = document.getElementById('pan-arrow-down');
     this.panArrowRight = document.getElementById('pan-arrow-right');

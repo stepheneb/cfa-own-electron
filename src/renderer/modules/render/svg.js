@@ -17,41 +17,26 @@ svg.minusIcon = `
 `;
 
 svg.stepNext = `
-  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
-    <rect x="31" y="17" width="3" height="16"/>
-    <polygon points="27,25 15,17 15,33 "/>
+  <svg class='next' xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 30 30">
+    <rect x="20" y="7" width="3" height="16"/>
+    <polygon points="16,15 4,7 4,23 "/>
   </svg>
 `;
 
 svg.stepBack = `
-  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
-    <rect x="15" y="17" width="3" height="16"/>
-    <polygon points="22,25 34,33 34,17 "/>
+  <svg class='back' xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 30 30">
+    <rect x="6" y="7" width="3" height="16"/>
+    <polygon points="15,15 27,23 27,7 "/>
   </svg>
 `;
 
-svg.panArrowUp = `
-  <svg id="pan-arrow-up" class="pan-arrow up" data-direction="up" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
-   <polygon transform="rotate(0, 25, 25)" points="33.82,31.84 25.42,23.44 17.03,31.84 14.2,29.01 25.42,17.79 36.65,29.01"/>
-  </svg>
-`;
-
-svg.panArrowDown = `
-  <svg id="pan-arrow-down" class="pan-arrow down" data-direction="down" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
-    <polygon transform="rotate(180, 25, 25)" points="33.82,31.84 25.42,23.44 17.03,31.84 14.2,29.01 25.42,17.79 36.65,29.01" />
-  </svg>
-`;
-
-svg.panArrowLeft = `
-  <svg id="pan-arrow-left" class="pan-arrow left" data-direction="left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-    <polygon transform="rotate(270, 25, 25)" points="33.82,31.84 25.42,23.44 17.03,31.84 14.2,29.01 25.42,17.79 36.65,29.01" />
-  </svg>
-`;
-
-svg.panArrowRight = `
-  <svg id="pan-arrow-right" class="pan-arrow right" data-direction="right" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
-    <polygon transform="rotate(90, 25, 25)" points="33.82,31.84 25.42,23.44 17.03,31.84 14.2,29.01 25.42,17.79 36.65,29.01" />
-  </svg>
-`;
+svg.panArrow = (direction, rotation) => {
+  svg = `
+    <svg id="pan-arrow-${direction}" class="pan-arrow ${direction}" data-direction="${direction}" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
+     <polygon transform="rotate(${rotation}, 25, 25)" points="33.82,31.84 25.42,23.44 17.03,31.84 14.2,29.01 25.42,17.79 36.65,29.01"/>
+    </svg>
+  `;
+  return svg;
+};
 
 export default svg;

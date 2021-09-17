@@ -1595,20 +1595,42 @@ div.telescope-container {
     }
   }
   .animate-control {
+    align-items: center;
     color: var(--green);
     padding: 0.1rem 0.5rem;
 
     svg {
+      margin: 0vh 0px;
       color: var(--bright-green);
       fill: currentColor;
-      width: 54px;
-      height: 54px;
+      width: 36px;
+      height: 36px;
     }
 
     .label {
-      font-size: 55%;
+      margin-bottom: -0.1em;
+      font-size: 60%;
+      font-weight: 500;
       text-transform: uppercase;
     }
+
+    &.next {
+      svg {
+        margin-right: 0.35em;
+      }
+      .label {
+        margin-right: 0.25vw;
+      }
+    }
+    &.back {
+      svg {
+        margin-left: 0.35em;
+      }
+      .label {
+        margin-left: 0.25vw;
+      }
+    }
+
     &:focus-visible {
       outline: 4px dashed black;
       cursor: none;
