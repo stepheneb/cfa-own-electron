@@ -49,7 +49,7 @@ saveandsend.render = (page, registeredCallbacks) => {
           </div>
           <div class="modal-body one">
             <div class="row">
-              <div class="col-left">
+              <div class="col-left d-flex flex-column justify-content-start">
                 <div class="salutation">Great Job!</div>
                 <div class="about-your-image">
                   Here's your image of the <span class="image-name pe-2"> ${page.image.name}.</span>
@@ -58,6 +58,7 @@ saveandsend.render = (page, registeredCallbacks) => {
                   <p>${page.saveandsendtext}</p>
                   <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
+                <div id='column-middle-spacer'></div>
                 <button id="${enterEmailButtonId}" type="button" class="btn btn-outline-primary btn-small page-navigation-button">
                   ENTER EMAIL
                 </button>

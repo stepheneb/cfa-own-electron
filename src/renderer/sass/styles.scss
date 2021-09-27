@@ -2006,8 +2006,7 @@ body:not(.dev) #btn-toggle-developer-tools-page-navigation {
   color: var(--bright-green);
   border: 2px solid var(--bright-green);
   border-radius: 4px;
-  margin-top: 1vh;
-  margin-left: 3vw;
+  margin: 0 0 5px 0;
   padding: 1.5vh 2.2vw;
 }
 
@@ -2037,7 +2036,7 @@ div.modal.save-and-send .modal-dialog {
         color: var(--bright-green);
         text-transform: uppercase;
       }
-      padding: 0.5vh 2vh;
+      padding: 0.5vh 1rem;
       button.btn-close {
         min-width: 3vw;
         font-size: 6vh;
@@ -2077,10 +2076,13 @@ div.modal.save-and-send .modal-dialog {
         font-weight: 500;
       }
       .context {
-        margin-top: 1vh;
+        margin-top: 1.4vh;
         font-size: var(--save-and-send-context);
         line-height: 110%;
         color: white;
+        p {
+          line-height: 114%;
+        }
       }
       .enter-email {
         padding: 0vh 2vh;

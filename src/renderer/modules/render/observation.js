@@ -68,13 +68,13 @@ observation.render = (page, registeredCallbacks) => {
               <div class="col-left d-flex flex-column justify-content-start">
                 <div class="salutation">Wait and See!</div>
                 <div class="about-your-image">
-                  We'll take your image of the <span class="image-name">${page.title}</span>.
+                  We’ll take your image of the <span class="image-name">${page.title}</span>.
                 </div>
                 <div class="context">
                   <p>${page.description}</p>
                   <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
-                <div class='column-middle-spacer'></div>
+                <div id='column-middle-spacer'></div>
                 <button id="${enterEmailButtonId}" type="button" class="btn btn-outline-primary btn-small page-navigation-button">
                   ENTER EMAIL
                 </button>
@@ -101,7 +101,7 @@ observation.render = (page, registeredCallbacks) => {
               <div class="col-left">
                 <div class="salutation">Wait and See!</div>
                 <div class="about-your-image">
-                  We'll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
+                  We’ll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
                 </div>
                 <div class="context">
                   <p>${page.description}</p>
@@ -148,7 +148,7 @@ observation.render = (page, registeredCallbacks) => {
               <div class="col-left">
                 <div class="salutation">Wait and See!</div>
                 <div class="about-your-image">
-                  We'll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
+                  We’ll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
                 </div>
                 <div class="context">
                   <p>${page.description}</p>
