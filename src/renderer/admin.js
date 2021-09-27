@@ -1,6 +1,6 @@
 /*global ipcRenderer  */
 
-import u from './modules/utilities';
+import u from './modules/utilities.js';
 
 let admin = {};
 
