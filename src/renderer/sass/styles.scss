@@ -20,6 +20,7 @@ html {
   --toggle-fullscreen-hover: rgba(196, 196, 196, 196);
   --dark-black: #282828;
   --almost-black: #080808;
+  --black: #000;
   --almost-white: #e8e8e8;
   --green: #a4d292;
   --dim-green: #67845d;
@@ -1712,7 +1713,7 @@ div#preview-image-canvas-container {
   height: 24.5vh;
   width: 100%;
   margin: 0;
-  background-color: var(--almost-black);
+  background-color: var(--black);
   > .label {
     float: left;
   }
@@ -2342,11 +2343,11 @@ div#main-image-canvas-container {
     }
     &.layer {
       cursor: all-scroll;
-      background-color: var(--almost-black);
+      background-color: var(--black);
     }
     &:last-child {
       display: block;
-      background-color: var(--almost-black);
+      background-color: var(--black);
     }
     &.inspect {
       cursor: crosshair;
