@@ -9,8 +9,9 @@
   },
   "splash2": {
     "title": "How are NASA’s amazing images of space created?",
-    "intro1": "Try any challenge to select real data captured by NASA telescopes observing across the spectrum. Then make scientific or artistic choices to apply colors, manipulate the data, and email the results to yourself.",
-    "intro2": "Capture your own real earth-based telescope image using a MicroObservatory Robotic Telescope tonight. Receive it by email tomorrow.",
+    "header": "Create your own astrophotos in two different ways:",
+    "intro1": "Use real images captured by NASA telescopes and make scientific or artistic choices to apply colors and manipulate the data.",
+    "intro2": "Capture your own real earth-based telescope image using a MicroObservatory Robotic Telescope tonight.",
     "continue": "Continue >"
   },
   "telescopeData": {

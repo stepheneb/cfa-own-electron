@@ -45,7 +45,7 @@ html {
   --category-not-selected-border: #202e31;
   --canvas-container-border-color: lightgray;
   --canvas-container-border-color-fullscreen: #222;
-  --translucent-gray: rgba(32, 32, 32, 0.6);
+  --translucent-gray: rgba(24, 24, 24, 0.8);
 
   --medium-blue-rgba: rgba(8, 80, 117, 0.5);
   --dark-blue-rgba: rgba(5, 56, 82, 0.25);
@@ -221,7 +221,6 @@ div#splash2 {
   padding: 10vh 6.5vw;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
 
   .title {
     font-size: 5vh;
@@ -231,14 +230,20 @@ div#splash2 {
     text-transform: uppercase;
     margin: 0 2vw;
   }
+  .header {
+  }
   .intro {
     font-size: 2.7vh;
     line-height: 1.1em;
-    width: 50vw;
+    width: 45vw;
     color: lightgray;
-    margin: 0 2vw;
-    li {
-      margin-bottom: 1em;
+    margin: 0.5vh 2vw;
+    header {
+      font-weight: 600;
+      margin-bottom: 1.2vh;
+    }
+    p:not(last-of-type) {
+      margin-bottom: 1vh;
     }
   }
   #splash2-continue {
