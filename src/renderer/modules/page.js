@@ -504,6 +504,7 @@ class Page {
     function renderButtonsAndPalletes(p) {
       let sources = p.image.sources;
       let html = '';
+      let assigned = "assigned colors";
       let name;
       for (var i = 0; i < sources.length; i++) {
         let source = sources[i];
@@ -511,6 +512,7 @@ class Page {
           name = source.name;
           if (p.type == 'rgb') {
             name += ' Filter';
+            assigned = "";
           }
 
           html += `
@@ -523,9 +525,10 @@ class Page {
 
                 </svg>
 
-              <div class='label-palette col-10'>
+              <div class='label-palette col-10  ${p.type}'>
                 <canvas id='label-icon-${i}' class='label-icon'></canvas>
                 <label for='select-rgb-${i}'>${name}</label>
+                <div class='assigned'>${assigned}</div>
                 ${p.renderPalette(source, i)}
               </div>
             </div>

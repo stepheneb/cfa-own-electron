@@ -18,6 +18,7 @@ html {
   /* colors */
   --toggle-fullscreen: rgba(80, 80, 80, 128);
   --toggle-fullscreen-hover: rgba(196, 196, 196, 196);
+  --darker-gray: #686868;
   --dark-black: #282828;
   --almost-black: #080808;
   --black: #000;
@@ -72,6 +73,7 @@ html {
   --control-subtitle: 1.6vh;
   --notice-subtitle: 1.6vh;
   --select-filter: 1.9vh;
+  --select-filter-assigned: 1.3vh;
   --main-layer-selector: 2vh;
   --about-your-image: 2.8vh;
   --save-and-send-context: 2vh;
@@ -1126,19 +1128,26 @@ div.control-collection {
             height: 3.8vh;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             pointer-events: none;
 
             label {
-              margin-left: 1vh;
+              width: 7vw;
+              padding-left: 0.4vw;
               margin-bottom: -0.15vh;
               font-size: var(--select-filter);
               font-weight: 500;
               color: black;
               pointer-events: none;
             }
+            div.assigned {
+              margin-bottom: -0.2vh;
+              font-size: var(--select-filter-assigned);
+              font-weight: 500;
+              color: var(--darker-gray);
+            }
             canvas {
-              width: 6vw;
+              width: 7vw;
               height: 2vh;
               padding: 0;
               margin: 0;
@@ -1156,6 +1165,17 @@ div.control-collection {
               object-fit: cover;
               filter: grayscale(100%) brightness(150%) contrast(125%);
               pointer-events: none;
+            }
+
+            &.multi-wave {
+              label {
+                width: 4.5vw;
+                padding-left: 0.1vw;
+              }
+              canvas:not(.label-icon) {
+                width: 4.5vw;
+                margin-left: 0;
+              }
             }
           }
 
