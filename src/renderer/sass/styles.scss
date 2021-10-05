@@ -1909,7 +1909,7 @@ div.animate-center {
   transform: none;
   transition: none;
   .modal-content {
-    padding: 2.5vh 2vh;
+    padding: 1.5vh 2vh;
     background-color: var(--darker-blue);
     box-shadow: inset 6px 6px 24px var(--medium-blue-rgba),
       inset -6px -6px 24px var(--medium-blue-rgba);
@@ -1973,6 +1973,26 @@ div.animate-center {
           height: 100%;
           width: 100%;
           object-fit: cover;
+        }
+      }
+      ul {
+        padding-left: 0;
+        li {
+          display: flex;
+          flex-direction: row;
+          list-style: none;
+          div.label {
+            width: 5.5vw;
+            text-align: end;
+            padding-right: 0.5vw;
+            color: var(--green);
+          }
+          div.context {
+            width: 75%;
+          }
+        }
+        li:not(:last-of-type) {
+          margin-bottom: 0.5vh;
         }
       }
     }
