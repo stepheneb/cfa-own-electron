@@ -959,7 +959,7 @@ div.control-collection {
   box-shadow: inset 6px 6px 24px var(--medium-blue-rgba),
     inset -6px -6px 24px var(--medium-blue-rgba);
   div.find-apollo {
-    margin: 1.5vh -1vh 4vh -1vh;
+    margin: 0.5vh -1vh 2.75vh -1vh;
     height: 22vh;
     background-color: var(--almost-black);
     border: 2px solid var(--canvas-container-border-color);
@@ -1721,7 +1721,7 @@ div#preview-image-next-name {
 div.zoom-preview-content {
   border: 2px solid var(--bright-teal);
   padding: 0.5vh 1vh 1vh 1vh;
-  margin: 1vh -1vh 2vh -1vh;
+  margin: 1vh -1vh 1vh -1vh;
   background-color: black;
   > .label {
     float: left;
