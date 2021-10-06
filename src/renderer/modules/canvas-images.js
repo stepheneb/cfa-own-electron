@@ -665,6 +665,7 @@ class CanvasImages {
     let rawdata = this.rawDataForSource(source);
     let transform = this.brightnessContrastTransformForLayer(source);
     let min = source.min;
+    let logMin = min - 1;
     let max = source.max;
     let range = max - min;
     let scale;
@@ -742,8 +743,8 @@ class CanvasImages {
         for (y = 0; y < this.ny; y++) {
           for (x = 0; x < this.nx; x++) {
             i = y * this.nx + x;
-            val = Math.log10(Math.max((rawdata[i] - min), 1));
-            index = Math.min(Math.round(Math.max(val * scale, 0), 255));
+            val = Math.log10(Math.max((rawdata[i] - logMin), 1));
+            index = Math.round(Math.min(Math.max(val * scale, 0), 255));
             scaledval = transform[index];
             pixeldata[pixindex] = scaledval;
             pixeldata[pixindex + 3] = 255;
@@ -756,8 +757,8 @@ class CanvasImages {
         for (y = 0; y < this.ny; y++) {
           for (x = 0; x < this.nx; x++) {
             i = y * this.nx + x;
-            val = Math.log10(Math.max((rawdata[i] - min), 1));
-            index = Math.min(Math.round(Math.max(val * scale, 0), 255));
+            val = Math.log10(Math.max((rawdata[i] - logMin), 1));
+            index = Math.round(Math.min(Math.max(val * scale, 0), 255));
             scaledval = transform[index];
             pixeldata[pixindex + 1] = scaledval;
             pixeldata[pixindex + 3] = 255;
@@ -770,8 +771,8 @@ class CanvasImages {
         for (y = 0; y < this.ny; y++) {
           for (x = 0; x < this.nx; x++) {
             i = y * this.nx + x;
-            val = Math.log10(Math.max((rawdata[i] - min), 1));
-            index = Math.min(Math.round(Math.max(val * scale, 0), 255));
+            val = Math.log10(Math.max((rawdata[i] - logMin), 1));
+            index = Math.round(Math.min(Math.max(val * scale, 0), 255));
             scaledval = transform[index];
             pixeldata[pixindex + 2] = scaledval;
             pixeldata[pixindex + 3] = 255;
@@ -784,8 +785,8 @@ class CanvasImages {
         for (y = 0; y < this.ny; y++) {
           for (x = 0; x < this.nx; x++) {
             i = y * this.nx + x;
-            val = Math.log10(Math.max((rawdata[i] - min), 1));
-            index = Math.min(Math.round(Math.max(val * scale, 0), 255));
+            val = Math.log10(Math.max((rawdata[i] - logMin), 1));
+            index = Math.round(Math.min(Math.max(val * scale, 0), 255));
             scaledval = transform[index];
             pixeldata[pixindex] = scaledval;
             pixeldata[++pixindex] = scaledval;
