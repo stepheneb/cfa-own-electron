@@ -600,7 +600,7 @@ class CanvasImages {
   initializeCanvas(c) {
     let ctx = c.getContext('2d');
     ctx.fillStyle = "rgba(0,0,0,255)";
-    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = false;
     ctx.globalCompositeOperation = "source-over";
     return c;
   }
@@ -1056,7 +1056,7 @@ class CanvasImages {
     function init(canvas, nx, ny) {
       canvas.ctx = canvas.getContext('2d');
       canvas.ctx.fillStyle = "rgb(0,0,0)";
-      canvas.ctx.imageSmoothingEnabled = true;
+      canvas.ctx.imageSmoothingEnabled = false;
       canvas.ctx.globalCompositeOperation = "source-over";
       canvas.width = nx;
       canvas.height = ny;
@@ -1119,7 +1119,7 @@ class CanvasImages {
     function init(canvas, nx, ny) {
       canvas.ctx = canvas.getContext('2d');
       canvas.ctx.fillStyle = "rgb(0,0,0)";
-      canvas.ctx.imageSmoothingEnabled = true;
+      canvas.ctx.imageSmoothingEnabled = false;
       canvas.ctx.globalCompositeOperation = "source-over";
       canvas.width = nx;
       canvas.height = ny;
@@ -1195,7 +1195,7 @@ class CanvasImages {
     function init(canvas, nx, ny) {
       canvas.ctx = canvas.getContext('2d');
       canvas.ctx.fillStyle = "rgb(0,0,0)";
-      canvas.ctx.imageSmoothingEnabled = true;
+      canvas.ctx.imageSmoothingEnabled = false;
       canvas.ctx.globalCompositeOperation = "source-over";
       canvas.width = nx;
       canvas.height = ny;
