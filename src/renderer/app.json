@@ -2080,7 +2080,7 @@
                   "large": "rawdata/M82/1270x1270/M82_Hubble_Optical.bmp"
                 },
                 "filter": "green",
-                "min": 13.5,
+                "min": 14,
                 "max": 17967,
                 "scaling": "log",
                 "brightness": 1,
@@ -2194,7 +2194,7 @@
                   "large": "rawdata/m51-multi/775x1168/Hubble_M51_Green_lowerRes.bmp"
                 },
                 "filter": "green",
-                "min": 5,
+                "min": 8,
                 "max": 14146,
                 "scaling": "log",
                 "brightness": 1,
