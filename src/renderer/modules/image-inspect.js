@@ -730,9 +730,11 @@ class ImageInspect {
     }
 
     function calc() {
-      let x = Math.round(that.cpos.x * that.width / that.canvasImages.nx);
+      let actualWidth = that.imageContainerTargetRect.height / that.canvas.height * that.canvas.width;
+      let x = Math.round(that.cpos.x * actualWidth / that.canvasImages.nx);
       let y = Math.round(that.cpos.y * that.height / that.canvasImages.ny);
-      that.pos.x = x;
+      let offsetX = (that.imageContainerTargetRect.width - actualWidth) / 2;
+      that.pos.x = x + offsetX;
       that.pos.y = y;
     }
   }
