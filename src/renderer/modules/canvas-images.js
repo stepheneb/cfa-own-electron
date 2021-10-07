@@ -647,6 +647,7 @@ class CanvasImages {
       value = Math.max(i * cscale - cshiftY + bshift, 0) + cshiftX + bshift;
       transform[i] = Math.min(Math.max(Math.min(value, 255), 0), 255);
     }
+    transform[0] = 0;
     return transform;
   }
 
