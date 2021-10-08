@@ -2043,9 +2043,27 @@
               }
             },
             "indicator": {
-              "x": 543,
-              "y": 587
+              "desc": "maximum in middle",
+              "x": 694,
+              "y": 643
             },
+            "indicators": [
+              {
+                "desc": "maximum in middle",
+                "x": 694,
+                "y": 643
+              },
+              {
+                "desc": "lower right spot",
+                "x": 899,
+                "y": 799
+              },
+              {
+                "desc": "upper right spot",
+                "x": 964,
+                "y": 150
+              }
+            ],
             "maximumBrightness": 2,
             "selectedSourceNumber": 0,
             "selectedMainLayers": "100",
