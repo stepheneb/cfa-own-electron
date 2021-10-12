@@ -2218,12 +2218,12 @@ div.modal.save-and-send .modal-dialog {
           .hg-button {
             margin: 0px 2px;
             flex-grow: 0;
+            height: 52px;
+            width: 60px;
             &.hg-button-shift,
             &.hg-button-bksp {
               flex-grow: 1;
             }
-            height: 50px;
-            width: 60px;
             &.top-row {
               width: 50px;
             }
