@@ -123,7 +123,6 @@ observation.render = (page, registeredCallbacks) => {
                   </div>
                 </form>
                 ${emailKeyboard.render(page, sendEmailFormId, registeredCallbacks)}
-                <div class="simple-keyboard"></div>
               </div>
               ${image()}
               ${telescope()}
