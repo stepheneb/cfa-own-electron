@@ -89,7 +89,7 @@ telescopes.render = (page, registeredCallbacks) => {
           </svg>
 
             <div class="modal-body">
-              <h5 id="${modalId}-title">${scope.name} Telescope</h5>
+              <h5 id="${modalId}-title">${scope.longname}</h5>
               <div class="image-container"><img src="../${scope.image}"></img></div>
               ${scope.description}
             </div>

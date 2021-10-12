@@ -26,6 +26,11 @@ saveandsend.render = (page, registeredCallbacks) => {
       ${title}
     </button>`;
 
+  let theStr = '';
+  if (page.the) {
+    theStr = 'the ';
+  }
+
   let downloadYourImage = '';
 
   // let downloadYourImage = `
@@ -52,7 +57,7 @@ saveandsend.render = (page, registeredCallbacks) => {
               <div class="col-left d-flex flex-column justify-content-start">
                 <div class="salutation">Great Job!</div>
                 <div class="about-your-image">
-                  Here’s your image of the <span class="image-name pe-2"> ${page.image.name}.</span>
+                  Here’s your image of ${theStr}<span class="image-name pe-2"> ${page.image.name}.</span>
                 </div>
                 <div class="context">
                   <p>${page.saveandsendtext}</p>
@@ -81,7 +86,7 @@ saveandsend.render = (page, registeredCallbacks) => {
               <div class="col-left">
                 <div class="salutation">Great Job!</div>
                 <div class="about-your-image">
-                  Here’s your image of the <span class="image-name pe-2"> ${page.image.name}.</span>
+                  Here’s your image of ${theStr}<span class="image-name pe-2"> ${page.image.name}.</span>
                 </div>
                 <div class="context">
                   <p>${page.saveandsendtext}</p>
@@ -123,7 +128,7 @@ saveandsend.render = (page, registeredCallbacks) => {
               <div class="col-left">
                 <div class="salutation">Great Job!</div>
                 <div class="about-your-image">
-                  Here’s your image of the <span class="image-name pe-2"> ${page.image.name}.</span>
+                  Here’s your image of ${theStr}<span class="image-name pe-2"> ${page.image.name}.</span>
                 </div>
                 <div class="context">
                   <p>${page.saveandsendtext}</p>

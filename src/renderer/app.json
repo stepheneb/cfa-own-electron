@@ -20,6 +20,7 @@
       {
         "key": "hubble",
         "name": "Hubble",
+        "longname": "Hubble Space Telescope",
         "image": "images/telescopes/hst-sm4.jpg",
         "image-credits": "NASA",
         "image-source": "https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/hst-sm4.jpg",
@@ -60,6 +61,7 @@
       {
         "key": "chandra",
         "name": "Chandra",
+        "longname": "Chandra X-ray Observatory",
         "image": "images/telescopes/deploy2-72l.jpg",
         "image-credits": "NASA",
         "image-source": "https://www.chandra.harvard.edu/graphics/resources/illustrations/deploy/deploy2-72l.jpg",
@@ -98,6 +100,7 @@
       {
         "key": "spitzer",
         "name": "Spitzer",
+        "longname": "Spitzer Space Telescope",
         "image": "images/telescopes/hd_spitzer_side_visible_small.jpg",
         "image-credits": "NASA",
         "image-source": "https://www.nasa.gov/sites/default/files/thumbnails/image/hd_spitzer_side_visible.jpg",
@@ -125,7 +128,7 @@
           "  <li>",
           "    <div class='label'>Purpose:</div>",
           "    <div class='context'>",
-          "      Spitzer was built specifically to detect infrared wavelengths of light, which is emitted by distant",
+          "      Spitzer was built specifically to detect infrared wavelengths of light, which are emitted by distant",
           "      galaxies, dust surrounding forming stars, near-Earth asteroids, and by exoplanets orbiting in other",
           "      solar systems.",
           "    </div>",
@@ -143,6 +146,7 @@
       {
         "key": "lro",
         "name": "LRO",
+        "longname": "Lunar Reconnaissance Orbiter",
         "image": "images/telescopes/314490main_LROstill_1_small.jpg",
         "image-credits": "NASA",
         "image-source": "https://www.nasa.gov/sites/default/files/images/314490main_LROstill_1_full.jpg",
@@ -181,6 +185,7 @@
       {
         "key": "juno",
         "name": "Juno",
+        "longname": "Juno Mission",
         "image": "images/telescopes/juno.png",
         "image-credits": "NASA",
         "image-source": "https://www.jpl.nasa.gov/news/press_kits/juno/pdf/juno-lores.pdf",
@@ -220,7 +225,8 @@
       },
       {
         "key": "sdo",
-        "name": "Solar Dynamics Observatory",
+        "name": "SDO",
+        "longname": "Solar Dynamics Observatory",
         "image": "images/telescopes/sdo.jpg",
         "image-credits": "NASA",
         "image-source": "http://www.nasa.gov/centers/goddard/news/topstory/2008/sdo_propulsion.html",
@@ -273,6 +279,7 @@
           "name": "apollo-11",
           "poster": "11",
           "title": "Apollo 11",
+          "the": true,
           "subtitle": "Investigate small details in these high resolution images to locate<br>where humans landed on the moon.",
           "findtext": "Find the Apollo 11 site pictured below",
           "youaretext": "You are here",
@@ -280,7 +287,7 @@
           "context": "In July, 1969, Apollo 11 carried the first humans to the surface of the Moon. NASA chose a landing site that was flat, smooth, and with relatively few craters.",
           "image": {
             "name": "Apollo Mission 11 Landing Site",
-            "site": "Apollo Site 11",
+            "site": "Apollo 11 Site",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
               "telescopes": [
@@ -356,6 +363,7 @@
           "name": "apollo-12",
           "poster": "12",
           "title": "Apollo 12",
+          "the": true,
           "subtitle": "Investigate small details in these high resolution images to locate where humans landed on the moon.",
           "findtext": "Find the Apollo 12 site pictured below",
           "youaretext": "You are here",
@@ -363,7 +371,7 @@
           "context": "The Apollo 12 Lunar Module landed on the Moon’s surface in November of 1969. This mission achieved a precision landing, just 535 feet from an earlier robotic spacecraft named Surveyor 3.",
           "image": {
             "name": "Apollo Mission 12 Landing Site",
-            "site": "Apollo Site 12",
+            "site": "Apollo 12 Site",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
               "telescopes": [
@@ -438,6 +446,7 @@
           "name": "apollo-14",
           "poster": "14",
           "title": "Apollo 14",
+          "the": true,
           "subtitle": "Investigate small details in these high resolution images to locate<br>where humans landed on the moon.",
           "findtext": "Find the Apollo 14 site pictured below",
           "youaretext": "You are here",
@@ -445,7 +454,7 @@
           "context": "Apollo 14 (January 31, 1971 - February 9, 1971) was the third crewed mission to land on the Moon, after an on-board explosion forced Apollo 13 to return to Earth in a dramatic rescue operation.",
           "image": {
             "name": "Apollo Mission 14 Landing Site",
-            "site": "Apollo Site 14",
+            "site": "Apollo 14 Site",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
               "telescopes": [
@@ -520,6 +529,7 @@
           "name": "apollo-15",
           "poster": "15",
           "title": "Apollo 15",
+          "the": true,
           "subtitle": "Investigate small details in these high resolution images to locate<br>where humans landed on the moon.",
           "findtext": "Find the Apollo 15 site pictured below",
           "youaretext": "You are here",
@@ -527,7 +537,7 @@
           "context": "Apollo 15 took place from July 26, 1971 to August 7, 1971, and landed near a rugged mountain range named after the Italian Apennines. This mission was the first where astronauts used a Lunar Roving Vehicle.",
           "image": {
             "name": "Apollo Mission 15 Landing Site",
-            "site": "Apollo Site 15",
+            "site": "Apollo 15 Site",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
               "telescopes": [
@@ -606,6 +616,7 @@
           "name": "apollo-16",
           "poster": "16",
           "title": "Apollo 16",
+          "the": true,
           "subtitle": "Investigate small details in these high resolution images to locate<br>where humans landed on the moon.",
           "findtext": "Find the Apollo 16 site pictured below",
           "youaretext": "You are here",
@@ -613,7 +624,7 @@
           "context": "Apollo 16 landed in the lunar highlands, where the astronauts collected rocks to look for evidence of volcanic activity. No such evidence was found.",
           "image": {
             "name": "Apollo Mission 16 Landing Site",
-            "site": "Apollo Site 16",
+            "site": "Apollo 16 Site",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
               "telescopes": [
@@ -688,6 +699,7 @@
           "name": "apollo-17",
           "poster": "17",
           "title": "Apollo 17",
+          "the": true,
           "subtitle": "Investigate small details in these high resolution images to locate<br>where humans landed on the moon.",
           "findtext": "Find the Apollo 17 site pictured below",
           "youaretext": "You are here",
@@ -695,7 +707,7 @@
           "context": "The December, 1972 Apollo 17 mission was the last time humans walked on the Moon…for now",
           "image": {
             "name": "Apollo Mission 17 Landing Site",
-            "site": "Apollo Site 17",
+            "site": "Apollo 17 Site",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
             "about": {
               "telescopes": [
@@ -780,6 +792,7 @@
           "name": "m51-whirlpool",
           "poster": "m51",
           "title": "Whirlpool Galaxy",
+          "the": true,
           "subtitle": "Try your hand at enhancing and bringing out details in images<br>the same way NASA scientists do.",
           "context": "A scientist might choose colors that enhance the structure of the dark spiral dust lanes.",
           "selectfiltertext": "Select and adjust each of the light wave images",
@@ -843,6 +856,7 @@
           "name": "wacgl180",
           "poster": "wacgl180",
           "title": "The Far Side of the Moon",
+          "the": true,
           "subtitle": "Try your hand at enhancing and bringing out details in images<br>the same way NASA scientists do.",
           "context": "A scientist might zoom in and choose colors that enhance the pattern of craters on the Moon’s backside.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
@@ -924,6 +938,7 @@
           "name": "jupiter",
           "poster": "jupiter",
           "title": "Jupiter",
+          "the": false,
           "subtitle": "Look for patterns of change in a series of images the same way scientists do.",
           "animatetext": "Use the arrows to move through these images or play them on a loop. See what you can learn.",
           "context": "These images show two changing features of Jupiter over a period of hours: the motion of storms in its atmosphere and the paths and shadows of orbiting moons.",
@@ -931,6 +946,7 @@
           "stepDuration": 1000,
           "image": {
             "name": "Jupiter",
+            "shortname": "Jupiter",
             "about": {
               "telescopes": [
                 "hubble"
@@ -1206,14 +1222,16 @@
         {
           "name": "sun-uv",
           "poster": "sun-uv",
-          "title": "Sun-UV",
+          "title": "Sun-Ultraviolet",
+          "the": true,
           "subtitle": "Scientists use sequences of images like these to investigate how objects in space form, move, and change over time",
           "animatetext": "Use the arrows to move through these images or play them on a loop. See what you can learn.",
           "context": "These images show solar storms changing as the sun rotates over several days. These magnetic storms show up best in ultraviolet images like this.",
           "saveandsendtext": "This image is one in a series taken by the Solar Dynamics Observatory - and explored by YOU!",
           "stepDuration": 1000,
           "image": {
-            "name": "Sun UV",
+            "name": "Sun-Ultraviolet",
+            "shortname": "Sun-UV",
             "about": {
               "telescopes": [
                 "sdo"
@@ -1474,11 +1492,12 @@
           "name": "whats-red-green-blue",
           "poster": "whats-red-green-blue",
           "title": "Lagoon Nebula",
+          "the": true,
           "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
           "context": "The RGB image reveals the colors of the Lagoon Nebula’s glowing gases.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "In this star-forming cloud of dust and gas, different gases glow with different colors.",
+          "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
           "image": {
             "name": "Lagoon Nebula",
             "about": {
@@ -1579,6 +1598,7 @@
           "name": "m51-whirlpool",
           "poster": "m51-whirlpool",
           "title": "Whirlpool Galaxy",
+          "the": true,
           "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
           "context": "The RGB image reveals the hot blue stars and red hydrogen gas of the galaxy.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
@@ -1684,6 +1704,7 @@
           "name": "heic2007a",
           "poster": "heic2007a",
           "title": "Cosmic Reef Nebulas",
+          "the": true,
           "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
           "context": "The RGB image reveals the colors of the Cosmic Reef’s glowing gases.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
@@ -1789,7 +1810,8 @@
         {
           "name": "potw1345a",
           "poster": "potw1345a",
-          "title": "Antennae Galaxies, NGC 4038, NGC 4039",
+          "title": "Antennae Galaxies",
+          "the": true,
           "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
           "context": "The RGB image reveals the hot blue stars and red hydrogen gas of these colliding galaxies.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
@@ -1896,6 +1918,7 @@
           "name": "juno-jupiter-set6",
           "poster": "juno-jupiter-set6",
           "title": "Jupiter",
+          "the": false,
           "subtitle": "Combine 3 separate color-filtered images from NASA spacecraft to represent the actual range of colors emitted by objects in space.",
           "context": "The RGB image reveals the detailed structure of the dynamic storms on Jupiter.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
@@ -2012,11 +2035,12 @@
           "name": "m82",
           "poster": "m82",
           "title": "Cigar Galaxy",
+          "the": true,
           "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
           "context": "Multiwavelength images reveal the explosion of gas from the center of this galaxy.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "This image was taken by the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
+          "saveandsendtext": "This image was taken by one or more of the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
           "image": {
             "name": "Cigar Galaxy",
             "source": "",
@@ -2144,11 +2168,12 @@
           "name": "m51",
           "poster": "m51",
           "title": "Whirlpool Galaxy",
+          "the": true,
           "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
           "context": "Infrared reveals the glowing dust in the spiral arms. X-Rays reveal the location of black holes.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "This image was taken by the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
+          "saveandsendtext": "This image was taken by one or more of the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
           "image": {
             "name": "Whirlpool Galaxy",
             "source": "",

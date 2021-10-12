@@ -141,9 +141,9 @@ animate.render = (page, registeredCallbacks) => {
     }
 
     function updateNames() {
-      previewImageBackName.innerText = `${page.title} ${newLayerNum(layerNum, -1)+1}`;
-      previewImageCenterName.innerText = `${page.title} ${layerNum+1}`;
-      previewImageNextName.innerText = `${page.title} ${newLayerNum(layerNum, 1)+1}`;
+      previewImageBackName.innerText = `${page.image.shortname} ${newLayerNum(layerNum, -1)+1}`;
+      previewImageCenterName.innerText = `${page.image.shortname} ${layerNum+1}`;
+      previewImageNextName.innerText = `${page.image.shortname} ${newLayerNum(layerNum, 1)+1}`;
       mainImageLabel.innerText = previewImageCenterName.innerText;
     }
   }
