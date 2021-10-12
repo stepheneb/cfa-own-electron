@@ -2065,8 +2065,8 @@
               }
             ],
             "maximumBrightness": 2,
-            "selectedSourceNumber": 0,
-            "selectedMainLayers": "100",
+            "selectedSourceNumber": 2,
+            "selectedMainLayers": "001",
             "sources": [
               {
                 "type": "rawdata",
@@ -2078,7 +2078,7 @@
                   "large": "rawdata/M82/1270x1270/M82_Spitzer_mid_Infrared.bmp"
                 },
                 "filter": "red",
-                "min": 0,
+                "min": 1,
                 "max": 3107,
                 "scaling": "log",
                 "brightness": 1,
@@ -2119,7 +2119,7 @@
                 },
                 "filter": "blue",
                 "min": 0,
-                "max": 478,
+                "max": 48,
                 "scaling": "log",
                 "brightness": 1,
                 "contrast": 1,
