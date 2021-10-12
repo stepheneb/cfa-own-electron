@@ -51,7 +51,6 @@ telescopes.updateVisibility = page => {
             let right = window.innerWidth - bcrScope.right - (2 + 16 + 21);
             modalElem.style.right = `${right}px`;
           } else {
-            elem.style.display = "none";
             scope.bcr = null;
           }
         });
