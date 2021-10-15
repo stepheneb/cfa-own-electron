@@ -41,27 +41,25 @@ emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
     keyboard.setOptions({
       layout: {
         'default': [
-          '1 2 3 4 5 6 7 8 9 0 - {bksp}',
-          'q w e r t y u i o p',
-          'a s d f g h j k l',
-          '{shift} z x c v b n m {shift}',
-          '. @ .com'
+          '~ 1 2 3 4 5 6 7 8 9 0 _',
+          'q w e r t y u i o p {bksp}',
+          'a s d f g h j k l \' @ .com',
+          '{shift} z x c v b n m . ? /',
         ],
         'shift': [
-          '` ~ ! # $ % ^ & * _ + {bksp}',
-          'Q W E R T Y U I O P',
-          'A S D F G H J K L',
-          '{shift} Z X C V B N M {shift}',
-          '. @ .com'
+          '` ! # $ % ^ & * { } - +',
+          'Q W E R T Y U I O P {bksp}',
+          'A S D F G H J K L = @ .com',
+          '{shift} Z X C V B N M . ? |',
         ]
       },
-      buttonTheme: [{
-        class: 'top-row',
-        buttons: '1 2 3 4 5 6 7 8 9 0 - ` ~ ! # $ % ^ & * _ + '
-      }, {
-        class: 'bottom-row',
-        buttons: '@ .com'
-      }]
+      // buttonTheme: [{
+      //   // class: 'top-row',
+      //   // buttons: '1 2 3 4 5 6 7 8 9 0 - ` ~ ! # $ % ^ & * _ + '
+      // }, {
+      //   // class: 'bottom-row',
+      //   // buttons: '@ .com'
+      // }]
     });
 
     function checkEmail(input) {

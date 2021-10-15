@@ -2190,6 +2190,10 @@ div.modal.save-and-send .modal-dialog {
       &.three {
         .enter-email {
           width: 64vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          margin-bottom: 0.15em;
           form {
             input[type="email"] {
               width: 75%;
@@ -2212,22 +2216,12 @@ div.modal.save-and-send .modal-dialog {
           .hg-row {
             justify-content: center;
           }
-          .hg-row:last-of-type {
-            justify-content: flex-end;
-          }
           .hg-button {
             margin: 0px 2px;
             flex-grow: 0;
-            height: 52px;
-            width: 60px;
-            &.hg-button-shift,
-            &.hg-button-bksp {
-              flex-grow: 1;
-            }
-            &.top-row {
-              width: 50px;
-            }
-
+            height: 56px;
+            width: 52px;
+            font-size: 1.1em;
             color: var(--bright-green);
             border: 1px solid var(--bright-green);
             background-color: transparent;
@@ -2238,16 +2232,42 @@ div.modal.save-and-send .modal-dialog {
           }
           .hg-button-bksp {
             background-color: var(--dark-black);
+            width: 64px;
+            font-size: 1.4em;
             span {
-              font-family: bootstrap-icons;
-              content: "\f541";
+              visibility: hidden;
+              margin-bottom: -0.4em;
+              &:after {
+                visibility: visible;
+                font-size: 1.4em;
+                margin-left: -3.4em;
+                font-family: bootstrap-icons;
+                content: "\f159";
+              }
             }
           }
           .hg-button-shift {
             background-color: var(--dark-black);
+            width: 64px;
             span {
-              font-family: bootstrap-icons;
-              content: "\f159";
+              visibility: hidden;
+              margin-bottom: -0.3em;
+              &:after {
+                visibility: visible;
+                font-size: 1.4em;
+                margin-left: -1.3em;
+                font-family: bootstrap-icons;
+                content: "\f541";
+              }
+            }
+          }
+        }
+        .hg-layout-shift {
+          .hg-button-shift {
+            span {
+              &:after {
+                content: "\f540";
+              }
             }
           }
         }
