@@ -53,13 +53,10 @@ emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
           '{shift} Z X C V B N M . ? |',
         ]
       },
-      // buttonTheme: [{
-      //   // class: 'top-row',
-      //   // buttons: '1 2 3 4 5 6 7 8 9 0 - ` ~ ! # $ % ^ & * _ + '
-      // }, {
-      //   // class: 'bottom-row',
-      //   // buttons: '@ .com'
-      // }]
+      buttonTheme: [{
+        class: 'dot-com',
+        buttons: '.com'
+      }]
     });
 
     function checkEmail(input) {

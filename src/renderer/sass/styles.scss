@@ -2222,7 +2222,7 @@ div.modal.save-and-send .modal-dialog {
             flex-grow: 0;
             height: 56px;
             width: 52px;
-            font-size: 1.1em;
+            font-size: 1.4em;
             color: var(--bright-green);
             border: 1px solid var(--bright-green);
             background-color: transparent;
@@ -2230,18 +2230,20 @@ div.modal.save-and-send .modal-dialog {
             &[disabled] {
               pointer-events: none;
             }
+            &.dot-com {
+              font-size: 1.2em;
+            }
           }
           .hg-button-bksp {
             background-color: var(--dark-black);
             width: 64px;
-            font-size: 1.4em;
             span {
               visibility: hidden;
               margin-bottom: -0.4em;
               &:after {
                 visibility: visible;
                 font-size: 1.4em;
-                margin-left: -3.4em;
+                margin-left: -3em;
                 font-family: bootstrap-icons;
                 content: "\f159";
               }
