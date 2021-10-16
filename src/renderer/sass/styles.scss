@@ -26,6 +26,7 @@ html {
   --green: #a4d292;
   --dim-green: #67845d;
   --bright-green: #bff5aa;
+  --bright-green-50-percent: rgba(191, 245, 170, 0.5);
   --brighter-green: #cfffbb;
   --hover-green: #6bfb3f;
   --bright-teal: #3ddaf6;
@@ -2147,6 +2148,11 @@ div.modal.save-and-send .modal-dialog {
           letter-spacing: 1px;
           &[type="hidden"] {
             display: none;
+          }
+        }
+        button[type="submit"] {
+          &:disabled {
+            color: var(--bright-green-50-percent);
           }
         }
         .simple-keyboard {
