@@ -54,9 +54,18 @@ emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
         ]
       },
       buttonTheme: [{
-        class: 'dot-com',
-        buttons: '.com'
-      }]
+          class: 'dot-com',
+          buttons: '.com'
+        },
+        {
+          class: 'special',
+          buttons: '{bksp}'
+        },
+        {
+          class: 'special',
+          buttons: '{shift}'
+        }
+      ]
     });
 
     function checkEmail(input) {
