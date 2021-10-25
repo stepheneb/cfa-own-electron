@@ -207,7 +207,7 @@ class Scaling {
     ];
 
     this.mainEvents.forEach((eventItem) => {
-      this.scalingCanvas.addEventListener(eventItem[0], eventItem[1]);
+      this.scalingCanvas.addEventListener(eventItem[0], eventItem[1], { passive: true });
     });
 
     this.panArrowEvents = [
@@ -218,7 +218,7 @@ class Scaling {
     ];
 
     this.panArrowEvents.forEach((eventItem) => {
-      this.panArrowLayer.addEventListener(eventItem[0], eventItem[1]);
+      this.panArrowLayer.addEventListener(eventItem[0], eventItem[1], { passive: true });
     });
 
     this.previewZoomEvents = [
@@ -240,7 +240,7 @@ class Scaling {
 
     if (this.previewZoomCanvas) {
       this.previewZoomEvents.forEach((eventItem) => {
-        this.previewZoomCanvas.addEventListener(eventItem[0], eventItem[1], true);
+        this.previewZoomCanvas.addEventListener(eventItem[0], eventItem[1], { passive: true });
       });
     }
 
@@ -753,7 +753,6 @@ class Scaling {
 
   // touchpad pinch and two finger swipe AND mouse scrollwheel
   listenerZoom(e) {
-    e.preventDefault();
     let targetRect = e.target.getBoundingClientRect();
     let pos = {
       x: e.pageX - targetRect.x,
@@ -913,15 +912,13 @@ class Scaling {
     }
   }
 
-  listenerPanArrowEnd(e) {
+  listenerPanArrowEnd() {
     if (this.panning == 'panning') {
-      e.preventDefault();
       this.panning = 'idle';
     }
   }
 
   scalinglistenerPanArrowStart(e) {
-    e.preventDefault();
     this.maxPanArrowStep = 5;
     this.currentPanArrowStep = 1;
     let arrow = e.target;
@@ -1109,7 +1106,6 @@ class Scaling {
       if (!this.dragStarted && !this.scaling) {
         return;
       }
-      e.preventDefault();
       this.scaling = false;
       let pos = this.pointerEvents(e);
 
@@ -1174,8 +1170,7 @@ class Scaling {
     // cancelAnimationFrame(this.redraw);
   }
 
-  listenerMouseLeave(e) {
-    e.preventDefault();
+  listenerMouseLeave() {
     this.listenerUpLeaveEnd('leave');
   }
 
@@ -1189,7 +1184,6 @@ class Scaling {
     if (this.evCache.length < 2) this.prevDiff = -1;
     // } else {
     // var pos = this.pointerEvents(e);
-    e.preventDefault();
     this.listenerUpLeaveEnd('up-end');
     // }
   }
@@ -1346,7 +1340,6 @@ class Scaling {
   }
 
   previewZoomListenerMouseMoveTouchMove(e) {
-    e.preventDefault();
     let [pos, touch] = this.previewZoomPointerEvents(e);
 
     if (this.canDrag() && this.previewZoomDragStarted) {
@@ -1421,13 +1414,11 @@ class Scaling {
     // cancelAnimationFrame(this.redraw);
   }
 
-  previewZoomListenerMouseLeave(e) {
-    e.preventDefault();
+  previewZoomListenerMouseLeave() {
     this.previewZoomUpLeaveEnd('leave');
   }
 
-  previewZoomListenerMouseUpTouchEnd(e) {
-    e.preventDefault();
+  previewZoomListenerMouseUpTouchEnd() {
     this.previewZoomUpLeaveEnd('up-end');
   }
 
