@@ -923,6 +923,145 @@
               }
             ]
           }
+        },
+        {
+          "name": "jupiter8",
+          "poster": "jupiter8",
+          "title": "Jupiter",
+          "the": false,
+          "subtitle": "Try your hand at enhancing and bringing out details in images<br>the same way NASA scientists do.",
+          "context": "A scientist might zoom in and choose colors that enhance the pattern of the bands.",
+          "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "saveandsendtext": "This image was taken by the Hubble Space Telescope - and explored by YOU!",
+          "image": {
+            "name": "Jupiter",
+            "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
+            "about": {
+              "telescopes": [
+                "hubble"
+              ]
+            },
+            "size": "large",
+            "dimensions": {
+              "small": {
+                "nx": 512,
+                "ny": 512
+              },
+              "medium": {
+                "nx": 1025,
+                "ny": 1024
+              },
+              "large": {
+                "nx": 1025,
+                "ny": 1024
+              }
+            },
+            "maximumBrightness": 2,
+            "selectedSourceNumber": 0,
+            "selectedMainLayers": "111",
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "jupiter8",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/jupiter-animate/512x512/icsh10kwq_flt.bmp",
+                  "medium": "rawdata/jupiter-animate/1025x1024/icsh10kwq_flt.bmp",
+                  "large": "rawdata/jupiter-animate/1025x1024/icsh10kwq_flt.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1,
+                "original": {
+                  "type": "fits",
+                  "path": "source-images/fits/jupiter-animate/icsh10kwq_flt.fits"
+                }
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "gray"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "sun-uv7",
+          "poster": "sun-uv7",
+          "title": "Sun-Ultraviolet",
+          "the": true,
+          "subtitle": "Try your hand at enhancing and bringing out details in images<br>the same way NASA scientists do.",
+          "context": "This image show a solar storm on the surface of the sun. A magnetic storm shows up best in ultraviolet images like this.",
+          "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "saveandsendtext": "This image is taken by the Solar Dynamics Observatory - and explored by YOU!",
+          "image": {
+            "name": "Sun-Ultraviolet",
+            "shortname": "Sun-UV",
+            "about": {
+              "telescopes": [
+                "sdo"
+              ]
+            },
+            "size": "x2large",
+            "dimensions": {
+              "small": {
+                "nx": 512,
+                "ny": 512
+              },
+              "medium": {
+                "nx": 1024,
+                "ny": 1024
+              },
+              "large": {
+                "nx": 2048,
+                "ny": 2048
+              },
+              "x2large": {
+                "nx": 4096,
+                "ny": 4096
+              }
+            },
+            "maximumBrightness": 2,
+            "selectedSourceNumber": 0,
+            "selectedMainLayers": "111",
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "sun-uv-7",
+                "telescope": "sdo",
+                "path": {
+                  "small": "rawdata/2014_01_08__20_28_11_34__SDO_AIA_AIA_171/512x512/2014_01_08__20_28_11_34__SDO_AIA_AIA_171.bmp",
+                  "medium": "rawdata/2014_01_08__20_28_11_34__SDO_AIA_AIA_171/1024x1024/2014_01_08__20_28_11_34__SDO_AIA_AIA_171.bmp",
+                  "large": "rawdata/2014_01_08__20_28_11_34__SDO_AIA_AIA_171/2048x2048/2014_01_08__20_28_11_34__SDO_AIA_AIA_171.bmp",
+                  "x2large": "rawdata/2014_01_08__20_28_11_34__SDO_AIA_AIA_171/4096x4096/2014_01_08__20_28_11_34__SDO_AIA_AIA_171.bmp"
+                },
+                "filter": "gray",
+                "min": 0,
+                "max": 10,
+                "scaling": "linear",
+                "brightness": 1,
+                "contrast": 1,
+                "original": {
+                  "type": "png",
+                  "path": "source-images/png/2014_01_08__20_28_11_34__SDO_AIA_AIA_171/2014_01_08__20_28_11_34__SDO_AIA_AIA_171.png"
+                }
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "gray"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
