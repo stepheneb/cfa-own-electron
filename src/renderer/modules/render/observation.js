@@ -53,6 +53,14 @@ observation.render = (page, registeredCallbacks) => {
       `;
   }
 
+  let notRunningInElectron = '';
+
+  if (u.notRunningInElectron()) {
+    notRunningInElectron = `
+      <p>Requesting an observation only works in the CfA Kiosk Electron application.</p>
+    `;
+  }
+
   let modalHtmls = `
     <div class="modal fade observation" id="${modalId1}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="${modalId1}-title" aria-hidden="true">
       <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
@@ -158,6 +166,7 @@ observation.render = (page, registeredCallbacks) => {
                 <div class='details'>
                   We will send your image to <span id="your-email">yourname@website.com</span>
                 </div>
+                ${notRunningInElectron}
               </div>
               ${image()}
               ${telescope()}
@@ -166,7 +175,6 @@ observation.render = (page, registeredCallbacks) => {
         </div>
       </div>
     </div>
-
   `;
 
   registeredCallbacks.push(callback);
@@ -242,30 +250,33 @@ observation.render = (page, registeredCallbacks) => {
     sendEmailForm.onsubmit = async (e) => {
       e.preventDefault();
 
+      observation.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope.php';
+
       let email = document.getElementById('email');
-      let formData = new FormData();
-      formData.append("email", email.value);
-      formData.append("kiosk_id", app.kiosk_id);
-      formData.append("observation", page.title);
-      formData.append("datetime_when_user_made_request_at_kiosk", new Date().toISOString());
-      formData.append("credential", "1114c7c1d689b28d3e21178c47136be21899050022084b856fea4277966f927");
+      let datetime = new Date().toISOString();
 
-      // 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope.php
-      // observation.postUrl = 'https://lweb.cfa.harvard.edu/smgphp/otherworlds/OE/telescope.php';
-      //
-      // const response = await fetch(observation.postUrl, {
-      //   method: 'POST',
-      //   mode: 'no-cors',
-      //   body: formData
-      // });
-      //
-      // alert(response);
-      // let result = response.json();
-      // displayAlert(result);
-
-      // function displayAlert(result) {
-      //   alert('message =' + result.message + ' \nkiosk_id = ' + result.kiosk_id + ' \nemail = ' + result.email + ' \nobservation = ' + result.observation + ' \ndatetime_when_user_made_request_at_kiosk = ' + result.datetime_when_user_made_request_at_kiosk + ' \ncredential = ' + result.credential);
-      // }
+      if (u.runningInElectron()) {
+        let body = {
+          kiosk_id: app.kioskState.id,
+          email: email.value,
+          observation_name: 'Whirlpool Galaxy (M51)',
+          observation_id: 'GA2',
+          datetime_when_user_made_request_at_kiosk: datetime,
+          credential: app.kioskState.cfa_key
+        };
+        fetch(observation.postUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            body: JSON.stringify(body)
+          })
+          .then(response => response.json())
+          .then(json => console.log(JSON.stringify(json, null, '\t')))
+          .catch(error => {
+            console.error(`Request to send image failed: ${error}`);
+          });
+      }
 
       yourEmail.innerText = email.value;
 
