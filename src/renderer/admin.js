@@ -20,8 +20,14 @@ if (u.runningInElectron()) {
 
   ipcRenderer.invoke('getKioskState').then((kioskState) => {
     admin.kioskState = kioskState;
-    let kiosk_id = document.getElementById('kiosk_id');
-    kiosk_id.innerText = kioskState.id;
+    let kiosk_elem = document.getElementById('kiosk-id');
+    kiosk_elem.innerText = kioskState.id;
+    let cfa_key_elem = document.getElementById('cfa-key-id');
+    if (kioskState.cfa_key) {
+      cfa_key_elem.innerText = kioskState.cfa_key;
+    } {
+      cfa_key_elem.innerText = 'not set';
+    }
   });
 }
 
