@@ -1,5 +1,5 @@
 /*jshint esversion: 8 */
-/*global app */
+/*global app  */
 
 import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
@@ -33,11 +33,14 @@ saveandsend.render = (page, registeredCallbacks) => {
 
   let downloadYourImage = '';
 
-  // let downloadYourImage = `
-  //   <a id="download-image" download="${page.title}" type="button" class="btn btn-success"
-  //     disabled>Download your <span>${page.title}</span> image</a>
-  //   <div id="download-stats" class='stats'></div>
-  // `;
+  if (u.notRunningInElectron()) {
+    downloadYourImage = `
+      <p>Sending an image only works in the CfA Kiosk Electron application. Try downloading instead.</p>
+      <a id="download-image" download="${page.title}" type="button" class="btn btn-success"
+        disabled>Download your <span>${page.title}</span> image</a>
+      <div id="download-stats" class='stats'></div>
+    `;
+  }
 
   function image() {
     return `
@@ -221,56 +224,30 @@ saveandsend.render = (page, registeredCallbacks) => {
       let imageData = page.canvasImages.image.jpgDataUrl;
       let imageFilename = generateImageName('jpg');
       let datetime = new Date().toISOString();
-      let kiosk_id = app.kiosk_id;
 
-      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_16.php';
+      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/emails/email_image.php';
 
-      let nocors = false;
-
-      if (u.notRunningInElectron()) {
+      if (u.runningInElectron()) {
         let body = {
-          img_data: imageData,
-          imageFilename: imageFilename,
+          credential: app.kioskState.cfa_key,
           email: email.value,
-          kiosk_id: kiosk_id,
+          imageFilename: imageFilename,
+          img_data: imageData,
+          kiosk_id: app.kioskState.id,
           datetime_when_user_made_request_at_kiosk: datetime
         };
-        if (nocors) {
-          fetch(saveandsend.postUrl, {
-              method: 'POST',
-              // withCredentials: true,
-              mode: 'no-cors',
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              },
-              body: JSON.stringify(body)
-            })
-            .then(response => response.text())
-            .then((data) => {
-              return data ? JSON.parse(data) : {};
-            })
-            .then(json => {
-              console.log(JSON.stringify(json, null, '\t'));
-            })
-            .catch(error => {
-              console.error(`Request to send image failed: ${error}`);
-            });
-        } else {
-          fetch(saveandsend.postUrl, {
-              method: 'POST',
-              // withCredentials: true,
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              },
-              body: JSON.stringify(body)
-            })
-            .then(response => response.json())
-            .then(json => console.log(JSON.stringify(json, null, '\t')))
-            .catch(error => {
-              console.error(`Request to send image failed: ${error}`);
-            });
-
-        }
+        fetch(saveandsend.postUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            body: JSON.stringify(body)
+          })
+          .then(response => response.json())
+          .then(json => console.log(JSON.stringify(json, null, '\t')))
+          .catch(error => {
+            console.error(`Request to send image failed: ${error}`);
+          });
       }
 
       yourEmail.innerText = email.value;

@@ -2303,8 +2303,15 @@ div.modal.save-and-send .modal-dialog {
             text-align: center;
             line-height: normal;
           }
+          p {
+            margin-top: 2vh;
+            padding: 0 10% 0 15%;
+            font-size: 2vh;
+            line-height: 1.4em;
+            color: white;
+          }
           a {
-            margin-top: 4vh;
+            margin-top: 1vh;
             font-size: 2vh;
             color: var(--almost-white);
             &.disabled {
