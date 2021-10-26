@@ -1,6 +1,8 @@
-/*global ipcRenderer  */
+/*global ipcRenderer app  */
 
 import u from './modules/utilities.js';
+
+window.app = {};
 
 let admin = {};
 
@@ -23,7 +25,7 @@ if (u.runningInElectron()) {
   });
 
   ipcRenderer.invoke('getKioskState').then((kioskState) => {
-    admin.kioskState = kioskState;
+    app.kioskState = kioskState;
     let kiosk_elem = document.getElementById('kiosk-id');
     kiosk_elem.innerText = kioskState.id;
     if (kioskState.cfa_key) {
@@ -36,7 +38,7 @@ if (u.runningInElectron()) {
   enterCfaKey.onsubmit = async () => {
     let obj = { "new-cfa-key": newCfaKey.value };
     ipcRenderer.invoke('new-cfa-key', obj).then((kioskState) => {
-      admin.kioskState = kioskState;
+      app.kioskState = kioskState;
     });
   };
 }
