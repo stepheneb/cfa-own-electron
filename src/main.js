@@ -181,6 +181,7 @@ if (!singleInstanceLock) {
     } else {
       createMainWindow();
     }
+    kioskdb.init();
   });
 }
 

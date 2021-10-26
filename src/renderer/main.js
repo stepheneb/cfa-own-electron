@@ -1,4 +1,4 @@
-/*global app, defaultApp, ipcRenderer */
+/*global app, defaultApp */
 
 import router from './router.js';
 import splash from './modules/render/splash.js';
@@ -41,12 +41,6 @@ main.setupNewApp = newApp => {
       telescope.description = description.join('\n');
     }
   });
-
-  if (u.runningInElectron()) {
-    ipcRenderer.invoke('getKioskState').then((kioskState) => {
-      app.kioskState = kioskState;
-    });
-  }
   return newApp;
 };
 
