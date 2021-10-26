@@ -46,9 +46,12 @@ To debug code running in the main nodejs process:
 1. Open Chrome and open the url: `chrome://inspect/#devices`
 2. Make sure **Discover network targets** is checked and confirm that `localhost:9229` is listed in the configuration.
 3. Add a `debugger;` statement where you want the code pause.
-4. Start the application: `npm run debug-stop`. This will pause execution at the first executable statement in the nodejs context.
-5. When the application has paused an **inspect** link appears for `electron/js2c/browser_init` under **Remote Target** in the `chrome://inspect/#devices` window. Click this link to open a second Chrome devtools window associated with the main nodejs process.
-6. At this point only the source for the initial Electron packages `default_app/main.ts` is visible in the **Sources** panel and the debugger is paused at the first executable statment. This `main.js` is not the application's `src/main.js` code, instead it is code that Electron generates and runs as part of the initial application startup. Click the continue execution button in the top right of the debugger.
+4. Start the application with remote debugging enabled in **visitor** or **admin** mode:
+  - **vistor**: `npm run debug-stop`.
+  - **admin**: `npm run debug-stop-admin`
+
+5. This will pause execution at the first executable statement in the nodejs context. When the application has paused an **inspect** link appears for `electron/js2c/browser_init` under **Remote Target** in the `chrome://inspect/#devices` window. Click this link to open a second Chrome devtools window associated with the main nodejs process.
+6. At this point only the source for the initial Electron packages `default_app/main.ts` is visible in the **Sources** panel and the debugger is paused at the first executable statment (if the debugger is paused and the source is not visible step forward one statement). This `main.js` is not the application's `src/main.js` code, instead it is code that Electron generates and runs as part of the initial application startup. Click the continue execution button in the top right of the debugger.
 7. The devtools window will next pause where you inserted the debugger statement in application code. Additional source files that have been evaluated will now be visible in the **Source** panel in the devtools window.
 8. At this point further breakpoints can be added to code visible in the **Sources** panel.
 
@@ -79,7 +82,7 @@ Publishing a new draft release takes about 20 minutes. Check on progress here: h
 Display a summary of changes in the release (useful as a starting point for creating release notes).
 
 ```
-git log --pretty=medium v1.0.0-beta.4...v1.0.0-beta.5
+git log --reverse --pretty=medium v1.0.0-beta.30...v1.0.0-beta.31
 ```
 
 If the release workflow fails and the failure is caused by an error in the application delete the most recent tag from both local and remote repositories.
