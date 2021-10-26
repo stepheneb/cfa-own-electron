@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-/*global app  defaultApp */
+/*global app  defaultApp ipcRenderer */
 
 // https://stackoverflow.com/questions/38127416/is-it-possible-to-destructure-instance-member-variables-in-a-javascript-construc
 
@@ -24,6 +24,7 @@ import renderDev from './render/dev.js';
 import splash from './render/splash.js';
 import checkBrowser from './check-browser.js';
 import logger from './logger.js';
+import u from './utilities.js';
 
 class Page {
   constructor(ctype, page) {
@@ -279,6 +280,12 @@ class Page {
 
   render() {
     events.setupGlobal(this);
+
+    if (u.runningInElectron()) {
+      ipcRenderer.invoke('getKioskState').then((kioskState) => {
+        app.kioskState = kioskState;
+      });
+    }
 
     switch (this.type) {
 
