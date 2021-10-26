@@ -15,9 +15,17 @@
       <button id='quit' type='button' class='btn btn-warning btn-lg'>Quit Application</button>
     </div>
 
-    <div class="d-flex flex-column pt-4">
+    <div class="attributes d-flex flex-column pt-4">
       <div>Kiosk id: <span id='kiosk-id'></span></div>
       <div>Kiosk CFA key: <span id='cfa-key-id'></span></div>
+      <form id="enter-cfa-key">
+        <label for="new-cfa-key">New CfA Key:</label>
+        <input id="new-cfa-key" type="text" name="new-cfa-key" required minlength="17" maxlength="17" size="20" autocomplete="none" pattern="[A-Za-z\d]{17}"></input>
+        <button id='new-cfa-key-submit' type="submit" class="btn btn-warning" autocomplete="none">
+          SAVE
+        </button>
+        <p class='key-constraints'>Key must be 17 characters consisting only of numbers, upper and lowercase letters.</p>
+      </form>
     </div>
   </div>
 

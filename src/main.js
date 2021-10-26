@@ -238,6 +238,15 @@ if (admin) {
 }
 
 ipcMain.handle('getKioskState', async () => {
-  kioskState = await kioskdb();
+  kioskState = await kioskdb.init();
+  return kioskState;
+});
+
+ipcMain.handle('new-cfa-key', async (e, obj) => {
+  kioskState.cfa_key = obj['new-cfa-key'];
+  const saveKioskState = async () => {
+    await kioskdb.save();
+  };
+  saveKioskState();
   return kioskState;
 });

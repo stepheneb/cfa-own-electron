@@ -10,11 +10,15 @@ const initialKioskState = {
   cfa_key: null
 };
 
-export const kioskdb = async () => {
+let db = null;
+
+export const kioskdb = {};
+
+kioskdb.init = async () => {
   const kioskJsonDbPath = path.join(app.getPath('userData'), 'cfa.json');
   console.log(kioskJsonDbPath);
   const adapter = new JSONFile(kioskJsonDbPath);
-  const db = new Low(adapter);
+  db = new Low(adapter);
 
   const startup = async () => {
     await db.read();
@@ -38,4 +42,8 @@ export const kioskdb = async () => {
 
   await startup();
   return db.data;
+};
+
+kioskdb.save = async () => {
+  await db.write();
 };

@@ -1,11 +1,33 @@
 .content.admin {
   padding: 10px 20px;
   font-size: 16px;
+
   .header {
     font-size: 3em;
     color: var(--bright-green);
     button {
       font-size: 100%;
+    }
+  }
+
+  .attributes {
+    div {
+      margin: 0.25em 0;
+    }
+  }
+  form#enter-cfa-key {
+    margin: 0.5em 0;
+    label,
+    input {
+      margin-right: 0.5em;
+    }
+    input {
+      padding: 0.25em 0.5em;
+    }
+
+    p.key-constraints {
+      margin: 0.25em 0;
+      font-size: 90%;
     }
   }
 }
