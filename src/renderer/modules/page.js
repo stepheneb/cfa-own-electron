@@ -31,7 +31,10 @@ class Page {
     this.type = ctype;
     this.category = app.categories.find(c => c.type == ctype);
     Object.assign(this, page);
-    this.id = `page-${this.type}-${this.name}`;
+    if (this.type == "observation") {
+      this.observation_id = this.id;
+    }
+    this.id = `page-${this.type}-${this.id}`;
     this.registeredCallbacks = [];
     this.closeCallbacks = [];
 

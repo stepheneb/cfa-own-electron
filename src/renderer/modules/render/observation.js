@@ -259,8 +259,8 @@ observation.render = (page, registeredCallbacks) => {
         let body = {
           kiosk_id: app.kioskState.id,
           email: email.value,
-          observation_name: 'Whirlpool Galaxy (M51)',
-          observation_id: 'GA2',
+          observation_name: page.title,
+          observation_id: page.observation_id,
           datetime_when_user_made_request_at_kiosk: datetime,
           credential: app.kioskState.cfa_key
         };

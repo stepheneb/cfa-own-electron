@@ -165,7 +165,7 @@ renderMenu.addMenuListeners = (ctype) => {
   // Any click/touch event in activity-page container starts page
   //
   let addStartPageListener = (ctype, page) => {
-    let id = `open-page-${ctype}-${page.name}`;
+    let id = `open-page-${ctype}-${page.id}`;
     let elem = document.getElementById(id);
     elem.addEventListener('click', listener);
     menuListeners.push([elem, 'click', listener]);
@@ -386,9 +386,9 @@ renderMenu.categoryPageCollection = category => {
   let telescopes = '';
   let type = category.type;
   category.pages.forEach((page) => {
-    var id = `open-page-${category.type}-${page.name}`;
+    var id = `open-page-${category.type}-${page.id}`;
     if (category.type !== "observation") {
-      telescopes = getTelescopes(page).map(telescope => telescope.name).join(", ");
+      telescopes = getTelescopes(page).map(telescope => telescope.id).join(", ");
       html += `
         <div id="${id}" class="menu-category-page">
           <div class="image-wrapper">
