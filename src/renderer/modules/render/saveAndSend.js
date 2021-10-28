@@ -255,16 +255,6 @@ saveandsend.render = (page, registeredCallbacks) => {
       bsModal2.hide();
       bsModal3.show();
     };
-
-    // modal1CloseButton.addEventListener('click', hideAll);
-    // modal2CloseButton.addEventListener('click', hideAll);
-    // modal3CloseButton.addEventListener('click', hideAll);
-    //
-    // function hideAll() {
-    //   bsModal1.hide();
-    //   bsModal2.hide();
-    //   bsModal3.hide();
-    // }
   }
 };
 
