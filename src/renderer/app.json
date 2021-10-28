@@ -2456,7 +2456,7 @@
           "enddate": "1231"
         },
         {
-          "id": "MOON",
+          "id": "SS1",
           "title": "Moon",
           "subtitle": "Request your own observation and have the image emailed to you.",
           "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
@@ -2465,7 +2465,7 @@
           "enddate": "1231"
         },
         {
-          "id": "SUN",
+          "id": "SS7",
           "title": "Sun",
           "subtitle": "Request your own observation and have the image emailed to you.",
           "description": "Description ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ..",
