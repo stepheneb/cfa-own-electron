@@ -87,7 +87,7 @@ if (u.runningInElectron()) {
         cfaHandshakeReponse.innerText = response;
       })
       .catch(error => {
-        response = `Request to send image failed: ${error}.\nThe Developer Tools console might have more clues.`;
+        response = `Request to perform handshake failed: ${error}.\nThe Developer Tools console might have more clues.`;
         console.error(response);
         cfaHandshakeReponse.innerText = response;
       });
