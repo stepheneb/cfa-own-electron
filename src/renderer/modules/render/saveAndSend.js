@@ -233,6 +233,9 @@ saveandsend.render = (page, registeredCallbacks) => {
           email: email.value,
           imageFilename: imageFilename,
           img_data: imageData,
+          activity_name: page.title,
+          category_name: page.category.title,
+          activity_path: `${page.type}/${page.id}`,
           kiosk_id: app.kioskState.id,
           datetime_when_user_made_request_at_kiosk: datetime
         };
