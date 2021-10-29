@@ -217,7 +217,7 @@ saveandsend.render = (page, registeredCallbacks) => {
 
       let generateImageName = (type) => {
         let uuid = u.UUID.generate();
-        return `${page.name}-${uuid}.${type}`;
+        return `${page.id}-${uuid}.${type}`;
       };
 
       let email = document.getElementById('email');

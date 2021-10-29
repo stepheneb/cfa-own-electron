@@ -31,10 +31,6 @@ class Page {
     this.type = ctype;
     this.category = app.categories.find(c => c.type == ctype);
     Object.assign(this, page);
-    if (this.type == "observation") {
-      this.observation_id = this.id;
-    }
-    this.id = `page-${this.type}-${this.id}`;
     this.registeredCallbacks = [];
     this.closeCallbacks = [];
 
@@ -60,7 +56,7 @@ class Page {
 
   reset() {
     let category = defaultApp.categories.find(c => c.type == this.type);
-    let page = category.pages.find(p => p.name == router.path.page);
+    let page = category.pages.find(p => p.id == router.path.page);
     let sources = page.image.sources;
     for (var i = 0; i < sources.length; i++) {
       var source = sources[i];
@@ -259,7 +255,7 @@ class Page {
     }
 
     let html = `
-      <div id='${this.id}' class='activity-page' data-categorytype="${this.type}" data-pagename="${this.name}">
+      <div id='${this.id}' class='activity-page' data-categorytype="${this.type}" data-pagename="${this.id}">
         ${this.renderPageHeader(this)}
         <div class='row'>
           <div class="col-main-content">
@@ -360,7 +356,7 @@ class Page {
     //   });
     // });
 
-    router.updateHash(`run/${this.type}/${this.name}`);
+    router.updateHash(`run/${this.type}/${this.id}`);
 
   }
 

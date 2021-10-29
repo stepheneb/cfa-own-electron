@@ -24,7 +24,7 @@ router.route = () => {
     let category = app.categories.find(c => c.type == router.path.category);
     let page = null;
     if (category) {
-      page = category.pages.find(p => p.name == router.path.page);
+      page = category.pages.find(p => p.id == router.path.page);
     }
     switch (router.path.action) {
     case "menu":
