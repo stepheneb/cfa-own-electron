@@ -260,7 +260,7 @@ observation.render = (page, registeredCallbacks) => {
           kiosk_id: app.kioskState.id,
           email: email.value,
           observation_name: page.title,
-          observation_id: page.observation_id,
+          observation_id: page.id,
           datetime_when_user_made_request_at_kiosk: datetime,
           credential: app.kioskState.cfa_key
         };
