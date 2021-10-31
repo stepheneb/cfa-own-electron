@@ -493,7 +493,7 @@ class CanvasImages {
       if (download) {
         let downloadStats = document.getElementById('download-stats');
         this.image.jpgOctetStream = this.image.jpgDataUrl.replace("image/jpeg", "image/octet-stream");
-        download.setAttribute("href", this.image.pngOctetStream);
+        download.setAttribute("href", this.image.jpgOctetStream);
         download.classList.remove('disabled');
         downloadStats.innerText = `dimensions: ${destinationCanvas.width} x ${destinationCanvas.height}, size: ${u.bytesToSize(this.image.jpgOctetStream.length * 0.76)}`;
       }
