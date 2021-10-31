@@ -115,6 +115,66 @@ References:
 - https://docs.github.com/en/actions
 
 
+### Native modules and ABI versions for electron:
+
+https://www.electronjs.org/docs/latest/tutorial/using-native-node-modules
+
+```
+$ node_modules/electron/dist/Electron.app/Contents/MacOS/Electron --help
+-i, --interactive     Open a REPL to the main process.
+-r, --require         Module to preload (option can be repeated).
+-v, --version         Print the version.
+-a, --abi             Print the Node ABI version.
+```
+
+```
+$ node_modules/electron/dist/Electron.app/Contents/MacOS/Electron --version
+v13.2.3
+```
+
+```
+$ node_modules/electron/dist/Electron.app/Contents/MacOS/Electron --abi
+89
+```
+
+```
+$ node_modules/electron/dist/Electron.app/Contents/MacOS/Electron -i
+
+    Welcome to the Electron.js REPL \[._.]/
+
+    You can access all Electron.js modules here as well as Node.js modules.
+    Using: Node.js v14.16.0 and Electron.js v13.2.3
+
+> process.versions
+{
+  node: '14.16.0',
+  v8: '9.1.269.39-electron.0',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '89',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1',
+  icu: '68.1',
+  unicode: '13.0',
+  electron: '13.2.3',
+  chrome: '91.0.4472.164'
+}
+```
+
+https://github.com/electron/node-abi
+
+```
+$ node
+Welcome to Node.js v14.18.1.
+Type ".help" for more information.
+> require('node-abi').getAbi('14.16.0', 'node')
+'83'
+```
+
 ### Debugging a workflow action
 
 The `windows-release.yml` workflow is failing -- perhaps due to an out of memory issue.
