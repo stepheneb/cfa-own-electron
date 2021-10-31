@@ -85,17 +85,29 @@ Display a summary of changes in the release (useful as a starting point for crea
 git log --reverse --pretty=medium v1.0.0-beta.30...v1.0.0-beta.31
 ```
 
-If the release workflow fails and the failure is caused by an error in the application delete the most recent tag from both local and remote repositories.
+If the release workflow fails and the failure is caused by an error building the application delete the most recent tag from both local and remote repositories.
 
 ```
-git tag -d v1.0.0-beta.5 && git push --delete origin v1.0.0-beta.5
+tag=v1.0.0-beta.39
+git tag -d $tag && git push --delete origin $tag
 ```
 
-After resolving the errors performing the **Release** workflow action recreate the local tag and push the new tag to the remote repository.
+
+If additional commits are need to resolve the errors rebase the new commits and force push the changes:
 
 ```
-git tag -a v1.0.0-beta.5 -m "v1.0.0-beta.5"
-git push origin v1.0.0-beta.5
+git rebase -i head~
+git push origin main -f
+```
+
+If some or all the artifacts for a release were generated these must be deleted in the draft release before pushing the re-created version tag are re-generating the release artifacts.
+
+Recreate the local tag and push the recreated tag to the remote repository.
+
+```
+tag=v1.0.0-beta.39
+git tag -a $tag -m "$tag"
+git push origin $tag
 ```
 
 References:
