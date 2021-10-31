@@ -1,59 +1,129 @@
 body#admin {
   user-select: text;
-}
 
-.content.admin {
-  padding: 10px 20px;
-  font-size: 16px;
+  .content.admin {
+    padding: 10px 20px;
+    font-size: 16px;
 
-  .header {
-    font-size: 3em;
-    color: var(--bright-green);
     button {
-      font-size: 100%;
-    }
-  }
-
-  .attributes {
-    div {
-      margin: 0.25em 0;
-    }
-  }
-  form#enter-cfa-key {
-    margin: 0.5em 0;
-    label,
-    input {
-      margin-right: 0.5em;
-      padding: 0.25em 0.5em;
-    }
-    input {
-      padding: 0.25em 0.5em;
-      background-color: #ccc;
-    }
-    input:focus {
-      background-color: #eee;
+      padding: 0.2em 0.5em;
     }
 
-    p.key-constraints {
-      margin: 0.25em 0;
-      font-size: 90%;
+    .header {
+      font-size: 3em;
+      color: var(--bright-green);
+      button {
+        font-size: 100%;
+      }
+    }
+
+    .need-cfa-key {
+      display: none;
+      margin: 1em 0 0 1em;
+      font-size: 110%;
+      font-weight: 500;
+      color: white;
+      &.show {
+        display: block;
+      }
+    }
+
+    .settings {
+      margin: 2em 0;
+      align-items: baseline;
+      .existing {
+        font-size: 110%;
+        margin: 0;
+        flex-grow: 1;
+        span.value {
+          font-weight: 500;
+          letter-spacing: 0.05em;
+        }
+      }
+      .new-key {
+        margin: 0;
+        flex-grow: 2;
+      }
+    }
+    form#enter-cfa-key {
+      margin: 0;
+      label,
+      input {
+        margin-right: 0.5em;
+        padding: 0.25em 0.5em 0.25em 0;
+      }
+      input {
+        padding: 0.25em 0.5em;
+        background-color: #ccc;
+      }
+      input:focus {
+        background-color: #eee;
+      }
+
+      input:invalid ~ button[type="submit"] {
+        background-color: #ccc;
+      }
+
+      button {
+        margin: 0 0.5em;
+      }
+
+      p.key-constraints {
+        margin: 0.25em 0;
+        font-size: 90%;
+      }
+    }
+    div.cfa-handshake {
+      margin-top: 1em;
+    }
+    #cfa-handshake-status {
+      margin-top: 1em;
+      margin-left: 1.5em;
+      width: 60%;
+      min-width: 40em;
+      font-size: 110%;
+      font-weight: 500;
+      pre {
+        margin: 0.75em 1em 1.25em 1em;
+        min-height: 3em;
+        padding: 0.75em 1.5em;
+        background-color: #555;
+        font-size: 65%;
+        white-space: break-spaces;
+      }
     }
   }
-  div.cfa-handshake {
-    margin-top: 1em;
-  }
-  #cfa-handshake-status {
-    margin-top: 1em;
-    margin-left: 1.5em;
-    width: 60%;
-    min-width: 40em;
-    font-size: 110%;
-    font-weight: 500;
-    pre {
-      margin: 1em;
-      padding: 0.5em 1em;
-      background-color: #555;
-      font-size: 70%;
+  .erase-cfa-modal {
+    top: 10vh;
+    .modal-content {
+      .modal-header {
+        color: white;
+        .modal-title {
+          font-size: 3.5vmin;
+        }
+        button {
+          display: block;
+          box-sizing: content-box;
+          width: 1em;
+          height: 1em;
+          i {
+            font-size: 1em;
+          }
+        }
+      }
+      .modal-body {
+        font-size: 2.5vmin;
+        color: white;
+        .buttons {
+          margin: 1em 1em 1em 0;
+          display: flex;
+          justify-content: space-between;
+          button {
+            padding: 0.2em 0.5em;
+            display: inline-block !important;
+          }
+        }
+      }
     }
   }
 }
