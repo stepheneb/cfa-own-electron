@@ -119,6 +119,8 @@ References:
 
 https://www.electronjs.org/docs/latest/tutorial/using-native-node-modules
 
+https://github.com/electron/releases
+
 ```
 $ node_modules/electron/dist/Electron.app/Contents/MacOS/Electron --help
 -i, --interactive     Open a REPL to the main process.
