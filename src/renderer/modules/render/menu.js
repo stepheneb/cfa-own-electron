@@ -12,6 +12,7 @@ import checkBrowser from '../check-browser.js';
 import Page from '../page.js';
 import splash from './splash.js';
 import observation from './observation.js';
+import svg from './svg.js';
 
 let renderMenu = {};
 let connectLine = null;
@@ -31,7 +32,35 @@ let categoryPagesVisible = false;
 
 let ctype = null;
 
-let menuListeners = [];
+//
+// Manage event listeners
+//
+
+let renderMenuListeners = [];
+
+renderMenu.addListener = (elem, event, callback) => {
+  let listenerExists = () => {
+    return renderMenuListeners.findIndex(([el, ev, cb]) => {
+      return elem == el && ev == event && cb == callback;
+    });
+  };
+
+  let listenerDoesNotExist = () => {
+    let index = listenerExists(elem, event, callback);
+    return index == -1;
+  };
+
+  if (listenerDoesNotExist()) {
+    renderMenuListeners.push([elem, event, callback]);
+    elem.addEventListener(event, callback);
+  }
+};
+
+renderMenu.removeAllListeners = () => {
+  renderMenuListeners.forEach(([elem, event, callback]) => {
+    elem.removeEventListener(event, callback);
+  });
+};
 
 renderMenu.page = (categorytype) => {
   ctype = categorytype;
@@ -53,6 +82,8 @@ renderMenu.page = (categorytype) => {
       ${renderMenu.activityCategory()}
       ${renderMenu.activityCategoryPages()}
       ${navigation.menu(renderedCallbacks)}
+      ${svg.menuConnect()}
+      ${svg.menuSeparator()}
     `;
   content = document.getElementById("content");
   content.innerHTML = html;
@@ -76,38 +107,29 @@ renderMenu.page = (categorytype) => {
 
   events.setupGlobal();
   checkBrowser();
-  splash.hideAll();
+  splash.hide();
   renderedCallbacks.forEach(func => func());
 
   btnStartOver = document.getElementById('btn-start-over');
-  btnStartOver.addEventListener('click', () => {
-    main.restart();
+
+  renderMenu.addListener(btnStartOver, 'click', () => {
+    main.startover();
   });
 
   router.updateHash(hash);
 };
 
 //
-// remove listeneters and start category activity page
+// remove listeners and start category activity page
 //
 renderMenu.startCategoryActivityPage = (ctype, page) => {
-  renderMenu.removeMenuListeners();
+  renderMenu.removeAllListeners();
   app.page = new Page(ctype, page);
 };
 
-//
-// Manage event listeners
-//
-renderMenu.removeMenuListeners = () => {
-  // let elem, listener;
-  menuListeners.forEach(([elem, evt, listener]) => {
-    elem.removeEventListener(evt, listener);
-  });
-};
-
 renderMenu.addMenuListeners = (ctype) => {
-  window.addEventListener('resize', renderMenu.drawSeparatorLine);
-  menuListeners.push([window, 'resize', renderMenu.drawSeparatorLine]);
+
+  renderMenu.addListener(window, 'resize', renderMenu.drawSeparatorLine);
 
   if (ctype) {
     selectedCategoryElement = document.getElementById(`menu-category-${ctype}`);
@@ -127,14 +149,12 @@ renderMenu.addMenuListeners = (ctype) => {
   let addMenuCategoryListener = (ctype) => {
     let id = `menu-category-${ctype}`;
     let elem = document.getElementById(id);
-    elem.addEventListener('click', listener);
-    menuListeners.push([elem, 'click', listener]);
 
-    function listener(e) {
+    renderMenu.addListener(elem, 'click', (e) => {
       e.stopPropagation();
       selectedCategoryElement = document.getElementById(`menu-category-${ctype}`);
       renderMenu.categoryPages(ctype);
-    }
+    });
   };
 
   app.categories.forEach(c => {
@@ -147,14 +167,12 @@ renderMenu.addMenuListeners = (ctype) => {
   let addSVGCloseMenuCategoryPagesListener = (ctype) => {
     let id = `svg-close-menu-${ctype}-pages`;
     let elem = document.getElementById(id);
-    elem.addEventListener('click', listener);
-    menuListeners.push([elem, 'click', listener]);
 
-    function listener(e) {
+    renderMenu.addListener(elem, 'click', (e) => {
       e.stopPropagation();
       selectedCategoryElement = document.getElementById(`menu-category-${ctype}`);
       renderMenu.categoryPages(ctype);
-    }
+    });
   };
 
   app.categories.forEach(c => {
@@ -167,16 +185,15 @@ renderMenu.addMenuListeners = (ctype) => {
   let addStartPageListener = (ctype, page) => {
     let id = `open-page-${ctype}-${page.id}`;
     let elem = document.getElementById(id);
-    elem.addEventListener('click', listener);
-    menuListeners.push([elem, 'click', listener]);
 
-    function listener(e) {
+    renderMenu.addListener(elem, 'click', (e) => {
       e.stopPropagation();
       connectLine.classList.remove('show');
       separatorLine.classList.remove('show');
       categoryPagesVisible = false;
       renderMenu.startCategoryActivityPage(ctype, page);
-    }
+    });
+
   };
 
   app.categories.forEach((category) => {
@@ -191,16 +208,13 @@ renderMenu.addMenuListeners = (ctype) => {
   //
   let addMenuBodyListener = () => {
     let elem = document.body;
-    elem.addEventListener('click', listener);
-    menuListeners.push([elem, 'click', listener]);
-
-    function listener() {
+    renderMenu.addListener(elem, 'click', () => {
       let selectedCategories = document.getElementsByClassName('category selected');
       if (selectedCategories.length > 0) {
         selectedCategoryElement = selectedCategories[0];
         renderMenu.categoryPages(ctype);
       }
-    }
+    });
   };
 
   addMenuBodyListener(ctype);

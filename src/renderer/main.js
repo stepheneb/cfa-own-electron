@@ -12,7 +12,6 @@ window.defaultApp = {};
 let main = {};
 
 main.setupNewApp = newApp => {
-  newApp.hashRendered = "start";
   newApp.splashRendered = false;
   newApp.pageNum = -1;
   newApp.categories.forEach(category => {
@@ -49,21 +48,33 @@ main.start = () => {
   Object.assign(app, main.setupNewApp(u.deepClone(data)));
   app.logger = true;
   app.email = '';
+  app.firstStart = true;
+  app.start = true;
+  splash.render();
   router.addHashChangeListener();
   setupWindowSizeListener();
-  countdownToStartOver();
+  countdownToRestart();
   router.route();
 };
 
 main.restart = () => {
   Object.assign(app, u.deepClone(defaultApp));
-  app.splashRendered = true;
   app.logger = true;
   app.email = '';
-  splash.showSplash2();
-  router.addHashChangeListener();
-  countdownToStartOver();
-  router.route();
+  app.start = true;
+  main.clearContent();
+  router.resetHash();
+  countdownToRestart();
+};
+
+main.startover = () => {
+  Object.assign(app, u.deepClone(defaultApp));
+  app.logger = true;
+  app.email = '';
+  app.start = false;
+  main.clearContent();
+  router.resetHash();
+  countdownToRestart();
 };
 
 function setupWindowSizeListener() {
@@ -98,26 +109,47 @@ function setupWindowSizeListener() {
   }
 }
 
-let startTime = 0;
-let startOverDuration = 0;
+main.clearContent = () => {
+  let body = document.body;
+  u.removeAllChildren(document.getElementById('content'));
+  u.removeElement(document.querySelector('div.modal-backdrop'));
+  body.classList.remove('nofadeout', 'modal-open');
+  body.removeAttribute('style');
+  document.getElementById('ctrl-backtick').classList.remove('show');
+  app.firstStart = false;
 
-function countdownToStartOver() {
+};
+
+let startTime = 0;
+let restartDuration = 0;
+
+function countdownToRestart() {
+  let startingOverElem = document.getElementById('starting-over');
+  let values = startingOverElem.querySelector('span.values');
   if (u.runningInElectron()) {
     startTime = performance.now();
-    startOverDuration = app.defaultStartOverDuration;
+    restartDuration = app.defaultRestartDuration;
     let currentDuration = 0;
-    let timeRemaining = startOverDuration;
+    let timeRemaining = restartDuration;
     setInterval(function () {
       currentDuration = (performance.now() - startTime) / 1000;
-      timeRemaining = Math.ceil(startOverDuration - currentDuration);
+      timeRemaining = Math.ceil(restartDuration - currentDuration);
       console.log(`startover: ${timeRemaining}`);
-      if (currentDuration > startOverDuration) {
+      if (timeRemaining < 16) {
+        startingOverElem.classList.add('changing');
+        values.innerText = Math.round(timeRemaining);
+      }
+      if (currentDuration > restartDuration) {
         currentDuration = 0;
+        startingOverElem.classList.remove('changing');
+        values.innerText = '';
         main.restart();
       }
     }, 1000);
     window.addEventListener('pointermove', () => {
       startTime = performance.now();
+      startingOverElem.classList.remove('changing');
+      values.innerText = '';
     });
   }
 }

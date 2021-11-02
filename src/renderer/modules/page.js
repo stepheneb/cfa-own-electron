@@ -48,9 +48,9 @@ class Page {
     }
     if (checkBrowser()) {
       this.render();
-      splash.hideAll();
+      splash.hide();
     } else {
-      splash.hideAll();
+      splash.hide();
     }
   }
 
@@ -344,17 +344,10 @@ class Page {
       if (this.saveAndSendModalsOpen()) {
         this.hideAllSaveAndSendModals();
       } else if (this.observationModalsOpen()) {
-        this.hideAllObservationModalsAndRenderMenu();
+        this.hideAllObservationModals();
       }
-      main.restart();
+      main.startover();
     });
-
-    // this.saveAndSendModalCloseButtons = document.querySelectorAll('div.save-and-send.modal button.btn-close');
-    // this.saveAndSendModalCloseButtons.forEach(btn => {
-    //   btn.addEventListener('click', () => {
-    //     this.hideAllSaveAndSendModalsAndRenderMenu();
-    //   });
-    // });
 
     router.updateHash(`run/${this.type}/${this.id}`);
 

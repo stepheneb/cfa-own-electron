@@ -159,6 +159,29 @@ div#splash2 {
   }
 }
 
+#starting-over {
+  position: absolute;
+  z-index: 10000;
+  display: none;
+  opacity: 0.5;
+  top: 1vh;
+  left: 2vw;
+  padding: 2vh;
+  font-size: 2.6vh;
+  font-weight: 500;
+  color: white;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  border-radius: 1vh;
+  &.changing {
+    display: block;
+    animation: fade 15s ease reverse;
+  }
+  p {
+    margin: 0.5rem 0rem;
+  }
+}
+
 #window-size {
   position: absolute;
   z-index: 200;
@@ -192,6 +215,10 @@ div#splash2 {
 }
 
 #ctrl-backtick {
+  position: absolute;
+  z-index: 200;
+  display: none;
+  top: 60vh;
   padding: 2vh;
   font-size: 2.6vh;
   color: var(--almost-white);
@@ -199,6 +226,9 @@ div#splash2 {
   text-transform: none;
   border-radius: 1vh;
   animation: fade 30s forwards;
+  &.show {
+    display: block;
+  }
 }
 
 @keyframes fade {
@@ -2247,7 +2277,7 @@ div.modal.save-and-send .modal-dialog {
             background-color: var(--dark-black);
             width: 64px;
             svg {
-              width: 85%;
+              width: 80%;
               height: auto;
             }
           }
@@ -2255,7 +2285,7 @@ div.modal.save-and-send .modal-dialog {
             background-color: var(--dark-black);
             width: 64px;
             svg {
-              width: 65%;
+              width: 60%;
               height: auto;
               path {
                 stroke: currentColor;
@@ -2268,7 +2298,7 @@ div.modal.save-and-send .modal-dialog {
         .hg-layout-shift {
           .hg-button-shift {
             svg {
-              width: 65%;
+              width: 60%;
               height: auto;
               path {
                 fill: var(--bright-green);

@@ -14,7 +14,7 @@
     "intro2": "Capture your own real earth-based telescope image using a MicroObservatory Robotic Telescope tonight.",
     "continue": "Continue >"
   },
-  "defaultStartOverDuration": 60,
+  "defaultRestartDuration": 60,
   "telescopeData": {
     "prologue": "These images were taken with the",
     "telescopes": [

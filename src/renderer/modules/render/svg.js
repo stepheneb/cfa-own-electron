@@ -56,12 +56,28 @@ svg.keyboardBackspace = `
 `;
 
 svg.panArrow = (direction, rotation) => {
-  svg = `
+  let svg = `
     <svg id="pan-arrow-${direction}" class="pan-arrow ${direction}" data-direction="${direction}" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">
      <polygon transform="rotate(${rotation}, 25, 25)" points="33.82,31.84 25.42,23.44 17.03,31.84 14.2,29.01 25.42,17.79 36.65,29.01"/>
     </svg>
   `;
   return svg;
+};
+
+svg.menuConnect = () => {
+  return `
+    <svg id='menu-connnect-svg'>
+      <line stroke-width="1px" stroke="#000000" x1="0" y1="0" x2="100" y2="100" id='menu-connnect-line' />
+    </svg>
+  `;
+};
+
+svg.menuSeparator = () => {
+  return `
+    <svg id='menu-separator-svg'>
+      <line stroke-width="2px" stroke="#000000" x1="0" y1="0" x2="100" y2="100" id='menu-separator-line' />
+    </svg>
+  `;
 };
 
 export default svg;

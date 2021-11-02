@@ -179,4 +179,22 @@ utilities.setDifference = (setA, setB) => {
   return _difference;
 };
 
+utilities.isHtmlElement = (el) => {
+  return el && el instanceof HTMLElement;
+};
+
+utilities.removeAllChildren = (el) => {
+  if (utilities.isHtmlElement(el)) {
+    while (el.firstChild) {
+      el.removeChild(el.firstChild);
+    }
+  }
+};
+
+utilities.removeElement = (el) => {
+  if (utilities.isHtmlElement(el)) {
+    el.remove();
+  }
+};
+
 export default utilities;
