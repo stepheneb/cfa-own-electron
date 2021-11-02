@@ -2246,39 +2246,32 @@ div.modal.save-and-send .modal-dialog {
           .hg-button-bksp {
             background-color: var(--dark-black);
             width: 64px;
-            span {
-              visibility: hidden;
-              margin-bottom: -0.4em;
-              &:after {
-                visibility: visible;
-                font-size: 1.4em;
-                margin-left: -3em;
-                font-family: bootstrap-icons;
-                content: "\f159";
-              }
+            svg {
+              width: 85%;
+              height: auto;
             }
           }
           .hg-button-shift {
             background-color: var(--dark-black);
             width: 64px;
-            span {
-              visibility: hidden;
-              margin-bottom: -0.3em;
-              &:after {
-                visibility: visible;
-                font-size: 1.4em;
-                margin-left: -1.3em;
-                font-family: bootstrap-icons;
-                content: "\f541";
+            svg {
+              width: 65%;
+              height: auto;
+              path {
+                stroke: currentColor;
+                stroke-width: 4;
+                fill: transparent;
               }
             }
           }
         }
         .hg-layout-shift {
           .hg-button-shift {
-            span {
-              &:after {
-                content: "\f540";
+            svg {
+              width: 65%;
+              height: auto;
+              path {
+                fill: var(--bright-green);
               }
             }
           }

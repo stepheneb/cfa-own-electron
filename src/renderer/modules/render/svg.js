@@ -30,6 +30,31 @@ svg.stepBack = `
   </svg>
 `;
 
+svg.keyboardShift = `
+  <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" viewBox="0 0 72 78">
+    <path class="outline"
+      d="M55 40
+         h18
+         l-37 -40 -37 40
+         h18
+         v37
+         h36
+         z">
+      </path>
+  </svg>
+`;
+
+svg.keyboardBackspace = `
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 48 48">
+    <g>
+      <path
+        d="M45.25391,9.50537H15.17969a1.00135,1.00135,0,0,0-.73145.31787L1.85352,23.31787a.99992.99992,0,0,0,0,1.36426l12.59472,13.4956a1.00272,1.00272,0,0,0,.73145.31739H45.25391a.99943.99943,0,0,0,1-1V10.50537A.99974.99974,0,0,0,45.25391,9.50537Zm-1,26.98975H15.61426L3.95313,24,15.61426,11.50537H44.25391Z"></path>
+      <path
+        d="M24.668,29.62988a.99963.99963,0,0,0,1.41406,0l3.71777-3.71759,3.71778,3.71759a.99989.99989,0,0,0,1.41406-1.41406l-3.71771-3.71753,3.71771-3.71753a.99989.99989,0,0,0-1.41406-1.41406L29.7998,23.08429,26.082,19.3667A.99989.99989,0,0,0,24.668,20.78076l3.71771,3.71753L24.668,28.21582A.99962.99962,0,0,0,24.668,29.62988Z"></path>
+    </g>
+  </svg>
+`;
+
 svg.panArrow = (direction, rotation) => {
   svg = `
     <svg id="pan-arrow-${direction}" class="pan-arrow ${direction}" data-direction="${direction}" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50">

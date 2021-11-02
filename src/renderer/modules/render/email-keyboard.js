@@ -2,6 +2,7 @@
 /*eslint no-useless-escape: "off"*/
 
 import Keyboard from 'simple-keyboard';
+import svg from './svg.js';
 
 let emailKeyboard = {};
 
@@ -52,6 +53,10 @@ emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
           'A S D F G H J K L = @ .com',
           '{shift} Z X C V B N M . ? |',
         ]
+      },
+      display: {
+        "{shift}": `${svg.keyboardShift}`,
+        "{bksp}": `${svg.keyboardBackspace}`
       },
       buttonTheme: [{
           class: 'dot-com',
