@@ -48,6 +48,7 @@ main.start = () => {
   Object.assign(defaultApp, main.setupNewApp(u.deepClone(data)));
   Object.assign(app, main.setupNewApp(u.deepClone(data)));
   app.logger = true;
+  app.email = '';
   router.addHashChangeListener();
   setupWindowSizeListener();
   router.route();
@@ -57,6 +58,7 @@ main.restart = () => {
   Object.assign(app, u.deepClone(defaultApp));
   app.splashRendered = true;
   app.logger = true;
+  app.email = '';
   splash.showSplash2();
   router.addHashChangeListener();
   router.route();

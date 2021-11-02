@@ -8,6 +8,7 @@ let emailKeyboard = {};
 
 emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
   let emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  let email = null;
   let keyboard = null;
   let submitButton = null;
 
@@ -15,6 +16,7 @@ emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
   return '<div class="simple-keyboard"></div>';
 
   function callback() {
+    let email = document.getElementById('email');
     submitButton = document.getElementById(sendEmailFormId).querySelector('button[type="submit"]');
 
     keyboard = new Keyboard({
@@ -23,6 +25,8 @@ emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
       useButtonTag: true,
       physicalKeyboardHighlightPress: true
     });
+
+    checkEmail(email.value);
 
     // function disabledKeys() {
     //   let keys = ['{enter}', '{tab}', '{space}', '(', ')'];

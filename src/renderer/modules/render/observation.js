@@ -272,7 +272,10 @@ observation.render = (page, registeredCallbacks) => {
             body: JSON.stringify(body)
           })
           .then(response => response.json())
-          .then(json => console.log(JSON.stringify(json, null, '\t')))
+          .then(json => {
+            console.log(JSON.stringify(json, null, '\t'));
+            app.email = email.value;
+          })
           .catch(error => {
             console.error(`Request to send image failed: ${error}`);
           });
