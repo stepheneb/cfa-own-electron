@@ -13,6 +13,7 @@
       <div class='page-title'>Admin Page</div>
       <button id='restart' type='button' class='btn btn-warning'>Start Visitor Application</button>
       <button id='quit' type='button' class='btn btn-warning'>Quit Application</button>
+      <button id='about' type='button' class='btn  btn-info' data-bs-toggle="modal" data-bs-target="#aboutCfaModal">About ...</button>
     </div>
     <div class='need-cfa-key'>
       You will need a kiosk CFA key credential from an adminstrator to support sending images and requesting observations.
@@ -65,8 +66,28 @@
             send images or request observations until a valid CfA key credential is restored.
           </div>
           <div class='buttons'>
-            <button id='erase-cfa-key' class="btn btn-danger erase-cfa-key">Erase CFA key</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button id='erase-cfa-key' class="btn btn-danger erase-cfa-key">Erase CFA key</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="aboutCfaModal" class="modal fade about-cfa-modal" tabindex="-1" aria-labelledby="aboutCfaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" id="aboutCfaModalLabel">About the CfA Kiosk Application</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            Copyright 2021 Center for Astrophysics | Harvard & Smithsonian
+          </div>
+          <div class='buttons'>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

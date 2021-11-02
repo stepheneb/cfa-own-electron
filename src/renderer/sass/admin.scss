@@ -93,7 +93,9 @@ body#admin {
       }
     }
   }
-  .erase-cfa-modal {
+
+  .erase-cfa-modal,
+  .about-cfa-modal {
     top: 10vh;
     .modal-content {
       .modal-header {
