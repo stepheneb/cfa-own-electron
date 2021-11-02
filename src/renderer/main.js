@@ -51,6 +51,7 @@ main.start = () => {
   app.email = '';
   router.addHashChangeListener();
   setupWindowSizeListener();
+  countdownToStartOver();
   router.route();
 };
 
@@ -61,6 +62,7 @@ main.restart = () => {
   app.email = '';
   splash.showSplash2();
   router.addHashChangeListener();
+  countdownToStartOver();
   router.route();
 };
 
@@ -95,4 +97,29 @@ function setupWindowSizeListener() {
     });
   }
 }
+
+let startTime = 0;
+let startOverDuration = 0;
+
+function countdownToStartOver() {
+  if (u.runningInElectron()) {
+    startTime = performance.now();
+    startOverDuration = app.defaultStartOverDuration;
+    let currentDuration = 0;
+    let timeRemaining = startOverDuration;
+    setInterval(function () {
+      currentDuration = (performance.now() - startTime) / 1000;
+      timeRemaining = Math.ceil(startOverDuration - currentDuration);
+      console.log(`startover: ${timeRemaining}`);
+      if (currentDuration > startOverDuration) {
+        currentDuration = 0;
+        main.restart();
+      }
+    }, 1000);
+    window.addEventListener('pointermove', () => {
+      startTime = performance.now();
+    });
+  }
+}
+
 export default main;
