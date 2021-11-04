@@ -60,6 +60,7 @@ renderMenu.removeAllListeners = () => {
   renderMenuListeners.forEach(([elem, event, callback]) => {
     elem.removeEventListener(event, callback);
   });
+  renderMenuListeners = [];
 };
 
 renderMenu.page = (categorytype) => {
