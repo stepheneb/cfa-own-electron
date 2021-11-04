@@ -115,7 +115,10 @@ main.clearContent = () => {
   u.removeElement(document.querySelector('div.modal-backdrop'));
   body.classList.remove('nofadeout', 'modal-open');
   body.removeAttribute('style');
-  document.getElementById('ctrl-backtick').classList.remove('show');
+  let ctrlBacktic = document.getElementById('ctrl-backtick');
+  if (ctrlBacktic) {
+    ctrlBacktic.classList.remove('show');
+  }
   app.firstStart = false;
 
 };
