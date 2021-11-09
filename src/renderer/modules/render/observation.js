@@ -120,7 +120,7 @@ observation.render = (page, registeredCallbacks) => {
                 <form id="${sendEmailFormId}" autocomplete="off">
                   <label for="email">Your Email:</label>
                   <div class='d-flex flex-row justify-content-between align-items-center'>
-                    <input id="email" type="email"name="email" required minlength="4" maxlength="45" size="30" autocomplete="none"></input>
+                    <input id="email" type="email"name="email" value="${app.email}" required minlength="4" maxlength="45" size="30" autocomplete="none"></input>
                     <input id="email-kiosk-id" type="hidden" name='kiosk_id' value="${app.kiosk_id}"></input>
                     <input id="email-observation" type="hidden" name='observation' value="${page.title}"></input>
                     <input id="email-date" type="hidden" name='datetime_when_user_made_request_at_kiosk' value="${new Date().toISOString()}"></input>
