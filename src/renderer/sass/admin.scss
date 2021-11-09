@@ -101,7 +101,7 @@ body#admin {
       .modal-header {
         color: white;
         .modal-title {
-          font-size: 3.5vmin;
+          font-size: 3.2vmin;
         }
         button {
           display: block;
@@ -114,8 +114,11 @@ body#admin {
         }
       }
       .modal-body {
-        font-size: 2.5vmin;
+        font-size: 2.2vmin;
         color: white;
+        .license {
+          font-size: 85%;
+        }
         .buttons {
           margin: 1em 1em 1em 0;
           display: flex;
@@ -126,6 +129,11 @@ body#admin {
           }
         }
       }
+    }
+  }
+  .about-cfa-modal {
+    .modal-content {
+      width: 60vw;
     }
   }
 }

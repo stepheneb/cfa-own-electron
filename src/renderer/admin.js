@@ -19,6 +19,9 @@ const newCfaKey = document.getElementById('new-cfa-key');
 const eraseCfaKey = document.getElementById('erase-cfa-key');
 // JXRv3cwNOEnDhz8H8
 
+const appNameElem = document.getElementById('app-name');
+const appVersionElem = document.getElementById('app-version');
+
 const cfaHandshakeRequest = document.querySelector('#cfa-handshake-status .request');
 const cfaHandshakeReponse = document.querySelector('#cfa-handshake-status .response');
 
@@ -33,6 +36,8 @@ if (u.runningInElectron()) {
   };
 
   const updateView = () => {
+    appNameElem.innerText = app.kioskState.appName;
+    appVersionElem.innerText = app.kioskState.appVersion;
     let kiosk_elem = document.getElementById('kiosk-id');
     kiosk_elem.innerText = app.kioskState.id;
     if (app.kioskState.cfa_key) {
@@ -54,6 +59,7 @@ if (u.runningInElectron()) {
     }
     cfaHandshakeRequest.innerText = '';
     cfaHandshakeReponse.innerText = '';
+
   };
 
   restart.addEventListener('click', () => {

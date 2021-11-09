@@ -7,7 +7,9 @@ import u from './renderer/modules/utilities.js';
 
 const initialKioskState = {
   id: null,
-  cfa_key: null
+  cfa_key: null,
+  appName: app.getName(),
+  appVersion: app.getVersion()
 };
 
 let db = null;
@@ -15,6 +17,9 @@ let db = null;
 export const kioskdb = {};
 
 kioskdb.init = async () => {
+  let appName = app.getName();
+  let appVersion = app.getVersion();
+
   const kioskJsonDbPath = path.join(app.getPath('userData'), 'cfa.json');
   console.log(kioskJsonDbPath);
   const adapter = new JSONFile(kioskJsonDbPath);
@@ -37,6 +42,11 @@ kioskdb.init = async () => {
         });
         await db.write();
       }
+    }
+    if (db.data.appName != appName || db.data.appVersion != appVersion) {
+      db.data.appName = appName;
+      db.data.appVersion = appVersion;
+      await db.write();
     }
   };
 
