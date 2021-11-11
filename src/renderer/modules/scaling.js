@@ -355,7 +355,7 @@ class Scaling {
 
   finishScaleCanvas() {
     this.updateZoomButtons();
-    this.queueCanvasDraw();
+    this.scalingCanvasDraw();
   }
 
   scaleCanvasTouch() {
@@ -470,6 +470,18 @@ class Scaling {
         arrow.classList.add('show');
       });
     }
+  }
+
+  queueCanvasDraw() {
+    this.redraw = requestAnimationFrame(this.scalingCanvasDraw);
+    // this.queuedmoves.push([this.moveX, this.moveY]);
+    // if (this.scalingCanvasDrawfinished) {
+    //   this.redraw = requestAnimationFrame(() => {
+    //     this.scalingCanvasDraw();
+    //     this.scalingCanvasDrawfinished = true;
+    //   });
+    //   this.scalingCanvasDrawfinished = false;
+    // }
   }
 
   scalingCanvasDraw() {
@@ -738,16 +750,6 @@ class Scaling {
 
   /// Event Handling ...
 
-  removePointerEvent(e) {
-    // Remove this event from the target's cache
-    for (var i = 0; i < this.evCache.length; i++) {
-      if (this.evCache[i].pointerId == e.pointerId) {
-        this.evCache.splice(i, 1);
-        break;
-      }
-    }
-  }
-
   buttonListener(e) {
     this.scaling = e.currentTarget.dataset.scale;
     this.scaleDraw = requestAnimationFrame(this.scaleCanvas);
@@ -997,6 +999,47 @@ class Scaling {
       POINTER EVENTS for main scaling canvas
   */
 
+  removePointerEventFromCache(e) {
+    // Remove this event from the target cache
+    if (e.pointerId) {
+      for (var i = 0; i < this.evCache.length; i++) {
+        if (this.evCache[i].pointerId == e.pointerId) {
+          this.evCache.splice(i, 1);
+          this.resetTwoPointerStateVars();
+          break;
+        }
+      }
+    }
+    if (this.evCache.length == 0) {
+      this.mouseDownTouchFirstStart = false;
+      this.isDragging = this.scaling = false;
+    }
+  }
+
+  addPointerEventToCache(e) {
+    // Add this event from the target cache
+    if (e.pointerId) {
+
+      let index = this.evCache.findIndex((item) => item.pointerId == e.pointerId);
+      if (index >= 0) {
+        this.evCache[index] = e;
+      } else {
+        this.evCache.push(e);
+      }
+      if (this.evCache.length > 2) {
+        this.resetTwoPointerStateVars();
+        while (this.evCache.length > 2) {
+          this.evCache.shift();
+        }
+      }
+    }
+  }
+
+  resetTwoPointerStateVars() {
+    this.previousDistance = -1;
+    this.previousCenter = -1;
+  }
+
   canDrag() {
     return this.scale > 1;
   }
@@ -1034,18 +1077,11 @@ class Scaling {
   //
   listenerMouseDownTouchStart(e) {
     let pos = null;
+    this.mouseDownTouchFirstStart = true;
 
     // The pointerdown event signals the start of a touch interaction.
     // This event is cached to support 2-finger gestures
-    if (e.pointerId) {
-      if (this.evCache.length > 1) {
-        let index = this.evCache.findIndex((item) => item.pointerId != e.pointerId);
-        if (index >= 0) {
-          this.evCache.splice(index, 1);
-        }
-      }
-      this.evCache.push(e);
-    }
+    this.addPointerEventToCache(e);
 
     if (this.evCache.length == 2) {
       let x1 = this.evCache[0].offsetX;
@@ -1081,7 +1117,6 @@ class Scaling {
       // console.log(['start startCoords:', this.startCoords.x, this.startCoords.y, ', pos: ', pos.x, pos.y, ', lastMove: ', this.lastMove.x, this.lastMove.y, ', dragStarted: ', this.dragStarted]);
       // console.log(this.scalingCanvasDrawArgs());
     }
-    // }
   }
 
   calcDistance(x1, y1, x2, y2) {
@@ -1101,14 +1136,7 @@ class Scaling {
 
   listenerMouseMoveTouchMove(e) {
     let pos = null;
-
-    // Find this event in the cache and update its record with this event
-    for (var i = 0; i < this.evCache.length; i++) {
-      if (e.pointerId == this.evCache[i].pointerId) {
-        this.evCache[i] = e;
-        break;
-      }
-    }
+    this.addPointerEventToCache(e);
 
     let calcCenterMove = (center1, center2) => {
       let centerMove = -1;
@@ -1127,6 +1155,13 @@ class Scaling {
       let x2 = this.evCache[1].offsetX;
       let y2 = this.evCache[1].offsetY;
 
+      if (this.mouseDownTouchFirstStart) {
+        this.mouseDownTouchFirstStart = false;
+        this.previousCenter = this.calcCenter(x1, y1, x2, y2)
+        this.previousDistance = this.calcDistance(x1, y1, x2, y2);
+        return;
+      }
+
       if (app.dev) {
         // console.log('evCache.length == 2');
       }
@@ -1138,60 +1173,48 @@ class Scaling {
 
       let centerMove = calcCenterMove(this.previousCenter, currentCenter);
 
-      if (this.previousDistance >= 0) {
+      // console.log('currentCenter: ', currentCenter, ', centerMove: ', centerMove);
+
+      if (this.previousDistance >= 0 || centerMove >= 0) {
         let deltaDistance = currentDistance - this.previousDistance;
 
-        let scalingTrigger = 4;
-        let panningTrigger = 2;
+        pos = this.calcCenter(x1, y1, x2, y2);
 
-        if (this.scaling && !this.isDragging) {
-          scalingTrigger = 0.5;
-        }
-        if (this.isDragging && !this.scaling) {
-          panningTrigger = 0.3;
-        }
+        this.scalingTrigger = this.scaling ? 0.5 : 5;
+        this.panningTrigger = this.isDragging ? 0.5 : 5;
 
-        // console.log(`previousDistance: ${this.previousDistance}, currentDistance: ${currentDistance}`)
-        // console.log(`this.scaling: ${this.scaling}, this.dragging: ${this.dragging}`)
-        // console.log(deltaDistance, scalingTrigger, centerMove, panningTrigger);
-        // console.log(this.evCache[0].pointerId, this.evCache[1].pointerId);
+        console.log('*** before test ***: ', currentDistance, deltaDistance, ', scaling: ', this.scaling, ', isDragging: ', this.isDragging);
 
-        // process the pinch-zoom event
-        if (deltaDistance >= scalingTrigger) {
+        if (deltaDistance >= this.scalingTrigger && !this.isDragging) {
           // The distance between the two pointers has increased
-          pos = null;
           this.scaling = true;
-          this.dragging = false;
-          // console.log('zoom', currentDistance, this.previousCenter, currentCenter, centerMove);
-          // console.log('zoom-in');
+          pos = null;
+          console.log('*** zoom-in ***: ', currentDistance, deltaDistance);
           let newScale = this.scale * this.gestureScaleFactor;
-          this.scaleCanvasContinuousValue(newScale, true);
           this.previousDistance = currentDistance;
-          this.previousCenter = u.deepClone(currentCenter);
-        } else if (deltaDistance <= -scalingTrigger) {
+          this.scaleCanvasContinuousValue(newScale);
+          return;
+        } else if (deltaDistance <= -this.scalingTrigger && !this.isDragging) {
           // The distance between the two pointers has decreased
-          pos = null;
           this.scaling = true;
-          this.dragging = false;
-          // console.log('zoom', currentDistance, this.previousCenter, currentCenter, centerMove);
-          // console.log('zoom-out');
+          pos = null;
+          console.log('*** zoom-out ***: ', currentDistance, deltaDistance);
           let newScale = this.scale / this.gestureScaleFactor;
-          this.scaleCanvasContinuousValue(newScale, true);
           this.previousDistance = currentDistance;
-          this.previousCenter = u.deepClone(currentCenter);
-        } else if (centerMove > panningTrigger) {
+          this.scaleCanvasContinuousValue(newScale);
+          return;
+        } else {
+          pos = null;
+        }
+        if (centerMove > this.panningTrigger && !this.scaling) {
           // process the two-pointer swipe event
           pos = this.calcCenter(x1, y1, x2, y2);
-          this.scaling = false;
+          this.isDragging = true;
           // console.log('panning')
-          // console.log(this.calcCenter(x1, y1, x2, y2));
-          // console.log('swipe', currentDistance, this.previousCenter, currentCenter, centerMove);
-          // this.previousDistance = currentDistance;
-          // this.previousCenter = u.deepClone(currentCenter);
         } else if (centerMove == -1) {
-          this.scaling = false;
           this.previousCenter = u.deepClone(currentCenter);
         }
+
       } else {
         // initialize previousDistance
         this.scaling = false;
@@ -1199,8 +1222,7 @@ class Scaling {
         this.previousCenter = u.deepClone(currentCenter);
       }
     } else {
-      this.scaling = false;
-      if (!this.dragStarted && !this.scaling) {
+      if (this.scaling) {
         return;
       }
       pos = this.pointerEvents(e);
@@ -1209,13 +1231,17 @@ class Scaling {
     // pos is null if a pinch-zoom event was processed
     if (pos) {
 
-      if (this.canDrag() && this.dragStarted) {
+      let moveX = (pos.x - this.startCoords.x);
+      let moveY = (pos.y - this.startCoords.y);
+      let distance = Math.sqrt(moveX * moveX + moveY + moveY);
+
+      if (this.isDragging || this.canDrag() && this.dragStarted && distance > this.panningTrigger) {
         this.isDragging = true;
       }
 
-      if (this.isDragging && !this.scaling) {
-        this.moveX = (pos.x - this.startCoords.x);
-        this.moveY = (pos.y - this.startCoords.y);
+      if (this.isDragging) {
+        this.moveX = moveX;
+        this.moveY = moveY;
 
         // console.log('dragging', pos, this.startCoords, this.moveX, this.moveY);
 
@@ -1239,18 +1265,6 @@ class Scaling {
     }
   }
 
-  queueCanvasDraw() {
-    this.redraw = requestAnimationFrame(this.scalingCanvasDraw);
-    // this.queuedmoves.push([this.moveX, this.moveY]);
-    // if (this.scalingCanvasDrawfinished) {
-    //   this.redraw = requestAnimationFrame(() => {
-    //     this.scalingCanvasDraw();
-    //     this.scalingCanvasDrawfinished = true;
-    //   });
-    //   this.scalingCanvasDrawfinished = false;
-    // }
-  }
-
   listenerUpLeaveEnd() {
     if (this.dragStarted || this.isDragging) {
       this.lastMove = {
@@ -1268,8 +1282,6 @@ class Scaling {
       this.lastChangeIn = "main";
       // console.log([name, 'lastMove: ', this.lastMove.x, this.lastMove.y]);
     }
-    // cancelAnimationFrame(this.scaleDraw);
-    // cancelAnimationFrame(this.redraw);
   }
 
   listenerMouseLeave() {
@@ -1277,14 +1289,8 @@ class Scaling {
   }
 
   listenerMouseUpTouchEnd(e) {
-    this.removePointerEvent(e);
-
-    // If the number of pointers down is less than two then reset diff tracker
-    // if (this.evCache.length < 2) {
-    console.log('MouseUpTouchEnd');
-    console.log(this.evCache.length);
-    this.previousDistance = -1;
-    this.previousCenter = -1;
+    this.removePointerEventFromCache(e);
+    // console.log('MouseUpTouchEnd,', this.evCache.length);
     this.listenerUpLeaveEnd('up-end');
     // }
   }
