@@ -318,7 +318,7 @@ class Page {
     case 'observation':
       this.observationModalCloseButtons = document.querySelectorAll('div.observation.modal button.btn-close');
       this.observationModalCloseButtons.forEach(btn => {
-        u.addExtendedClickHandler('obsmodals', btn, this.hideAllObservationModalsAndRenderMenu);
+        u.addClickAndContextListener('obsmodals', btn, this.hideAllObservationModalsAndRenderMenu);
       });
       break;
     }
@@ -328,7 +328,7 @@ class Page {
 
     this.btnBack = document.getElementById('btn-back');
 
-    u.addExtendedClickHandler('btnBack', this.btnBack, () => {
+    u.addClickAndContextListener('btnBack', this.btnBack, () => {
       if (this.saveAndSendModalsOpen()) {
         this.hideAllSaveAndSendModals();
       } else if (this.observationModalsOpen()) {
@@ -339,7 +339,7 @@ class Page {
     });
 
     this.btnStartOver = document.getElementById('btn-start-over');
-    u.addExtendedClickHandler('btnStartOver', this.btnStartOver, () => {
+    u.addClickAndContextListener('btnStartOver', this.btnStartOver, () => {
       if (this.saveAndSendModalsOpen()) {
         this.hideAllSaveAndSendModals();
       } else if (this.observationModalsOpen()) {
@@ -483,7 +483,7 @@ class Page {
       this.image.selectedSourceNumber = layerNum;
     }
     elem.addEventListener('change', listener);
-    u.addExtendedClickHandler('selectFilterLayer', elem, (e) => {
+    u.addClickAndContextListener('selectFilterLayer', elem, (e) => {
       if (e.type == 'contextmenu' && !e.shiftKey) {
         e.preventDefault();
         e.target.checked = true;
@@ -663,7 +663,7 @@ class Page {
     }
     elem.addEventListener('change', listener);
     labels.forEach((elem) => {
-      u.addExtendedClickHandler('mainLayerCheckboxes', elem, (e) => {
+      u.addClickAndContextListener('mainLayerCheckboxes', elem, (e) => {
         if (e.type == 'contextmenu' && !e.shiftKey) {
           e.preventDefault();
           let checkbox = e.target.parentElement.querySelector('input[type="checkbox"]');
@@ -936,8 +936,8 @@ class Page {
 
       rangeElem.addEventListener('input', listenerZoomSLider);
 
-      u.addExtendedClickHandler('zoomstep', zoomOutElem, listenerZoomStep);
-      u.addExtendedClickHandler('zoomstep', zoomInElem, listenerZoomStep);
+      u.addClickAndContextListener('zoomstep', zoomOutElem, listenerZoomStep);
+      u.addClickAndContextListener('zoomstep', zoomInElem, listenerZoomStep);
 
       // register close page handler
       page.closeCallbacks.push(close);
@@ -945,7 +945,7 @@ class Page {
       function close() {
         rangeElem.removeEventListener('input', listenerZoomSLider);
 
-        u.removeAllExtendedClickHandler('zoomstep');
+        u.removeAllClickAndContextListeners('zoomstep');
 
         page.canvasImages.removeScalingListener('change', listenerScalingZoom);
         page.canvasImages.removeScalingListener('resize', listenerScalingResize);

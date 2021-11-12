@@ -61,7 +61,7 @@ colorMaps.render = (page, registeredCallbacks) => {
       row.forEach(cmapName => {
         id = getId(cmapName);
         elem = document.getElementById(id);
-        u.addExtendedClickHandler('cmap', elem, event => {
+        u.addClickAndContextListener('cmap', elem, event => {
           event.stopPropagation();
           unselectAll();
           event.currentTarget.classList.add('selected');

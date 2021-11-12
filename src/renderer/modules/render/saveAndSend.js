@@ -180,7 +180,7 @@ saveandsend.render = (page, registeredCallbacks) => {
 
     let sendEmailButton = sendEmailForm.querySelector('button[type="submit"]');
 
-    u.addExtendedClickHandler('saveAndSend', saveAndSendButton, function () {
+    u.addClickAndContextListener('saveAndSend', saveAndSendButton, function () {
       bsModal1.show();
       page.canvasImages.renderSaveAndSend();
     });
@@ -209,7 +209,7 @@ saveandsend.render = (page, registeredCallbacks) => {
       document.body.classList.remove('nofadeout');
     });
 
-    u.addExtendedClickHandler('saveAndSend', enterEmailButton, () => {
+    u.addClickAndContextListener('saveAndSend', enterEmailButton, () => {
       bsModal1.hide();
       bsModal2.show();
     });
@@ -269,7 +269,7 @@ saveandsend.render = (page, registeredCallbacks) => {
       handleSubmit(e);
     };
 
-    u.addExtendedClickHandler('saveAndSend', sendEmailButton, (e) => {
+    u.addClickAndContextListener('saveAndSend', sendEmailButton, (e) => {
       handleSubmit(e);
     })
 

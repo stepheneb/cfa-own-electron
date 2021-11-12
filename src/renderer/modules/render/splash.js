@@ -41,7 +41,7 @@ let renderSplash = () => {
     `;
   splashElem.style.zIndex = "100";
   splashElem.style.display = "block";
-  u.addExtendedClickHandler('splash', splashElem, () => {
+  u.addClickAndContextListener('splash', splashElem, () => {
     splashElem.style.display = "none";
     splash2Elem.style.display = "block";
     app.start = false;
@@ -71,7 +71,7 @@ let renderSplash2 = () => {
       `;
 
   let splash2ContinueButton = document.getElementById(splash2ContinueID);
-  u.addExtendedClickHandler('splash', splash2ContinueButton, () => {
+  u.addClickAndContextListener('splash', splash2ContinueButton, () => {
     splash2Elem.style.display = "none";
     renderMenu.page();
   });

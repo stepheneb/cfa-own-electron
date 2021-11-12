@@ -155,9 +155,9 @@ class Scaling {
     if (buttons.length > 0) {
       [this.zoomInButton, this.zoomOutButton, this.zoomResetButton] = document.querySelectorAll('div.scale button');
 
-      u.addExtendedClickHandler('scaling', this.zoomInButton, this.buttonListener);
-      u.addExtendedClickHandler('scaling', this.zoomOutButton, this.buttonListener);
-      u.addExtendedClickHandler('scaling', this.zoomResetButton, this.buttonListener);
+      u.addClickAndContextListener('scaling', this.zoomInButton, this.buttonListener);
+      u.addClickAndContextListener('scaling', this.zoomOutButton, this.buttonListener);
+      u.addClickAndContextListener('scaling', this.zoomResetButton, this.buttonListener);
 
       this.zoomButtonsEnabled = true;
     }
@@ -296,7 +296,7 @@ class Scaling {
         this.previewZoomCanvas.removeEventListener(eventItem[0], eventItem[1]);
       });
     }
-    u.removeAllExtendedClickHandler('scaling');
+    u.removeAllClickAndContextListeners('scaling');
   }
 
   isTouchDevice() {

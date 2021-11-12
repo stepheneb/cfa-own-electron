@@ -116,13 +116,13 @@ telescopes.render = (page, registeredCallbacks) => {
       let innerElem = outerElem.querySelector('.telescope.modal-dialog');
       let modalCloseBtn = innerElem.querySelector('svg.btn-close');
 
-      u.addExtendedClickHandler('telescopes', outerElem, () => {
+      u.addClickAndContextListener('telescopes', outerElem, () => {
         modal.hide();
       })
-      u.addExtendedClickHandler('telescopes', modalCloseBtn, () => {
+      u.addClickAndContextListener('telescopes', modalCloseBtn, () => {
         modal.hide();
       })
-      u.addExtendedClickHandler('telescopes', innerElem, (e) => {
+      u.addClickAndContextListener('telescopes', innerElem, (e) => {
         e.preventDefault();
         e.stopPropagation();
       })
@@ -132,7 +132,7 @@ telescopes.render = (page, registeredCallbacks) => {
     telescopes.updateVisibility(page);
     scopes.forEach((scope) => {
       let elem = document.getElementById(`${scope.key}-container`);
-      u.addExtendedClickHandler('telescopes', elem, () => {
+      u.addClickAndContextListener('telescopes', elem, () => {
         modals[`${scope.key}-modal`].show();
       })
     })

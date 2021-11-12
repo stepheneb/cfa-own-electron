@@ -93,12 +93,12 @@ animate.render = (page, registeredCallbacks) => {
 
     updateNames();
 
-    u.addExtendedClickHandler('animate', stepBack, () => {
+    u.addClickAndContextListener('animate', stepBack, () => {
       animationStop();
       animationStep(-1);
     });
 
-    u.addExtendedClickHandler('animate', play, () => {
+    u.addClickAndContextListener('animate', play, () => {
       controls.classList.add('playing');
       animationStep(1);
       page.animate = setInterval(() => {
@@ -106,11 +106,11 @@ animate.render = (page, registeredCallbacks) => {
       }, stepDuration);
     });
 
-    u.addExtendedClickHandler('animate', pause, () => {
+    u.addClickAndContextListener('animate', pause, () => {
       animationStop();
     });
 
-    u.addExtendedClickHandler('animate', stepForward, () => {
+    u.addClickAndContextListener('animate', stepForward, () => {
       animationStop();
       animationStep(1);
     });

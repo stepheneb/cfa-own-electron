@@ -199,7 +199,7 @@ utilities.removeElement = (el) => {
 
 let listenerCollection = {};
 
-utilities.addExtendedClickHandler = (context, elem, callback) => {
+utilities.addClickAndContextListener = (context, elem, callback) => {
   let click = 'click';
   let contextmenu = 'contextmenu';
 
@@ -236,7 +236,7 @@ utilities.addExtendedClickHandler = (context, elem, callback) => {
 
 }
 
-utilities.removeAllExtendedClickHandler = (context) => {
+utilities.removeAllClickAndContextListeners = (context) => {
   listenerCollection[context] = [];
 }
 

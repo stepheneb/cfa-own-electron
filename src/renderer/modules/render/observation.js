@@ -244,7 +244,7 @@ observation.render = (page, registeredCallbacks) => {
 
     bsModal1.show();
 
-    u.addExtendedClickHandler('observation', enterEmailButton, () => {
+    u.addClickAndContextListener('observation', enterEmailButton, () => {
       bsModal1.hide();
       bsModal2.show();
     });
@@ -293,13 +293,13 @@ observation.render = (page, registeredCallbacks) => {
       handleSubmit(e);
     };
 
-    u.addExtendedClickHandler('observation', sendEmailButton, (e) => {
+    u.addClickAndContextListener('observation', sendEmailButton, (e) => {
       handleSubmit(e);
     })
 
-    u.addExtendedClickHandler('observation', modal1CloseButton, hideAll);
-    u.addExtendedClickHandler('observation', modal2CloseButton, hideAll);
-    u.addExtendedClickHandler('observation', modal3CloseButton, hideAll);
+    u.addClickAndContextListener('observation', modal1CloseButton, hideAll);
+    u.addClickAndContextListener('observation', modal2CloseButton, hideAll);
+    u.addClickAndContextListener('observation', modal3CloseButton, hideAll);
 
     function hideAll() {
       bsModal1.hide();
