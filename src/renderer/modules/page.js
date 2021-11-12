@@ -318,9 +318,7 @@ class Page {
     case 'observation':
       this.observationModalCloseButtons = document.querySelectorAll('div.observation.modal button.btn-close');
       this.observationModalCloseButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          this.hideAllObservationModalsAndRenderMenu();
-        });
+        u.addExtendedClickHandler('obsmodals', btn, this.hideAllObservationModalsAndRenderMenu);
       });
       break;
     }
@@ -329,7 +327,8 @@ class Page {
     this.registeredCallbacks.forEach(func => func(this));
 
     this.btnBack = document.getElementById('btn-back');
-    this.btnBack.addEventListener('click', () => {
+
+    u.addExtendedClickHandler('btnBack', this.btnBack, () => {
       if (this.saveAndSendModalsOpen()) {
         this.hideAllSaveAndSendModals();
       } else if (this.observationModalsOpen()) {
@@ -340,7 +339,7 @@ class Page {
     });
 
     this.btnStartOver = document.getElementById('btn-start-over');
-    this.btnStartOver.addEventListener('click', () => {
+    u.addExtendedClickHandler('btnStartOver', this.btnStartOver, () => {
       if (this.saveAndSendModalsOpen()) {
         this.hideAllSaveAndSendModals();
       } else if (this.observationModalsOpen()) {
@@ -473,15 +472,29 @@ class Page {
   controllerImageSelectFilterLayerToAdjust() {
     let layerNum = this.selectedSourceNumber;
     let elem = document.getElementById("image-select-filter-layer-to-adjust");
-    elem.addEventListener('change', (e) => {
+    let listener = (e) => {
       var layerNum = Number(e.target.value);
       this.image.selectedSourceNumber = layerNum;
       this.updateImageSelectFilterLayer();
-    });
+
+    }
     if (typeof layerNum == 'number') {
       elem.querySelector(`[value='${layerNum}']`).checked = true;
       this.image.selectedSourceNumber = layerNum;
     }
+    elem.addEventListener('change', listener);
+    u.addExtendedClickHandler('selectFilterLayer', elem, (e) => {
+      if (e.type == 'contextmenu' && !e.shiftKey) {
+        e.preventDefault();
+        e.target.checked = true;
+        // let checkbox = e.target.parentElement.querySelector('input[type="checkbox"]');
+        // checkbox.checked = !checkbox.checked;
+        listener(e);
+      } else {
+        listener(e);
+      }
+
+    });
   }
 
   updateImageSelectFilterLayer() {
@@ -635,10 +648,11 @@ class Page {
   }
 
   controllerImageSelectMainLayer() {
-    let checkboxes;
     let elem = document.getElementById("image-select-main-layer");
-    elem.addEventListener('change', (e) => {
-      checkboxes = Array.from(e.currentTarget.querySelectorAll('input[type="checkbox"'));
+    let checkboxes = Array.from(elem.querySelectorAll('input[type="checkbox"]'));
+    let labels = Array.from(elem.querySelectorAll('label.eyes-input'));
+
+    let listener = () => {
       this.image.selectedMainLayers = checkboxes.map(elem => elem.checked ? '1' : '0').join('');
       this.canvasImages.renderCanvasRGB();
       this.renderMainImageFilterNames();
@@ -646,6 +660,19 @@ class Page {
       if (app.dev) {
         this.imageInspect.connectUpdate(this.canvasImages);
       }
+    }
+    elem.addEventListener('change', listener);
+    labels.forEach((elem) => {
+      u.addExtendedClickHandler('mainLayerCheckboxes', elem, (e) => {
+        if (e.type == 'contextmenu' && !e.shiftKey) {
+          e.preventDefault();
+          let checkbox = e.target.parentElement.querySelector('input[type="checkbox"]');
+          checkbox.checked = !checkbox.checked;
+          listener();
+        } else {
+          listener();
+        }
+      });
     });
   }
 
@@ -908,16 +935,17 @@ class Page {
       page.canvasImages.addScalingListener('resize', listenerScalingResize);
 
       rangeElem.addEventListener('input', listenerZoomSLider);
-      zoomOutElem.addEventListener('click', listenerZoomStep);
-      zoomInElem.addEventListener('click', listenerZoomStep);
+
+      u.addExtendedClickHandler('zoomstep', zoomOutElem, listenerZoomStep);
+      u.addExtendedClickHandler('zoomstep', zoomInElem, listenerZoomStep);
 
       // register close page handler
       page.closeCallbacks.push(close);
 
       function close() {
         rangeElem.removeEventListener('input', listenerZoomSLider);
-        zoomOutElem.removeEventListener('click', listenerZoomStep);
-        zoomInElem.removeEventListener('click', listenerZoomStep);
+
+        u.removeAllExtendedClickHandler('zoomstep');
 
         page.canvasImages.removeScalingListener('change', listenerScalingZoom);
         page.canvasImages.removeScalingListener('resize', listenerScalingResize);

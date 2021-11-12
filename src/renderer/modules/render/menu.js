@@ -39,20 +39,35 @@ let ctype = null;
 let renderMenuListeners = [];
 
 renderMenu.addListener = (elem, event, callback) => {
-  let listenerExists = () => {
-    return renderMenuListeners.findIndex(([el, ev, cb]) => {
-      return elem == el && ev == event && cb == callback;
+
+  let click = 'click';
+  let contextmenu = 'contextmenu';
+
+  let listenerExists = (ev) => {
+    return renderMenuListeners.findIndex(([el, e, cb]) => {
+      return el == elem && e == ev && cb == callback;
     });
   };
 
-  let listenerDoesNotExist = () => {
-    let index = listenerExists(elem, event, callback);
+  let listenerDoesNotExist = (ev) => {
+    let index = listenerExists(ev);
     return index == -1;
   };
 
-  if (listenerDoesNotExist()) {
+  if (listenerDoesNotExist(event)) {
     renderMenuListeners.push([elem, event, callback]);
     elem.addEventListener(event, callback);
+    if (event == click) {
+      if (listenerDoesNotExist(contextmenu)) {
+        renderMenuListeners.push([elem, contextmenu, callback]);
+        elem.addEventListener(contextmenu, (e) => {
+          if (!e.shiftKey) {
+            e.preventDefault();
+            callback(e)
+          }
+        });
+      }
+    }
   }
 };
 

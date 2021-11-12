@@ -1,6 +1,7 @@
 /*jshint esversion: 11 */
 
 import cmap from './cmap.js';
+import u from '../utilities.js';
 
 let colorMaps = {};
 
@@ -60,7 +61,7 @@ colorMaps.render = (page, registeredCallbacks) => {
       row.forEach(cmapName => {
         id = getId(cmapName);
         elem = document.getElementById(id);
-        elem.addEventListener('click', event => {
+        u.addExtendedClickHandler('cmap', elem, event => {
           event.stopPropagation();
           unselectAll();
           event.currentTarget.classList.add('selected');

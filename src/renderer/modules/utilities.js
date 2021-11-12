@@ -197,4 +197,47 @@ utilities.removeElement = (el) => {
   }
 };
 
+let listenerCollection = {};
+
+utilities.addExtendedClickHandler = (context, elem, callback) => {
+  let click = 'click';
+  let contextmenu = 'contextmenu';
+
+  let listeners = listenerCollection[context];
+
+  let listenerExists = (ev) => {
+    return listeners.findIndex(([el, e, cb]) => {
+      return el == elem && e == ev && cb == callback;
+    });
+  };
+
+  let listenerDoesNotExist = (ev) => {
+    let index = listenerExists(ev);
+    return index == -1;
+  };
+
+  if (!(listeners instanceof Array)) {
+    listeners = [];
+  }
+
+  if (listenerDoesNotExist(click)) {
+    listeners.push([elem, click, callback]);
+    elem.addEventListener(click, callback);
+    if (listenerDoesNotExist(contextmenu)) {
+      listeners.push([elem, contextmenu, callback]);
+      elem.addEventListener(contextmenu, (e) => {
+        if (!e.shiftKey) {
+          e.preventDefault();
+          callback(e)
+        }
+      });
+    }
+  }
+
+}
+
+utilities.removeAllExtendedClickHandler = (context) => {
+  listenerCollection[context] = [];
+}
+
 export default utilities;

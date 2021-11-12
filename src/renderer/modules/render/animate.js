@@ -4,6 +4,7 @@
 // Animate Images Over Time
 //
 
+import u from '../utilities.js';
 import svg from './svg.js';
 
 let animate = {};
@@ -92,12 +93,12 @@ animate.render = (page, registeredCallbacks) => {
 
     updateNames();
 
-    stepBack.addEventListener('click', () => {
+    u.addExtendedClickHandler('animate', stepBack, () => {
       animationStop();
       animationStep(-1);
     });
 
-    play.addEventListener('click', () => {
+    u.addExtendedClickHandler('animate', play, () => {
       controls.classList.add('playing');
       animationStep(1);
       page.animate = setInterval(() => {
@@ -105,11 +106,11 @@ animate.render = (page, registeredCallbacks) => {
       }, stepDuration);
     });
 
-    pause.addEventListener('click', () => {
+    u.addExtendedClickHandler('animate', pause, () => {
       animationStop();
     });
 
-    stepForward.addEventListener('click', () => {
+    u.addExtendedClickHandler('animate', stepForward, () => {
       animationStop();
       animationStep(1);
     });

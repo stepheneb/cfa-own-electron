@@ -161,11 +161,15 @@ adjustImage.processCallback = (page, renderFunc) => {
   brightnessElem.addEventListener('input', listenerDebounceBrightness);
   contrastElem.addEventListener('input', listenerDebounceContrast);
 
-  brightnessStepDownElem.addEventListener('click', listenerBrightnessStep);
-  brightnessStepUpElem.addEventListener('click', listenerBrightnessStep);
+  u.addExtendedClickHandler('adjustImage', brightnessStepDownElem, listenerBrightnessStep);
+  u.addExtendedClickHandler('adjustImage', brightnessStepUpElem, listenerBrightnessStep);
+  u.addExtendedClickHandler('adjustImage', contrastStepDownElem, listenerContrastStep);
+  u.addExtendedClickHandler('adjustImage', contrastStepUpElem, listenerContrastStep);
 
-  contrastStepDownElem.addEventListener('click', listenerContrastStep);
-  contrastStepUpElem.addEventListener('click', listenerContrastStep);
+  // brightnessStepDownElem.addEventListener('click', listenerBrightnessStep);
+  // brightnessStepUpElem.addEventListener('click', listenerBrightnessStep);
+  // contrastStepDownElem.addEventListener('click', listenerContrastStep);
+  // contrastStepUpElem.addEventListener('click', listenerContrastStep);
 
   // elem = document.getElementById("color-shift");
   // elem.addEventListener('input', () => {});

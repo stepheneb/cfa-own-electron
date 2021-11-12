@@ -1,6 +1,9 @@
 /*jshint esversion: 6 */
 /*global app  */
 
+import { Modal } from 'bootstrap';
+import u from '../utilities.js';
+
 let telescopes = {};
 
 telescopes.updateVisibility = page => {
@@ -79,7 +82,7 @@ telescopes.render = (page, registeredCallbacks) => {
     `;
 
     modalHtml += `
-      <div class="modal  fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
+      <div class="modal telescope fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
         <div class="telescope modal-dialog">
           <div class="modal-content">
           <svg type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -101,7 +104,39 @@ telescopes.render = (page, registeredCallbacks) => {
   return [html, modalHtml];
 
   function callback(page) {
+    let modals = Object.fromEntries(
+      Array.from(document.querySelectorAll('.modal.telescope')).map((elem) => {
+        return [elem.id, new Modal(elem)];
+      })
+    );
+
+    Object.entries(modals).forEach((item) => {
+      let modal = item[1];
+      let outerElem = modal._element;
+      let innerElem = outerElem.querySelector('.telescope.modal-dialog');
+      let modalCloseBtn = innerElem.querySelector('svg.btn-close');
+
+      u.addExtendedClickHandler('telescopes', outerElem, () => {
+        modal.hide();
+      })
+      u.addExtendedClickHandler('telescopes', modalCloseBtn, () => {
+        modal.hide();
+      })
+      u.addExtendedClickHandler('telescopes', innerElem, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      })
+
+    });
+
     telescopes.updateVisibility(page);
+    scopes.forEach((scope) => {
+      let elem = document.getElementById(`${scope.key}-container`);
+      u.addExtendedClickHandler('telescopes', elem, () => {
+        modals[`${scope.key}-modal`].show();
+      })
+    })
+
   }
 };
 

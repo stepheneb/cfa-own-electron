@@ -201,6 +201,8 @@ observation.render = (page, registeredCallbacks) => {
 
     let yourEmail = document.getElementById('your-email');
 
+    let sendEmailButton = sendEmailForm.querySelector('button[type="submit"]');
+
     modal1.addEventListener('show.bs.modal', function () {
       document.body.classList.add('nofadeout');
     });
@@ -242,12 +244,12 @@ observation.render = (page, registeredCallbacks) => {
 
     bsModal1.show();
 
-    enterEmailButton.addEventListener('click', () => {
+    u.addExtendedClickHandler('observation', enterEmailButton, () => {
       bsModal1.hide();
       bsModal2.show();
     });
 
-    sendEmailForm.onsubmit = async (e) => {
+    let handleSubmit = (e) => {
       e.preventDefault();
 
       observation.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope.php';
@@ -285,12 +287,19 @@ observation.render = (page, registeredCallbacks) => {
 
       bsModal2.hide();
       bsModal3.show();
+    }
 
+    sendEmailForm.onsubmit = async (e) => {
+      handleSubmit(e);
     };
 
-    modal1CloseButton.addEventListener('click', hideAll);
-    modal2CloseButton.addEventListener('click', hideAll);
-    modal3CloseButton.addEventListener('click', hideAll);
+    u.addExtendedClickHandler('observation', sendEmailButton, (e) => {
+      handleSubmit(e);
+    })
+
+    u.addExtendedClickHandler('observation', modal1CloseButton, hideAll);
+    u.addExtendedClickHandler('observation', modal2CloseButton, hideAll);
+    u.addExtendedClickHandler('observation', modal3CloseButton, hideAll);
 
     function hideAll() {
       bsModal1.hide();

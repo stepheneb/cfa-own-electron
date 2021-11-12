@@ -178,7 +178,9 @@ saveandsend.render = (page, registeredCallbacks) => {
 
     let yourEmail = document.getElementById('your-email');
 
-    saveAndSendButton.addEventListener('click', function () {
+    let sendEmailButton = sendEmailForm.querySelector('button[type="submit"]');
+
+    u.addExtendedClickHandler('saveAndSend', saveAndSendButton, function () {
       bsModal1.show();
       page.canvasImages.renderSaveAndSend();
     });
@@ -207,12 +209,12 @@ saveandsend.render = (page, registeredCallbacks) => {
       document.body.classList.remove('nofadeout');
     });
 
-    enterEmailButton.addEventListener('click', () => {
+    u.addExtendedClickHandler('saveAndSend', enterEmailButton, () => {
       bsModal1.hide();
       bsModal2.show();
     });
 
-    sendEmailForm.onsubmit = async (e) => {
+    let handleSubmit = (e) => {
       e.preventDefault();
 
       let generateImageName = (type) => {
@@ -260,7 +262,17 @@ saveandsend.render = (page, registeredCallbacks) => {
 
       bsModal2.hide();
       bsModal3.show();
+
+    }
+
+    sendEmailForm.onsubmit = async (e) => {
+      handleSubmit(e);
     };
+
+    u.addExtendedClickHandler('saveAndSend', sendEmailButton, (e) => {
+      handleSubmit(e);
+    })
+
   }
 };
 
