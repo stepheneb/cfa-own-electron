@@ -1,4 +1,4 @@
-/*global app, defaultApp */
+/*global app, defaultApp ipcRenderer */
 
 import router from './router.js';
 import splash from './modules/render/splash.js';
@@ -43,9 +43,13 @@ main.setupNewApp = newApp => {
   return newApp;
 };
 
-main.start = () => {
+let finishMainStart = (kioskState) => {
   Object.assign(defaultApp, main.setupNewApp(u.deepClone(data)));
   Object.assign(app, main.setupNewApp(u.deepClone(data)));
+  if (kioskState !== undefined) {
+    defaultApp.kioskState = kioskState;
+    app.kioskState = kioskState;
+  }
   app.logger = true;
   app.email = '';
   app.firstStart = true;
@@ -53,8 +57,18 @@ main.start = () => {
   splash.render();
   router.addHashChangeListener();
   setupWindowSizeListener();
-  countdownToRestart();
+  enableCountdownToRestart();
   router.route();
+}
+
+main.start = () => {
+  if (u.runningInElectron()) {
+    ipcRenderer.invoke('getKioskState').then((kioskState) => {
+      finishMainStart(kioskState);
+    });
+  } else {
+    finishMainStart();
+  }
 };
 
 main.restart = () => {
@@ -64,7 +78,7 @@ main.restart = () => {
   app.start = true;
   main.clearContent();
   router.resetHash();
-  countdownToRestart();
+  enableCountdownToRestart();
 };
 
 main.startover = () => {
@@ -74,7 +88,7 @@ main.startover = () => {
   app.start = false;
   main.clearContent();
   router.resetHash();
-  countdownToRestart();
+  enableCountdownToRestart();
 };
 
 function setupWindowSizeListener() {
@@ -126,10 +140,10 @@ main.clearContent = () => {
 let startTime = 0;
 let restartDuration = 0;
 
-function countdownToRestart() {
+function enableCountdownToRestart() {
   let startingOverElem = document.getElementById('starting-over');
   let values = startingOverElem.querySelector('span.values');
-  if (u.runningInElectron()) {
+  if (u.runningInElectron() && !app.kioskState.startover_disabled) {
     startTime = performance.now();
     restartDuration = app.defaultRestartDuration;
     let currentDuration = 0;

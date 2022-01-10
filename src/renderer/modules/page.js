@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-/*global app  defaultApp ipcRenderer */
+/*global app  defaultApp */
 
 // https://stackoverflow.com/questions/38127416/is-it-possible-to-destructure-instance-member-variables-in-a-javascript-construc
 
@@ -279,13 +279,6 @@ class Page {
 
   render() {
     events.setupGlobal(this);
-
-    if (u.runningInElectron()) {
-      ipcRenderer.invoke('getKioskState').then((kioskState) => {
-        app.kioskState = kioskState;
-      });
-    }
-
     switch (this.type) {
 
     case 'rgb':

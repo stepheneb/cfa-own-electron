@@ -2,12 +2,14 @@ const { app } = require('electron');
 const path = require('path');
 import { Low, JSONFile } from 'lowdb';
 import { v4 as uuidv4 } from 'uuid';
+import { lodash } from 'lodash';
 
 import u from './renderer/modules/utilities.js';
 
 const initialKioskState = {
   id: null,
   cfa_key: null,
+  startover_disabled: null,
   appName: app.getName(),
   appVersion: app.getVersion()
 };

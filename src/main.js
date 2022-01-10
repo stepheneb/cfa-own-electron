@@ -251,3 +251,12 @@ ipcMain.handle('new-cfa-key', async (e, obj) => {
   saveKioskState();
   return kioskState;
 });
+
+ipcMain.handle('update-startover-disabled', async (e, obj) => {
+  kioskState.startover_disabled = obj['update-startover-disabled'];
+  const saveKioskState = async () => {
+    await kioskdb.save();
+  };
+  saveKioskState();
+  return kioskState;
+});

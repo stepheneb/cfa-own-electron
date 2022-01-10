@@ -28,8 +28,13 @@ body#admin {
       }
     }
 
+    header {
+      padding: 1em 0em 0.25em 0em;
+      font-size: 1.5em;
+    }
+
     .settings {
-      margin: 2em 0;
+      margin: 0.5em 0em;
       align-items: baseline;
       .existing {
         font-size: 110%;
