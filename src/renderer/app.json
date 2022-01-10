@@ -2230,7 +2230,7 @@
             ],
             "maximumBrightness": 2,
             "selectedSourceNumber": 2,
-            "selectedMainLayers": "001",
+            "selectedMainLayers": "100",
             "sources": [
               {
                 "type": "rawdata",
@@ -2405,6 +2405,121 @@
                 "original": {
                   "type": "FITS",
                   "path": "source-images/fits/m51-multi/Chandra_M51_Xray_lowerRes.FITS"
+                }
+              },
+              {
+                "type": "composite",
+                "name": "RGB",
+                "layers": [
+                  "Red",
+                  "Green",
+                  "Blue"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "lagoon-multi",
+          "poster": "lagoon-multi",
+          "title": "Lagoon Galaxy",
+          "the": true,
+          "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
+          "context": "Multiwavelength images reveal the explosion of gas from the center of this galaxy.",
+          "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
+          "adjustimagetext": "Use these sliders to show more detail in the image",
+          "saveandsendtext": "This image was taken by one or more of the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
+          "image": {
+            "name": "Lagoon Galaxy",
+            "source": "",
+            "about": {
+              "telescopes": [
+                "spitzer",
+                "hubble",
+                "chandra"
+              ]
+            },
+            "size": "medium",
+            "dimensions": {
+              "small": {
+                "nx": 452,
+                "ny": 452
+              },
+              "medium": {
+                "nx": 905,
+                "ny": 905
+              },
+              "large": {
+                "nx": 905,
+                "ny": 905
+              }
+            },
+            "indicator": {
+              "x": 247,
+              "y": 519
+            },
+            "maximumBrightness": 2,
+            "selectedSourceNumber": 0,
+            "selectedMainLayers": "100",
+            "sources": [
+              {
+                "type": "rawdata",
+                "name": "Infrared",
+                "telescope": "spitzer",
+                "path": {
+                  "small": "rawdata/lagoon-multi/452x452/Spitzer_Lagoon_Infrared_1636744802567.bmp",
+                  "medium": "rawdata/lagoon-multi/905x905/Spitzer_Lagoon_Infrared_1636744802567.bmp",
+                  "large": "rawdata/lagoon-multi/905x905/Spitzer_Lagoon_Infrared_1636744802567.bmpp"
+                },
+                "filter": "red",
+                "min": 3,
+                "max": 295,
+                "scaling": "log",
+                "brightness": 0.75,
+                "contrast": 1,
+                "original": {
+                  "type": "FITS",
+                  "path": "source-images/fits/lagoon-multi/Spitzer_Lagoon_Infrared_1636744802567.fits"
+                }
+              },
+              {
+                "type": "rawdata",
+                "name": "Optical",
+                "telescope": "hubble",
+                "path": {
+                  "small": "rawdata/lagoon-multi/452x452/Hubble_Lagoon_656nVisG_1636744779626.bmp",
+                  "medium": "rawdata/lagoon-multi/905x905/Hubble_Lagoon_656nVisG_1636744779626.bmp",
+                  "large": "rrawdata/lagoon-multi/905x905/Hubble_Lagoon_656nVisG_1636744779626.bmp"
+                },
+                "filter": "green",
+                "min": 50,
+                "max": 2010,
+                "scaling": "log",
+                "brightness": 0.5,
+                "contrast": 1,
+                "original": {
+                  "type": "FITS",
+                  "path": "source-images/fits/lagoon-multi/Hubble_Lagoon_656nVisG_1636744779626.fits"
+                }
+              },
+              {
+                "type": "rawdata",
+                "name": "X-Ray",
+                "telescope": "chandra",
+                "path": {
+                  "small": "rawdata/lagoon-multi/452x452/Chandra_Lagoon_Xray_1636744791601.bmp",
+                  "medium": "rawdata/lagoon-multi/905x905/Chandra_Lagoon_Xray_1636744791601.bmp",
+                  "large": "rawdata/lagoon-multi/905x905/Chandra_Lagoon_Xray_1636744791601.bmp"
+                },
+                "filter": "blue",
+                "min": 0,
+                "max": 8,
+                "scaling": "log",
+                "brightness": 1.25,
+                "contrast": 1,
+                "original": {
+                  "type": "FITS",
+                  "path": "source-images/fits/lagoon-multi/Chandra_Lagoon_Xray_1636744791601.fits"
                 }
               },
               {
