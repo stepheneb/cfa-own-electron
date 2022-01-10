@@ -77,7 +77,8 @@ html {
   --select-filter-assigned: 1.3vh;
   --main-layer-selector: 2vh;
   --about-your-image: 2.8vh;
-  --save-and-send-context: 2vh;
+  --save-and-send-context: 1.8vh;
+  --about-telescope-context: 1.7vh;
   --send-email-input: 2.4vh;
   --send-email-button: 1.8vh;
   --splash2-title: 8vh;
@@ -2222,6 +2223,26 @@ div.modal.save-and-send .modal-dialog {
           text-transform: uppercase;
         }
       }
+      .about-telescope {
+        font-size: var(--about-telescope-context);
+        line-height: 110%;
+        color: var(--almost-white);
+        margin: 0.5vh 1vh;
+        height: 39vh;
+        width: 32vh;
+        .title {
+          font-size: 2.4vh;
+          line-height: 110%;
+          text-transform: uppercase;
+        }
+        p {
+          margin: 2vh 0;
+          line-height: 115%;
+        }
+        span.label {
+          color: var(--bright-green);
+        }
+      }
       &.two,
       &.three {
         .enter-email {
@@ -2325,6 +2346,9 @@ div.modal.save-and-send .modal-dialog {
             max-width: 60%;
             text-align: center;
             line-height: normal;
+            &.micro-observatory {
+              max-width: 95%;
+            }
           }
           p {
             margin-top: 2vh;

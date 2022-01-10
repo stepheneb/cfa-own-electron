@@ -44,6 +44,10 @@ observation.render = (page, registeredCallbacks) => {
       `;
   }
 
+  function willTakeYourImageTonight() {
+    return `MicroObservatory will take your image of the <span class="image-name">${page.title}</span> tonight.`
+  }
+
   function image() {
     return `
       <div class="image-container">
@@ -57,7 +61,7 @@ observation.render = (page, registeredCallbacks) => {
 
   if (u.notRunningInElectron()) {
     notRunningInElectron = `
-      <p>Requesting an observation only works in the CfA Kiosk Electron application.</p>
+      <p>** Requesting an observation only works in the CfA Kiosk Electron application.</p>
     `;
   }
 
@@ -75,9 +79,7 @@ observation.render = (page, registeredCallbacks) => {
             <div class="row">
               <div class="col-left d-flex flex-column justify-content-start">
                 <div class="salutation">Wait and See!</div>
-                <div class="about-your-image">
-                  We’ll take your image of the <span class="image-name">${page.title}</span>.
-                </div>
+                <div class="about-your-image">${willTakeYourImageTonight()}</div>
                 <div class="context">
                   <p>${page.description}</p>
                   <p>Enter your email to send your astrophoto creation to yourself.</p>
@@ -89,6 +91,20 @@ observation.render = (page, registeredCallbacks) => {
               </div>
               ${image()}
               ${telescope()}
+              <div class="about-telescope">
+                <div class='title'>MicroObservatory Telescopes</div>
+                <p>
+                  Built in the 1990s, these five robotic telescopes —
+                  from the Center for Astrophysics | Harvard & Smithsonian —
+                  allow YOU to take your OWN images of objects in space.
+                </p>
+                <p>
+                  <span class='label'>Location:</span> Arizona, Massachusetts, and Coquimbo, Chille.
+                </p>
+                <p>
+                  Accessible on the Internet at microobservatory.org
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -108,12 +124,9 @@ observation.render = (page, registeredCallbacks) => {
             <div class="row">
               <div class="col-left">
                 <div class="salutation">Wait and See!</div>
-                <div class="about-your-image">
-                  We’ll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
-                </div>
+                <div class="about-your-image">${willTakeYourImageTonight()}</div>
                 <div class="context">
                   <p>${page.description}</p>
-                  <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
               </div>
               <div id="enter-email" class="enter-email">
@@ -154,9 +167,7 @@ observation.render = (page, registeredCallbacks) => {
             <div class="row">
               <div class="col-left">
                 <div class="salutation">Wait and See!</div>
-                <div class="about-your-image">
-                  We’ll take your image of the <span class="image-name pe-2"> ${page.title}</span> tonight.
-                </div>
+                <div class="about-your-image">${willTakeYourImageTonight()}</div>
                 <div class="context">
                   <p>${page.description}</p>
                 </div>
@@ -165,6 +176,9 @@ observation.render = (page, registeredCallbacks) => {
                 <div class='salutation'>Thank You!</div>
                 <div class='details'>
                   We will send your image to <span id="your-email">yourname@website.com</span>
+                </div>
+                <div class='details micro-observatory'>
+                  You can continue to Observe With NASA<br>using the MicroObservatory Telescope Network<br>at microobservatory.com
                 </div>
                 ${notRunningInElectron}
               </div>
