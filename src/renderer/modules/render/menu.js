@@ -418,7 +418,7 @@ renderMenu.categoryPageCollection = category => {
   category.pages.forEach((page) => {
     var id = `open-page-${category.type}-${page.id}`;
     if (category.type !== "observation") {
-      telescopes = getTelescopes(page).map(telescope => telescope.id).join(", ");
+      telescopes = getTelescopes(page).map(telescope => telescope.name).join(", ");
       html += `
         <div id="${id}" class="menu-category-page">
           <div class="image-wrapper">
