@@ -2265,7 +2265,7 @@
               }
             ],
             "maximumBrightness": 2,
-            "selectedSourceNumber": 2,
+            "selectedSourceNumber": 0,
             "selectedMainLayers": "100",
             "sources": [
               {
