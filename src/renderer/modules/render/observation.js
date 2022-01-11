@@ -40,7 +40,11 @@ observation.render = (page, registeredCallbacks) => {
   }
 
   function willTakeYourImageTonight() {
-    return `MicroObservatory will take your image of the <span class="image-name">${page.title}</span> tonight.`
+    let tonightStr = "";
+    if (page.tonight) {
+      tonightStr = " tonight";
+    }
+    return `MicroObservatory will take your image of the <span class="image-name">${page.title}</span>${tonightStr}.`
   }
 
   function telescope(wide = true) {
