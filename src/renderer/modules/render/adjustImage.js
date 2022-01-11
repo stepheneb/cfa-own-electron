@@ -30,7 +30,7 @@ let contrast = (page) => {
   let source = page.selectedSource;
   let min = 0;
   let max = 2;
-  let val = source.brightness;
+  let val = source.contrast;
   let html = `
     <div class='adjust-filter'>
       <label for='contrast'>Contrast</label>
@@ -261,7 +261,11 @@ adjustImage.renderMasterpieceUpdate = (page) => {
 adjustImage.update = page => {
   let source = page.selectedSource;
   document.getElementById("brightness").value = source.brightness;
+  document.getElementById("brightnessvalue").innerText = source.brightness;
+
   document.getElementById("contrast").value = source.contrast;
+  document.getElementById("contrastvalue").innerText = source.contrast;
+
   let scalingElem = document.getElementById("scaling");
   if (scalingElem) {
     let radios = document.getElementById("scaling").elements.scaling;
