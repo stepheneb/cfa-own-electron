@@ -46,12 +46,12 @@ colorMaps.render = (page, registeredCallbacks) => {
 
   function callback(page) {
     let cmapName = 'gray';
-    if (page.image.cmapName) {
-      cmapName = page.image.cmapName;
+    if (page.selectedSource.cmapName) {
+      cmapName = page.selectedSource.cmapName;
     }
     let cmap = document.getElementById(getId(cmapName));
     cmap.classList.add('selected');
-    page.image.cmapName = cmapName;
+    page.selectedSource.cmapName = cmapName;
 
     // /* beautify ignore:start */
     // let cmapName = page.image?.cmapName ?? 'gray';
@@ -66,7 +66,7 @@ colorMaps.render = (page, registeredCallbacks) => {
           unselectAll();
           event.currentTarget.classList.add('selected');
           let id = event.currentTarget.dataset.cmap;
-          page.image.cmapName = cmapName;
+          page.selectedSource.cmapName = cmapName;
           page.canvasImages.scheduleCmap(cmapName);
           page.canvasImages.renderMasterpiece();
           console.log(`${id} clicked`);

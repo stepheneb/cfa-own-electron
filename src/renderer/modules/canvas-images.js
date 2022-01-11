@@ -222,8 +222,8 @@ class CanvasImages {
       case 'masterpiece':
         this.initializeMainCanvases(this.type);
         this.addScalingLayer();
-        if (this.image.cmapName) {
-          this.scheduleCmap(this.image.cmapName);
+        if (this.selectedSource.cmapName) {
+          this.scheduleCmap(this.selectedSource.cmapName);
           this.renderMasterpiece();
         }
         if (app.dev) {
@@ -360,7 +360,7 @@ class CanvasImages {
     this.rawdataSources.forEach((s) => {
       canvas = this.appendMainCanvas(this.mainCanvasWrapper, s.filter, s.name);
       this.layerCanvases.push(canvas);
-      this.renderCanvasLayer(s);
+      this.renderIntoSingleColorCanvasLayer(s);
     });
     this.rgbCanvas = this.appendMainCanvas(this.mainCanvasWrapper, 'rgb', 'rgb');
     this.renderCanvasRGB(type);
@@ -660,7 +660,7 @@ class CanvasImages {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  renderCanvasLayer(source) {
+  renderIntoSingleColorCanvasLayer(source) {
     let canvas = this.layerCanvasNamed(source.name);
     // let startTime = performance.now();
     let rawdata = this.rawDataForSource(source);
