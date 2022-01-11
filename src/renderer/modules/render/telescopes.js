@@ -63,6 +63,26 @@ telescopes.updateVisibility = page => {
   }
 };
 
+telescopes.find = (key) => {
+  return app.telescopeData.telescopes.find(scope => scope.key == key);
+}
+
+telescopes.name = (scope) => {
+  let kind = "Telescope";
+  if (scope.kind) {
+    kind = scope.kind;
+  }
+  return `${scope.name} ${kind}`;
+}
+
+telescopes.longName = (scope) => {
+  let kind = "Telescope";
+  if (scope.kind) {
+    kind = scope.kind;
+  }
+  return `${scope.longname} ${kind}`;
+}
+
 telescopes.render = (page, registeredCallbacks) => {
   let scopes = page.telescopes;
   let html = `<div>${app.telescopeData.prologue}</div>`;
@@ -74,7 +94,7 @@ telescopes.render = (page, registeredCallbacks) => {
     modalId = `${id}-modal`;
     html += `
       <div id="${id}" class="telescope-container" data-bs-toggle="modal" data-bs-target="#${modalId}">
-        <div class="about-telescope">${scope.name} Telescope</div>
+        <div class="about-telescope">${telescopes.name(scope)}</div>
         <div id="${scope.key}-container" class="telescope-image-container">
           <img src="../${scope.image}"></img>
         </div>

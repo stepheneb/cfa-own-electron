@@ -147,6 +147,7 @@
       {
         "key": "lro",
         "name": "LRO",
+        "kind": "Camera",
         "longname": "Lunar Reconnaissance Orbiter",
         "image": "images/telescopes/314490main_LROstill_1_small.jpg",
         "image-credits": "NASA",
@@ -186,6 +187,7 @@
       {
         "key": "juno",
         "name": "Juno",
+        "kind": "Camera",
         "longname": "Juno Mission",
         "image": "images/telescopes/juno.png",
         "image-credits": "NASA",
@@ -285,6 +287,8 @@
           "findtext": "Find the Apollo 11 site pictured below",
           "youaretext": "You are here",
           "saveandsendtext": "This high-resolution map of the Moon’s surface was made by NASA’s Lunar Reconnaissance Orbiter.",
+          "saveandsendtext1": "This high-resolution map of the Moon’s surface was made by NASA’s ",
+          "saveandsendtext2": ".",
           "context": "In July, 1969, Apollo 11 carried the first humans to the surface of the Moon. NASA chose a landing site that was flat, smooth, and with relatively few craters.",
           "image": {
             "name": "Apollo Mission 11 Landing Site",
@@ -369,6 +373,8 @@
           "findtext": "Find the Apollo 12 site pictured below",
           "youaretext": "You are here",
           "saveandsendtext": "This high-resolution map of the Moon’s surface was made by NASA’s Lunar Reconnaissance Orbiter.",
+          "saveandsendtext1": "This high-resolution map of the Moon’s surface was made by NASA’s ",
+          "saveandsendtext2": ".",
           "context": "The Apollo 12 Lunar Module landed on the Moon’s surface in November of 1969. This mission achieved a precision landing, just 535 feet from an earlier robotic spacecraft named Surveyor 3.",
           "image": {
             "name": "Apollo Mission 12 Landing Site",
@@ -452,6 +458,8 @@
           "findtext": "Find the Apollo 14 site pictured below",
           "youaretext": "You are here",
           "saveandsendtext": "This high-resolution map of the Moon’s surface was made by NASA’s Lunar Reconnaissance Orbiter.",
+          "saveandsendtext1": "This high-resolution map of the Moon’s surface was made by NASA’s ",
+          "saveandsendtext2": ".",
           "context": "Apollo 14 (January 31, 1971 - February 9, 1971) was the third crewed mission to land on the Moon, after an on-board explosion forced Apollo 13 to return to Earth in a dramatic rescue operation.",
           "image": {
             "name": "Apollo Mission 14 Landing Site",
@@ -535,6 +543,8 @@
           "findtext": "Find the Apollo 15 site pictured below",
           "youaretext": "You are here",
           "saveandsendtext": "This high-resolution map of the Moon’s surface was made by NASA’s Lunar Reconnaissance Orbiter.",
+          "saveandsendtext1": "This high-resolution map of the Moon’s surface was made by NASA’s ",
+          "saveandsendtext2": ".",
           "context": "Apollo 15 took place from July 26, 1971 to August 7, 1971, and landed near a rugged mountain range named after the Italian Apennines. This mission was the first where astronauts used a Lunar Roving Vehicle.",
           "image": {
             "name": "Apollo Mission 15 Landing Site",
@@ -622,6 +632,8 @@
           "findtext": "Find the Apollo 16 site pictured below",
           "youaretext": "You are here",
           "saveandsendtext": "This high-resolution map of the Moon’s surface was made by NASA’s Lunar Reconnaissance Orbiter.",
+          "saveandsendtext1": "This high-resolution map of the Moon’s surface was made by NASA’s ",
+          "saveandsendtext2": ".",
           "context": "Apollo 16 landed in the lunar highlands, where the astronauts collected rocks to look for evidence of volcanic activity. No such evidence was found.",
           "image": {
             "name": "Apollo Mission 16 Landing Site",
@@ -705,6 +717,8 @@
           "findtext": "Find the Apollo 17 site pictured below",
           "youaretext": "You are here",
           "saveandsendtext": "This high-resolution map of the Moon’s surface was made by NASA’s Lunar Reconnaissance Orbiter.",
+          "saveandsendtext1": "This high-resolution map of the Moon’s surface was made by NASA’s ",
+          "saveandsendtext2": ".",
           "context": "The December, 1972 Apollo 17 mission was the last time humans walked on the Moon…for now",
           "image": {
             "name": "Apollo Mission 17 Landing Site",
@@ -799,6 +813,8 @@
           "selectfiltertext": "Select and adjust each of the light wave images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and enhanced by YOU!",
           "image": {
             "name": "Whirlpool Galaxy",
             "about": {
@@ -863,6 +879,8 @@
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by the Lunar Reconnaissance Orbiter - and enhanced by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and enhanced by YOU!",
           "image": {
             "name": "Moon - Far Side",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
@@ -931,10 +949,12 @@
           "title": "Jupiter",
           "the": false,
           "subtitle": "Try your hand at enhancing and bringing out details in images<br>the same way NASA scientists do.",
-          "context": "A scientist might zoom in and choose colors that enhance the pattern of the bands.",
+          "context": "A scientist might zoom in and choose colors that enhance Jupiter’s cloud and storm patterns.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by the Hubble Space Telescope - and explored by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and explored by YOU!",
           "image": {
             "name": "Jupiter",
             "source": "http://lroc.sese.asu.edu/ptif/download_file?fName=WAC_GL000.tif",
@@ -998,10 +1018,12 @@
           "title": "Sun-Ultraviolet",
           "the": true,
           "subtitle": "Try your hand at enhancing and bringing out details in images<br>the same way NASA scientists do.",
-          "context": "This image show a solar storm on the surface of the sun. A magnetic storm shows up best in ultraviolet images like this.",
+          "context": "A solar scientist might colorize this ultraviolet image to enhance the patterns of super hot plasma erupting into the sun’s upper atmosphere.",
           "selectfiltertext": "Find out more about what each wavelength of light can tell us about objects in space.",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image is taken by the Solar Dynamics Observatory - and explored by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and explored by YOU!",
           "image": {
             "name": "Sun-Ultraviolet",
             "shortname": "Sun-UV",
@@ -1072,7 +1094,7 @@
       "title": "Animate Images Over Time",
       "subtitle": "Look for patterns of change in a series of images the same way scientists do.",
       "menuimage": "images/menu-animate.jpg",
-      "action": "Choose an Image",
+      "action": "Choose A Celestial Object",
       "pages": [
         {
           "id": "jupiter",
@@ -1083,6 +1105,8 @@
           "animatetext": "Use the arrows to move through these images or play them on a loop. See what you can learn.",
           "context": "These images show two changing features of Jupiter over a period of hours: the motion of storms in its atmosphere and the paths and shadows of orbiting moons.",
           "saveandsendtext": "This image is one in a series taken by the Hubble Space Telescope - and explored by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and explored by YOU!",
           "stepDuration": 1000,
           "image": {
             "name": "Jupiter",
@@ -1368,6 +1392,8 @@
           "animatetext": "Use the arrows to move through these images or play them on a loop. See what you can learn.",
           "context": "These images show solar storms changing as the sun rotates over several days. These magnetic storms show up best in ultraviolet images like this.",
           "saveandsendtext": "This image is one in a series taken by the Solar Dynamics Observatory - and explored by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and explored by YOU!",
           "stepDuration": 1000,
           "image": {
             "name": "Sun-Ultraviolet",
@@ -1638,6 +1664,8 @@
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and enhanced by YOU!",
           "image": {
             "name": "Lagoon Nebula",
             "about": {
@@ -1744,6 +1772,8 @@
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and enhanced by YOU!",
           "image": {
             "name": "Whirlpool Galaxy",
             "about": {
@@ -1850,6 +1880,8 @@
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and enhanced by YOU!",
           "image": {
             "name": "Cosmic Reef Nebulae",
             "source": "https://www.spacetelescope.org/images/heic2007a/",
@@ -1957,6 +1989,8 @@
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by the Hubble Space Telescope - and enhanced by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and enhanced by YOU!",
           "image": {
             "name": "Antennae Galaxies",
             "source": "https://www.spacetelescope.org/images/potw1345a/",
@@ -2063,7 +2097,9 @@
           "context": "The RGB image reveals the detailed structure of the dynamic storms on Jupiter.",
           "selectfiltertext": "Select and adjust each of the color-filtered images",
           "adjustimagetext": "Use these sliders to show more detail in the image",
-          "saveandsendtext": "This image was taken by the Juno Space Telescope - and enhanced by YOU!",
+          "saveandsendtext": "This image was taken by the JUNO MISSION CAMERA - and enhanced by YOU!",
+          "saveandsendtext1": "This image was taken by the ",
+          "saveandsendtext2": " - and enhanced by YOU!",
           "image": {
             "name": "Jupiter",
             "source": "",
@@ -2236,6 +2272,7 @@
                 "type": "rawdata",
                 "name": "Infrared",
                 "telescope": "spitzer",
+                "context": "The Spitzer Space Telescope captures the infrared light emitted by the plumes of dust being blown away from the center of this starburst galaxy.",
                 "path": {
                   "small": "rawdata/M82/635x635/M82_Spitzer_mid_Infrared.bmp",
                   "medium": "rawdata/M82/1270x1270/M82_Spitzer_mid_Infrared.bmp",
@@ -2245,8 +2282,8 @@
                 "min": 1,
                 "max": 3107,
                 "scaling": "log",
-                "brightness": 1,
-                "contrast": 1,
+                "brightness": 1.4,
+                "contrast": 1.25,
                 "original": {
                   "type": "FITS",
                   "path": "source-images/fits/M82/M82_Spitzer_mid_Infrared.FITS"
@@ -2256,16 +2293,17 @@
                 "type": "rawdata",
                 "name": "Optical",
                 "telescope": "hubble",
+                "context": "Hubble’s optical camera sees the cigar-shaped disk of this galaxy and the dark dust being blown from its center.",
                 "path": {
                   "small": "rawdata/M82/635x635/M82_Hubble_Optical.bmp",
                   "medium": "rawdata/M82/1270x1270/M82_Hubble_Optical.bmp",
                   "large": "rawdata/M82/1270x1270/M82_Hubble_Optical.bmp"
                 },
                 "filter": "green",
-                "min": 14,
+                "min": 14.5,
                 "max": 17967,
                 "scaling": "log",
-                "brightness": 1,
+                "brightness": 1.2,
                 "contrast": 1,
                 "original": {
                   "type": "FITS",
@@ -2276,6 +2314,7 @@
                 "type": "rawdata",
                 "name": "X-Ray",
                 "telescope": "chandra",
+                "context": "The Chandra X-ray Observatory detects huge bubbles of hot gas expanding from supernova explosions in this galaxy’s core. The image also reveals lots of point sources, many of which are black holes!",
                 "path": {
                   "small": "rawdata/M82/635x635/M82_Chandra_Xray_mid_energy.bmp",
                   "medium": "rawdata/M82/1270x1270/M82_Chandra_Xray_mid_energy.bmp",
@@ -2283,10 +2322,10 @@
                 },
                 "filter": "blue",
                 "min": 0,
-                "max": 48,
+                "max": 40,
                 "scaling": "log",
-                "brightness": 1,
-                "contrast": 1,
+                "brightness": 2,
+                "contrast": 0.45,
                 "original": {
                   "type": "FITS",
                   "path": "source-images/fits/M82/M82_Chandra_Xray_mid_energy.FITS"
@@ -2351,6 +2390,7 @@
                 "type": "rawdata",
                 "name": "Infrared",
                 "telescope": "spitzer",
+                "context": "The Spitzer Space Telescope captures the infrared light emitted by all the dust in the spiral arms of the galaxy. These dust lanes appear dark in optical light.",
                 "path": {
                   "small": "rawdata/m51-multi/387x584/Spitzer_M51_Infrared_lowerRes.bmp",
                   "medium": "rawdata/m51-multi/775x1168/Spitzer_M51_Infrared_lowerRes.bmp",
@@ -2358,10 +2398,10 @@
                 },
                 "filter": "red",
                 "min": 0,
-                "max": 295,
+                "max": 29,
                 "scaling": "log",
-                "brightness": 1,
-                "contrast": 1,
+                "brightness": 0.9,
+                "contrast": 1.2,
                 "original": {
                   "type": "FITS",
                   "path": "source-images/fits/m51-multi/Spitzer_M51_Infrared_lowerRes.FITS"
@@ -2371,17 +2411,18 @@
                 "type": "rawdata",
                 "name": "Optical",
                 "telescope": "hubble",
+                "context": "Hubble’s optical camera captures the light of the billions of stars in this spiral shaped galaxy. Dark spiral lanes of dust block the visible starlight, but shine brightly in infrared light.",
                 "path": {
                   "small": "rawdata/m51-multi/387x584/Hubble_M51_Green_lowerRes.bmp",
                   "medium": "rawdata/m51-multi/775x1168/Hubble_M51_Green_lowerRes.bmp",
                   "large": "rawdata/m51-multi/775x1168/Hubble_M51_Green_lowerRes.bmp"
                 },
                 "filter": "green",
-                "min": 8,
-                "max": 14146,
+                "min": 4,
+                "max": 5000,
                 "scaling": "log",
-                "brightness": 1,
-                "contrast": 1,
+                "brightness": 0.75,
+                "contrast": 1.15,
                 "original": {
                   "type": "FITS",
                   "path": "source-images/fits/m51-multi/Hubble_M51_Green_lowerRes.FITS"
@@ -2391,6 +2432,7 @@
                 "type": "rawdata",
                 "name": "X-Ray",
                 "telescope": "chandra",
+                "context": "The Chandra X-ray Observatory reveals the location of hundreds of point sources in the galaxy -- including neutron stars and black holes.",
                 "path": {
                   "small": "rawdata/m51-multi/387x584/Chandra_M51_Xray_lowerRes.bmp",
                   "medium": "rawdata/m51-multi/775x1168/Chandra_M51_Xray_lowerRes.bmp",
@@ -2398,9 +2440,9 @@
                 },
                 "filter": "blue",
                 "min": 0,
-                "max": 298,
+                "max": 20,
                 "scaling": "log",
-                "brightness": 1,
+                "brightness": 2,
                 "contrast": 1,
                 "original": {
                   "type": "FITS",
@@ -2466,12 +2508,14 @@
                 "type": "rawdata",
                 "name": "Infrared",
                 "telescope": "spitzer",
+                "context": "The Spitzer Space Telescope captures the infrared light emitted by all the young stars inside the dusty cocoon of the Lagoon Nebula. These stars are hidden if viewed with an optical telescope.",
                 "path": {
                   "small": "rawdata/lagoon-multi/452x452/Spitzer_Lagoon_Infrared_1636744802567.bmp",
                   "medium": "rawdata/lagoon-multi/905x905/Spitzer_Lagoon_Infrared_1636744802567.bmp",
                   "large": "rawdata/lagoon-multi/905x905/Spitzer_Lagoon_Infrared_1636744802567.bmpp"
                 },
                 "filter": "red",
+                "cmapName": "inferno",
                 "min": 3,
                 "max": 295,
                 "scaling": "log",
@@ -2486,6 +2530,7 @@
                 "type": "rawdata",
                 "name": "Optical",
                 "telescope": "hubble",
+                "context": "Hubble’s optical camera captures the amazing shape of the clouds of gas and dust where stars are being born in this nebula.",
                 "path": {
                   "small": "rawdata/lagoon-multi/452x452/Hubble_Lagoon_656nVisG_1636744779626.bmp",
                   "medium": "rawdata/lagoon-multi/905x905/Hubble_Lagoon_656nVisG_1636744779626.bmp",
@@ -2506,12 +2551,14 @@
                 "type": "rawdata",
                 "name": "X-Ray",
                 "telescope": "chandra",
+                "context": "The Chandra X-ray Observatory “sees through” the dust to reveal the location of hundreds of the very hottest stars being born in this nebula.",
                 "path": {
                   "small": "rawdata/lagoon-multi/452x452/Chandra_Lagoon_Xray_1636744791601.bmp",
                   "medium": "rawdata/lagoon-multi/905x905/Chandra_Lagoon_Xray_1636744791601.bmp",
                   "large": "rawdata/lagoon-multi/905x905/Chandra_Lagoon_Xray_1636744791601.bmp"
                 },
                 "filter": "blue",
+                "cmapName": "calm",
                 "min": 0,
                 "max": 8,
                 "scaling": "log",
@@ -2557,7 +2604,8 @@
           "id": "GA2",
           "title": "Whirlpool Galaxy",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "A beautiful face-on spiral galaxy, the Whirlpool's spiral pattern was first seen and sketched in 1845. At first, it was unclear whether astronomers were looking at a whole city of stars a long way off, or simply one nearby star and its newly formed planetary system. The WhirlpooL has a small companion galaxy that is interacting with the larger spiral galaxy.",
+          "description": "The Whirlpool is a beautiful face-on spiral galaxy 23 million light years away that is interacting with a small companion galaxy. The MicroObservatory Telescope Network will observe this object for you tonight, and deliver your image to you tomorrow.",
+          "oldDescription": "A beautiful face-on spiral galaxy, the Whirlpool's spiral pattern was first seen and sketched in 1845. At first, it was unclear whether astronomers were looking at a whole city of stars a long way off, or simply one nearby star and its newly formed planetary system. The WhirlpooL has a small companion galaxy that is interacting with the larger spiral galaxy.",
           "poster": "./images/targets/WhirlpoolGal210610045421_12_07_2021.png",
           "startdate": "0101",
           "enddate": "1231"
@@ -2566,7 +2614,8 @@
           "id": "GA7",
           "title": "Cigar Galaxy",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "The Cigar Galaxy's (M82) distorted “starburst” shape is due to the gravity from its twin, M81. Inside dust clouds, thousands of new stars are being born. The winds generated by these white-hot new stars and old giant stars dying in supernova explosions are blowing fountains of gas out of the galaxy!",
+          "description": "The Cigar Galaxy, located in the sky near the Big Dipper, has a distorted shape and lots of starburst activity lighting up the center of the galaxy. The MicroObservatory Telescope Network will observe this object for you tonight, and deliver your image to you tomorrow.",
+          "oldDescription": "The Cigar Galaxy's (M82) distorted “starburst” shape is due to the gravity from its twin, M81. Inside dust clouds, thousands of new stars are being born. The winds generated by these white-hot new stars and old giant stars dying in supernova explosions are blowing fountains of gas out of the galaxy!",
           "poster": "./images/targets/M82CigarGalaxy.png",
           "startdate": "0101",
           "enddate": "1231"
@@ -2575,7 +2624,8 @@
           "id": "SS1",
           "title": "Moon",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Your image of the Moon may be delayed a few days if the visual position of the Moon as seen from the Earth is located too close to the Sun",
+          "description": "What phase is the Moon in today? If it’s a new moon (near the Sun in the sky), your observation may be delayed a day or two. Otherwise, the MicroObservatory Telescope Network will observe this object for you later today or tonight, and deliver your image to you tomorrow.",
+          "oldDescription": "Your image of the Moon may be delayed a few days if the visual position of the Moon as seen from the Earth is located too close to the Sun",
           "poster": "./images/targets/Moon210721044224_26_07_2021.png",
           "startdate": "0101",
           "enddate": "1231"
@@ -2593,7 +2643,8 @@
           "id": "MW1",
           "title": "Hercules Star Cluster",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "Hercules cluster, also called M13, is dense ball of hundreds of thousands of stars. M13 is one of over a hundred “globular clusters” that orbit the center of our Milky Way Galaxy. Globular clusters are ancient, and their 12 billion year-old stars are among the oldest in the Universe.",
+          "description": "This star cluster, located 22,000 light years away in the direction of the constellation Hercules, is a dense ball of hundreds of thousands of stars. The MicroObservatory Telescope Network will observe this object for you tonight, and deliver your image to you tomorrow.",
+          "oldDescription": "Hercules cluster, also called M13, is dense ball of hundreds of thousands of stars. M13 is one of over a hundred “globular clusters” that orbit the center of our Milky Way Galaxy. Globular clusters are ancient, and their 12 billion year-old stars are among the oldest in the Universe.",
           "poster": "./images/targets/HerculesClus210613041830_12_07_2021.png",
           "startdate": "0101",
           "enddate": "1231"
@@ -2602,7 +2653,8 @@
           "id": "MW2",
           "title": "Orion Nebula",
           "subtitle": "Request your own observation and have the image emailed to you.",
-          "description": "The Orion nebula is an immense stellar nursery where clouds of dust and gas collapse under gravity to make the next generation of stars. It is also the closest star-forming region to us, and can be seen with the unaided eye in the constellation of Orion. Bright newborn stars at the center of the nebula make the nebula glow.",
+          "description": "The Orion Nebula is a huge colorful cloud of gas and dust where new stars are forming and is visible to the unaided human eye. The MicroObservatory Telescope Network will observe this object tonight through red, green, and blue filters, and deliver 3 raw images to you tomorrow with instructions for combining them into full color.",
+          "oldDescription": "The Orion nebula is an immense stellar nursery where clouds of dust and gas collapse under gravity to make the next generation of stars. It is also the closest star-forming region to us, and can be seen with the unaided eye in the constellation of Orion. Bright newborn stars at the center of the nebula make the nebula glow.",
           "poster": "./images/targets/OrionNebulaGreenM210318003031_26_07_2021.png",
           "startdate": "1016",
           "enddate": "0401"

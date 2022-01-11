@@ -35,17 +35,25 @@ observation.render = (page, registeredCallbacks) => {
 
   let modalId3 = `${id}-modal3`;
 
-  function telescope() {
-    return `
-      <div class="image-container telescope">
-        <img src='../images/micro-observatory.jpg'>
-        <div class='label'>Our Telescope</div>
-      </div>
-      `;
+  function aRoboticTelescopeWill() {
+    return `A robotic telescope will take your image of the <span class="image-name">${page.title}</span>.`;
   }
 
   function willTakeYourImageTonight() {
     return `MicroObservatory will take your image of the <span class="image-name">${page.title}</span> tonight.`
+  }
+
+  function telescope(wide = true) {
+    let label = "MicroObservatory";
+    if (wide) {
+      label += " Telescope";
+    }
+    return `
+      <div class="image-container telescope">
+        <img src='../images/micro-observatory.jpg'>
+        <div class='label'>${label}</div>
+      </div>
+      `;
   }
 
   function image() {
@@ -79,10 +87,10 @@ observation.render = (page, registeredCallbacks) => {
             <div class="row">
               <div class="col-left d-flex flex-column justify-content-start">
                 <div class="salutation">Wait and See!</div>
-                <div class="about-your-image">${willTakeYourImageTonight()}</div>
+                <div class="about-your-image">${aRoboticTelescopeWill()}</div>
                 <div class="context">
                   <p>${page.description}</p>
-                  <p>Enter your email to send your astrophoto creation to yourself.</p>
+                  <p>Enter your email to send your telescope observation to yourself.</p>
                 </div>
                 <div id='column-middle-spacer'></div>
                 <button id="${enterEmailButtonId}" type="button" class="btn btn-outline-primary btn-small page-navigation-button">
@@ -146,7 +154,7 @@ observation.render = (page, registeredCallbacks) => {
                 ${emailKeyboard.render(page, sendEmailFormId, registeredCallbacks)}
               </div>
               ${image()}
-              ${telescope()}
+              ${telescope(false)}
             </div>
           </div>
         </div>
@@ -183,7 +191,7 @@ observation.render = (page, registeredCallbacks) => {
                 ${notRunningInElectron}
               </div>
               ${image()}
-              ${telescope()}
+              ${telescope(false)}
             </div>
           </div>
         </div>

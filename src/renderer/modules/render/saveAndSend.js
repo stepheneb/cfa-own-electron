@@ -3,6 +3,7 @@
 
 import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
+import telescopes from './telescopes.js';
 import u from '../utilities.js';
 
 let saveandsend = {};
@@ -35,7 +36,7 @@ saveandsend.render = (page, registeredCallbacks) => {
 
   if (u.notRunningInElectron()) {
     downloadYourImage = `
-      <p>Sending an image only works in the CfA Kiosk Electron application. Try downloading instead.</p>
+      <p>** Sending an image only works in the CfA Kiosk Electron application. Try downloading instead.</p>
       <a id="download-image" download="${page.title}" type="button" class="btn btn-success"
         disabled>Download your <span>${page.title}</span> image</a>
       <div id="download-stats" class='stats'></div>
@@ -46,6 +47,19 @@ saveandsend.render = (page, registeredCallbacks) => {
     return `
       <div class="image-container save-and-send"></div>
     `;
+  }
+
+  function saveAndSendText(page) {
+    let text, name, key, scope;
+    if (page.saveandsendtext1) {
+      key = page.image.about.telescopes[0];
+      scope = telescopes.find(key);
+      name = telescopes.longName(scope);
+      text = page.saveandsendtext1 + name + page.saveandsendtext2
+    } else {
+      text = page.saveandsendtext;
+    }
+    return text
   }
 
   let modalHtmls = `
@@ -63,7 +77,7 @@ saveandsend.render = (page, registeredCallbacks) => {
                   Here’s your image of ${theStr}<span class="image-name pe-2"> ${page.image.name}.</span>
                 </div>
                 <div class="context">
-                  <p>${page.saveandsendtext}</p>
+                  <p>${saveAndSendText(page)}</p>
                   <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
                 <div id='column-middle-spacer'></div>
@@ -92,7 +106,7 @@ saveandsend.render = (page, registeredCallbacks) => {
                   Here’s your image of ${theStr}<span class="image-name pe-2"> ${page.image.name}.</span>
                 </div>
                 <div class="context">
-                  <p>${page.saveandsendtext}</p>
+                  <p>${saveAndSendText(page)}</p>
                   <p>Enter your email to send your astrophoto creation to yourself.</p>
                 </div>
               </div>
@@ -134,7 +148,7 @@ saveandsend.render = (page, registeredCallbacks) => {
                   Here’s your image of ${theStr}<span class="image-name pe-2"> ${page.image.name}.</span>
                 </div>
                 <div class="context">
-                  <p>${page.saveandsendtext}</p>
+                  <p>${saveAndSendText(page)}</p>
                 </div>
               </div>
               <div class="thanks">
