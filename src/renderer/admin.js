@@ -106,7 +106,7 @@ if (u.runningInElectron()) {
   const testCfaHandshake = document.getElementById('test-cfa-handshake');
 
   testCfaHandshake.addEventListener('click', () => {
-    const cfaHandshakePostUrl = "https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/handshake/handshake.php";
+    const cfaHandshakePostUrl = "https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/handshake/handshake_dev.php";
 
     let request = {
       kiosk_id: app.kioskState.id,

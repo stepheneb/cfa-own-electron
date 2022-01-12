@@ -241,7 +241,7 @@ saveandsend.render = (page, registeredCallbacks) => {
       let imageFilename = generateImageName('jpg');
       let datetime = new Date().toISOString();
 
-      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/emails/email_image.php';
+      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/emails/email_image_dev.php';
 
       if (u.runningInElectron()) {
         let body = {

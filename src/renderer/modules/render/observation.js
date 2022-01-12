@@ -278,7 +278,7 @@ observation.render = (page, registeredCallbacks) => {
     let handleSubmit = (e) => {
       e.preventDefault();
 
-      observation.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope.php';
+      observation.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope_dev.php';
 
       let email = document.getElementById('email');
       let datetime = new Date().toISOString();
