@@ -4,6 +4,8 @@
 // Splash page
 
 import renderMenu from './menu.js';
+
+import main from '../../main.js';
 import u from '../utilities';
 
 let splash = {};
@@ -42,6 +44,9 @@ let renderSplash = () => {
   splashElem.style.zIndex = "100";
   splashElem.style.display = "block";
   u.addClickAndContextListener('splash', splashElem, () => {
+    if (u.runningInElectron()) {
+      main.logTouchBegin();
+    }
     splashElem.style.display = "none";
     splash2Elem.style.display = "block";
     app.start = false;

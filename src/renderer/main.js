@@ -43,6 +43,26 @@ main.setupNewApp = newApp => {
   return newApp;
 };
 
+main.logTouchBegin = () => {
+  let datetime = main.getTouchBegin();
+  if (u.runningInElectron()) {
+    let obj = { "touch_begin": datetime };
+    ipcRenderer.invoke('log-touch_begin', obj).then((kioskLogState) => {
+      app.kioskLogState = kioskLogState;
+    });
+  }
+}
+
+main.getTouchBegin = () => {
+  let datetime = new Date().toISOString();
+  if (app.touch_begin) {
+    datetime = app.touch_begin;
+  } else {
+    app.touch_begin = datetime;
+  }
+  return datetime;
+}
+
 let finishMainStart = (kioskState) => {
   Object.assign(defaultApp, main.setupNewApp(u.deepClone(data)));
   Object.assign(app, main.setupNewApp(u.deepClone(data)));

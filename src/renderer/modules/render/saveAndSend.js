@@ -4,6 +4,8 @@
 import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 import telescopes from './telescopes.js';
+
+import main from '../../main.js';
 import u from '../utilities.js';
 
 let saveandsend = {};
@@ -239,6 +241,7 @@ saveandsend.render = (page, registeredCallbacks) => {
       let email = document.getElementById('email');
       let imageData = page.canvasImages.image.jpgDataUrl;
       let imageFilename = generateImageName('jpg');
+      let touch_begin = main.getTouchBegin();
       let datetime = new Date().toISOString();
 
       saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/emails/email_image_dev.php';
@@ -253,6 +256,7 @@ saveandsend.render = (page, registeredCallbacks) => {
           category_name: page.category.title,
           activity_path: `${page.type}/${page.id}`,
           kiosk_id: app.kioskState.id,
+          touch_begin: touch_begin,
           datetime_when_user_made_request_at_kiosk: datetime
         };
         fetch(saveandsend.postUrl, {

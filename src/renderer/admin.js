@@ -25,6 +25,8 @@ const appVersionElem = document.getElementById('app-version');
 const cfaHandshakeRequest = document.querySelector('#cfa-handshake-status .request');
 const cfaHandshakeReponse = document.querySelector('#cfa-handshake-status .response');
 
+const cfaLogging = document.querySelector('#cfa-logging .log');
+
 const startoverDisabled = document.getElementById('startover-disabled');
 
 if (u.runningInElectron()) {
@@ -62,6 +64,7 @@ if (u.runningInElectron()) {
     cfaHandshakeRequest.innerText = '';
     cfaHandshakeReponse.innerText = '';
     startoverDisabled.checked = app.kioskState.startover_disabled;
+    cfaLogging.innerText = JSON.stringify(app.kioskLogState, null, '  ');
   };
 
   startoverDisabled.addEventListener('change', () => {
@@ -84,6 +87,11 @@ if (u.runningInElectron()) {
 
   ipcRenderer.invoke('getKioskState').then((kioskState) => {
     app.kioskState = kioskState;
+    updateView();
+  });
+
+  ipcRenderer.invoke('getKioskLogState').then((kioskLogState) => {
+    app.kioskLogState = kioskLogState;
     updateView();
   });
 

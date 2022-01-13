@@ -10,6 +10,7 @@ export const isSource = fs.existsSync("package.json");
 
 import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
+import { kiosklog } from './kiosklog';
 
 import { template } from './menu';
 
@@ -21,7 +22,7 @@ if (require("electron-squirrel-startup")) {
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow, adminWindow, kioskState;
+let mainWindow, adminWindow, kioskState, kioskLogState;
 
 const admin = process.argv.find((arg) => arg == '--admin') ? true : false;
 
@@ -182,6 +183,7 @@ if (!singleInstanceLock) {
       createMainWindow();
     }
     kioskdb.init();
+    kiosklog.init();
   });
 }
 
@@ -259,4 +261,22 @@ ipcMain.handle('update-startover-disabled', async (e, obj) => {
   };
   saveKioskState();
   return kioskState;
+});
+
+// Logging ...
+
+ipcMain.handle('getKioskLogState', async () => {
+  kioskLogState = await kiosklog.init();
+  return kioskLogState;
+});
+
+ipcMain.handle('log-touch_begin', async (e, obj) => {
+  kioskLogState = await kiosklog.init();
+  let datetime = obj['touch_begin'];
+  kioskLogState.touch_begins.push(datetime);
+  const saveKioskLogState = async () => {
+    await kiosklog.save();
+  };
+  saveKioskLogState();
+  return kioskLogState;
 });

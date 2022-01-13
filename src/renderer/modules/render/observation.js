@@ -3,6 +3,8 @@
 
 import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
+
+import main from '../../main.js';
 import u from '../utilities.js';
 
 let observation = {};
@@ -281,6 +283,7 @@ observation.render = (page, registeredCallbacks) => {
       observation.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope_dev.php';
 
       let email = document.getElementById('email');
+      let touch_begin = main.getTouchBegin();
       let datetime = new Date().toISOString();
 
       if (u.runningInElectron()) {
@@ -290,6 +293,7 @@ observation.render = (page, registeredCallbacks) => {
           observation_name: page.title,
           observation_id: page.id,
           datetime_when_user_made_request_at_kiosk: datetime,
+          touch_begin: touch_begin,
           credential: app.kioskState.cfa_key
         };
         fetch(observation.postUrl, {

@@ -2,7 +2,7 @@ const { app } = require('electron');
 const path = require('path');
 import { Low, JSONFile } from 'lowdb';
 import { v4 as uuidv4 } from 'uuid';
-import { lodash } from 'lodash';
+// import { lodash } from 'lodash';
 
 import u from './renderer/modules/utilities.js';
 
