@@ -214,7 +214,9 @@ renderMenu.addMenuListeners = (ctype) => {
 
   app.categories.forEach((category) => {
     category.pages.forEach((page) => {
-      addStartPageListener(category.type, page);
+      if (!page.disabled) {
+        addStartPageListener(category.type, page);
+      }
     });
   });
 
@@ -416,31 +418,33 @@ renderMenu.categoryPageCollection = category => {
   let telescopes = '';
   let type = category.type;
   category.pages.forEach((page) => {
-    var id = `open-page-${category.type}-${page.id}`;
-    if (category.type !== "observation") {
-      telescopes = getTelescopes(page).map(telescope => telescope.name).join(", ");
-      html += `
-        <div id="${id}" class="menu-category-page">
-          <div class="image-wrapper">
-            <img src="../images/page-images/${type}-${page.poster}.jpg"></img>
-          </div>
-          <div class="name">${page.title}</div>
-          <div class="telescope">${telescopes}</div>
-        </div>
-      `;
-    } else {
-      let hide = 'hide';
-      if (observation.active(page)) {
-        hide = '';
-      }
-      html += `
-          <div id="${id}" class="menu-category-page  ${hide}">
+    if (!page.disabled) {
+      var id = `open-page-${category.type}-${page.id}`;
+      if (category.type !== "observation") {
+        telescopes = getTelescopes(page).map(telescope => telescope.name).join(", ");
+        html += `
+          <div id="${id}" class="menu-category-page">
             <div class="image-wrapper">
-              <img src="../${page.poster}"></img>
+              <img src="../images/page-images/${type}-${page.poster}.jpg"></img>
             </div>
             <div class="name">${page.title}</div>
+            <div class="telescope">${telescopes}</div>
           </div>
         `;
+      } else {
+        let hide = 'hide';
+        if (observation.active(page)) {
+          hide = '';
+        }
+        html += `
+            <div id="${id}" class="menu-category-page  ${hide}">
+              <div class="image-wrapper">
+                <img src="../${page.poster}"></img>
+              </div>
+              <div class="name">${page.title}</div>
+            </div>
+          `;
+      }
     }
   });
   return html;
