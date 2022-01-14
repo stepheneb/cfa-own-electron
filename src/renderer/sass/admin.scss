@@ -1,5 +1,6 @@
 body#admin {
   user-select: text;
+  overflow-y: scroll;
 
   .content.admin {
     padding: 10px 20px;
@@ -81,6 +82,17 @@ body#admin {
     div.cfa-handshake {
       margin-top: 1em;
     }
+
+    .cfa-logging {
+      margin-left: 0.5em;
+      width: 16em;
+      justify-content: space-between;
+      align-items: flex-end;
+      header {
+        padding-left: 0;
+      }
+    }
+
     #cfa-handshake-status {
       margin-top: 1em;
       margin-left: 1.5em;
@@ -97,7 +109,7 @@ body#admin {
         white-space: break-spaces;
       }
     }
-    #cfa-logging {
+    #cfa-logging-output {
       margin-top: 1em;
       margin-left: 1.5em;
       width: 60%;
@@ -107,6 +119,7 @@ body#admin {
       pre {
         margin: 0.75em 1em 1.25em 1em;
         min-height: 3em;
+        max-height: 25em;
         padding: 0.75em 1.5em;
         background-color: #555;
         font-size: 65%;

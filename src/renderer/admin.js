@@ -25,7 +25,7 @@ const appVersionElem = document.getElementById('app-version');
 const cfaHandshakeRequest = document.querySelector('#cfa-handshake-status .request');
 const cfaHandshakeReponse = document.querySelector('#cfa-handshake-status .response');
 
-const cfaLogging = document.querySelector('#cfa-logging .log');
+const cfaLogging = document.querySelector('#cfa-logging-output .log');
 
 const startoverDisabled = document.getElementById('startover-disabled');
 
@@ -144,6 +144,45 @@ if (u.runningInElectron()) {
         cfaHandshakeReponse.innerText = response;
       });
   });
+
+  const cfaCheckIn = document.getElementById('cfa-check-in');
+
+  cfaCheckIn.addEventListener('click', () => {
+    const cfaCheckInPostUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/reports/reports.php';
+
+    let request = {
+      kiosk_id: app.kioskState.id,
+      credential: app.kioskState.cfa_key,
+      datetime: new Date().toISOString(),
+      report: {
+        touch_begins: app.kioskLogState.touch_begins,
+      }
+    };
+    let response = '';
+
+    // cfaCheckInRequest.innerText = JSON.stringify(request, null, '  ');
+    // cfaCheckInReponse.innerText = response;
+
+    fetch(cfaCheckInPostUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        body: JSON.stringify(request)
+      })
+      .then(response => response.json())
+      .then(json => {
+        response = JSON.stringify(json, null, '  ');
+        console.log(response);
+        // cfaCheckInReponse.innerText = response;
+      })
+      .catch(error => {
+        response = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
+        console.error(response);
+        // cfaHandshakeReponse.innerText = response;
+      });
+  });
+
 }
 
 export default admin;
