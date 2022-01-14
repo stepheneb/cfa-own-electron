@@ -1,7 +1,7 @@
 {
   "name": "cfa-own-electron",
   "productName": "CfA OWN Electron",
-  "version": "1.0.0-beta.49",
+  "version": "1.0.0-beta.50",
   "description": "Explore NASA images",
   "main": ".webpack/main",
   "scripts": {
