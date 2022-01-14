@@ -1231,6 +1231,9 @@ div.control-collection {
   }
 
   div.adjust-layer {
+    &.multi-wave {
+      display: none;
+    }
     > .subtitle {
       margin-bottom: 1.2vh;
     }
@@ -1312,6 +1315,12 @@ div.control-collection {
         padding-left: 0.5rem;
       }
     }
+  }
+
+  div.multi-wave-layer-context {
+    font-size: var(--control-context);
+    margin: 0.5vh 0vh 1vh 0.4vw;
+    height: 6vw;
   }
 
   .title {

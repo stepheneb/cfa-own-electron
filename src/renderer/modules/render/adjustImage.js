@@ -180,7 +180,7 @@ adjustImage.processCallback = (page, renderFunc) => {
 adjustImage.renderRGB = (page, registeredCallbacks) => {
   registeredCallbacks.push(callback);
   return `
-    <div class='adjust-layer'>
+    <div class='adjust-layer ${page.category.type}'>
       <div class='subtitle notice'>
         <span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}
       </div>

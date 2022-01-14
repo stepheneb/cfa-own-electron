@@ -210,6 +210,7 @@ class Page {
                 ${this.renderImageSelectFilterLayerToAdjust()}
                 ${this.renderImageLayerPreview()}
                 ${adjustImage.renderRGB(this, this.registeredCallbacks)}
+                <div id="multi-wave-layer-context" class="multi-wave-layer-context">${this.selectedSource.context}</div>
                 <div class="context">${this.context}</div>
               </div>
             </div>
@@ -469,7 +470,10 @@ class Page {
       var layerNum = Number(e.target.value);
       this.image.selectedSourceNumber = layerNum;
       this.updateImageSelectFilterLayer();
-
+      if (this.category.type == 'multi-wave') {
+        let elem = document.getElementById('multi-wave-layer-context');
+        elem.innerText = this.selectedSource.context;
+      }
     }
     if (typeof layerNum == 'number') {
       elem.querySelector(`[value='${layerNum}']`).checked = true;
