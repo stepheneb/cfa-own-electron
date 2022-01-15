@@ -103,6 +103,7 @@ main.restart = () => {
   main.clearTouchBegin();
   main.clearContent();
   router.resetHash();
+  splash.show();
   enableCountdownToRestart();
 };
 
@@ -113,6 +114,7 @@ main.startover = () => {
   app.start = false;
   main.clearContent();
   router.resetHash();
+  splash.show();
   enableCountdownToRestart();
 };
 
