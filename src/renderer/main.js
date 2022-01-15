@@ -63,6 +63,10 @@ main.getTouchBegin = () => {
   return datetime;
 }
 
+main.clearTouchBegin = () => {
+  delete app.touch_begin;
+}
+
 let finishMainStart = (kioskState) => {
   Object.assign(defaultApp, main.setupNewApp(u.deepClone(data)));
   Object.assign(app, main.setupNewApp(u.deepClone(data)));
@@ -96,6 +100,7 @@ main.restart = () => {
   app.logger = true;
   app.email = '';
   app.start = true;
+  main.clearTouchBegin();
   main.clearContent();
   router.resetHash();
   enableCountdownToRestart();
