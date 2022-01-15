@@ -1347,6 +1347,9 @@ div.control-collection {
     margin-left: 0.4vw;
   }
   .context {
+    &.multi-wave {
+      display: none;
+    }
     font-size: var(--control-context);
     margin: 0.5vh 0vh 1vh 0.4vw;
     &.animate {

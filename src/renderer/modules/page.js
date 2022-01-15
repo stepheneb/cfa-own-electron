@@ -211,7 +211,7 @@ class Page {
                 ${this.renderImageLayerPreview()}
                 ${adjustImage.renderRGB(this, this.registeredCallbacks)}
                 <div id="multi-wave-layer-context" class="multi-wave-layer-context">${this.selectedSource.context}</div>
-                <div class="context">${this.context}</div>
+                <div class="context multi-wave">${this.context}</div>
               </div>
             </div>
           `;
