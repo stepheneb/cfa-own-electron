@@ -5,6 +5,8 @@ import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 import telescopes from './telescopes.js';
 
+import { cfaSaveAndSendPostUrl } from '../../../cfa.js';
+
 import main from '../../main.js';
 import u from '../utilities.js';
 
@@ -244,8 +246,6 @@ saveandsend.render = (page, registeredCallbacks) => {
       let touch_begin = main.getTouchBegin();
       let datetime = new Date().toISOString();
 
-      saveandsend.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/emails/email_image_dev.php';
-
       if (u.runningInElectron()) {
         let body = {
           credential: app.kioskState.cfa_key,
@@ -259,7 +259,7 @@ saveandsend.render = (page, registeredCallbacks) => {
           touch_begin: touch_begin,
           datetime_when_user_made_request_at_kiosk: datetime
         };
-        fetch(saveandsend.postUrl, {
+        fetch(cfaSaveAndSendPostUrl, {
             method: 'POST',
             headers: {
               'Content-Type': 'multipart/form-data'

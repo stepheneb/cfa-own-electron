@@ -5,6 +5,7 @@ import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 
 import main from '../../main.js';
+import { cfaObservationPostUrl } from '../../../cfa.js';
 import u from '../utilities.js';
 
 let observation = {};
@@ -280,8 +281,6 @@ observation.render = (page, registeredCallbacks) => {
     let handleSubmit = (e) => {
       e.preventDefault();
 
-      observation.postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope_dev.php';
-
       let email = document.getElementById('email');
       let touch_begin = main.getTouchBegin();
       let datetime = new Date().toISOString();
@@ -296,7 +295,7 @@ observation.render = (page, registeredCallbacks) => {
           touch_begin: touch_begin,
           credential: app.kioskState.cfa_key
         };
-        fetch(observation.postUrl, {
+        fetch(cfaObservationPostUrl, {
             method: 'POST',
             headers: {
               'Content-Type': 'multipart/form-data'

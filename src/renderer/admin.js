@@ -1,5 +1,7 @@
 /*global ipcRenderer app  */
 
+import { cfaHandshakePostUrl, cfaCheckInPostUrl } from '../cfa.js';
+
 import u from './modules/utilities.js';
 
 window.app = {};
@@ -114,7 +116,6 @@ if (u.runningInElectron()) {
   const testCfaHandshake = document.getElementById('test-cfa-handshake');
 
   testCfaHandshake.addEventListener('click', () => {
-    const cfaHandshakePostUrl = "https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/handshake/handshake_dev.php";
 
     let request = {
       kiosk_id: app.kioskState.id,
@@ -148,7 +149,6 @@ if (u.runningInElectron()) {
   const cfaCheckIn = document.getElementById('cfa-check-in');
 
   cfaCheckIn.addEventListener('click', () => {
-    const cfaCheckInPostUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/reports/reports.php';
 
     let request = {
       kiosk_id: app.kioskState.id,
