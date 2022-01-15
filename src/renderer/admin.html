@@ -66,6 +66,10 @@
         CfA Check-in
       </button>
       <header>Logging</header>
+      <button class="btn btn-danger erase-cfa-logging" data-bs-toggle="modal" data-bs-target="#eraseCfaLoggingModal">
+        Erase CFA Logging Data ...
+      </button>
+
     </div>
 
     <div id='cfa-logging-output'>
@@ -89,7 +93,27 @@
           </div>
           <div class='buttons'>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button id='erase-cfa-key' class="btn btn-danger erase-cfa-key">Erase CFA key</button>
+            <button id='erase-cfa-key' class="btn btn-danger erase-cfa" data-bs-dismiss="modal">Erase CFA key</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="eraseCfaLoggingModal" class="modal fade erase-cfa-modal" tabindex="-1" aria-labelledby="eraseCfaLoggingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" id="eraseCfaLoggingModalLabel">Erase Visitor Data</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            Erase visitor data logged by this kiosk for sending to CfA.
+          </div>
+          <div class='buttons'>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button id='erase-cfa-logging' class="btn btn-danger erase-cfa" data-bs-dismiss="modal">Erase CFA Visitor Data</button>
           </div>
         </div>
       </div>

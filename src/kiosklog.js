@@ -45,3 +45,10 @@ kiosklog.init = async () => {
 kiosklog.save = async () => {
   await logDb.write();
 };
+
+kiosklog.reset = async () => {
+  logDb.data = {};
+  await logDb.write();
+  await kiosklog.init();
+  return logDb.data;
+};

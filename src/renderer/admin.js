@@ -21,6 +21,8 @@ const newCfaKey = document.getElementById('new-cfa-key');
 const eraseCfaKey = document.getElementById('erase-cfa-key');
 // JXRv3cwNOEnDhz8H8
 
+const eraseCfaLogging = document.getElementById('erase-cfa-logging');
+
 const appNameElem = document.getElementById('app-name');
 const appVersionElem = document.getElementById('app-version');
 
@@ -181,6 +183,13 @@ if (u.runningInElectron()) {
         console.error(response);
         // cfaHandshakeReponse.innerText = response;
       });
+  });
+
+  eraseCfaLogging.addEventListener('click', () => {
+    ipcRenderer.invoke('resetKioskLogState').then((kioskLogState) => {
+      app.kioskLogState = kioskLogState;
+      updateView();
+    });
   });
 
 }

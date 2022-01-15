@@ -85,11 +85,13 @@ body#admin {
 
     .cfa-logging {
       margin-left: 0.5em;
-      width: 16em;
+      width: 45em;
       justify-content: space-between;
       align-items: flex-end;
       header {
         padding-left: 0;
+      }
+      button.erase-cfa-logging {
       }
     }
 

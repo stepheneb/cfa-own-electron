@@ -270,6 +270,11 @@ ipcMain.handle('getKioskLogState', async () => {
   return kioskLogState;
 });
 
+ipcMain.handle('resetKioskLogState', async () => {
+  kioskLogState = await kiosklog.reset();
+  return kioskLogState;
+});
+
 ipcMain.handle('log-touch_begin', async (e, obj) => {
   kioskLogState = await kiosklog.init();
   let datetime = obj['touch_begin'];
