@@ -9,6 +9,7 @@ import { cfaSaveAndSendPostUrl } from '../../../cfa.js';
 
 import main from '../../main.js';
 import u from '../utilities.js';
+import cfaError from '../cfa-error.js';
 
 let saveandsend = {};
 
@@ -273,6 +274,8 @@ saveandsend.render = (page, registeredCallbacks) => {
           })
           .catch(error => {
             console.error(`Request to send image failed: ${error}`);
+            cfaError.log('save-and-send', body);
+
           });
       }
 

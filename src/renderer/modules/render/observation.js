@@ -1,5 +1,5 @@
 /*jshint esversion: 8 */
-/*global app  */
+/*global app */
 
 import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
@@ -7,6 +7,7 @@ import emailKeyboard from './email-keyboard.js';
 import main from '../../main.js';
 import { cfaObservationPostUrl } from '../../../cfa.js';
 import u from '../utilities.js';
+import cfaError from '../cfa-error.js';
 
 let observation = {};
 
@@ -288,12 +289,12 @@ observation.render = (page, registeredCallbacks) => {
       if (u.runningInElectron()) {
         let body = {
           kiosk_id: app.kioskState.id,
+          credential: app.kioskState.cfa_key,
           email: email.value,
           observation_name: page.title,
           observation_id: page.id,
           datetime_when_user_made_request_at_kiosk: datetime,
-          touch_begin: touch_begin,
-          credential: app.kioskState.cfa_key
+          touch_begin: touch_begin
         };
         fetch(cfaObservationPostUrl, {
             method: 'POST',
@@ -309,6 +310,7 @@ observation.render = (page, registeredCallbacks) => {
           })
           .catch(error => {
             console.error(`Request to send image failed: ${error}`);
+            cfaError.log('observation', body);
           });
       }
 

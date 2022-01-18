@@ -3,6 +3,7 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 
 const fs = require("fs");
+const path = require('path');
 
 export const isMac = process.platform === "darwin";
 export const isWindows = process.platform === "win32";
@@ -11,8 +12,15 @@ export const isSource = fs.existsSync("package.json");
 import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
 import { kiosklog } from './kiosklog';
+import { checkin } from './checkin';
 
 import { template } from './menu';
+
+// create images dir to save failed Save Image requests for later delivery
+const imagesDir = path.join(app.getPath('userData'), 'images');
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir, { recursive: true });
+}
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -279,6 +287,24 @@ ipcMain.handle('log-touch_begin', async (e, obj) => {
   kioskLogState = await kiosklog.init();
   let datetime = obj['touch_begin'];
   kioskLogState.touch_begins.push(datetime);
+  const saveKioskLogState = async () => {
+    await kiosklog.save();
+  };
+  saveKioskLogState();
+  return kioskLogState;
+});
+// Failed CfA POST requests ...
+
+ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
+  kioskLogState = await kiosklog.init();
+  let failedRequest = obj['failed_cfa_request'];
+  if (failedRequest.kind == 'save-and-send') {
+    const imagePath = path.join(imagesDir, failedRequest.body.imageFilename);
+    fs.writeFileSync(imagePath, failedRequest.body.img_data);
+    delete failedRequest.body.img_data;
+    failedRequest.body.imagePath = imagePath;
+  }
+  kioskLogState.failed_cfa_requests.push(failedRequest);
   const saveKioskLogState = async () => {
     await kiosklog.save();
   };

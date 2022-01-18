@@ -6,7 +6,8 @@ import { Low, JSONFile } from 'lowdb';
 import u from './renderer/modules/utilities.js';
 
 const initialKioskLogState = {
-  touch_begins: []
+  touch_begins: [],
+  failed_cfa_requests: []
 };
 
 let logDb = null;
