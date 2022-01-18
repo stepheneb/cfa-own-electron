@@ -152,37 +152,42 @@ if (u.runningInElectron()) {
 
   cfaCheckIn.addEventListener('click', () => {
 
-    let request = {
-      kiosk_id: app.kioskState.id,
-      credential: app.kioskState.cfa_key,
-      datetime: new Date().toISOString(),
-      report: {
-        touch_begins: app.kioskLogState.touch_begins,
-      }
-    };
-    let response = '';
+    ipcRenderer.invoke('checkin').then((result) => {
+      console.log(result);
+      updateView();
+    });
 
-    // cfaCheckInRequest.innerText = JSON.stringify(request, null, '  ');
-    // cfaCheckInReponse.innerText = response;
-
-    fetch(cfaCheckInPostUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        body: JSON.stringify(request)
-      })
-      .then(response => response.json())
-      .then(json => {
-        response = JSON.stringify(json, null, '  ');
-        console.log(response);
-        // cfaCheckInReponse.innerText = response;
-      })
-      .catch(error => {
-        response = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
-        console.error(response);
-        // cfaHandshakeReponse.innerText = response;
-      });
+    // let request = {
+    //   kiosk_id: app.kioskState.id,
+    //   credential: app.kioskState.cfa_key,
+    //   datetime: new Date().toISOString(),
+    //   report: {
+    //     touch_begins: app.kioskLogState.touch_begins,
+    //   }
+    // };
+    // let response = '';
+    //
+    // // cfaCheckInRequest.innerText = JSON.stringify(request, null, '  ');
+    // // cfaCheckInReponse.innerText = response;
+    //
+    // fetch(cfaCheckInPostUrl, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     },
+    //     body: JSON.stringify(request)
+    //   })
+    //   .then(response => response.json())
+    //   .then(json => {
+    //     response = JSON.stringify(json, null, '  ');
+    //     console.log(response);
+    //     // cfaCheckInReponse.innerText = response;
+    //   })
+    //   .catch(error => {
+    //     response = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
+    //     console.error(response);
+    //     // cfaHandshakeReponse.innerText = response;
+    //   });
   });
 
   eraseCfaLogging.addEventListener('click', () => {

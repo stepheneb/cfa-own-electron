@@ -293,6 +293,7 @@ ipcMain.handle('log-touch_begin', async (e, obj) => {
   saveKioskLogState();
   return kioskLogState;
 });
+
 // Failed CfA POST requests ...
 
 ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
@@ -310,4 +311,12 @@ ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
   };
   saveKioskLogState();
   return kioskLogState;
+});
+
+// CfA Check-in requests ...
+
+ipcMain.handle('checkin', async () => {
+  kioskLogState = await kiosklog.init();
+  debugger;
+  checkin.send(kioskState, kioskLogState);
 });
