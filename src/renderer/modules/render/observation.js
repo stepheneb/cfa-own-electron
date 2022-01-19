@@ -196,7 +196,9 @@ observation.render = (page, registeredCallbacks) => {
                 <div class='details micro-observatory'>
                   You can continue to Observe With NASA<br>using the MicroObservatory Telescope Network<br>at microobservatory.com
                 </div>
-                ${notRunningInElectron}
+                <div id='post-request-note' class='post-request-note'>
+                  ${notRunningInElectron}
+                </div>
               </div>
               ${image()}
               ${telescope(false)}
@@ -216,6 +218,8 @@ observation.render = (page, registeredCallbacks) => {
     let modal1 = document.getElementById(modalId1);
     let modal2 = document.getElementById(modalId2);
     let modal3 = document.getElementById(modalId3);
+
+    let postRequestNote = document.getElementById('post-request-note');
 
     let modal1CloseButton = document.getElementById(modalId1 + '-button');
     let modal2CloseButton = document.getElementById(modalId2 + '-button');
@@ -307,10 +311,12 @@ observation.render = (page, registeredCallbacks) => {
           .then(json => {
             console.log(JSON.stringify(json, null, '\t'));
             app.email = email.value;
+            postRequestNote.innerText = '';
           })
           .catch(error => {
             console.error(`Request to send image failed: ${error}`);
             cfaError.log('observation', body);
+            postRequestNote.innerText = 'Technical issues: possible delay.';
           });
       }
 

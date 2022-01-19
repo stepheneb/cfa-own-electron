@@ -161,7 +161,9 @@ saveandsend.render = (page, registeredCallbacks) => {
                 <div class='details'>
                   We will send your image to <span id="your-email">yourname@website.com</span>
                 </div>
-                ${downloadYourImage}
+                <div id='post-request-note' class='post-request-note'>
+                  ${downloadYourImage}
+                </div>
               </div>
               ${image()}
             </div>
@@ -180,6 +182,8 @@ saveandsend.render = (page, registeredCallbacks) => {
     let modal1 = document.getElementById(modalId1);
     let modal2 = document.getElementById(modalId2);
     let modal3 = document.getElementById(modalId3);
+
+    let postRequestNote = document.getElementById('post-request-note');
 
     // let modal1CloseButton = document.getElementById(modalId1 + '-button');
     // let modal2CloseButton = document.getElementById(modalId2 + '-button');
@@ -271,11 +275,12 @@ saveandsend.render = (page, registeredCallbacks) => {
           .then(json => {
             console.log(JSON.stringify(json, null, '\t'));
             app.email = email.value;
+            postRequestNote.innerText = '';
           })
           .catch(error => {
             console.error(`Request to send image failed: ${error}`);
             cfaError.log('save-and-send', body);
-
+            postRequestNote.innerText = 'Technical issues: possible delay.';
           });
       }
 
