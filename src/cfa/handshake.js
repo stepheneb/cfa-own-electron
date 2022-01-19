@@ -7,34 +7,42 @@
 
 import axios from 'axios';
 
-import { cfaCheckInPostUrl } from './endpoints.js';
+import { kioskdb } from '../kioskdb';
+import { cfaHandshakePostUrl } from './endpoints';
 
-export const checkin = {};
+export const handshake = {};
 
-checkin.send = async (kioskState, kioskLogState) => {
+handshake.query = async () => {
+  let kioskState = await kioskdb.init();
   let data = {
     kiosk_id: kioskState.id,
     credential: kioskState.cfa_key,
-    datetime: new Date().toISOString(),
-    report: {
-      touch_begins: kioskLogState.touch_begins,
-    }
   };
+
+  let request = JSON.stringify(data, null, '  ');
   let result = '';
+
+  let makeResponse = (success, request, result) => {
+    return {
+      success: success,
+      request: request,
+      response: result
+    }
+  }
+
   try {
     const response = await axios({
       method: 'post',
-      url: cfaCheckInPostUrl,
-      headers: { 'Content-Type': 'multipart/form-data' },
+      url: cfaHandshakePostUrl,
       data: data,
       timeout: 500,
       responseType: 'json'
     })
     result = JSON.stringify(response.data, null, '  ');
-    return result;
+    return makeResponse(true, request, result);
   } catch (error) {
     result = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
     console.error(result);
-    return result;
+    return makeResponse(false, request, result);
   }
 }

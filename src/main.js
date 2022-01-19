@@ -12,6 +12,7 @@ import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
 import { kiosklog } from './kiosklog';
 import { checkin } from './cfa/checkin';
+import { handshake } from './cfa/handshake';
 
 import { images } from './cfa/images';
 
@@ -317,4 +318,12 @@ ipcMain.handle('checkin', async () => {
   kioskLogState = await kiosklog.init();
   let response = await checkin.send(kioskState, kioskLogState);
   return response;
+});
+
+// CfA Handshake requests ...
+
+ipcMain.handle('handshake', async () => {
+  kioskLogState = await kiosklog.init();
+  let result = await handshake.query();
+  return result;
 });

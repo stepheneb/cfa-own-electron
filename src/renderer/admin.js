@@ -119,33 +119,39 @@ if (u.runningInElectron()) {
 
   testCfaHandshake.addEventListener('click', () => {
 
-    let request = {
-      kiosk_id: app.kioskState.id,
-      credential: app.kioskState.cfa_key
-    };
-    let response = '';
+    ipcRenderer.invoke('handshake').then((result) => {
+      console.log(result.response);
+      cfaHandshakeRequest.innerText = result.request;
+      cfaHandshakeReponse.innerText = result.response;
+    });
 
-    cfaHandshakeRequest.innerText = JSON.stringify(request, null, '  ');
-    cfaHandshakeReponse.innerText = response;
-
-    fetch(cfaHandshakePostUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        body: JSON.stringify(request)
-      })
-      .then(response => response.json())
-      .then(json => {
-        response = JSON.stringify(json, null, '  ');
-        console.log(response);
-        cfaHandshakeReponse.innerText = response;
-      })
-      .catch(error => {
-        response = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
-        console.error(response);
-        cfaHandshakeReponse.innerText = response;
-      });
+    // let request = {
+    //   kiosk_id: app.kioskState.id,
+    //   credential: app.kioskState.cfa_key
+    // };
+    // let response = '';
+    //
+    // cfaHandshakeRequest.innerText = JSON.stringify(request, null, '  ');
+    // cfaHandshakeReponse.innerText = response;
+    //
+    // fetch(cfaHandshakePostUrl, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     },
+    //     body: JSON.stringify(request)
+    //   })
+    //   .then(response => response.json())
+    //   .then(json => {
+    //     response = JSON.stringify(json, null, '  ');
+    //     console.log(response);
+    //     cfaHandshakeReponse.innerText = response;
+    //   })
+    //   .catch(error => {
+    //     response = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
+    //     console.error(response);
+    //     cfaHandshakeReponse.innerText = response;
+    //   });
   });
 
   const cfaCheckIn = document.getElementById('cfa-check-in');
