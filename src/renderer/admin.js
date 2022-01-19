@@ -1,7 +1,5 @@
 /*global ipcRenderer app  */
 
-import { cfaHandshakePostUrl } from '../cfa/endpoints.js';
-
 import u from './modules/utilities.js';
 
 window.app = {};
@@ -26,6 +24,7 @@ const eraseCfaLogging = document.getElementById('erase-cfa-logging');
 const appNameElem = document.getElementById('app-name');
 const appVersionElem = document.getElementById('app-version');
 
+const cfaHandshakeStatus = document.querySelector('#cfa-handshake-status');
 const cfaHandshakeRequest = document.querySelector('#cfa-handshake-status .request');
 const cfaHandshakeReponse = document.querySelector('#cfa-handshake-status .response');
 
@@ -65,6 +64,8 @@ if (u.runningInElectron()) {
       testCfaHandshake.disabled = true;
       needCfaKey.classList.add('show');
     }
+    cfaHandshakeStatus.classList.remove('show');
+    cfaHandshakeReponse.classList.remove('failed');
     cfaHandshakeRequest.innerText = '';
     cfaHandshakeReponse.innerText = '';
     startoverDisabled.checked = app.kioskState.startover_disabled;
@@ -118,40 +119,15 @@ if (u.runningInElectron()) {
   const testCfaHandshake = document.getElementById('test-cfa-handshake');
 
   testCfaHandshake.addEventListener('click', () => {
-
     ipcRenderer.invoke('handshake').then((result) => {
+      cfaHandshakeStatus.classList.add('show');
       console.log(result.response);
+      if (!result.success) {
+        cfaHandshakeReponse.classList.add('failure');
+      }
       cfaHandshakeRequest.innerText = result.request;
-      cfaHandshakeReponse.innerText = result.response;
+      cfaHandshakeReponse.innerText = u.printableJSON(result.response);
     });
-
-    // let request = {
-    //   kiosk_id: app.kioskState.id,
-    //   credential: app.kioskState.cfa_key
-    // };
-    // let response = '';
-    //
-    // cfaHandshakeRequest.innerText = JSON.stringify(request, null, '  ');
-    // cfaHandshakeReponse.innerText = response;
-    //
-    // fetch(cfaHandshakePostUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data'
-    //     },
-    //     body: JSON.stringify(request)
-    //   })
-    //   .then(response => response.json())
-    //   .then(json => {
-    //     response = JSON.stringify(json, null, '  ');
-    //     console.log(response);
-    //     cfaHandshakeReponse.innerText = response;
-    //   })
-    //   .catch(error => {
-    //     response = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
-    //     console.error(response);
-    //     cfaHandshakeReponse.innerText = response;
-    //   });
   });
 
   const cfaCheckIn = document.getElementById('cfa-check-in');

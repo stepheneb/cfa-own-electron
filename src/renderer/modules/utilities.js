@@ -233,11 +233,14 @@ utilities.addClickAndContextListener = (context, elem, callback) => {
       });
     }
   }
-
 }
 
 utilities.removeAllClickAndContextListeners = (context) => {
   listenerCollection[context] = [];
+}
+
+utilities.printableJSON = (obj) => {
+  return JSON.stringify(obj, null, '  ');
 }
 
 export default utilities;

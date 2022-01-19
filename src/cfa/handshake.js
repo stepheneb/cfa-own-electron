@@ -7,6 +7,7 @@
 
 import axios from 'axios';
 
+import u from '../renderer/modules/utilities.js';
 import { kioskdb } from '../kioskdb';
 import { cfaHandshakePostUrl } from './endpoints';
 
@@ -14,13 +15,6 @@ export const handshake = {};
 
 handshake.query = async () => {
   let kioskState = await kioskdb.init();
-  let data = {
-    kiosk_id: kioskState.id,
-    credential: kioskState.cfa_key,
-  };
-
-  let request = JSON.stringify(data, null, '  ');
-  let result = '';
 
   let makeResponse = (success, request, result) => {
     return {
@@ -30,19 +24,30 @@ handshake.query = async () => {
     }
   }
 
+  let data = {
+    kiosk_id: kioskState.id,
+    credential: kioskState.cfa_key,
+  };
+
+  let request = u.printableJSON(data);
+
   try {
-    const response = await axios({
+    const jsonResponse = await axios({
       method: 'post',
       url: cfaHandshakePostUrl,
       data: data,
       timeout: 500,
       responseType: 'json'
     })
-    result = JSON.stringify(response.data, null, '  ');
-    return makeResponse(true, request, result);
+    const success = jsonResponse.code == 200;
+    console.log(u.printableJSON(jsonResponse));
+    return makeResponse(success, request, jsonResponse);
   } catch (error) {
-    result = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
-    console.error(result);
-    return makeResponse(false, request, result);
+    const response = {
+      code: 0,
+      message: `Request to perform handshake failed: ${error}. Possibly a networking error.  The Developer Tools console might have more clues.`
+    }
+    console.error(u.printableJSON(response));
+    return makeResponse(false, request, response);
   }
 }
