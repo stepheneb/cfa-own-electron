@@ -7,7 +7,7 @@
 
 import axios from 'axios';
 
-import { cfaCheckInPostUrl } from './cfa.js';
+import { cfaCheckInPostUrl } from './endpoints.js';
 
 export const checkin = {};
 

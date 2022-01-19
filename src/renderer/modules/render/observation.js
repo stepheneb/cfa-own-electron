@@ -5,7 +5,7 @@ import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 
 import main from '../../main.js';
-import { cfaObservationPostUrl } from '../../../cfa.js';
+import { cfaObservationPostUrl } from '../../../cfa/endpoints.js';
 import u from '../utilities.js';
 import cfaError from '../cfa-error.js';
 

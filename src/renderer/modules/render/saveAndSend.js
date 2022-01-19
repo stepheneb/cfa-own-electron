@@ -5,7 +5,7 @@ import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 import telescopes from './telescopes.js';
 
-import { cfaSaveAndSendPostUrl } from '../../../cfa.js';
+import { cfaSaveAndSendPostUrl } from '../../../cfa/endpoints.js';
 
 import main from '../../main.js';
 import u from '../utilities.js';

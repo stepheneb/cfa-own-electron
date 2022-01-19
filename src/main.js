@@ -12,7 +12,7 @@ export const isSource = fs.existsSync("package.json");
 import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
 import { kiosklog } from './kiosklog';
-import { checkin } from './checkin';
+import { checkin } from './cfa/checkin';
 
 import { template } from './menu';
 
