@@ -29,51 +29,19 @@ checkin.send = async (kioskState, kioskLogState) => {
     }
   };
   let result = '';
-
-  axios({
+  try {
+    const response = await axios({
       method: 'post',
       url: cfaCheckInPostUrl,
       headers: { 'Content-Type': 'multipart/form-data' },
       data: data,
       timeout: 500,
       responseType: 'json'
-    }).then(response => response.data)
-    .then(json => {
-      result = JSON.stringify(json, null, '  ');
-      console.log(result);
     })
-    .catch(error => {
-      result = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
-      console.error(result);
-    });
-
-  // axios() {
-  //   url: cfaCheckInPostUrl,
-  //   method: 'post',
-  //   headers: { 'Content-Type': 'multipart/form-data' },
-  //   timeout: 500,
-  //   data: data
-  // }    .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-
-  // fetch(cfaCheckInPostUrl, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'multipart/form-data'
-  //     },
-  //     body: JSON.stringify(request)
-  //   })
-  //   .then(response => response.json())
-  //   .then(json => {
-  //     response = JSON.stringify(json, null, '  ');
-  //     console.log(response);
-  //   })
-  //   .catch(error => {
-  //     response = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
-  //     console.error(response);
-  //   });
+    result = JSON.stringify(response.data, null, '  ');
+    return result;
+  } catch (error) {
+    result = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;
+    console.error(result);
+  }
 }

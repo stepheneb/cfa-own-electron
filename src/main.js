@@ -315,5 +315,6 @@ ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
 
 ipcMain.handle('checkin', async () => {
   kioskLogState = await kiosklog.init();
-  checkin.send(kioskState, kioskLogState);
+  let response = await checkin.send(kioskState, kioskLogState);
+  return response;
 });
