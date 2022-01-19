@@ -75,8 +75,8 @@ if (u.runningInElectron()) {
     let obj = { "update-startover-disabled": startoverDisabled.checked };
     ipcRenderer.invoke('update-startover-disabled', obj).then((kioskState) => {
       app.kioskState = kioskState;
+      updateView();
     });
-    updateView();
   });
 
   restart.addEventListener('click', () => {
@@ -103,16 +103,16 @@ if (u.runningInElectron()) {
     let obj = { "new-cfa-key": newCfaKey.value };
     ipcRenderer.invoke('new-cfa-key', obj).then((kioskState) => {
       app.kioskState = kioskState;
+      updateView();
     });
-    updateView();
   };
 
   eraseCfaKey.addEventListener('click', () => {
     let obj = { "new-cfa-key": null };
     ipcRenderer.invoke('new-cfa-key', obj).then((kioskState) => {
       app.kioskState = kioskState;
+      updateView();
     });
-    updateView();
   });
 
   const testCfaHandshake = document.getElementById('test-cfa-handshake');
