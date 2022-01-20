@@ -15,7 +15,10 @@ images.setup = () => {
   }
 }
 
-images.erase = () => {
+images.erase = (imagepath) => {
+  fs.rmSync(imagepath);
+}
+images.eraseAll = () => {
   fs.readdirSync(imagesDir).forEach((f) => {
     fs.rmSync(path.join(imagesDir, f));
   })
@@ -26,4 +29,11 @@ images.save = (filename, data) => {
   let imageBase64Path = path.join(imagesDir, base64Filename);
   fs.writeFileSync(imageBase64Path, data);
   return imageBase64Path;
+}
+
+images.load = (imagepath) => {
+  // const base64Filename = imagename + '.base64';
+  // let imageBase64Path = path.join(imagesDir, base64Filename);
+  let imageBase64 = fs.readFileSync(imagepath);
+  return imageBase64;
 }

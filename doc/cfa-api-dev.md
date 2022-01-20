@@ -62,6 +62,21 @@ Response:
 }
 ```
 
+### Possible Errors
+
+A response with  `authorization.code == 200` means the CfA API successfully received and processed the data sent in the POST request.
+
+Other `authorization.code` values indicate errors.
+
+```
+"authorization": {
+  "code": 407,
+  "message": "You Already requested this image.",
+  "kiosk_id": "14d914c5-e5c9-4832-80dc-62cf5a56cf02",
+  "ip": "161.77.226.185"
+}
+```
+
 ## Save and Send Image
 
 Request Url: https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/emails/email_image_dev.php

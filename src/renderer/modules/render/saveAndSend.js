@@ -5,11 +5,11 @@ import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 import telescopes from './telescopes.js';
 
-import { cfaSaveAndSendPostUrl } from '../../../cfa/endpoints.js';
+import { endpoints } from '../../../cfa/endpoints.js';
 
 import main from '../../main.js';
 import u from '../utilities.js';
-import cfaError from '../cfa-error.js';
+import cfaError from '../../cfa/error.js';
 
 let saveandsend = {};
 
@@ -264,7 +264,7 @@ saveandsend.render = (page, registeredCallbacks) => {
           touch_begin: touch_begin,
           datetime_when_user_made_request_at_kiosk: datetime
         };
-        fetch(cfaSaveAndSendPostUrl, {
+        fetch(endpoints.cfaSaveAndSendPostUrl, {
             method: 'POST',
             headers: {
               'Content-Type': 'multipart/form-data'

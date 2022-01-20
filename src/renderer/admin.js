@@ -1,4 +1,4 @@
-/*global ipcRenderer app  */
+/*global ipcRenderer ipcRendererOn app  */
 
 import u from './modules/utilities.js';
 
@@ -30,7 +30,15 @@ const cfaHandshakeReponse = document.querySelector('#cfa-handshake-status .respo
 
 const cfaLogging = document.querySelector('#cfa-logging-output .log');
 
+const cfaLoggingReloadBtn = document.getElementById('cfa-logging-reload');
+
 const startoverDisabled = document.getElementById('startover-disabled');
+
+const cfaResendFailedRequestsBtn = document.getElementById('cfa-resend-failed-requests');
+
+const failedRequestCountSpan = cfaResendFailedRequestsBtn.querySelector('span.count')
+
+let failedRequestCount;
 
 if (u.runningInElectron()) {
 
@@ -70,7 +78,20 @@ if (u.runningInElectron()) {
     cfaHandshakeReponse.innerText = '';
     startoverDisabled.checked = app.kioskState.startover_disabled;
     cfaLogging.innerText = JSON.stringify(app.kioskLogState, null, '  ');
+
+    failedRequestCount = app.kioskLogState.failed_cfa_requests.length;
+    if (failedRequestCount > 0) {
+      cfaResendFailedRequestsBtn.disabled = false;
+      failedRequestCountSpan.innerText = app.kioskLogState.failed_cfa_requests.length;
+    } else {
+      cfaResendFailedRequestsBtn.disabled = true;
+      failedRequestCountSpan.innerText = ' ';
+    }
   };
+
+  cfaResendFailedRequestsBtn.addEventListener('click', () => {
+    ipcRenderer.invoke('sendFailedRequests');
+  })
 
   startoverDisabled.addEventListener('change', () => {
     let obj = { "update-startover-disabled": startoverDisabled.checked };
@@ -90,14 +111,11 @@ if (u.runningInElectron()) {
     ipcRenderer.send('quit');
   });
 
-  ipcRenderer.invoke('getKioskState').then((kioskState) => {
-    app.kioskState = kioskState;
-    updateView();
-  });
-
-  ipcRenderer.invoke('getKioskLogState').then((kioskLogState) => {
-    app.kioskLogState = kioskLogState;
-    updateView();
+  cfaLoggingReloadBtn.addEventListener('click', () => {
+    ipcRenderer.invoke('getKioskLogState').then((kioskLogState) => {
+      app.kioskLogState = kioskLogState;
+      updateView();
+    });
   });
 
   enterCfaKey.onsubmit = async () => {
@@ -124,6 +142,8 @@ if (u.runningInElectron()) {
       console.log(result.response);
       if (!result.success) {
         cfaHandshakeReponse.classList.add('failure');
+      } else {
+        cfaHandshakeReponse.classList.remove('failure');
       }
       cfaHandshakeRequest.innerText = result.request;
       cfaHandshakeReponse.innerText = u.printableJSON(result.response);
@@ -146,6 +166,24 @@ if (u.runningInElectron()) {
     });
   });
 
+  // load state on startup
+  ipcRenderer.invoke('getKioskState').then((kioskState) => {
+    app.kioskState = kioskState;
+    ipcRenderer.invoke('getKioskLogState').then((kioskLogState) => {
+      app.kioskLogState = kioskLogState;
+      updateView();
+    });
+  });
+
+  window.api.logDataUpdate((kioskLogState) => {
+    console.log(kioskLogState);
+    app.kioskLogState = kioskLogState;
+    updateView();
+  });
+
+  // ipcRendererOn('logDataUpdate', (event, message) => {
+  //   console.log(message)
+  // })
 }
 
 export default admin;

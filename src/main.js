@@ -8,10 +8,17 @@ export const isMac = process.platform === "darwin";
 export const isWindows = process.platform === "win32";
 export const isSource = fs.existsSync("package.json");
 
+export const sendCommand = (cmd, msg) => {
+  if (admin) {
+    adminWindow.webContents.send(cmd, msg);
+  }
+};
+
 import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
 import { kiosklog } from './kiosklog';
 import { checkin } from './cfa/checkin';
+import { failedRequests } from './cfa/failed-requests';
 import { handshake } from './cfa/handshake';
 
 import { images } from './cfa/images';
@@ -31,7 +38,7 @@ if (require("electron-squirrel-startup")) {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow, adminWindow, kioskState, kioskLogState;
 
-const admin = process.argv.find((arg) => arg == '--admin') ? true : false;
+export const admin = process.argv.find((arg) => arg == '--admin') ? true : false;
 
 const supportFullScreenEnter = () => {
   mainWindow.setAutoHideMenuBar(true);
@@ -278,7 +285,7 @@ ipcMain.handle('getKioskLogState', async () => {
 });
 
 ipcMain.handle('resetKioskLogState', async () => {
-  images.erase();
+  images.eraseAll();
   kioskLogState = await kiosklog.reset();
   return kioskLogState;
 });
@@ -318,6 +325,14 @@ ipcMain.handle('checkin', async () => {
   kioskLogState = await kiosklog.init();
   let response = await checkin.send(kioskState, kioskLogState);
   return response;
+});
+
+// CfA Send Failed Requests ...
+
+ipcMain.handle('sendFailedRequests', async () => {
+  kioskLogState = await kiosklog.init();
+  kioskLogState = await failedRequests.send(kioskState, kioskLogState);
+  return kioskLogState;
 });
 
 // CfA Handshake requests ...

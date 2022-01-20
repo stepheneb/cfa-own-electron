@@ -5,9 +5,11 @@ import { Modal } from 'bootstrap';
 import emailKeyboard from './email-keyboard.js';
 
 import main from '../../main.js';
-import { cfaObservationPostUrl } from '../../../cfa/endpoints.js';
+
+import { endpoints } from '../../../cfa/endpoints.js';
+
 import u from '../utilities.js';
-import cfaError from '../cfa-error.js';
+import cfaError from '../../cfa/error.js';
 
 let observation = {};
 
@@ -300,7 +302,7 @@ observation.render = (page, registeredCallbacks) => {
           datetime_when_user_made_request_at_kiosk: datetime,
           touch_begin: touch_begin
         };
-        fetch(cfaObservationPostUrl, {
+        fetch(endpoints.cfaObservationPostUrl, {
             method: 'POST',
             headers: {
               'Content-Type': 'multipart/form-data'

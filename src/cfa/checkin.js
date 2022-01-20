@@ -1,13 +1,7 @@
-// const { app } = require('electron');
-
-// const fs = require("fs");
-// const path = require('path');
-
-// import { cfaHandshakePostUrl, cfaCheckInPostUrl, cfaObservationPostUrl, cfaSaveAndSendPostUrl } from '../../../cfa.js';
-
 import axios from 'axios';
 
-import { cfaCheckInPostUrl } from './endpoints.js';
+import { kiosklog } from '../kiosklog';
+import { endpoints } from './endpoints.js';
 
 export const checkin = {};
 
@@ -24,13 +18,14 @@ checkin.send = async (kioskState, kioskLogState) => {
   try {
     const response = await axios({
       method: 'post',
-      url: cfaCheckInPostUrl,
+      url: endpoints.cfaCheckInPostUrl,
       headers: { 'Content-Type': 'multipart/form-data' },
       data: data,
       timeout: 500,
       responseType: 'json'
     })
     result = JSON.stringify(response.data, null, '  ');
+    kiosklog.resetTouchBegins();
     return result;
   } catch (error) {
     result = `Request to perform handshake failed: ${error}, the Developer Tools console might have more clues.`;

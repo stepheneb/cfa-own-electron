@@ -62,19 +62,27 @@
     </div>
 
     <div class="d-flex flex-row cfa-logging">
+      <header>Logged Data</header>
+      <button id='cfa-logging-reload' class="btn btn-secondary">
+        Reload
+      </button>
       <button id='cfa-check-in' class="btn btn-warning">
         CfA Check-in
       </button>
-      <header>Logging</header>
+      <button id='cfa-resend-failed-requests' class="btn btn-warning">
+        Resend<span class='count'></span>Failed Requests
+      </button>
       <button class="btn btn-danger erase-cfa-logging" data-bs-toggle="modal" data-bs-target="#eraseCfaLoggingModal">
         Erase CFA Logging Data ...
       </button>
-
     </div>
 
     <div id='cfa-logging-output'>
       <pre class='log'>
       </pre>
+    </div>
+
+    <div class="d-flex flex-row cfa-logging requests">
     </div>
 
   </div>

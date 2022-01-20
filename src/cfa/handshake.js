@@ -1,15 +1,9 @@
-// const { app } = require('electron');
-
-// const fs = require("fs");
-// const path = require('path');
-
-// import { cfaHandshakePostUrl, cfaCheckInPostUrl, cfaObservationPostUrl, cfaSaveAndSendPostUrl } from '../../../cfa.js';
-
 import axios from 'axios';
 
 import u from '../renderer/modules/utilities.js';
 import { kioskdb } from '../kioskdb';
-import { cfaHandshakePostUrl } from './endpoints';
+
+import { endpoints } from './endpoints.js';
 
 export const handshake = {};
 
@@ -34,14 +28,15 @@ handshake.query = async () => {
   try {
     const jsonResponse = await axios({
       method: 'post',
-      url: cfaHandshakePostUrl,
+      url: endpoints.cfaHandshakePostUrl,
       data: data,
       timeout: 500,
       responseType: 'json'
     })
-    const success = jsonResponse.code == 200;
-    console.log(u.printableJSON(jsonResponse));
-    return makeResponse(success, request, jsonResponse);
+    let result = jsonResponse.data;
+    const success = result.authorization.code == 200;
+    console.log(u.printableJSON(result));
+    return makeResponse(success, request, result);
   } catch (error) {
     const response = {
       code: 0,

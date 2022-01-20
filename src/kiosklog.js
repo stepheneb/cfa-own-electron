@@ -4,6 +4,7 @@ import { Low, JSONFile } from 'lowdb';
 // import { lodash } from 'lodash';
 
 import u from './renderer/modules/utilities.js';
+import { sendCommand, admin } from './main.js';
 
 const initialKioskLogState = {
   touch_begins: [],
@@ -38,18 +39,33 @@ kiosklog.init = async () => {
       }
     }
   };
-
   await startup();
   return logDb.data;
 };
 
-kiosklog.save = async () => {
+kiosklog.save = async (kioskLogState = logDb.data) => {
+  logDb.data = kioskLogState;
   await logDb.write();
+  await kiosklog.init();
+  if (admin) {
+    sendCommand('logDataUpdate', logDb.data);
+  }
+  return logDb.data;
 };
 
 kiosklog.reset = async () => {
   logDb.data = {};
   await logDb.write();
   await kiosklog.init();
+  return logDb.data;
+};
+
+kiosklog.resetTouchBegins = async () => {
+  logDb.data.touch_begins = [];
+  await logDb.write();
+  await kiosklog.init();
+  if (admin) {
+    sendCommand('logDataUpdate', logDb.data);
+  }
   return logDb.data;
 };
