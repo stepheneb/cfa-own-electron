@@ -1,3 +1,18 @@
+## CfA API reesponse codes in the authorization object
+
+- code:200 means successful process.
+- code:400,406:JSON request is invalid/malformed. This means that something was wrong in the JSON format sent to our server.
+- code 401: either a missing certain field or missing all fields, the message should specify the missing field.
+- code 402: Kiosk is not registered.
+- code 403: Kiosk is registered but credential is invalid.
+- code 404: Kiosk is registered but IP does not match.
+- code 405: Kiosk credential failed (unknown).
+- code 407: You Already requested this image. This is for the observation request means that the user has already requested this image on that date.
+- code 409: Unable to save the file. This is for save-and-send image and means the server was not able to save the image to our side
+
+If there is a network faiilure the kiosk app sythesizes and authorization object with a code of 0.
+
+
 ## Handshake
 
 Request URL: https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/handshake/handshake_dev.php
