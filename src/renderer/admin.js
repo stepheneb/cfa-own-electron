@@ -53,6 +53,7 @@ const cfaHandshakeReponse = cfaHandshake.querySelector('.logs .response');
 const cfaLogging = document.querySelector('.logging.section');
 const cfaLoggingReloadBtn = cfaLogging.querySelector('button.reload');
 const cfaCheckIn = cfaLogging.querySelector('button.check-in');
+const cfaSendReport = cfaLogging.querySelector('button.report');
 const cfaResendFailedRequestsBtn = cfaLogging.querySelector('button.resend');
 const failedRequestCountSpan = cfaResendFailedRequestsBtn.querySelector('span.count')
 const eraseCfaLogging = cfaLogging.querySelector('button.erase');
@@ -216,12 +217,6 @@ const updateView = () => {
   firstPageRender = false;
 };
 
-// Controller: Resend Failed Requests
-
-cfaResendFailedRequestsBtn.addEventListener('click', () => {
-  ipcRenderer.invoke('sendFailedRequests');
-})
-
 // Controller: Automatic Vistor Startup button toggled
 
 if (cfaAutostartShown) {
@@ -287,15 +282,31 @@ cfaHandshakeDisclose.addEventListener('click', () => {
   cfaHandshakeDisclose.classList.toggle('expanded');
 })
 
+// Controller: CfA Check-in request ...
+
 cfaCheckIn.addEventListener('click', () => {
-  ipcRenderer.invoke('checkin').then((result) => {
-    console.log(result);
-  });
+  ipcRenderer.invoke('checkin');
 })
+
+// Controller: CfA Check-in Report request ...
+
+cfaSendReport.addEventListener('click', () => {
+  ipcRenderer.invoke('checkin-report');
+})
+
+// Controller: Resend Failed Requests
+
+cfaResendFailedRequestsBtn.addEventListener('click', () => {
+  ipcRenderer.invoke('sendFailedRequests');
+})
+
+// Controller: Erase Visitor Logs ...
 
 eraseCfaLogging.addEventListener('click', () => {
   ipcRenderer.invoke('resetKioskLogState');
 });
+
+// --------*--------*--------*--------
 
 const showHandshakeResults = () => {
   cfaHandshake.classList.add('show');
