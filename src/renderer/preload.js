@@ -4,7 +4,13 @@ contextBridge.exposeInMainWorld("ELECTRON", true);
 contextBridge.exposeInMainWorld("ipcRenderer", ipcRenderer);
 
 contextBridge.exposeInMainWorld("api", {
-  logDataUpdate: (fn) => {
-    ipcRenderer.on("logDataUpdate", (event, ...args) => fn(...args));
+  kioskStateUpdate: (fn) => {
+    ipcRenderer.on("kioskStateUpdate", (event, ...args) => fn(...args));
+  },
+  kioskLogStateUpdate: (fn) => {
+    ipcRenderer.on("kioskLogStateUpdate", (event, ...args) => fn(...args));
+  },
+  kioskStatusUpdate: (fn) => {
+    ipcRenderer.on("kioskStatusUpdate", (event, ...args) => fn(...args));
   }
 });

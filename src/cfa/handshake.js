@@ -4,18 +4,19 @@ import u from '../renderer/modules/utilities.js';
 import { kioskdb } from '../kioskdb';
 
 import { endpoints } from './endpoints.js';
+import { cfaStatus } from './status';
 
 export const handshake = {};
 
-handshake.query = async () => {
-  let kioskState = await kioskdb.init();
+handshake.query = async (kioskState) => {
 
-  let makeResponse = (success, request, result) => {
-    return {
+  let makeStatus = (success, endpoint, request, response) => {
+    return cfaStatus.create({
       success: success,
+      endpoint: endpoint,
       request: request,
-      response: result
-    }
+      response: response
+    });
   }
 
   let data = {
@@ -25,24 +26,28 @@ handshake.query = async () => {
 
   let request = u.printableJSON(data);
 
+  let endpoint = endpoints.cfaHandshakePostUrl;
+
   try {
-    const jsonResponse = await axios({
+    const result = await axios({
       method: 'post',
-      url: endpoints.cfaHandshakePostUrl,
+      url: endpoint,
       data: data,
-      timeout: 500,
+      timeout: 1000,
       responseType: 'json'
     })
-    let result = jsonResponse.data;
-    const success = result.authorization.code == 200;
-    console.log(u.printableJSON(result));
-    return makeResponse(success, request, result);
+    let response = result.data;
+    console.log(u.printableJSON(response));
+    const success = response.authorization.code == 200;
+    return makeStatus(success, endpoint, request, response);
   } catch (error) {
     const response = {
-      code: 0,
-      message: `Request to perform handshake failed: ${error}. Possibly a networking error.  The Developer Tools console might have more clues.`
+      authorization: {
+        code: 0,
+        message: `Request to perform handshake failed: ${error}. Possibly a networking error.  The Developer Tools console might have more clues.`
+      }
     }
     console.error(u.printableJSON(response));
-    return makeResponse(false, request, response);
+    return makeStatus(false, endpoint, request, response);
   }
 }

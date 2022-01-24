@@ -48,7 +48,6 @@ console.log('👋 This message is being logged by "renderer.js", included via we
 
 if (u.runningInElectron()) {
   document.addEventListener("keydown", function (event) {
-
     if (event.ctrlKey && event.keyCode == 192) {
       event.stopPropagation();
       event.preventDefault();

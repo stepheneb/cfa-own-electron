@@ -2,21 +2,39 @@ const { app } = require('electron');
 const path = require('path');
 import { Low, JSONFile } from 'lowdb';
 import { v4 as uuidv4 } from 'uuid';
-// import { lodash } from 'lodash';
 
 import u from './renderer/modules/utilities.js';
 
 const initialKioskState = {
   id: null,
   cfa_key: null,
-  startover_disabled: null,
+  startover_disabled: false,
   appName: app.getName(),
-  appVersion: app.getVersion()
+  appVersion: app.getVersion(),
+  cfa_registered: false,
+  cfa_credential_valid: false,
+  cfa_ip_address_valid: false,
+  ip_address: false,
+  online: false,
+  working: false,
+  autostart_visitor: true
 };
 
 let db = null;
 
 export const kioskdb = {};
+
+const updateWorkingStatus = () => {
+  let data = db.data;
+  if (data.online &&
+    data.cfa_registered &&
+    data.cfa_credential_valid &&
+    data.cfa_ip_address_valid) {
+    data.working = true;
+  } else {
+    data.working = false;
+  }
+}
 
 kioskdb.init = async () => {
   let appName = app.getName();
@@ -42,6 +60,7 @@ kioskdb.init = async () => {
         newKeys.forEach((key) => {
           db.data[key] = initialKioskState[key];
         });
+        updateWorkingStatus();
         await db.write();
       }
     }
@@ -56,6 +75,10 @@ kioskdb.init = async () => {
   return db.data;
 };
 
-kioskdb.save = async () => {
+kioskdb.save = async (kioskState = db.data) => {
+  db.data = kioskState;
+  updateWorkingStatus();
   await db.write();
+  await kioskdb.init();
+  return db.data;
 };

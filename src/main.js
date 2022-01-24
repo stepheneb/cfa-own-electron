@@ -9,7 +9,7 @@ export const isWindows = process.platform === "win32";
 export const isSource = fs.existsSync("package.json");
 
 export const sendCommand = (cmd, msg) => {
-  if (admin) {
+  if (admin && pageready) {
     adminWindow.webContents.send(cmd, msg);
   }
 };
@@ -18,6 +18,7 @@ import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
 import { kiosklog } from './kiosklog';
 import { checkin } from './cfa/checkin';
+
 import { failedRequests } from './cfa/failed-requests';
 import { handshake } from './cfa/handshake';
 
@@ -39,28 +40,20 @@ if (require("electron-squirrel-startup")) {
 let mainWindow, adminWindow, kioskState, kioskLogState;
 
 export const admin = process.argv.find((arg) => arg == '--admin') ? true : false;
+export const visitor = process.argv.find((arg) => arg == '--visitor') ? true : false;
 
-const supportFullScreenEnter = () => {
-  mainWindow.setAutoHideMenuBar(true);
-  mainWindow.setMenuBarVisibility(false);
-  if (isWindows) {
-    if (typeof mainWindow.setSkipTaskBar == 'function') {
-      mainWindow.setSkipTaskBar(true);
-    }
-    Menu.setApplicationMenu(null);
-  }
-};
+let pageready = false;
 
-const supportFullScreenLeave = () => {
-  mainWindow.setAutoHideMenuBar(false);
-  mainWindow.setMenuBarVisibility(true);
-  if (isWindows) {
-    if (typeof mainWindow.setSkipTaskBar == 'function') {
-      mainWindow.setSkipTaskBar(false);
-    }
-    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-  }
-};
+// Admin page is ready and can handle callbacks
+
+ipcMain.handle('pageready', async () => {
+  pageready = true;
+  kioskState = await kioskdb.init();
+  sendCommand('kioskStateUpdate', kioskState);
+  kioskLogState = await kiosklog.init();
+  sendCommand('kioskLogStateUpdate', kioskLogState);
+  performHandShake();
+});
 
 /**
  * createMainWindow - Description
@@ -254,41 +247,53 @@ if (admin) {
   });
 }
 
+// ask to be sent kiosk states
+
 ipcMain.handle('getKioskState', async () => {
   kioskState = await kioskdb.init();
-  return kioskState;
+  sendCommand('kioskStateUpdate', kioskState);
 });
+
+ipcMain.handle('getKioskLogState', async () => {
+  kioskLogState = await kiosklog.init();
+  sendCommand('kioskLogStateUpdate', kioskLogState);
+});
+
+// Save new cfa_key (credential)
 
 ipcMain.handle('new-cfa-key', async (e, obj) => {
   kioskState.cfa_key = obj['new-cfa-key'];
-  const saveKioskState = async () => {
-    await kioskdb.save();
-  };
-  saveKioskState();
-  return kioskState;
+  kioskState = await kioskdb.save(kioskState);
+  performHandShake();
+  sendCommand('kioskStateUpdate', kioskState);
 });
+
+// save enable/disable automatic admin window visitor startup after 60s
+
+ipcMain.handle('update-autostart-visitor', async (e, obj) => {
+  kioskState.autostart_visitor = obj['update-autostart-visitor'];
+  await kioskdb.save(kioskState);
+  sendCommand('kioskStateUpdate', kioskState);
+});
+
+// save disable/enable automatic visitor timeout startover flag
 
 ipcMain.handle('update-startover-disabled', async (e, obj) => {
   kioskState.startover_disabled = obj['update-startover-disabled'];
-  const saveKioskState = async () => {
-    await kioskdb.save();
-  };
-  saveKioskState();
-  return kioskState;
+  await kioskdb.save(kioskState);
+  sendCommand('kioskStateUpdate', kioskState);
 });
 
 // Logging ...
 
-ipcMain.handle('getKioskLogState', async () => {
-  kioskLogState = await kiosklog.init();
-  return kioskLogState;
-});
-
 ipcMain.handle('resetKioskLogState', async () => {
   images.eraseAll();
   kioskLogState = await kiosklog.reset();
-  return kioskLogState;
+  sendCommand('kioskLogStateUpdate', kioskLogState);
 });
+
+// Called only from Visitor Application
+// ***FIX***
 
 ipcMain.handle('log-touch_begin', async (e, obj) => {
   kioskLogState = await kiosklog.init();
@@ -301,7 +306,9 @@ ipcMain.handle('log-touch_begin', async (e, obj) => {
   return kioskLogState;
 });
 
-// Failed CfA POST requests ...
+// Called only from Visitor Application
+// Log failed CfA POST requests for later delivery ...
+// ***FIX***
 
 ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
   kioskLogState = await kiosklog.init();
@@ -319,26 +326,91 @@ ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
   return kioskLogState;
 });
 
-// CfA Check-in requests ...
+// Send CfA Check-in requests ...
 
 ipcMain.handle('checkin', async () => {
+  kioskState = await kioskdb.init();
   kioskLogState = await kiosklog.init();
   let response = await checkin.send(kioskState, kioskLogState);
   return response;
 });
 
-// CfA Send Failed Requests ...
+// Send CfA Failed POST Requests ...
 
 ipcMain.handle('sendFailedRequests', async () => {
+  kioskState = await kioskdb.init();
   kioskLogState = await kiosklog.init();
   kioskLogState = await failedRequests.send(kioskState, kioskLogState);
-  return kioskLogState;
+  sendCommand('kioskLogStateUpdate', kioskLogState);
 });
 
-// CfA Handshake requests ...
+// Perform CfA Handshake request ...
 
 ipcMain.handle('handshake', async () => {
   kioskLogState = await kiosklog.init();
-  let result = await handshake.query();
-  return result;
+  performHandShake();
 });
+
+// Update online status ... send from renderer process: navigator.onLine change.
+
+ipcMain.handle('online-status', async (e, obj) => {
+  let online = obj['online'];
+  kioskState = await kioskdb.init();
+  kioskState.online = online;
+  await kioskdb.save(kioskState);
+  sendCommand('kioskStateUpdate', kioskState);
+});
+
+// ----------------------------
+
+const performHandShake = async () => {
+  let kioskState = await kioskdb.init();
+  let status = await handshake.query(kioskState);
+  if (status.success) {
+    kioskState.cfa_registered = true;
+    kioskState.cfa_credential_valid = true;
+    kioskState.ip_address = status.ip_address;
+    kioskState.cfa_ip_address_valid = true;
+    kioskState.online = true;
+  } else {
+    switch (status.code) {
+    case 0:
+      kioskState.online = false;
+      break;
+    case 402:
+      kioskState.cfa_registered = false;
+      break;
+    case 403:
+      kioskState.cfa_credential_valid = false;
+      break;
+    case 404:
+      kioskState.cfa_ip_address_valid = false;
+      break;
+    }
+  }
+  kioskState = await kioskdb.save(kioskState);
+  sendCommand('kioskStatusUpdate', status);
+  return status;
+}
+
+const supportFullScreenEnter = () => {
+  mainWindow.setAutoHideMenuBar(true);
+  mainWindow.setMenuBarVisibility(false);
+  if (isWindows) {
+    if (typeof mainWindow.setSkipTaskBar == 'function') {
+      mainWindow.setSkipTaskBar(true);
+    }
+    Menu.setApplicationMenu(null);
+  }
+};
+
+const supportFullScreenLeave = () => {
+  mainWindow.setAutoHideMenuBar(false);
+  mainWindow.setMenuBarVisibility(true);
+  if (isWindows) {
+    if (typeof mainWindow.setSkipTaskBar == 'function') {
+      mainWindow.setSkipTaskBar(false);
+    }
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+  }
+};

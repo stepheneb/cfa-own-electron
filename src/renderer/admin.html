@@ -9,8 +9,9 @@
 
 <body id='admin'>
   <div id='content' class='container-fluid content admin'>
-    <div class="d-flex flex-row justify-content-between align-items-center">
-      <div class='page-title'>Admin Page</div>
+
+    <div class="title-line">
+      <div class='title'>Admin Page</div>
       <button id='restart' type='button' class='btn btn-warning'>Start Visitor Application</button>
       <button id='quit' type='button' class='btn btn-warning'>Quit Application</button>
       <button id='about' type='button' class='btn  btn-info' data-bs-toggle="modal" data-bs-target="#aboutCfaModal">About ...</button>
@@ -19,31 +20,99 @@
       You will need a kiosk CFA key credential from an adminstrator to support sending images and requesting observations.
     </div>
 
-    <header>CfA Communication Settings</header>
-    <div class="settings d-flex">
-      <div class="existing">
-        <div>Kiosk id: <span class='value' id='kiosk-id'></span></div>
-        <div>Kiosk CFA key: <span class='value' id='cfa-key-id'></span></div>
-      </div>
-      <div class="new-key">
-        <form id="enter-cfa-key">
-          <label for="new-cfa-key">New CfA Key:</label>
-          <input id="new-cfa-key" type="text" name="new-cfa-key" required minlength="17" maxlength="17" size="20" autocomplete="none" pattern="[A-Za-z\d]{17}"></input>
-          <button id='new-cfa-key-submit' type="submit" class="btn btn-warning" autocomplete="none">
-            SAVE
-          </button>
-          <button class="btn btn-danger erase-cfa-key" data-bs-toggle="modal" data-bs-target="#eraseCfaKeyModal">
-            Erase CFA key ...
-          </button>
-          <p class='key-constraints'>Key must be 17 characters consisting only of numbers, upper and lowercase letters.</p>
-        </form>
+    <!-- Settings -->
+
+    <div class='settings section'>
+      <header>Communication Settings</header>
+      <div class="settings">
+        <div class="existing">
+          <div>Kiosk id: <span class='value' id='kiosk-id'></span></div>
+          <div>Kiosk CFA key: <span class='value' id='cfa-key-id'></span></div>
+        </div>
+        <div class="new-key">
+          <form id="enter-cfa-key">
+            <label for="new-cfa-key">New CfA Key:</label>
+            <input id="new-cfa-key" type="text" name="new-cfa-key" required minlength="17" maxlength="17" size="20" autocomplete="none" pattern="[A-Za-z\d]{17}"></input>
+            <button id='new-cfa-key-submit' type="submit" class="btn btn-warning" autocomplete="none">
+              SAVE
+            </button>
+            <button class="btn btn-danger erase-cfa-key" data-bs-toggle="modal" data-bs-target="#eraseCfaKeyModal">
+              Erase CFA key ...
+            </button>
+            <p class='key-constraints'>Key must be 17 characters consisting only of numbers, upper and lowercase letters.</p>
+          </form>
+        </div>
       </div>
     </div>
-    <div class='cfa-handshake'>
-      <button id='test-cfa-handshake' class="btn btn-warning">
-        Test CfA Handshake
-      </button>
-      <div id='cfa-handshake-status' class='cfa-handshake-status'>
+
+    <!-- Autostart Visitor application if CfA connection is working -->
+
+    <div class='autostart section'>
+      <div class='controls'>
+        <header>Autostart Visitor application</header>
+        <div class='countdown-clock'>
+          <div class='indicator'>60</div>
+        </div>
+        <div class='autostart'>
+          <input type="checkbox" class="autostar-enabled" name="autostart-enabled">
+          <label for="autostart-enabled">Autotart Visitor application after 60s.</label>
+        </div>
+      </div>
+      <div class='description'>
+        Enabling Autostart will automatically start the Visitor Application 60s after the
+        Admin application starts up if communication to CfA is working and there has
+        been no user interaction in the Admin window. Any user interaction will disable
+        autostart.
+      </div>
+    </div>
+
+    <!-- Status -->
+
+    <div class='status section'>
+      <header>Communication Status</header>
+      <div class='indicators'>
+        <div class='working'>
+          <div>Working:</div>
+          <i class="bi bi-check2-circle indicator"></i>
+          <i class="bi bi-x-circle indicator false"></i>
+        </div>
+        <div class='online'>
+          <div>Online:</div>
+          <i class="bi bi-square-fill indicator"></i>
+        </div>
+        <div class='registered'>
+          <div>Registered:</div>
+          <i class="bi bi-square-fill indicator"></i>
+        </div>
+        <div class='credential'>
+          <div>Credential:</div>
+          <i class="bi bi-square-fill indicator"></i>
+        </div>
+        <div class='ipaddress'>
+          <div>IP Address:</div>
+          <span class='address'></span>
+          <i class="bi bi-square-fill indicator"></i>
+        </div>
+      </div>
+      <div class='status-message'>
+        <div class='message'></div>
+      </div>
+    </div>
+
+    <!-- Handshake -->
+
+    <div class='handshake section'>
+      <div class="controls">
+        <header>Test Connection to CfA</header>
+        <button class="handshake btn btn-warning test-cfa-handshake">
+          Test Connection
+        </button>
+        <div class='disclose'>
+          <i class="bi bi-caret-right"></i>
+          <i class="bi bi-caret-down-fill expanded"></i>
+        </div>
+      </div>
+      <div class='logs'>
         Request
         <pre class='request'>
         </pre>
@@ -53,39 +122,42 @@
       </div>
     </div>
 
-    <header>Debugging</header>
-    <div class="settings d-flex">
-      <div>
-        <input type="checkbox" id="startover-disabled" name="startover-disabled">
-        <label for="startover-disabled">Startover disabled</label>
+    <!-- Debugging -->
+
+    <div class='debugging section'>
+      <header>Debugging</header>
+      <div class='startover'>
+        <input type="checkbox" class="startover-disabled" name="startover-disabled">
+        <label for="startover-disabled">Visitor Application Timeout Startover disabled</label>
       </div>
     </div>
 
-    <div class="d-flex flex-row cfa-logging">
-      <header>Logged Data</header>
-      <button id='cfa-logging-reload' class="btn btn-secondary">
-        Reload
-      </button>
-      <button id='cfa-check-in' class="btn btn-warning">
-        CfA Check-in
-      </button>
-      <button id='cfa-resend-failed-requests' class="btn btn-warning">
-        Resend<span class='count'></span>Failed Requests
-      </button>
-      <button class="btn btn-danger erase-cfa-logging" data-bs-toggle="modal" data-bs-target="#eraseCfaLoggingModal">
-        Erase CFA Logging Data ...
-      </button>
-    </div>
+    <!-- Logging -->
 
-    <div id='cfa-logging-output'>
-      <pre class='log'>
-      </pre>
-    </div>
-
-    <div class="d-flex flex-row cfa-logging requests">
+    <div class='logging section'>
+      <div class="controls">
+        <header>Visitor Logs</header>
+        <button class="reload btn btn-secondary">
+          Reload
+        </button>
+        <button class="check-in btn btn-warning">
+          CfA Check-in
+        </button>
+        <button class="resend btn btn-warning">
+          Resend<span class='count'></span>Failed Requests
+        </button>
+        <button class="btn btn-danger erase" data-bs-toggle="modal" data-bs-target="#eraseCfaLoggingModal">
+          Erase CFA Logging Data ...
+        </button>
+      </div>
+      <div class='logs'>
+        <pre class='log'></pre>
+      </div>
     </div>
 
   </div>
+
+  <!-- Modals -->
 
   <div id="eraseCfaKeyModal" class="modal fade erase-cfa-modal" tabindex="-1" aria-labelledby="eraseCfaKeyModalLabel" aria-hidden="true">
     <div class="modal-dialog">

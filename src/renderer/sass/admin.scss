@@ -3,18 +3,25 @@ body#admin {
   overflow-y: scroll;
 
   .content.admin {
-    padding: 10px 20px;
+    padding: 1em 2em;
     font-size: 16px;
 
     button {
       padding: 0.2em 0.5em;
     }
 
-    .header {
-      font-size: 3em;
+    .title-line {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1em;
       color: var(--bright-green);
+      .title {
+        font-size: 2.4em;
+      }
       button {
-        font-size: 100%;
+        font-size: 1em;
       }
     }
 
@@ -29,63 +36,265 @@ body#admin {
       }
     }
 
-    header {
-      padding: 1em 0em 0.25em 0em;
-      font-size: 1.5em;
+    .section {
+      margin: 1em 0 1em 0;
+      header {
+        padding: 0.5em 0em 0.5em 0em;
+        font-size: 1.6em;
+        color: white;
+      }
     }
 
-    .settings {
-      margin: 0.5em 0em;
-      align-items: baseline;
-      .existing {
-        font-size: 110%;
-        margin: 0;
-        flex-grow: 1;
-        span.value {
-          font-weight: 500;
-          letter-spacing: 0.05em;
+    .logs {
+      margin-top: 0.5em;
+      margin-left: 1em;
+      width: 100%;
+      min-width: 40em;
+      font-size: 110%;
+      font-weight: 500;
+      pre {
+        margin: 0.25em 1em 1.25em 1em;
+        min-height: 3em;
+        max-height: 40em;
+        padding: 0.75em 1.5em;
+        background-color: #555;
+        font-size: 65%;
+        white-space: break-spaces;
+      }
+    }
+
+    div.settings.section {
+      min-width: 70em;
+      .settings {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        .existing {
+          width: 30vw;
+          font-size: 110%;
+          margin: 0;
+          flex-grow: 1;
+          span.value {
+            font-weight: 500;
+            letter-spacing: 0.05em;
+          }
+        }
+        .new-key {
+          margin: 0;
+          flex-grow: 2;
+          form#enter-cfa-key {
+            margin: 0;
+            label,
+            input {
+              margin-right: 0.5em;
+              padding: 0.25em 0.5em 0.25em 0;
+            }
+            input {
+              padding: 0.25em 0.5em;
+              background-color: #ccc;
+            }
+            input:focus {
+              background-color: #eee;
+            }
+
+            input:invalid ~ button[type="submit"] {
+              background-color: #ccc;
+            }
+
+            button {
+              margin: 0 0.5em;
+            }
+
+            p.key-constraints {
+              margin: 0.25em 0;
+              font-size: 90%;
+            }
+          }
         }
       }
-      .new-key {
-        margin: 0;
-        flex-grow: 2;
-      }
-    }
-    form#enter-cfa-key {
-      margin: 0;
-      label,
-      input {
-        margin-right: 0.5em;
-        padding: 0.25em 0.5em 0.25em 0;
-      }
-      input {
-        padding: 0.25em 0.5em;
-        background-color: #ccc;
-      }
-      input:focus {
-        background-color: #eee;
-      }
-
-      input:invalid ~ button[type="submit"] {
-        background-color: #ccc;
-      }
-
-      button {
-        margin: 0 0.5em;
-      }
-
-      p.key-constraints {
-        margin: 0.25em 0;
-        font-size: 90%;
-      }
-    }
-    div.cfa-handshake {
-      margin-top: 1em;
     }
 
+    div.status.section {
+      display: flex;
+      flex-direction: column;
+      width: 60em;
+      .indicators {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .working,
+        .online,
+        .registered,
+        .credential,
+        .ipaddress {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          align-self: center;
+          font-size: 1.4em;
+          .indicator {
+            margin-left: 0.4em;
+            color: green;
+          }
+          &.false {
+            .indicator {
+              color: red;
+            }
+          }
+        }
+        .working {
+          font-size: 1.5em;
+          .indicator {
+            margin-left: 0.3em;
+            font-size: 1.4em;
+          }
+          .indicator.false {
+            display: none;
+          }
+          &.false {
+            .indicator {
+              display: none;
+            }
+            .indicator.false {
+              display: block;
+            }
+          }
+        }
+        .ipaddress {
+          span.address {
+            margin-left: 0.3em;
+            font-size: 95%;
+            letter-spacing: 1px;
+          }
+        }
+      }
+      .status-message {
+        margin: 0.5em 4em 0 1em;
+        .message {
+          font-size: 1.2em;
+        }
+      }
+    }
+
+    div.autostart.section {
+      display: flex;
+      flex-direction: column;
+      width: 46em;
+      .controls {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        header {
+        }
+        .countdown-clock {
+          width: 4em;
+          .indicator {
+            font-size: 1.4em;
+            color: #ffc107;
+            &.disabled {
+              color: lightgray;
+              font-size: 1.1em;
+              font-style: italic;
+            }
+          }
+        }
+        .autostart {
+          margin-left: 1em;
+          label {
+            font-size: 1.1em;
+            vertical-align: bottom;
+          }
+        }
+      }
+      .description {
+      }
+    }
+
+    div.handshake.section {
+      display: flex;
+      flex-direction: column;
+      width: 85vw;
+      .controls {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+        button.handshake {
+          margin-left: 1.5em;
+        }
+        .disclose {
+          i {
+            color: gray;
+            margin-left: 0.3em;
+            font-size: 1.8em;
+          }
+          i.expanded {
+            display: none;
+          }
+        }
+      }
+      &.show {
+        .controls {
+          .disclose {
+            i {
+              display: none;
+            }
+            i.expanded {
+              color: var(--almost-white);
+              display: block;
+            }
+          }
+        }
+      }
+      .logs {
+        display: none;
+        margin-top: 1em;
+        width: 100%;
+        min-width: 40em;
+        font-size: 110%;
+        font-weight: 500;
+        pre {
+          margin: 0.75em 1em 1.25em 1em;
+          min-height: 3em;
+          max-height: 32em;
+          padding: 0.75em 1.5em;
+          background-color: #555;
+          font-size: 65%;
+          white-space: break-spaces;
+          &.response {
+            border: solid 1px green;
+          }
+          &.response.failure {
+            color: #f5c38f;
+            border: solid 1px red;
+          }
+        }
+      }
+      &.show {
+        .logs {
+          display: block;
+        }
+      }
+    }
+
+    div.logging.section {
+      display: flex;
+      flex-direction: column;
+      width: 85vw;
+      .controls {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logs {
+      }
+    }
     .cfa-logging {
       margin-left: 0.5em;
-      width: 80vw;
+      width: 85vw;
       justify-content: space-between;
       align-items: flex-end;
       header {
@@ -104,44 +313,17 @@ body#admin {
       }
     }
 
-    #cfa-handshake-status {
-      display: none;
-      &.show {
-        display: block;
-      }
-      margin-top: 1em;
-      margin-left: 1.5em;
-      width: 60%;
-      min-width: 40em;
-      font-size: 110%;
-      font-weight: 500;
-      pre {
-        margin: 0.75em 1em 1.25em 1em;
-        min-height: 3em;
-        padding: 0.75em 1.5em;
-        background-color: #555;
-        font-size: 65%;
-        white-space: break-spaces;
-        &.failure {
-          color: #f5c38f;
+    div.debugging.section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: left;
+      .startover {
+        margin-left: 1em;
+        label {
+          font-size: 1.1em;
+          vertical-align: bottom;
         }
-      }
-    }
-    #cfa-logging-output {
-      margin-top: 1em;
-      margin-left: 1.5em;
-      width: 75vw;
-      min-width: 40em;
-      font-size: 110%;
-      font-weight: 500;
-      pre {
-        margin: 0.75em 1em 1.25em 1em;
-        min-height: 3em;
-        max-height: 25em;
-        padding: 0.75em 1.5em;
-        background-color: #555;
-        font-size: 65%;
-        white-space: break-spaces;
       }
     }
   }
