@@ -36,6 +36,7 @@ const messageStatus = cfaStatus.querySelector('.message');
 // CfA Autostart Visitor application section
 
 const cfaAutostart = document.querySelector('.autostart.section');
+const cfaAutostartShown = getComputedStyle(cfaAutostart).display !== 'none';
 const countdownClockEl = cfaAutostart.querySelector('.countdown-clock .indicator');
 const autostartEnabled = cfaAutostart.querySelector('input.autostar-enabled');
 
@@ -146,7 +147,7 @@ const updateView = () => {
   // View: Autostart Visitor application
 
   autostartEnabled.checked = app.kioskState.autostart_visitor;
-  if (firstPageRender) {
+  if (firstPageRender && cfaAutostartShown) {
     startAutostartCounddownClock();
   }
 
@@ -223,10 +224,12 @@ cfaResendFailedRequestsBtn.addEventListener('click', () => {
 
 // Controller: Automatic Vistor Startup button toggled
 
-autostartEnabled.addEventListener('change', () => {
-  let obj = { "update-autostart-visitor": autostartEnabled.checked };
-  ipcRenderer.invoke('update-autostart-visitor', obj);
-});
+if (cfaAutostartShown) {
+  autostartEnabled.addEventListener('change', () => {
+    let obj = { "update-autostart-visitor": autostartEnabled.checked };
+    ipcRenderer.invoke('update-autostart-visitor', obj);
+  });
+}
 
 // Controller: Visitor Timeout Startover button toggled
 

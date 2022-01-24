@@ -179,6 +179,7 @@ body#admin {
 
     div.autostart.section {
       display: flex;
+      display: none;
       flex-direction: column;
       width: 46em;
       .controls {
