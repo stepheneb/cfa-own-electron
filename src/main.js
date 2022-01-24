@@ -330,7 +330,6 @@ ipcMain.handle('log-touch_begin', async (e, obj) => {
 
 ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
   kioskLogState = await kiosklog.init();
-  debugger;
   let failedRequest = obj['failed_cfa_request'];
   if (failedRequest.kind == 'save-and-send') {
     const imageBase64Path = images.save(failedRequest.body.imageFilename, failedRequest.body.img_data);
