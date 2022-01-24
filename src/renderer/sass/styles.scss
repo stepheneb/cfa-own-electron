@@ -227,8 +227,22 @@ div#splash2 {
   text-transform: none;
   border-radius: 1vh;
   animation: fade 30s forwards;
+  p {
+    margin: 0;
+    &.status {
+      margin-top: 0.7em;
+      display: none;
+      text-align: center;
+    }
+    &.status.problem {
+      display: block;
+    }
+  }
   &.show {
     display: block;
+  }
+  p.status {
+    display: none;
   }
 }
 

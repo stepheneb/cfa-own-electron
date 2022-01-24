@@ -18,7 +18,8 @@ let ctrlBacktick = () => {
   if (u.runningInElectron()) {
     html = `
       <div id='ctrl-backtick' class='show'>
-        Press control-backtick to open the admin window.
+        <p>Press control-backtick to open the admin window.</p>
+        <p class='status'></p>
       </div>
     `;
   }
@@ -43,6 +44,18 @@ let renderSplash = () => {
     `;
   splashElem.style.zIndex = "100";
   splashElem.style.display = "block";
+
+  window.requestAnimationFrame(() => {
+    window.setTimeout(() => {
+      const ctrlBacktick = document.getElementById('ctrl-backtick');
+      const status = ctrlBacktick.querySelector('.status');
+      if (!app.kioskState.working) {
+        status.classList.add('problem');
+        status.innerText = 'CfA Communication: not enabled';
+      }
+    }, 0);
+  });
+
   u.addClickAndContextListener('splash', splashElem, () => {
     if (u.runningInElectron()) {
       main.logTouchBegin();
