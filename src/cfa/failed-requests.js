@@ -49,7 +49,7 @@ failedRequests.send = (kioskState, kioskLogState) => {
           method: 'post',
           url: endpoint,
           data: data,
-          timeout: 1000,
+          timeout: 2000,
           responseType: 'json'
         })
         .then(result => {
@@ -83,15 +83,15 @@ failedRequests.send = (kioskState, kioskLogState) => {
     })
   }
 
-  const start = () => {
-    Promise.allSettled(requests.map(failedRequest => reSendRequest(failedRequest)))
+  const start = async () => {
+    await Promise.allSettled(requests.map(failedRequest => reSendRequest(failedRequest)))
       .then((results) => {
         console.log(u.printableJSON(results));
         console.log('kioskLogState');
         console.log(kioskLogState);
-        kiosklog.save(kioskLogState);
       })
+    return await kiosklog.save(kioskLogState)
   }
 
-  start();
+  return start();
 }

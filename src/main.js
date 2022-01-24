@@ -41,7 +41,6 @@ let pageready = false;
 // Admin or Main page is ready and can handle callbacks
 
 ipcMain.handle('pageready', async () => {
-  // debugger;
   pageready = true;
   kioskState = await kioskdb.init();
   kioskLogState = await kiosklog.init();
@@ -349,11 +348,23 @@ ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
 ipcMain.handle('checkin', async () => {
   kioskState = await kioskdb.init();
   kioskLogState = await kiosklog.init();
-  let response = await checkin.send(kioskState, kioskLogState);
-  return response;
+  await checkin.sendReport(kioskState, kioskLogState);
+  kioskLogState = await kiosklog.init();
+  kioskLogState = await failedRequests.send(kioskState, kioskLogState);
+  sendCommand('kioskLogStateUpdate', kioskLogState);
 });
 
-// Send CfA Failed POST Requests ...
+// Perform CfA Check-in Report request ...
+
+ipcMain.handle('checkin-report', async () => {
+  kioskState = await kioskdb.init();
+  kioskLogState = await kiosklog.init();
+  await checkin.sendReport(kioskState, kioskLogState);
+  kioskLogState = await kiosklog.init();
+  sendCommand('kioskLogStateUpdate', kioskLogState);
+});
+
+// Send CfA Resend Failed POST Requests ...
 
 ipcMain.handle('sendFailedRequests', async () => {
   kioskState = await kioskdb.init();
