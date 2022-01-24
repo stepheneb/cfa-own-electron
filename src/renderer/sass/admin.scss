@@ -288,28 +288,14 @@ body#admin {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-      }
-      .logs {
-      }
-    }
-    .cfa-logging {
-      margin-left: 0.5em;
-      width: 85vw;
-      justify-content: space-between;
-      align-items: flex-end;
-      header {
-        padding-left: 0;
-      }
-      button.erase-cfa-logging {
-      }
-      &.requests {
-        justify-content: flex-start;
-        button {
+        button.resend {
           span.count {
             padding: 0 0.2em 0 0.2em;
             font-weight: bold;
           }
         }
+      }
+      .logs {
       }
     }
 
