@@ -8,12 +8,6 @@ export const isMac = process.platform === "darwin";
 export const isWindows = process.platform === "win32";
 export const isSource = fs.existsSync("package.json");
 
-export const sendCommand = (cmd, msg) => {
-  if (admin && pageready) {
-    adminWindow.webContents.send(cmd, msg);
-  }
-};
-
 import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
 import { kiosklog } from './kiosklog';
@@ -37,23 +31,45 @@ if (require("electron-squirrel-startup")) {
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow, adminWindow, kioskState, kioskLogState;
+let mainWindow, adminWindow, kioskState, kioskLogState, kioskStatusState;
 
 export const admin = process.argv.find((arg) => arg == '--admin') ? true : false;
-export const visitor = process.argv.find((arg) => arg == '--visitor') ? true : false;
+// export const visitor = process.argv.find((arg) => arg == '--visitor') ? true : false;
 
 let pageready = false;
 
-// Admin page is ready and can handle callbacks
+// Admin or Main page is ready and can handle callbacks
 
 ipcMain.handle('pageready', async () => {
+  // debugger;
   pageready = true;
   kioskState = await kioskdb.init();
-  sendCommand('kioskStateUpdate', kioskState);
   kioskLogState = await kiosklog.init();
-  sendCommand('kioskLogStateUpdate', kioskLogState);
-  performHandShake();
+  kioskStatusState = await performHandShake();
+
+  if (admin) {
+    sendCommand('kioskStateUpdate', kioskState);
+    sendCommand('kioskLogStateUpdate', kioskLogState);
+    sendCommand('kioskStatusUpdate', kioskStatusState);
+  } else {
+    let kiosk = {
+      kioskState: kioskState,
+      kioskLogState: kioskLogState,
+      kioskStatusState: kioskStatusState
+    }
+    sendCommand('kioskUpdate', kiosk);
+  }
 });
+
+export const sendCommand = (cmd, msg) => {
+  if (pageready) {
+    if (admin) {
+      adminWindow.webContents.send(cmd, msg);
+    } else {
+      mainWindow.webContents.send(cmd, msg);
+    }
+  }
+};
 
 /**
  * createMainWindow - Description
@@ -251,7 +267,8 @@ if (admin) {
 
 ipcMain.handle('getKioskState', async () => {
   kioskState = await kioskdb.init();
-  sendCommand('kioskStateUpdate', kioskState);
+  // sendCommand('kioskStateUpdate', kioskState);
+  return kioskState;
 });
 
 ipcMain.handle('getKioskLogState', async () => {
@@ -264,7 +281,8 @@ ipcMain.handle('getKioskLogState', async () => {
 ipcMain.handle('new-cfa-key', async (e, obj) => {
   kioskState.cfa_key = obj['new-cfa-key'];
   kioskState = await kioskdb.save(kioskState);
-  performHandShake();
+  kioskStatusState = await performHandShake();
+  sendCommand('kioskStatusUpdate', kioskStatusState);
   sendCommand('kioskStateUpdate', kioskState);
 });
 
@@ -312,6 +330,7 @@ ipcMain.handle('log-touch_begin', async (e, obj) => {
 
 ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
   kioskLogState = await kiosklog.init();
+  debugger;
   let failedRequest = obj['failed_cfa_request'];
   if (failedRequest.kind == 'save-and-send') {
     const imageBase64Path = images.save(failedRequest.body.imageFilename, failedRequest.body.img_data);
@@ -348,7 +367,20 @@ ipcMain.handle('sendFailedRequests', async () => {
 
 ipcMain.handle('handshake', async () => {
   kioskLogState = await kiosklog.init();
-  performHandShake();
+  kioskStatusState = await performHandShake();
+  if (admin) {
+    sendCommand('kioskStatusUpdate', kioskStatusState);
+  } else {
+    kioskLogState = await kiosklog.init();
+    kioskStatusState = await performHandShake();
+    kioskStatusState = await performHandShake();
+    let kiosk = {
+      kioskState: kioskState,
+      kioskLogState: kioskLogState,
+      kioskStatusState: kioskStatusState
+    }
+    sendCommand('kioskUpdate', kiosk);
+  }
 });
 
 // Update online status ... send from renderer process: navigator.onLine change.
@@ -358,7 +390,20 @@ ipcMain.handle('online-status', async (e, obj) => {
   kioskState = await kioskdb.init();
   kioskState.online = online;
   await kioskdb.save(kioskState);
-  sendCommand('kioskStateUpdate', kioskState);
+  if (admin) {
+    sendCommand('kioskStateUpdate', kioskState);
+  } else {
+    kioskLogState = await kiosklog.init();
+    kioskStatusState = await performHandShake();
+    kioskStatusState = await performHandShake();
+    let kiosk = {
+      kioskState: kioskState,
+      kioskLogState: kioskLogState,
+      kioskStatusState: kioskStatusState
+    }
+    sendCommand('kioskUpdate', kiosk);
+  }
+
 });
 
 // ----------------------------
@@ -389,7 +434,6 @@ const performHandShake = async () => {
     }
   }
   kioskState = await kioskdb.save(kioskState);
-  sendCommand('kioskStatusUpdate', status);
   return status;
 }
 

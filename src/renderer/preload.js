@@ -12,5 +12,8 @@ contextBridge.exposeInMainWorld("api", {
   },
   kioskStatusUpdate: (fn) => {
     ipcRenderer.on("kioskStatusUpdate", (event, ...args) => fn(...args));
+  },
+  kioskUpdate: (fn) => {
+    ipcRenderer.on("kioskUpdate", (event, ...args) => fn(...args));
   }
 });

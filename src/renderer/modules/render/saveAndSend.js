@@ -264,24 +264,53 @@ saveandsend.render = (page, registeredCallbacks) => {
           touch_begin: touch_begin,
           datetime_when_user_made_request_at_kiosk: datetime
         };
-        fetch(endpoints.cfaSaveAndSendPostUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            },
-            body: JSON.stringify(body)
-          })
-          .then(response => response.json())
-          .then(json => {
-            console.log(JSON.stringify(json, null, '\t'));
-            app.email = email.value;
-            postRequestNote.innerText = '';
-          })
-          .catch(error => {
-            console.error(`Request to send image failed: ${error}`);
-            cfaError.log('save-and-send', body);
-            postRequestNote.innerText = 'Technical issues: possible delay.';
-          });
+        try {
+          fetch(endpoints.cfaSaveAndSendPostUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              },
+              body: JSON.stringify(body),
+              timeout: 500,
+              responseType: 'json'
+            })
+            .then(result => result.json())
+            .then(response => {
+              const success = response.authorization.code == 200;
+              if (success) {
+                app.email = email.value;
+                postRequestNote.innerText = '';
+              } else {
+                cfaError.log('save-and-send', body, response.authorization);
+                postRequestNote.innerText = 'Technical issues: possible delay.';
+              }
+            })
+            .catch(error => {
+              let errorstr1 = error.toString();
+              let errorstr;
+              if (errorstr1 == 'TypeError: Failed to fetch') {
+                errorstr = `Request to send observation failed: "${errorstr1}". Possibly a a bad url or a problem with the server at CfA.  The Developer Tools console might have more clues.`;
+              } else {
+                errorstr = `Request to send observation failed: "${errorstr1}". Possibly a networking error.  The Developer Tools console might have more clues.`;
+              }
+              const authorization = {
+                code: 0,
+                message: errorstr
+              }
+              console.error(errorstr);
+              cfaError.log('save-and-send', body, authorization);
+              postRequestNote.innerText = 'Technical issues: possible delay.';
+            });
+        } catch (error) {
+          let errorstr = `Request to send observation failed: "${error.toString()}". Possibly a networking error.  The Developer Tools console might have more clues.`;
+          const authorization = {
+            code: 0,
+            message: errorstr
+          }
+          console.error(errorstr);
+          cfaError.log('save-and-send', body, authorization);
+          postRequestNote.innerText = 'Technical issues: possible delay.';
+        }
       }
 
       yourEmail.innerText = email.value;

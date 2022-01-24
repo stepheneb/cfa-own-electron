@@ -14,17 +14,54 @@ let main = {};
 let startTime = 0;
 let restartDuration = 0;
 
+let kiosk;
+let firstPageRender = true;
+
 main.start = () => {
   if (u.runningInElectron()) {
-    ipcRenderer.invoke('getKioskState').then((kioskState) => {
-      finishMainStart(kioskState);
-      window.addEventListener('online', updateOnlineStatus);
-      window.addEventListener('offline', updateOnlineStatus);
+    document.addEventListener('DOMContentLoaded', () => {
+      ipcRenderer.invoke('pageready');
     });
+    window.api.kioskUpdate((ks) => {
+      kiosk = ks;
+      console.log(kiosk);
+      if (firstPageRender) {
+        firstPageRender = false;
+        finishMainStart(kiosk)
+      } else {
+        app.kioskState = kiosk.kioskState;
+        app.kioskLogState = kiosk.kioskLogState;
+        app.kioskStatusState = kiosk.kioskStatusState;
+        kioskUpdateCallback.forEach(cb => cb());
+      }
+    });
+
+    // ipcRenderer.invoke('getKioskState').then((kioskState) => {
+    //   finishMainStart(kioskState);
+    //   window.addEventListener('online', updateOnlineStatus);
+    //   window.addEventListener('offline', updateOnlineStatus);
+    // });
   } else {
     finishMainStart();
   }
 };
+
+const updateOnlineStatus = () => {
+  app.online = navigator.onLine;
+  if (u.runningInElectron()) {
+    let obj = { "online": app.online };
+    ipcRenderer.invoke('online-status', obj);
+  }
+}
+
+let kioskUpdateCallback = [];
+
+main.registerKioskUpdateCallback = (callback) => {
+  kioskUpdateCallback.push(callback);
+}
+
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
 
 main.restart = () => {
   Object.assign(app, u.deepClone(defaultApp));
@@ -75,12 +112,19 @@ const clearTouchBegin = () => {
   delete app.touch_begin;
 }
 
-const finishMainStart = (kioskState) => {
+const finishMainStart = (kiosk) => {
   Object.assign(defaultApp, setupNewApp(u.deepClone(data)));
   Object.assign(app, setupNewApp(u.deepClone(data)));
-  if (kioskState !== undefined) {
-    defaultApp.kioskState = kioskState;
-    app.kioskState = kioskState;
+  if (kiosk !== undefined) {
+
+    defaultApp.kioskState = kiosk.kioskState;
+    defaultApp.kioskLogState = kiosk.kioskLogState;
+    defaultApp.kioskStatusState = kiosk.kioskStatusState;
+
+    app.kioskState = kiosk.kioskState;
+    app.kioskLogState = kiosk.kioskLogState;
+    app.kioskStatusState = kiosk.kioskStatusState;
+
   }
   app.logger = true;
   app.email = '';
@@ -199,14 +243,6 @@ const enableCountdownToRestart = () => {
       startingOverElem.classList.remove('changing');
       values.innerText = '';
     });
-  }
-}
-
-const updateOnlineStatus = () => {
-  app.online = navigator.onLine;
-  if (u.runningInElectron()) {
-    let obj = { "online": app.online };
-    ipcRenderer.invoke('online-status', obj);
   }
 }
 

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 import u from '../renderer/modules/utilities.js';
-import { kioskdb } from '../kioskdb';
 
 import { endpoints } from './endpoints.js';
 import { cfaStatus } from './status';
