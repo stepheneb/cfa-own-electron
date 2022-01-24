@@ -76,7 +76,7 @@ let kioskStatusReceived = false;
 // Start everything off by letting the NodeJS
 // main process know when the page is ready.
 
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   ipcRenderer.invoke('pageready');
   firstPageRender = true;
 });
