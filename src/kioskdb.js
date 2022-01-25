@@ -17,7 +17,9 @@ const initialKioskState = {
   ip_address: false,
   online: false,
   working: false,
-  autostart_visitor: true
+  autostart_visitor: true,
+  checkin_interval: 240,
+  last_checkin: false
 };
 
 let db = null;

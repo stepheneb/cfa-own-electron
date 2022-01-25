@@ -131,7 +131,27 @@
           <i class="bi bi-caret-right"></i>
           <i class="bi bi-caret-down-fill expanded"></i>
         </div>
+        <div class='checkin-interval'>
+          <div class='next'>
+            Next scheduled in: <span class='value'>240</span> (m)
+          </div>
+          <div class='current'>
+            Check-in every: <span class='value'>240</span> (m)
+          </div>
+          <div class="new">
+            <form id="enter-new-interval">
+              <label for="new-interval">Update interval:</label>
+              <input class='new-interval' type="number" name="new-interval" required minlength="1" maxlength="4" size="5" step='1' autocomplete="none" pattern="[0-9]{4}"></input>
+              <button id='new-interval-submit' type="submit" class="btn btn-warning" autocomplete="none">
+                SAVE
+              </button>
+            </form>
+          </div>
+
+        </div>
+
       </div>
+
 
       <div class="controls">
         <button class="reload btn btn-secondary">

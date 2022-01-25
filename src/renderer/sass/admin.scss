@@ -10,6 +10,12 @@ body#admin {
       padding: 0.2em 0.5em;
     }
 
+    form {
+      label {
+        text-transform: none;
+      }
+    }
+
     .title-line {
       display: flex;
       flex-direction: row;
@@ -289,6 +295,9 @@ body#admin {
         flex-direction: row;
         align-items: center;
         justify-content: left;
+        header {
+          flex-shrink: 0;
+        }
         .disclose {
           i {
             color: gray;
@@ -297,6 +306,34 @@ body#admin {
           }
           i.expanded {
             display: none;
+          }
+        }
+        .checkin-interval {
+          display: flex;
+          display: none;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          margin-left: 1em;
+          width: 100%;
+          font-size: 1.2em;
+          .current {
+          }
+          .new {
+            form {
+              label {
+                margin-right: 0.25em;
+              }
+              input {
+                padding: 0 0.2em;
+                width: 4.5em;
+                &:placeholder {
+                }
+              }
+              button {
+                margin-left: 0.4em;
+              }
+            }
           }
         }
       }
