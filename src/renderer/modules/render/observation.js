@@ -316,7 +316,7 @@ observation.render = (page, registeredCallbacks) => {
             .then(response => {
               // console.log(u.printableJSON(response));
               const success = response.authorization.code == 200;
-              if (success) {
+              if (success || response.authorization.code == 407) {
                 app.email = email.value;
                 postRequestNote.innerText = '';
               } else {
