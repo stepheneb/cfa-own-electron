@@ -43,22 +43,19 @@ kiosklog.init = async () => {
   return logDb.data;
 };
 
+kiosklog.read = async () => {
+  await logDb.read();
+  return logDb.data;
+};
+
 kiosklog.save = async (kioskLogState = logDb.data) => {
   logDb.data = kioskLogState;
   await logDb.write();
-  await kiosklog.init();
   return logDb.data;
 };
 
 kiosklog.reset = async () => {
   logDb.data = {};
-  await logDb.write();
-  await kiosklog.init();
-  return logDb.data;
-};
-
-kiosklog.resetTouchBegins = async () => {
-  logDb.data.touch_begins = [];
   await logDb.write();
   await kiosklog.init();
   return logDb.data;

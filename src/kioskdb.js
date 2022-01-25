@@ -70,8 +70,12 @@ kioskdb.init = async () => {
       await db.write();
     }
   };
-
   await startup();
+  return db.data;
+};
+
+kioskdb.read = async () => {
+  await db.read();
   return db.data;
 };
 
@@ -79,6 +83,5 @@ kioskdb.save = async (kioskState = db.data) => {
   db.data = kioskState;
   updateWorkingStatus();
   await db.write();
-  await kioskdb.init();
   return db.data;
 };

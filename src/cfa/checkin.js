@@ -10,9 +10,8 @@ export const checkin = {};
 
 checkin.sendBoth = async (kioskState, kioskLogState) => {
   kioskLogState = await kiosklog.save(kioskLogState);
-  debugger;
   let reportResult = await checkin.sendReport(kioskState, kioskLogState);
-  kioskState = await kioskdb.init();
+  kioskState = await kioskdb.read();
   kioskLogState = await kiosklog.save(kioskLogState);
   let resendResults = await failedRequests.send(kioskState, kioskLogState);
   return {

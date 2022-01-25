@@ -12,8 +12,6 @@ export const failedRequests = {};
 
 failedRequests.send = (kioskState, kioskLogState) => {
   let requests = u.deepClone(kioskLogState.failed_cfa_requests);
-
-  debugger;
   const axiosRateLimited = rateLimit(axios.create(), { maxRequests: 3, perMilliseconds: 1000, maxRPS: 3 });
 
   console.log('axiosRateLimited', axiosRateLimited.getMaxRPS()) // 3
@@ -30,6 +28,7 @@ failedRequests.send = (kioskState, kioskLogState) => {
     return new Promise(function (resolve, reject) {
       let endpoint;
       let saveAndSend = failedRequest.kind == 'save-and-send';
+      let observation = failedRequest.kind == 'observation';
       if (saveAndSend) {
         endpoint = endpoints.cfaSaveAndSendPostUrl;
       } else {
@@ -56,9 +55,9 @@ failedRequests.send = (kioskState, kioskLogState) => {
         .then(result => {
           let response = result.data;
           let code = response.authorization.code;
-          const success = code == 200;
+          let success = code == 200;
           const status = makeResponse(success, request, response);
-          if (success || code == 407) {
+          if (success || observation && code == 407) {
             let uuid = failedRequest.uuid;
             let index = kioskLogState.failed_cfa_requests.findIndex(item => item.uuid = uuid);
             if (index >= 0) {
@@ -107,7 +106,6 @@ failedRequests.send = (kioskState, kioskLogState) => {
         });
       })
     await kiosklog.save(kioskLogState);
-    debugger;
     return {
       name: 'failedRequests.send',
       results: allResults

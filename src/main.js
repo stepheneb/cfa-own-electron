@@ -42,8 +42,8 @@ let pageready = false;
 
 ipcMain.handle('pageready', async () => {
   pageready = true;
-  kioskState = await kioskdb.init();
-  kioskLogState = await kiosklog.init();
+  kioskState = await kioskdb.read();
+  kioskLogState = await kiosklog.read();
   kioskStatusState = await performHandShake();
 
   if (admin) {
@@ -265,12 +265,12 @@ if (admin) {
 // ask to be sent kiosk states
 
 ipcMain.handle('getKioskState', async () => {
-  kioskState = await kioskdb.init();
+  kioskState = await kioskdb.read();
   sendCommand('kioskStateUpdate', kioskState);
 });
 
 ipcMain.handle('getKioskLogState', async () => {
-  kioskLogState = await kiosklog.init();
+  kioskLogState = await kiosklog.read();
   sendCommand('kioskLogStateUpdate', kioskLogState);
 });
 
@@ -312,13 +312,10 @@ ipcMain.handle('resetKioskLogState', async () => {
 // ***FIX***
 
 ipcMain.handle('log-touch_begin', async (e, obj) => {
-  kioskLogState = await kiosklog.init();
+  kioskLogState = await kiosklog.read();
   let datetime = obj['touch_begin'];
   kioskLogState.touch_begins.push(datetime);
-  const saveKioskLogState = async () => {
-    await kiosklog.save();
-  };
-  saveKioskLogState();
+  await kiosklog.save(kioskLogState);
   return kioskLogState;
 });
 
@@ -327,7 +324,7 @@ ipcMain.handle('log-touch_begin', async (e, obj) => {
 // ***FIX***
 
 ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
-  kioskLogState = await kiosklog.init();
+  kioskLogState = await kiosklog.read();
   let failedRequest = obj['failed_cfa_request'];
   if (failedRequest.kind == 'save-and-send') {
     const imageBase64Path = images.save(failedRequest.body.imageFilename, failedRequest.body.img_data);
@@ -335,31 +332,30 @@ ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
     failedRequest.body.imageBase64Path = imageBase64Path;
   }
   kioskLogState.failed_cfa_requests.push(failedRequest);
-  const saveKioskLogState = async () => {
-    await kiosklog.save();
-  };
-  saveKioskLogState();
+  await kiosklog.save(kioskLogState);
   return kioskLogState;
 });
 
 // Send CfA Check-in requests ...
 
 ipcMain.handle('checkin', async () => {
-  debugger;
   let results = await checkin.sendBoth(kioskState, kioskLogState);
-  kioskState = await kioskdb.init();
-  kioskLogState = await kiosklog.init();
+  kioskState = await kioskdb.read();
+  kioskLogState = await kiosklog.read();
   sendCommand('kioskLogStateUpdate', kioskLogState);
-  return results;
+  return {
+    name: 'checkin-both',
+    results: results
+  }
 });
 
 // Perform CfA Check-in Report request ...
 
 ipcMain.handle('checkin-report', async () => {
-  kioskState = await kioskdb.init();
-  kioskLogState = await kiosklog.init();
+  kioskState = await kioskdb.read();
+  kioskLogState = await kiosklog.read();
   let result = await checkin.sendReport(kioskState, kioskLogState);
-  kioskLogState = await kiosklog.init();
+  kioskLogState = await kiosklog.read();
   sendCommand('kioskLogStateUpdate', kioskLogState);
   return result;
 });
@@ -367,10 +363,10 @@ ipcMain.handle('checkin-report', async () => {
 // Send CfA Resend Failed POST Requests ...
 
 ipcMain.handle('sendFailedRequests', async () => {
-  kioskState = await kioskdb.init();
-  kioskLogState = await kiosklog.init();
+  kioskState = await kioskdb.read();
+  kioskLogState = await kiosklog.read();
   let results = await failedRequests.send(kioskState, kioskLogState);
-  kioskLogState = await kiosklog.init();
+  kioskLogState = await kiosklog.read();
   sendCommand('kioskLogStateUpdate', kioskLogState);
   return results;
 });
@@ -378,16 +374,16 @@ ipcMain.handle('sendFailedRequests', async () => {
 // Perform CfA Handshake request ...
 
 ipcMain.handle('handshake', async () => {
-  kioskLogState = await kiosklog.init();
+  kioskLogState = await kiosklog.read();
   kioskStatusState = await performHandShake();
-  kioskState = await kioskdb.init();
+  kioskState = await kioskdb.read();
   if (admin) {
     kioskStatusState = await performHandShake();
-    kioskState = await kioskdb.init();
+    kioskState = await kioskdb.read();
     sendCommand('kioskStatusUpdate', kioskStatusState);
     sendCommand('kioskStateUpdate', kioskState);
   } else {
-    kioskLogState = await kiosklog.init();
+    kioskLogState = await kiosklog.read();
     kioskStatusState = await performHandShake();
     let kiosk = {
       kioskState: kioskState,
@@ -403,13 +399,13 @@ ipcMain.handle('handshake', async () => {
 
 ipcMain.handle('online-status', async (e, obj) => {
   let online = obj['online'];
-  kioskState = await kioskdb.init();
+  kioskState = await kioskdb.read();
   kioskState.online = online;
   await kioskdb.save(kioskState);
   if (admin) {
     sendCommand('kioskStateUpdate', kioskState);
   } else {
-    kioskLogState = await kiosklog.init();
+    kioskLogState = await kiosklog.read();
     kioskStatusState = await performHandShake();
     let kiosk = {
       kioskState: kioskState,
@@ -424,7 +420,7 @@ ipcMain.handle('online-status', async (e, obj) => {
 // ----------------------------
 
 const performHandShake = async () => {
-  let kioskState = await kioskdb.init();
+  let kioskState = await kioskdb.read();
   let status = await handshake.query(kioskState);
   if (status.success) {
     kioskState.cfa_registered = true;
