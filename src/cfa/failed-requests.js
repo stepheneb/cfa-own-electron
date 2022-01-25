@@ -13,6 +13,7 @@ export const failedRequests = {};
 failedRequests.send = (kioskState, kioskLogState) => {
   let requests = u.deepClone(kioskLogState.failed_cfa_requests);
 
+  debugger;
   const axiosRateLimited = rateLimit(axios.create(), { maxRequests: 3, perMilliseconds: 1000, maxRPS: 3 });
 
   console.log('axiosRateLimited', axiosRateLimited.getMaxRPS()) // 3
@@ -84,14 +85,33 @@ failedRequests.send = (kioskState, kioskLogState) => {
   }
 
   const start = async () => {
+    let allResults;
     await Promise.allSettled(requests.map(failedRequest => reSendRequest(failedRequest)))
       .then((results) => {
         console.log(u.printableJSON(results));
         console.log('kioskLogState');
         console.log(kioskLogState);
+        allResults = results.map((result) => {
+          if (result.status == 'rejected') {
+            if (result.reason.response) {
+              return result.reason.response;
+            } else {
+              return {
+                code: 0,
+                message: result.reason.toString()
+              }
+            }
+          } else {
+            return result.value.response
+          }
+        });
       })
-    return await kiosklog.save(kioskLogState)
+    await kiosklog.save(kioskLogState);
+    debugger;
+    return {
+      name: 'failedRequests.send',
+      results: allResults
+    };
   }
-
   return start();
 }

@@ -284,11 +284,28 @@ body#admin {
       display: flex;
       flex-direction: column;
       width: 85vw;
-      .controls {
+      .title {
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: left;
+        .disclose {
+          i {
+            color: gray;
+            margin-left: 0.3em;
+            font-size: 1.8em;
+          }
+          i.expanded {
+            display: none;
+          }
+        }
+      }
+      .controls {
+        display: none;
+        flex-direction: row;
+        align-items: center;
         justify-content: space-between;
+        margin-left: 1em;
         button.resend {
           span.count {
             padding: 0 0.2em 0 0.2em;
@@ -297,6 +314,26 @@ body#admin {
         }
       }
       .logs {
+        display: none;
+      }
+      &.show {
+        .title {
+          .disclose {
+            i {
+              display: none;
+            }
+            i.expanded {
+              color: var(--almost-white);
+              display: block;
+            }
+          }
+        }
+        .controls {
+          display: flex;
+        }
+        .logs {
+          display: block;
+        }
       }
     }
 

@@ -12,8 +12,6 @@ const quit = document.getElementById('quit');
 const appNameElem = document.getElementById('app-name');
 const appVersionElem = document.getElementById('app-version');
 
-const needCfaKey = document.querySelector('#content .need-cfa-key');
-
 // CfA Kiosk id and key-credential settings section
 
 // const cfaSettings = cfaHandshake.querySelector('.settings.section');
@@ -51,6 +49,8 @@ const cfaHandshakeReponse = cfaHandshake.querySelector('.logs .response');
 // CfA logged data section
 
 const cfaLogging = document.querySelector('.logging.section');
+const cfaLoggingDisclose = cfaLogging.querySelector('.disclose');
+
 const cfaLoggingReloadBtn = cfaLogging.querySelector('button.reload');
 const cfaCheckIn = cfaLogging.querySelector('button.check-in');
 const cfaSendReport = cfaLogging.querySelector('button.report');
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Listener: kioskStateUpdate
 window.api.kioskStateUpdate((kioskState) => {
-  console.log(kioskState);
+  console.log(u.printableJSON(kioskState));
   app.kioskState = kioskState;
   kioskStateReceived = true;
   if (kioskStateReceived && kioskLogStateReceived && kioskStatusReceived) {
@@ -96,7 +96,7 @@ window.api.kioskStateUpdate((kioskState) => {
 
 // Listener: kioskLogStateUpdate
 window.api.kioskLogStateUpdate((kioskLogState) => {
-  console.log(kioskLogState);
+  console.log(u.printableJSON(kioskLogState));
   app.kioskLogState = kioskLogState;
   kioskLogStateReceived = true;
   if (kioskStateReceived && kioskLogStateReceived && kioskStatusReceived) {
@@ -107,7 +107,7 @@ window.api.kioskLogStateUpdate((kioskLogState) => {
 // Listener: kioskStatusUpdate
 // Communications Status update
 window.api.kioskStatusUpdate((kioskStatus) => {
-  console.log(kioskStatus);
+  console.log(u.printableJSON(kioskStatus));
   app.kioskStatus = kioskStatus;
   kioskStatusReceived = true;
   if (kioskStateReceived && kioskLogStateReceived && kioskStatusReceived) {
@@ -136,13 +136,6 @@ const updateView = () => {
     eraseCfaKey.disabled = false;
   } else {
     eraseCfaKey.disabled = true;
-  }
-  if (cfaKeyHasValidFormat()) {
-    cfaHandshakeTest.disabled = false;
-    needCfaKey.classList.remove('show');
-  } else {
-    cfaHandshakeTest.disabled = true;
-    needCfaKey.classList.add('show');
   }
 
   // View: Autostart Visitor application
@@ -217,6 +210,10 @@ const updateView = () => {
   firstPageRender = false;
 };
 
+cfaLoggingDisclose.addEventListener('click', () => {
+  cfaLogging.classList.toggle('show');
+  cfaLoggingDisclose.classList.toggle('expanded');
+})
 // Controller: Automatic Vistor Startup button toggled
 
 if (cfaAutostartShown) {
@@ -285,19 +282,25 @@ cfaHandshakeDisclose.addEventListener('click', () => {
 // Controller: CfA Check-in request ...
 
 cfaCheckIn.addEventListener('click', () => {
-  ipcRenderer.invoke('checkin');
+  ipcRenderer.invoke('checkin').then((results) => {
+    console.log(u.printableJSON(results));
+  });
 })
 
 // Controller: CfA Check-in Report request ...
 
 cfaSendReport.addEventListener('click', () => {
-  ipcRenderer.invoke('checkin-report');
+  ipcRenderer.invoke('checkin-report').then((result) => {
+    console.log(u.printableJSON(result));
+  });
 })
 
 // Controller: Resend Failed Requests
 
 cfaResendFailedRequestsBtn.addEventListener('click', () => {
-  ipcRenderer.invoke('sendFailedRequests');
+  ipcRenderer.invoke('sendFailedRequests').then((results) => {
+    console.log(u.printableJSON(results));
+  });
 })
 
 // Controller: Erase Visitor Logs ...
