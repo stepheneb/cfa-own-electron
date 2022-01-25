@@ -105,7 +105,7 @@ failedRequests.send = (kioskState, kioskLogState) => {
           }
         });
       })
-    await kiosklog.save(kioskLogState);
+    kioskLogState = await kiosklog.save(kioskLogState);
     return {
       name: 'failedRequests.send',
       results: allResults

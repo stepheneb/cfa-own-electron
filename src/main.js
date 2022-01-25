@@ -279,8 +279,11 @@ ipcMain.handle('getKioskLogState', async () => {
 ipcMain.handle('new-cfa-key', async (e, obj) => {
   kioskState.cfa_key = obj['new-cfa-key'];
   kioskState = await kioskdb.save(kioskState);
+
   kioskStatusState = await performHandShake();
   sendCommand('kioskStatusUpdate', kioskStatusState);
+
+  kioskState = await kioskdb.read();
   sendCommand('kioskStateUpdate', kioskState);
 });
 
@@ -414,7 +417,6 @@ ipcMain.handle('online-status', async (e, obj) => {
     }
     sendCommand('kioskUpdate', kiosk);
   }
-
 });
 
 // ----------------------------
