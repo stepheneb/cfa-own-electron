@@ -30,6 +30,7 @@ checkin.sendReport = async (kioskState, kioskLogState) => {
     datetime: new Date().toISOString(),
     report: {
       touch_begins: kioskLogState.touch_begins,
+      failed_cfa_requests: u.deepClone(kioskLogState.failed_cfa_requests),
     }
   };
 
