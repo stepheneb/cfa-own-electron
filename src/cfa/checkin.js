@@ -21,6 +21,9 @@ checkin.sendBoth = async (kioskState, kioskLogState) => {
 }
 
 checkin.sendReport = async (kioskState, kioskLogState) => {
+  kioskState = await kioskdb.save(kioskState);
+  kioskLogState = await kiosklog.save(kioskLogState);
+
   let data = {
     kiosk_id: kioskState.id,
     credential: kioskState.cfa_key,
@@ -53,8 +56,8 @@ checkin.sendReport = async (kioskState, kioskLogState) => {
     }
     console.log(u.printableJSON(result));
     if (success) {
-      kiosklog.touch_begins = [];
-      await kiosklog.save(kiosklog);
+      kioskLogState.touch_begins = [];
+      await kiosklog.save(kioskLogState);
     }
     return returnResultObj(result);
   } catch (error) {
