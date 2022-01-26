@@ -19,7 +19,8 @@ const initialKioskState = {
   working: false,
   autostart_visitor: true,
   checkin_interval: 240,
-  last_checkin: false
+  last_checkin: false,
+  checkin_interval_enabled: false
 };
 
 let db = null;
