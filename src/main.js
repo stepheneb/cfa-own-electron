@@ -430,21 +430,45 @@ const performHandShake = async () => {
     kioskState.ip_address = status.ip_address;
     kioskState.cfa_ip_address_valid = true;
     kioskState.online = true;
+    kioskState.cfa_database_error = false;
   } else {
     switch (status.code) {
     case 0:
       kioskState.online = false;
+      kioskState.cfa_database_error = false;
       break;
-    case 402:
+
+    case 402: // Kiosk Not Registered
       kioskState.cfa_registered = false;
+      kioskState.cfa_database_error = false;
       break;
-    case 403:
+
+    case 403: // Credential Invalid
       kioskState.cfa_credential_valid = false;
+      kioskState.cfa_database_error = false;
       break;
-    case 404:
+
+    case 404: // IP Address Changed
       kioskState.cfa_registered = true;
       kioskState.cfa_credential_valid = true;
       kioskState.cfa_ip_address_valid = false;
+      kioskState.cfa_database_error = false;
+      break;
+
+    case 405: // Credential Failed
+      kioskState.cfa_registered = true;
+      kioskState.cfa_credential_valid = true;
+      kioskState.cfa_ip_address_valid = false;
+      kioskState.cfa_database_error = true;
+      break;
+
+    case 400:
+    case 406:
+      kioskState.cfa_unknown_error = true;
+      break;
+
+    case 600: // CfA Server Error
+      kioskState.cfa_database_error = true;
       break;
     }
   }
