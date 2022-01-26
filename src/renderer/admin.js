@@ -106,7 +106,7 @@ window.api.kioskStateUpdate((kioskState) => {
 
 // Listener: kioskLogStateUpdate
 window.api.kioskLogStateUpdate((kioskLogState) => {
-  console.log(u.printableJSON(kioskLogState));
+  // console.log(u.printableJSON(kioskLogState));
   app.kioskLogState = kioskLogState;
   kioskLogStateReceived = true;
   if (kioskStateReceived && kioskLogStateReceived && kioskStatusReceived) {
@@ -117,7 +117,7 @@ window.api.kioskLogStateUpdate((kioskLogState) => {
 // Listener: kioskStatusUpdate
 // Communications Status update
 window.api.kioskStatusUpdate((kioskStatus) => {
-  console.log(u.printableJSON(kioskStatus));
+  // console.log(u.printableJSON(kioskStatus));
   app.kioskStatus = kioskStatus;
   kioskStatusReceived = true;
   if (kioskStateReceived && kioskLogStateReceived && kioskStatusReceived) {
@@ -280,14 +280,14 @@ startoverDisabled.addEventListener('change', () => {
 // Controller: App Restart button clicked
 
 restart.addEventListener('click', () => {
-  console.log("admin:restart button pressed.");
+  // console.log("admin:restart button pressed.");
   ipcRenderer.send('restart');
 });
 
 // Controller: App Quit button clicked
 
 quit.addEventListener('click', () => {
-  console.log("admin:quit button pressed.");
+  // console.log("admin:quit button pressed.");
   ipcRenderer.send('quit');
 });
 
