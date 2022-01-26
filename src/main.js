@@ -254,14 +254,17 @@ const argsAddAdmin = () => {
 
 if (admin) {
   ipcMain.on('restart', () => {
+    scheduler.stop();
     app.relaunch({ args: argsRemoveAdmin() });
     app.exit(0);
   });
   ipcMain.on('quit', () => {
+    scheduler.stop();
     app.quit();
   });
 } else {
   ipcMain.on('ctrl-backtic', () => {
+    scheduler.stop();
     mainWindow.setFullScreen(false);
     supportFullScreenLeave();
     app.relaunch({ args: argsAddAdmin() });
