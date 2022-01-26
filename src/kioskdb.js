@@ -20,7 +20,9 @@ const initialKioskState = {
   autostart_visitor: true,
   checkin_interval: 240,
   last_checkin: false,
-  checkin_interval_enabled: false
+  checkin_interval_enabled: false,
+  cfa_database_error: false,
+  cfa_unknown_error: false,
 };
 
 let db = null;
@@ -32,7 +34,8 @@ const updateWorkingStatus = () => {
   if (data.online &&
     data.cfa_registered &&
     data.cfa_credential_valid &&
-    data.cfa_ip_address_valid) {
+    data.cfa_ip_address_valid &&
+    !data.cfa_database_error) {
     data.working = true;
   } else {
     data.working = false;

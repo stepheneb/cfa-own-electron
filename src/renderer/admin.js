@@ -50,6 +50,14 @@ const cfaHandshakeReponse = cfaHandshake.querySelector('.logs .response');
 
 const cfaLogging = document.querySelector('.logging.section');
 const cfaLoggingDisclose = cfaLogging.querySelector('.disclose');
+const cfaCheckinInterval = cfaLogging.querySelector('.title .checkin-interval');
+const cfaNextCheckin = cfaCheckinInterval.querySelector('.next .checkin');
+const cfaCurrentInterval = cfaCheckinInterval.querySelector('.current .interval');
+
+const cfaCheckinEnable = cfaCheckinInterval.querySelector('.enable input.checkin');
+
+const formNewInterval = cfaCheckinInterval.querySelector('.new form.interval');
+const inputNewInterval = cfaCheckinInterval.querySelector('.new input.interval');
 
 const cfaLoggingReloadBtn = cfaLogging.querySelector('button.reload');
 const cfaCheckIn = cfaLogging.querySelector('button.check-in');
@@ -115,6 +123,12 @@ window.api.kioskStatusUpdate((kioskStatus) => {
     updateView();
     // }
   }
+});
+
+// Listener: checkinTimerTick
+// Checkin Interval countdown clock
+window.api.checkinTimerTick((countdown) => {
+  cfaNextCheckin.innerText = u.secondsToHHMMSS(countdown);
 });
 
 // View
@@ -185,6 +199,10 @@ const updateView = () => {
     messageStatus.innerText = `Error: ${app.kioskStatus.code} ${app.kioskStatus.message}`;
   }
 
+  // View: Scheduled Check-in enabled
+
+  cfaCheckinEnable.checked = app.kioskState.checkin_interval_enabled;
+
   // View: Debugging visitor application, disable timeout startover
 
   startoverDisabled.checked = app.kioskState.startover_disabled;
@@ -195,6 +213,7 @@ const updateView = () => {
   if (firstPageRender) {
     cfaHandshake.classList.remove('show');
   }
+
   // View: CfA Visitor Logs
 
   cfaLoggingResponse.innerText = JSON.stringify(app.kioskLogState, null, '  ');
@@ -207,8 +226,20 @@ const updateView = () => {
     failedRequestCountSpan.innerText = ' ';
   }
 
+  cfaCurrentInterval.innerText = u.minutesToHHMM(app.kioskState.checkin_interval);
+
+  if (!cfaCheckinEnable.checked) {
+    cfaNextCheckin.innerText = '...';
+  }
+
+  inputNewInterval.value = app.kioskState.checkin_interval;
+
   firstPageRender = false;
 };
+
+//
+// Controller
+//
 
 cfaLoggingDisclose.addEventListener('click', () => {
   cfaLogging.classList.toggle('show');
@@ -223,7 +254,14 @@ if (cfaAutostartShown) {
   });
 }
 
-// Controller: Visitor Timeout Startover button toggled
+// Controller: Automatic Check-in checkbox toggled
+
+cfaCheckinEnable.addEventListener('change', () => {
+  let obj = { "update-checkin-enabled": cfaCheckinEnable.checked };
+  ipcRenderer.invoke('update-checkin-enabled', obj);
+});
+
+// Controller: Visitor Timeout Startover checkbox toggled
 
 startoverDisabled.addEventListener('change', () => {
   let obj = { "update-startover-disabled": startoverDisabled.checked };
@@ -249,6 +287,15 @@ quit.addEventListener('click', () => {
 cfaLoggingReloadBtn.addEventListener('click', () => {
   ipcRenderer.invoke('getKioskLogState');
 });
+
+// Controller: Settings:  New CfA Key submitted
+
+formNewInterval.onsubmit = async () => {
+  if (formNewInterval.reportValidity()) {
+    let obj = { "new-checkin-interval": inputNewInterval.value };
+    ipcRenderer.invoke('new-checkin-interval', obj);
+  }
+};
 
 // Controller: Settings:  New CfA Key submitted
 

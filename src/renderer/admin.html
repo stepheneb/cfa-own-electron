@@ -132,26 +132,36 @@
           <i class="bi bi-caret-down-fill expanded"></i>
         </div>
         <div class='checkin-interval'>
-          <div class='next'>
-            Next scheduled in: <span class='value'>240</span> (m)
+          <div class='line'>
+
+            <div class='current'>
+              Check-in every: <span class='interval time'></span> hh:mm
+            </div>
+            <div class='next'>
+              Next: <div class='checkin time'></div>hh:mm:ss
+            </div>
+
           </div>
-          <div class='current'>
-            Check-in every: <span class='value'>240</span> (m)
-          </div>
-          <div class="new">
-            <form id="enter-new-interval">
-              <label for="new-interval">Update interval:</label>
-              <input class='new-interval' type="number" name="new-interval" required minlength="1" maxlength="4" size="5" step='1' autocomplete="none" pattern="[0-9]{4}"></input>
-              <button id='new-interval-submit' type="submit" class="btn btn-warning" autocomplete="none">
-                SAVE
-              </button>
-            </form>
+          <div class='line'>
+
+            <div class='enable'>
+              <input type='checkbox' class='checkin' name='checkin'>
+              <label for='checkin'>Enable Scheduled Check-in</label>
+            </div>
+            <div class='new'>
+              <form class='interval'>
+                <label for='interval'>Update interval:</label>
+                <input class='interval' type='number' name='interval' required minlength='1' maxlength='4' size='5' step='1' autocomplete='none' pattern='[0-9]{4}'></input>
+                <button class="btn btn-warning">
+                  SAVE
+                </button>
+              </form>
+            </div>
           </div>
 
         </div>
 
       </div>
-
 
       <div class="controls">
         <button class="reload btn btn-secondary">

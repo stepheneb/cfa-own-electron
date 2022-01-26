@@ -295,6 +295,7 @@ body#admin {
         flex-direction: row;
         align-items: center;
         justify-content: left;
+        margin: 1em 0;
         header {
           flex-shrink: 0;
         }
@@ -310,17 +311,42 @@ body#admin {
         }
         .checkin-interval {
           display: flex;
-          display: none;
-          flex-direction: row;
+          flex-direction: column;
           align-items: center;
           justify-content: space-between;
           margin-left: 1em;
           width: 100%;
-          font-size: 1.2em;
-          .current {
+          font-size: 1.1em;
+          div.line:not(:last-child) {
+            margin-bottom: 0.5em;
           }
-          .new {
-            form {
+          .line {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 30em;
+            .time {
+              letter-spacing: 1px;
+            }
+            .next {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              font-size: 1.1em;
+              width: 11em;
+              .checkin {
+                width: 3.5em;
+                font-size: 1em;
+              }
+            }
+            .current {
+            }
+            .enable {
+              font-size: 1.1em;
+            }
+            .new {
               label {
                 margin-right: 0.25em;
               }

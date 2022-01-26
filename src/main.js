@@ -12,6 +12,7 @@ import { windowStateKeeper } from './window-state-keeper';
 import { kioskdb } from './kioskdb';
 import { kiosklog } from './kiosklog';
 import { checkin } from './cfa/checkin';
+import { scheduler } from './cfa/scheduler';
 
 import { failedRequests } from './cfa/failed-requests';
 import { handshake } from './cfa/handshake';
@@ -50,6 +51,9 @@ ipcMain.handle('pageready', async () => {
     sendCommand('kioskStateUpdate', kioskState);
     sendCommand('kioskLogStateUpdate', kioskLogState);
     sendCommand('kioskStatusUpdate', kioskStatusState);
+    if (kioskState.checkin_interval_enabled) {
+      scheduler.start();
+    }
   } else {
     let kiosk = {
       kioskState: kioskState,
@@ -305,6 +309,28 @@ ipcMain.handle('update-startover-disabled', async (e, obj) => {
 
 // Logging ...
 
+// Save new new-checkin-interval
+
+ipcMain.handle('new-checkin-interval', async (e, obj) => {
+  let checkin_interval = parseInt(obj['new-checkin-interval']);
+  if (Number.isInteger(checkin_interval)) {
+    kioskState.checkin_interval = checkin_interval
+    kioskState = await kioskdb.save(kioskState);
+    sendCommand('kioskStateUpdate', kioskState);
+  }
+});
+
+ipcMain.handle('update-checkin-enabled', async (e, obj) => {
+  kioskState.checkin_interval_enabled = obj['update-checkin-enabled'];
+  await kioskdb.save(kioskState);
+  if (kioskState.checkin_interval_enabled) {
+    scheduler.start();
+  } else {
+    scheduler.stop();
+  }
+  sendCommand('kioskStateUpdate', kioskState);
+});
+
 ipcMain.handle('resetKioskLogState', async () => {
   images.eraseAll();
   kioskLogState = await kiosklog.reset();
@@ -342,7 +368,7 @@ ipcMain.handle('log_failed_cfa_request', async (e, obj) => {
 // Send CfA Check-in requests ...
 
 ipcMain.handle('checkin', async () => {
-  let results = await checkin.sendBoth(kioskState, kioskLogState);
+  let results = await checkin.sendBoth();
   kioskState = await kioskdb.read();
   kioskLogState = await kiosklog.read();
   sendCommand('kioskLogStateUpdate', kioskLogState);

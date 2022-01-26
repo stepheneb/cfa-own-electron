@@ -15,5 +15,8 @@ contextBridge.exposeInMainWorld("api", {
   },
   kioskUpdate: (fn) => {
     ipcRenderer.on("kioskUpdate", (event, ...args) => fn(...args));
+  },
+  checkinTimerTick: (fn) => {
+    ipcRenderer.on("checkinTimerTick", (event, ...args) => fn(...args));
   }
 });

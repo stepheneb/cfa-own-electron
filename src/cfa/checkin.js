@@ -8,8 +8,9 @@ import u from '../renderer/modules/utilities.js';
 
 export const checkin = {};
 
-checkin.sendBoth = async (kioskState, kioskLogState) => {
-  kioskLogState = await kiosklog.save(kioskLogState);
+checkin.sendBoth = async () => {
+  let kioskState = await kioskdb.read();
+  let kioskLogState = await kiosklog.read();
   let reportResult = await checkin.sendReport(kioskState, kioskLogState);
   kioskState = await kioskdb.read();
   kioskLogState = await kiosklog.save(kioskLogState);
