@@ -61,6 +61,9 @@ ipcMain.handle('pageready', async () => {
       kioskStatusState: kioskStatusState
     }
     sendCommand('kioskUpdate', kiosk);
+    if (kioskState.checkin_interval_enabled) {
+      scheduler.start();
+    }
   }
 });
 
