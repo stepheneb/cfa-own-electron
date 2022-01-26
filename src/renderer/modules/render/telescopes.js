@@ -77,7 +77,7 @@ telescopes.name = (scope) => {
 
 telescopes.longName = (scope) => {
   let kind = "Telescope";
-  if (scope.kind) {
+  if (scope.kind || scope.kind == '') {
     kind = scope.kind;
   }
   return `${scope.longname} ${kind}`;
@@ -112,7 +112,7 @@ telescopes.render = (page, registeredCallbacks) => {
           </svg>
 
             <div class="modal-body">
-              <h5 id="${modalId}-title">${scope.longname}</h5>
+              <h5 id="${modalId}-title">${telescopes.longName(scope)}</h5>
               <div class="image-container"><img src="../${scope.image}"></img></div>
               ${scope.description}
             </div>

@@ -21,7 +21,7 @@
       {
         "key": "hubble",
         "name": "Hubble",
-        "longname": "Hubble Space Telescope",
+        "longname": "Hubble Space",
         "image": "images/telescopes/hst-sm4.jpg",
         "image-credits": "NASA",
         "image-source": "https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/hst-sm4.jpg",
@@ -229,7 +229,8 @@
       {
         "key": "sdo",
         "name": "SDO",
-        "longname": "Solar Dynamics Observatory",
+        "kind": "Observatory",
+        "longname": "Solar Dynamics",
         "image": "images/telescopes/sdo.jpg",
         "image-credits": "NASA",
         "image-source": "http://www.nasa.gov/centers/goddard/news/topstory/2008/sdo_propulsion.html",
