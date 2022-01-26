@@ -196,7 +196,7 @@ observation.render = (page, registeredCallbacks) => {
                   We will send your image to <span id="your-email">yourname@website.com</span>
                 </div>
                 <div class='details micro-observatory'>
-                  You can continue to Observe With NASA<br>using the MicroObservatory Telescope Network<br>at microobservatory.com
+                  You can continue to Observe With NASA<br>using the MicroObservatory Telescope Network<br>at microobservatory.org
                 </div>
                 <div id='post-request-note' class='post-request-note'>
                   ${notRunningInElectron}
