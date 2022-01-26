@@ -89,6 +89,20 @@ utilities.getMonthDayNow = () => {
   return Number.parseInt(utilities.getMonthDayStr(now));
 };
 
+utilities.minutesToHHMM = (m) => {
+  let date = new Date(0);
+  date.setMinutes(m);
+  let timeString = date.toISOString().substr(11, 5);
+  return timeString;
+}
+
+utilities.secondsToHHMMSS = (s) => {
+  let date = new Date(0);
+  date.setSeconds(s);
+  let timeString = date.toISOString().substr(11, 8);
+  return timeString;
+}
+
 utilities.bytesToSize = (bytes) => {
   const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
   if (bytes === 0) return 'n/a';
