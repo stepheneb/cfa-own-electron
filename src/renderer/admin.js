@@ -131,7 +131,9 @@ window.api.checkinTimerTick((countdown) => {
   cfaNextCheckin.innerText = u.secondsToHHMMSS(countdown);
 });
 
-// View
+//
+// VIEW
+//
 
 const updateView = () => {
   appNameElem.innerText = app.kioskState.appName;
@@ -150,6 +152,11 @@ const updateView = () => {
     eraseCfaKey.disabled = false;
   } else {
     eraseCfaKey.disabled = true;
+  }
+  if (cfaKeyHasValidFormat()) {
+    cfaHandshakeTest.disabled = false;
+  } else {
+    cfaHandshakeTest.disabled = true;
   }
 
   // View: Autostart Visitor application
