@@ -99,7 +99,39 @@
       </div>
     </div>
 
-    <!-- Handshake -->
+    <!-- Check In with CfA  -->
+
+    <div class='checkin section'>
+      <header>Schedule Check in with CfA</header>
+      <div class='checkin-interval'>
+        <div class='line'>
+          <div class='current'>
+            Check-in every: <span class='interval time'></span> hh:mm
+          </div>
+          <div class='next'>
+            Next: <div class='checkin time'></div>hh:mm:ss
+          </div>
+        </div>
+        <div class='line'>
+          <div class='enable'>
+            <input type='checkbox' class='checkin' name='checkin'>
+            <label for='checkin'>Enable Scheduled Check-in</label>
+          </div>
+          <div class='new'>
+            <form class='interval'>
+              <label for='interval'>Update interval:</label>
+              <input class='interval' type='number' name='interval' required minlength='1' maxlength='4' size='5' step='1' autocomplete='none' pattern='[0-9]{4}'></input>
+              <button class="btn btn-warning">
+                SAVE
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Test Connection to CfA: Handshake -->
 
     <div class='handshake section'>
       <div class="controls">
@@ -130,35 +162,6 @@
         <div class='disclose'>
           <i class="bi bi-caret-right"></i>
           <i class="bi bi-caret-down-fill expanded"></i>
-        </div>
-        <div class='checkin-interval'>
-          <div class='line'>
-
-            <div class='current'>
-              Check-in every: <span class='interval time'></span> hh:mm
-            </div>
-            <div class='next'>
-              Next: <div class='checkin time'></div>hh:mm:ss
-            </div>
-
-          </div>
-          <div class='line'>
-
-            <div class='enable'>
-              <input type='checkbox' class='checkin' name='checkin'>
-              <label for='checkin'>Enable Scheduled Check-in</label>
-            </div>
-            <div class='new'>
-              <form class='interval'>
-                <label for='interval'>Update interval:</label>
-                <input class='interval' type='number' name='interval' required minlength='1' maxlength='4' size='5' step='1' autocomplete='none' pattern='[0-9]{4}'></input>
-                <button class="btn btn-warning">
-                  SAVE
-                </button>
-              </form>
-            </div>
-          </div>
-
         </div>
 
       </div>

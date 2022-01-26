@@ -38,7 +38,7 @@ const cfaAutostartShown = getComputedStyle(cfaAutostart).display !== 'none';
 const countdownClockEl = cfaAutostart.querySelector('.countdown-clock .indicator');
 const autostartEnabled = cfaAutostart.querySelector('input.autostar-enabled');
 
-// CfA handshake section
+// Test Connection to CfA: Handshake section
 
 const cfaHandshake = document.querySelector('.handshake.section');
 const cfaHandshakeTest = cfaHandshake.querySelector('button.handshake');
@@ -46,18 +46,20 @@ const cfaHandshakeDisclose = cfaHandshake.querySelector('.disclose');
 const cfaHandshakeRequest = cfaHandshake.querySelector('.logs .request');
 const cfaHandshakeReponse = cfaHandshake.querySelector('.logs .response');
 
-// CfA logged data section
+// Check In with CfA section
+
+const cfaCheckinSection = document.querySelector('.checkin.section');
+const cfaCheckinInterval = cfaCheckinSection.querySelector('.checkin-interval');
+const cfaNextCheckin = cfaCheckinInterval.querySelector('.next .checkin');
+const cfaCurrentInterval = cfaCheckinInterval.querySelector('.current .interval');
+const cfaCheckinEnable = cfaCheckinInterval.querySelector('.enable input.checkin');
+const formNewInterval = cfaCheckinInterval.querySelector('.new form.interval');
+const inputNewInterval = cfaCheckinInterval.querySelector('.new input.interval');
+
+// CfA Visitor logs section
 
 const cfaLogging = document.querySelector('.logging.section');
 const cfaLoggingDisclose = cfaLogging.querySelector('.disclose');
-const cfaCheckinInterval = cfaLogging.querySelector('.title .checkin-interval');
-const cfaNextCheckin = cfaCheckinInterval.querySelector('.next .checkin');
-const cfaCurrentInterval = cfaCheckinInterval.querySelector('.current .interval');
-
-const cfaCheckinEnable = cfaCheckinInterval.querySelector('.enable input.checkin');
-
-const formNewInterval = cfaCheckinInterval.querySelector('.new form.interval');
-const inputNewInterval = cfaCheckinInterval.querySelector('.new input.interval');
 
 const cfaLoggingReloadBtn = cfaLogging.querySelector('button.reload');
 const cfaCheckIn = cfaLogging.querySelector('button.check-in');
