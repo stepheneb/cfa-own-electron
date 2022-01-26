@@ -21,12 +21,16 @@ scheduler.start = async () => {
       sendCommand('checkinTimerTick', second_count);
     }
     if (second_count <= 0) {
-      checkin.sendBoth();
       second_count = checkinIntervalInSeconds;
-      if (admin) {
-        sendCommand('checkinTimerTick', second_count);
-        console.log("checkin.sendBoth()");
-      }
+      checkin.sendBoth().then(result => {
+        if (admin) {
+          sendCommand('checkinTimerTick', second_count);
+          console.log("checkin.sendBoth()");
+        } else {
+          sendCommand('webConsoleLog', result);
+        }
+
+      })
     }
   }, one_second)
 }

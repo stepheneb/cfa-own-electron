@@ -36,11 +36,10 @@ main.start = () => {
       }
     });
 
-    // ipcRenderer.invoke('getKioskState').then((kioskState) => {
-    //   finishMainStart(kioskState);
-    //   window.addEventListener('online', updateOnlineStatus);
-    //   window.addEventListener('offline', updateOnlineStatus);
-    // });
+    window.api.webConsoleLog((mesg) => {
+      console.log(u.printableJSON(mesg));
+    });
+
   } else {
     finishMainStart();
   }

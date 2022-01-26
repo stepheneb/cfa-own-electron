@@ -18,5 +18,9 @@ contextBridge.exposeInMainWorld("api", {
   },
   checkinTimerTick: (fn) => {
     ipcRenderer.on("checkinTimerTick", (event, ...args) => fn(...args));
+  },
+  webConsoleLog: (fn) => {
+    ipcRenderer.on("webConsoleLog", (event, ...args) => fn(...args));
   }
+
 });
