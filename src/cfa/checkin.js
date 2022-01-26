@@ -8,6 +8,8 @@ import u from '../renderer/modules/utilities.js';
 
 export const checkin = {};
 
+export const fetchTimeout = 1000;
+
 checkin.sendBoth = async () => {
   let kioskState = await kioskdb.read();
   let kioskLogState = await kiosklog.read();
@@ -48,7 +50,7 @@ checkin.sendReport = async (kioskState, kioskLogState) => {
       url: endpoints.cfaCheckInPostUrl,
       headers: { 'Content-Type': 'multipart/form-data' },
       data: data,
-      timeout: 500,
+      timeout: fetchTimeout,
       responseType: 'json'
     })
     let auth = response.data.authorization;
