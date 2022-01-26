@@ -32,5 +32,7 @@ scheduler.start = async () => {
 }
 
 scheduler.stop = () => {
-  clearInterval(timerId);
+  if (timerId) {
+    clearInterval(timerId);
+  }
 }
