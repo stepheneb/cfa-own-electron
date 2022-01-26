@@ -16,6 +16,7 @@ checkin.sendBoth = async () => {
   kioskLogState = await kiosklog.save(kioskLogState);
   let resendResults = await failedRequests.send(kioskState, kioskLogState);
   return {
+    date: new Date().toISOString(),
     report: reportResult,
     resend: resendResults
   }
