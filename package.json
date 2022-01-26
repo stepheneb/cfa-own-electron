@@ -1,13 +1,13 @@
 {
   "name": "cfa-own-electron",
   "productName": "CfA OWN Electron",
-  "version": "1.0.0-beta.63",
+  "version": "1.0.0-beta.64",
   "description": "Explore NASA images",
   "main": ".webpack/main",
   "scripts": {
     "preinstall": "git config core.hooksPath .githooks",
     "clean": "rimraf .webpack/",
-      "start": "npm run clean && electron-forge start",
+    "start": "npm run clean && electron-forge start",
     "start-debug": "npm run clean && DEBUG='electron-forge:plugin:webpack' electron-forge start  --inspect-electron",
     "start-debug-stop": "npm run clean && DEBUG='electron-forge:plugin:webpack' electron-forge start -- --inspect-brk",
     "start-admin": "npm run clean && electron-forge start -- --admin",
