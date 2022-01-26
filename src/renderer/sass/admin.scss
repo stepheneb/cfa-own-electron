@@ -370,10 +370,15 @@ body#admin {
         justify-content: space-between;
         margin-left: 1em;
         button.resend {
+          display: none;
           span.count {
             padding: 0 0.2em 0 0.2em;
             font-weight: bold;
           }
+        }
+        button.report,
+        button.resend {
+          display: none;
         }
       }
       .logs {
