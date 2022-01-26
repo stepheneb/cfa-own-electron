@@ -442,6 +442,8 @@ const performHandShake = async () => {
       kioskState.cfa_credential_valid = false;
       break;
     case 404:
+      kioskState.cfa_registered = true;
+      kioskState.cfa_credential_valid = true;
       kioskState.cfa_ip_address_valid = false;
       break;
     }
