@@ -324,6 +324,7 @@ ipcMain.handle('new-checkin-interval', async (e, obj) => {
     kioskState = await kioskdb.save(kioskState);
     sendCommand('kioskStateUpdate', kioskState);
   }
+  finishWithHandshake();
 });
 
 ipcMain.handle('update-checkin-enabled', async (e, obj) => {
@@ -335,6 +336,7 @@ ipcMain.handle('update-checkin-enabled', async (e, obj) => {
     scheduler.stop();
   }
   sendCommand('kioskStateUpdate', kioskState);
+  finishWithHandshake();
 });
 
 ipcMain.handle('resetKioskLogState', async () => {
@@ -378,6 +380,7 @@ ipcMain.handle('checkin', async () => {
   kioskState = await kioskdb.read();
   kioskLogState = await kiosklog.read();
   sendCommand('kioskLogStateUpdate', kioskLogState);
+  finishWithHandshake();
   return {
     name: 'checkin-both',
     results: results
