@@ -21,6 +21,8 @@ handshake.query = async (kioskState) => {
   let data = {
     kiosk_id: kioskState.id,
     credential: kioskState.cfa_key,
+    checkin_interval: kioskState.checkin_interval,
+    checkin_interval_enabled: kioskState.checkin_interval_enabled
   };
 
   let request = u.printableJSON(data);
