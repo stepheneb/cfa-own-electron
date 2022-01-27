@@ -2119,296 +2119,301 @@ div.modal.save-and-send .modal-body {
   height: 48vh;
 }
 
-div.modal.observation .modal-dialog,
-div.modal.save-and-send .modal-dialog {
-  max-width: none;
-  width: 100vw;
-  height: 48vh;
-  padding-left: 4vw;
-  background-color: black;
-  .modal-content {
+div.modal.observation,
+div.modal.save-and-send {
+  pointer-events: none;
+
+  .modal-dialog {
+    pointer-events: none;
+    max-width: none;
+    width: 100vw;
+    height: 48vh;
+    padding-left: 4vw;
     background-color: black;
-    border: none;
-    button {
-      width: fit-content;
-    }
-    .modal-header {
+    .modal-content {
       background-color: black;
-      border: none;
-      h5 {
-        font-size: var(--page-title);
-        color: var(--bright-green);
-        text-transform: uppercase;
-      }
-      padding: 0.5vh 1rem;
-      button.btn-close {
-        min-width: 3vw;
-        font-size: 6vh;
-        color: white;
-      }
-    }
-    .modal-footer {
       border: none;
       button {
-        display: none;
+        width: fit-content;
       }
-    }
-    .modal-body {
-      height: 48vh;
-      width: 100%;
-      font-size: var(--page-title);
-      color: var(--bright-teal);
-      background-color: black;
-      line-height: 120%;
-      .salutation {
-        font-size: 80%;
-        text-transform: uppercase;
-      }
-      .col-left {
-        width: 24vw;
-      }
-      .about-your-image {
-        margin-top: 1vh;
-        line-height: 100%;
-        font-size: var(--about-your-image);
-        .image-name {
-          font-size: var(--about-your-image);
-        }
-      }
-      .image-name {
-        font-size: var(--page-title);
-        font-weight: 500;
-      }
-      .context {
-        margin-top: 1.4vh;
-        font-size: var(--save-and-send-context);
-        line-height: 110%;
-        color: white;
-        p {
-          line-height: 114%;
-        }
-      }
-      .enter-email {
-        padding: 0vh 2vh;
-        label {
-          padding-left: 0;
-          padding-bottom: 0.25vh;
-          line-height: 100%;
-          font-size: var(--send-email-input);
-        }
-        input {
-          padding: 0vh 1vh;
-          background-color: black;
-          color: white;
-          border: 1px solid var(--bright-teal);
-          border-radius: 2px;
-          letter-spacing: 1px;
-          &[type="hidden"] {
-            display: none;
-          }
-        }
-        button[type="submit"] {
-          &:disabled {
-            color: var(--bright-green-50-percent);
-          }
-        }
-        .simple-keyboard {
-          margin-top: 2vh;
-          font-size: 1.5vh;
-          color: var(--almost-black);
-        }
-        button {
-          margin-left: 2vh;
-        }
-      }
-      .image-container {
-        margin: 0.5vh 1vh;
-        height: 39vh;
-        width: 54vh;
-        padding: 0;
+      .modal-header {
         background-color: black;
-        border: 3px solid var(--canvas-container-border-color);
-        border-radius: 1px;
-        &.telescope {
-          width: 34vh;
+        border: none;
+        h5 {
+          font-size: var(--page-title);
+          color: var(--bright-green);
+          text-transform: uppercase;
         }
-
-        canvas {
-          object-fit: contain;
+        padding: 0.5vh 1rem;
+        button.btn-close {
+          min-width: 3vw;
+          font-size: 6vh;
+          color: white;
         }
-
-        img {
-          background-color: black;
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
+      }
+      .modal-footer {
+        border: none;
+        button {
+          display: none;
         }
-        .label {
+      }
+      .modal-body {
+        height: 48vh;
+        width: 100%;
+        font-size: var(--page-title);
+        color: var(--bright-teal);
+        background-color: black;
+        line-height: 120%;
+        .salutation {
+          font-size: 80%;
+          text-transform: uppercase;
+        }
+        .col-left {
+          width: 24vw;
+        }
+        .about-your-image {
+          margin-top: 1vh;
+          line-height: 100%;
+          font-size: var(--about-your-image);
+          .image-name {
+            font-size: var(--about-your-image);
+          }
+        }
+        .image-name {
+          font-size: var(--page-title);
+          font-weight: 500;
+        }
+        .context {
+          margin-top: 1.4vh;
           font-size: var(--save-and-send-context);
-          color: var(--bright-teal);
-          text-transform: uppercase;
-        }
-      }
-      .about-telescope {
-        font-size: var(--about-telescope-context);
-        line-height: 110%;
-        color: var(--almost-white);
-        margin: 0.5vh 1vh;
-        height: 39vh;
-        width: 32vh;
-        .title {
-          font-size: 2.4vh;
           line-height: 110%;
-          text-transform: uppercase;
+          color: white;
+          p {
+            line-height: 114%;
+          }
         }
-        p {
-          margin: 2vh 0;
-          line-height: 115%;
-        }
-        span.label {
-          color: var(--bright-green);
-        }
-      }
-      &.two,
-      &.three {
         .enter-email {
-          width: 64vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          margin-bottom: 0.15em;
-          form {
-            input[type="email"] {
-              width: 75%;
-              font-size: var(--send-email-input);
-              font-weight: 500;
-            }
-            button {
-              width: 25%;
-              height: 5.5vh;
-              margin-right: 0;
-              padding-right: 0;
-              font-size: var(--send-email-button);
-            }
+          padding: 0vh 2vh;
+          label {
+            padding-left: 0;
+            padding-bottom: 0.25vh;
+            line-height: 100%;
+            font-size: var(--send-email-input);
           }
-        }
-        .hg-theme-default {
-          font-family: Rajdhani, Arial, Helvetica, sans-serif;
-          background-color: transparent;
-          color: var(--bright-green);
-          padding: 0;
-          .hg-row {
-            justify-content: center;
-          }
-          .hg-button {
-            margin: 0px 2px;
-            flex-grow: 0;
-            height: 56px;
-            width: 52px;
-            font-size: 1.4em;
-            color: var(--bright-green);
-            border: 1px solid var(--bright-green);
-            background-color: transparent;
-            text-transform: none;
-            &[disabled] {
-              pointer-events: none;
-            }
-            &.dot-com {
-              font-size: 1.2em;
-            }
-            &.special {
-              font-size: 1.3em;
-            }
-          }
-          .hg-button-bksp {
-            background-color: var(--dark-black);
-            width: 64px;
-            svg {
-              width: 80%;
-              height: auto;
-            }
-          }
-          .hg-button-shift {
-            background-color: var(--dark-black);
-            width: 64px;
-            svg {
-              width: 60%;
-              height: auto;
-              path {
-                stroke: currentColor;
-                stroke-width: 4;
-                fill: transparent;
-              }
-            }
-          }
-        }
-        .hg-layout-shift {
-          .hg-button-shift {
-            svg {
-              width: 60%;
-              height: auto;
-              path {
-                fill: var(--bright-green);
-              }
-            }
-          }
-        }
-
-        .thanks {
-          width: 62vh;
-          margin-top: 6vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
-          .salutation {
-            color: var(--bright-teal);
-            font-size: 6vh;
-          }
-          .details {
-            margin-top: 1vh;
-            color: var(--bright-teal);
-            font-size: 3vh;
-            max-width: 60%;
-            text-align: center;
-            line-height: normal;
-            &.micro-observatory {
-              max-width: 95%;
-            }
-          }
-          .post-request-note {
-            margin-top: 2vh;
-            padding: 0 10% 0 15%;
-            font-size: 2.6vh;
-            line-height: 1.6em;
+          input {
+            padding: 0vh 1vh;
+            background-color: black;
             color: white;
-            p {
-              font-size: 2vh;
+            border: 1px solid var(--bright-teal);
+            border-radius: 2px;
+            letter-spacing: 1px;
+            &[type="hidden"] {
+              display: none;
             }
-            a {
-              margin-top: 1vh;
-              font-size: 2vh;
-              color: var(--almost-white);
-              &.disabled {
-                pointer-events: none;
-              }
-              span {
-                color: white;
-                padding: 0vh 0.15vh;
+          }
+          button[type="submit"] {
+            &:disabled {
+              color: var(--bright-green-50-percent);
+            }
+          }
+          .simple-keyboard {
+            margin-top: 2vh;
+            font-size: 1.5vh;
+            color: var(--almost-black);
+          }
+          button {
+            margin-left: 2vh;
+          }
+        }
+        .image-container {
+          margin: 0.5vh 1vh;
+          height: 39vh;
+          width: 54vh;
+          padding: 0;
+          background-color: black;
+          border: 3px solid var(--canvas-container-border-color);
+          border-radius: 1px;
+          &.telescope {
+            width: 34vh;
+          }
+
+          canvas {
+            object-fit: contain;
+          }
+
+          img {
+            background-color: black;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+          .label {
+            font-size: var(--save-and-send-context);
+            color: var(--bright-teal);
+            text-transform: uppercase;
+          }
+        }
+        .about-telescope {
+          font-size: var(--about-telescope-context);
+          line-height: 110%;
+          color: var(--almost-white);
+          margin: 0.5vh 1vh;
+          height: 39vh;
+          width: 32vh;
+          .title {
+            font-size: 2.4vh;
+            line-height: 110%;
+            text-transform: uppercase;
+          }
+          p {
+            margin: 2vh 0;
+            line-height: 115%;
+          }
+          span.label {
+            color: var(--bright-green);
+          }
+        }
+        &.two,
+        &.three {
+          .enter-email {
+            width: 64vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-bottom: 0.15em;
+            form {
+              input[type="email"] {
+                width: 75%;
+                font-size: var(--send-email-input);
                 font-weight: 500;
               }
+              button {
+                width: 25%;
+                height: 5.5vh;
+                margin-right: 0;
+                padding-right: 0;
+                font-size: var(--send-email-button);
+              }
             }
           }
-          .stats {
-            margin-top: 0vh;
-            font-size: 2vh;
-            color: var(--almost-white);
+          .hg-theme-default {
+            font-family: Rajdhani, Arial, Helvetica, sans-serif;
+            background-color: transparent;
+            color: var(--bright-green);
+            padding: 0;
+            .hg-row {
+              justify-content: center;
+            }
+            .hg-button {
+              margin: 0px 2px;
+              flex-grow: 0;
+              height: 56px;
+              width: 52px;
+              font-size: 1.4em;
+              color: var(--bright-green);
+              border: 1px solid var(--bright-green);
+              background-color: transparent;
+              text-transform: none;
+              &[disabled] {
+                pointer-events: none;
+              }
+              &.dot-com {
+                font-size: 1.2em;
+              }
+              &.special {
+                font-size: 1.3em;
+              }
+            }
+            .hg-button-bksp {
+              background-color: var(--dark-black);
+              width: 64px;
+              svg {
+                width: 80%;
+                height: auto;
+              }
+            }
+            .hg-button-shift {
+              background-color: var(--dark-black);
+              width: 64px;
+              svg {
+                width: 60%;
+                height: auto;
+                path {
+                  stroke: currentColor;
+                  stroke-width: 4;
+                  fill: transparent;
+                }
+              }
+            }
           }
-        }
-        .image-container:not(.save-and-send) {
-          width: 28vh;
-          &.telescope {
-            width: 22vh;
+          .hg-layout-shift {
+            .hg-button-shift {
+              svg {
+                width: 60%;
+                height: auto;
+                path {
+                  fill: var(--bright-green);
+                }
+              }
+            }
+          }
+
+          .thanks {
+            width: 62vh;
+            margin-top: 6vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            .salutation {
+              color: var(--bright-teal);
+              font-size: 6vh;
+            }
+            .details {
+              margin-top: 1vh;
+              color: var(--bright-teal);
+              font-size: 3vh;
+              max-width: 60%;
+              text-align: center;
+              line-height: normal;
+              &.micro-observatory {
+                max-width: 95%;
+              }
+            }
+            .post-request-note {
+              margin-top: 2vh;
+              padding: 0 10% 0 15%;
+              font-size: 2.6vh;
+              line-height: 1.6em;
+              color: white;
+              p {
+                font-size: 2vh;
+              }
+              a {
+                margin-top: 1vh;
+                font-size: 2vh;
+                color: var(--almost-white);
+                &.disabled {
+                  pointer-events: none;
+                }
+                span {
+                  color: white;
+                  padding: 0vh 0.15vh;
+                  font-weight: 500;
+                }
+              }
+            }
+            .stats {
+              margin-top: 0vh;
+              font-size: 2vh;
+              color: var(--almost-white);
+            }
+          }
+          .image-container:not(.save-and-send) {
+            width: 28vh;
+            &.telescope {
+              width: 22vh;
+            }
           }
         }
       }
