@@ -1,4 +1,4 @@
-import { admin, sendCommand } from '../main.js'
+import { admin, sendCommand, finishWithHandshake } from '../main.js'
 import { kioskdb } from '../kioskdb.js'
 import { checkin } from './checkin.js'
 
@@ -29,7 +29,7 @@ scheduler.start = async () => {
         } else {
           sendCommand('webConsoleLog', result);
         }
-
+        finishWithHandshake();
       })
     }
   }, one_second)

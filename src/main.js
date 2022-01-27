@@ -453,6 +453,15 @@ ipcMain.handle('online-status', async (e, obj) => {
 
 // ----------------------------
 
+export const finishWithHandshake = async () => {
+  let kioskStatusState = await performHandShake();
+  if (admin) {
+    sendCommand('kioskStatusUpdate', kioskStatusState);
+  } else {
+    sendCommand('webConsoleLog', kioskStatusState);
+  }
+}
+
 const performHandShake = async () => {
   let kioskState = await kioskdb.read();
   let status = await handshake.query(kioskState);
