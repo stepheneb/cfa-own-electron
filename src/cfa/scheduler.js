@@ -1,5 +1,6 @@
 import { admin, sendCommand, finishWithHandshake } from '../main.js'
 import { kioskdb } from '../kioskdb.js'
+import { kiosklog } from '../kiosklog.js'
 import { checkin } from './checkin.js'
 
 export const scheduler = {};
@@ -12,6 +13,12 @@ scheduler.start = async () => {
   let checkinInterval = kioskState.checkin_interval;
   const checkinIntervalInSeconds = 60 * checkinInterval;
   let second_count = checkinIntervalInSeconds;
+
+  const sendKioskLogState = async () => {
+    let kioskLogState = await kiosklog.read();
+    sendCommand('kioskLogStateUpdate', kioskLogState);
+  }
+
   if (timerId) {
     clearInterval(timerId);
   }
@@ -26,6 +33,7 @@ scheduler.start = async () => {
         if (admin) {
           sendCommand('checkinTimerTick', second_count);
           console.log("checkin.sendBoth()");
+          sendKioskLogState();
         } else {
           sendCommand('webConsoleLog', result);
         }
