@@ -111,21 +111,26 @@ splash.hide = () => {
 };
 
 splash.show = () => {
-  let backgroundImage = document.getElementById('splash-background-img');
-  let shift = (Math.random() * 20 - 10).toFixed() + 'px'
-  let scalestr = `transform: scale(1.1) translate(${shift}, ${shift})`;
-  // trigger a dom reflow which re-runs the css fadein animation
-  splashElem.style = 'animation: none; opacity: 0';
-  window.requestAnimationFrame(() => {
-    window.setTimeout(() => {
-      splashElem.style = '';
-    }, 0);
-  });
-
-  backgroundImage.style = scalestr;
   if (app.start) {
-    splashElem.style.display = "block";
-    splash2Elem.style.display = "none";
+    let backgroundImage = document.getElementById('splash-background-img');
+    let shift = (Math.random() * 20 - 10).toFixed() + 'px'
+    let scalestr = `transform: scale(1.1) translate(${shift}, ${shift})`;
+    // trigger a dom reflow which re-runs the css fadein animation
+    splashElem.style = 'animation: none; opacity: 0';
+    window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        splashElem.style = '';
+      }, 0);
+    });
+
+    backgroundImage.style = scalestr;
+    if (app.start) {
+      splashElem.style.display = "block";
+      splash2Elem.style.display = "none";
+    } else {
+      splashElem.style.display = "none";
+      splash2Elem.style.display = "block";
+    }
   } else {
     splashElem.style.display = "none";
     splash2Elem.style.display = "block";
