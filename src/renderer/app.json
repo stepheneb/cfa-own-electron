@@ -2,6 +2,7 @@
   "title": "Observing With NASA",
   "subtitle": "Learn how to enhance real NASA data. Choose a challenge below.",
   "kiosk_id": 3,
+  "defaultRestartDuration": 60,
   "splash": {
     "title1": "Welcome To",
     "title2": "Observing With NASA",
@@ -14,7 +15,6 @@
     "intro2": "Capture your own real earth-based telescope image using a MicroObservatory Robotic Telescope tonight.",
     "continue": "Continue >"
   },
-  "defaultRestartDuration": 60,
   "communicationError": "TECHNICAL DIFFICULTY: There may be a delay in processing your request.",
   "telescopeData": {
     "prologue": "These images were taken with the",

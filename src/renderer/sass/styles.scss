@@ -113,13 +113,28 @@ div#splash2 {
   color: white;
 }
 
+div#splash {
+  animation: splash-fadein 10s;
+}
+
+@keyframes splash-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 div#splash2 {
   z-index: 50;
+  display: none;
 }
 
 #splash img {
   width: inherit;
   height: inherit;
+  transition: transform 1s 0s ease-in-out;
 }
 
 #splash2 img {
