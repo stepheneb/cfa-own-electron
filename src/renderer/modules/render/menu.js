@@ -221,6 +221,15 @@ renderMenu.addMenuListeners = (ctype) => {
     });
   });
 
+  // throw away click evvents in a menu category page that aren't
+  // on the activity image-wrapper itself or the SVG close button
+  let menuCategoryPages = document.querySelectorAll('.menu-category-pages')
+  menuCategoryPages.forEach((el) => {
+    renderMenu.addListener(el, 'click', (e) => {
+      e.stopPropagation();
+    });
+  })
+
   //
   // If category page visible any click in that gets to body
   // closes category pages container
@@ -237,6 +246,7 @@ renderMenu.addMenuListeners = (ctype) => {
   };
 
   addMenuBodyListener(ctype);
+
 };
 
 //
