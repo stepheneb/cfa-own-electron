@@ -15,6 +15,7 @@
     "continue": "Continue >"
   },
   "defaultRestartDuration": 60,
+  "communicationError": "TECHNICAL DIFFICULTY: There may be a delay in processing your request.",
   "telescopeData": {
     "prologue": "These images were taken with the",
     "telescopes": [

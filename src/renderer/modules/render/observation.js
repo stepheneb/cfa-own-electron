@@ -321,7 +321,7 @@ observation.render = (page, registeredCallbacks) => {
                 postRequestNote.innerText = '';
               } else {
                 cfaError.log('observation', body, response.authorization);
-                postRequestNote.innerText = 'Technical issues: possible delay.';
+                postRequestNote.innerText = app.communicationError;
               }
 
             })
@@ -339,7 +339,7 @@ observation.render = (page, registeredCallbacks) => {
               }
               console.error(errorstr);
               cfaError.log('observation', body, authorization);
-              postRequestNote.innerText = 'Technical issues: possible delay.';
+              postRequestNote.innerText = app.communicationError;
             });
         } catch (error) {
           let errorstr = `Request to send observation failed: "${error.toString()}". Possibly a networking error.  The Developer Tools console might have more clues.`;
@@ -349,7 +349,7 @@ observation.render = (page, registeredCallbacks) => {
           }
           console.error(errorstr);
           cfaError.log('observation', body, authorization);
-          postRequestNote.innerText = 'Technical issues: possible delay.';
+          postRequestNote.innerText = app.communicationError;
         }
       }
 
