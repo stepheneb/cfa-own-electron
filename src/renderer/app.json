@@ -2464,7 +2464,7 @@
         },
         {
           "id": "lagoon-multi",
-          "disabled": true,
+          "disabled": false,
           "poster": "lagoon-multi",
           "title": "Lagoon Galaxy",
           "the": true,
@@ -2503,7 +2503,7 @@
               "y": 615
             },
             "maximumBrightness": 2,
-            "selectedSourceNumber": 0,
+            "selectedSourceNumber": 1,
             "selectedMainLayers": "100",
             "sources": [
               {
@@ -2519,9 +2519,9 @@
                 "filter": "red",
                 "cmapName": "inferno",
                 "min": 3,
-                "max": 295,
+                "max": 1000,
                 "scaling": "log",
-                "brightness": 0.75,
+                "brightness": 0.5,
                 "contrast": 1,
                 "original": {
                   "type": "FITS",
@@ -2539,11 +2539,11 @@
                   "large": "rrawdata/lagoon-multi/905x905/Hubble_Lagoon_656nVisG_1636744779626.bmp"
                 },
                 "filter": "green",
-                "min": 50,
-                "max": 2010,
+                "min": 65,
+                "max": 20102,
                 "scaling": "log",
-                "brightness": 0.5,
-                "contrast": 1,
+                "brightness": 0.25,
+                "contrast": 0.5,
                 "original": {
                   "type": "FITS",
                   "path": "source-images/fits/lagoon-multi/Hubble_Lagoon_656nVisG_1636744779626.fits"
@@ -2561,11 +2561,11 @@
                 },
                 "filter": "blue",
                 "cmapName": "calm",
-                "min": 0,
-                "max": 8,
+                "min": 0.1,
+                "max": 5,
                 "scaling": "log",
-                "brightness": 1.25,
-                "contrast": 1,
+                "brightness": 2,
+                "contrast": 1.75,
                 "original": {
                   "type": "FITS",
                   "path": "source-images/fits/lagoon-multi/Chandra_Lagoon_Xray_1636744791601.fits"
