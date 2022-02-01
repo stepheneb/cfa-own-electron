@@ -113,18 +113,19 @@
           </div>
         </div>
         <div class='line'>
-          <div class='enable'>
-            <input type='checkbox' class='checkin' name='checkin'>
-            <label for='checkin'>Enable Scheduled Check-in</label>
-          </div>
           <div class='new'>
             <form class='interval'>
               <label for='interval'>Update interval:</label>
               <input class='interval' type='number' name='interval' required minlength='1' maxlength='4' size='5' step='1' autocomplete='none' pattern='[0-9]{4}'></input>
+              minutes
               <button class="btn btn-warning">
                 SAVE
               </button>
             </form>
+          </div>
+          <div class='enable'>
+            <input type='checkbox' class='checkin' name='checkin'>
+            <label for='checkin'>Scheduled Check-in Enabled</label>
           </div>
         </div>
       </div>
@@ -257,7 +258,7 @@
             <p><span id='app-name'><span></p>
             <p><span id='app-version'><span></p>
             <p>Copyright 2021 Smithsonian Institution</p>
-            <p>
+            <!-- <p>
               Released under the MIT license.
             </p>
             <p class='license'>
@@ -274,7 +275,7 @@
               OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
               LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
               IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            </p>
+            </p> -->
           </div>
           <div class='buttons'>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
