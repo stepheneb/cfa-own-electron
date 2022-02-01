@@ -2286,6 +2286,9 @@ div.modal.save-and-send {
                 width: 75%;
                 font-size: var(--send-email-input);
                 font-weight: 500;
+                &:focus-visible {
+                  outline: inherit;
+                }
               }
               button {
                 width: 25%;
