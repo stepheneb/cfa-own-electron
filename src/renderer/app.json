@@ -101,7 +101,8 @@
       {
         "key": "spitzer",
         "name": "Spitzer",
-        "longname": "Spitzer Space Telescope",
+        "kind": "Telescope",
+        "longname": "Spitzer Space",
         "image": "images/telescopes/hd_spitzer_side_visible_small.jpg",
         "image-credits": "NASA",
         "image-source": "https://www.nasa.gov/sites/default/files/thumbnails/image/hd_spitzer_side_visible.jpg",
