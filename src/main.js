@@ -48,6 +48,7 @@ ipcMain.handle('pageready', async () => {
   kioskStatusState = await performHandShake();
 
   if (admin) {
+    debugger;
     sendCommand('kioskStateUpdate', kioskState);
     sendCommand('kioskLogStateUpdate', kioskLogState);
     sendCommand('kioskStatusUpdate', kioskStatusState);
@@ -307,8 +308,8 @@ ipcMain.handle('update-autostart-visitor', async (e, obj) => {
 
 // save disable/enable automatic visitor timeout startover flag
 
-ipcMain.handle('update-startover-disabled', async (e, obj) => {
-  kioskState.startover_disabled = obj['update-startover-disabled'];
+ipcMain.handle('update-startover-enabled', async (e, obj) => {
+  kioskState.startover_disabled = !obj['update-startover-enabled'];
   await kioskdb.save(kioskState);
   sendCommand('kioskStateUpdate', kioskState);
 });
@@ -418,6 +419,7 @@ ipcMain.handle('handshake', async () => {
   if (admin) {
     kioskStatusState = await performHandShake();
     kioskState = await kioskdb.read();
+    debugger;
     sendCommand('kioskStatusUpdate', kioskStatusState);
     sendCommand('kioskStateUpdate', kioskState);
   } else {
@@ -459,6 +461,7 @@ ipcMain.handle('online-status', async (e, obj) => {
 export const finishWithHandshake = async () => {
   let kioskStatusState = await performHandShake();
   if (admin) {
+    debugger;
     sendCommand('kioskStatusUpdate', kioskStatusState);
   } else {
     sendCommand('webConsoleLog', kioskStatusState);

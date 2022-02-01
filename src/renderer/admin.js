@@ -73,7 +73,7 @@ const cfaLoggingResponse = cfaLogging.querySelector('.logs pre.log');
 // CfA Debugging section
 
 const cfaDebugging = document.querySelector('.debugging.section');
-const startoverDisabled = cfaDebugging.querySelector('input.startover-disabled');
+const startoverEnabled = cfaDebugging.querySelector('input.startover-enabled');
 
 // Main ...
 
@@ -88,8 +88,12 @@ let kioskStatusReceived = false;
 // main process know when the page is ready.
 
 document.addEventListener('DOMContentLoaded', () => {
-  ipcRenderer.invoke('pageready');
-  firstPageRender = true;
+  window.requestAnimationFrame(() => {
+    window.setTimeout(() => {
+      ipcRenderer.invoke('pageready');
+      firstPageRender = true;
+    }, 0);
+  });
 });
 
 // Listeners for updates from main NodeJS process
@@ -214,7 +218,7 @@ const updateView = () => {
 
   // View: Debugging visitor application, disable timeout startover
 
-  startoverDisabled.checked = app.kioskState.startover_disabled;
+  startoverEnabled.checked = !app.kioskState.startover_disabled;
 
   // View: Handshake
 
@@ -272,9 +276,9 @@ cfaCheckinEnable.addEventListener('change', () => {
 
 // Controller: Visitor Timeout Startover checkbox toggled
 
-startoverDisabled.addEventListener('change', () => {
-  let obj = { "update-startover-disabled": startoverDisabled.checked };
-  ipcRenderer.invoke('update-startover-disabled', obj);
+startoverEnabled.addEventListener('change', () => {
+  let obj = { "update-startover-enabled": startoverEnabled.checked };
+  ipcRenderer.invoke('update-startover-enabled', obj);
 });
 
 // Controller: App Restart button clicked
