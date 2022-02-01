@@ -200,7 +200,8 @@ renderMenu.addMenuListeners = (ctype) => {
   //
   let addStartPageListener = (ctype, page) => {
     let id = `open-page-${ctype}-${page.id}`;
-    let elem = document.getElementById(id);
+    let activity = document.getElementById(id);
+    let elem = activity.querySelector('.image-wrapper')
 
     renderMenu.addListener(elem, 'click', (e) => {
       e.stopPropagation();
