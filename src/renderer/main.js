@@ -13,6 +13,8 @@ let main = {};
 
 let startTime = 0;
 let restartDuration = 0;
+let startingOverElem;
+let values;
 
 let kiosk;
 let firstPageRender = true;
@@ -215,8 +217,8 @@ const setupWindowSizeListener = () => {
 }
 
 const enableCountdownToRestart = () => {
-  let startingOverElem = document.getElementById('starting-over');
-  let values = startingOverElem.querySelector('span.values');
+  startingOverElem = document.getElementById('starting-over');
+  values = startingOverElem.querySelector('span.values');
   if (u.runningInElectron() && !app.kioskState.startover_disabled) {
     startTime = performance.now();
     restartDuration = app.defaultRestartDuration;
@@ -242,7 +244,18 @@ const enableCountdownToRestart = () => {
       startingOverElem.classList.remove('changing');
       values.innerText = '';
     });
+    window.addEventListener('click', () => {
+      startTime = performance.now();
+      startingOverElem.classList.remove('changing');
+      values.innerText = '';
+    });
   }
+}
+
+main.resetStartOverTimer = () => {
+  startTime = performance.now();
+  startingOverElem.classList.remove('changing');
+  values.innerText = '';
 }
 
 export default main;

@@ -3,6 +3,7 @@
 
 import Keyboard from 'simple-keyboard';
 import svg from './svg.js';
+import main from '../../main.js';
 
 let emailKeyboard = {};
 
@@ -82,12 +83,14 @@ emailKeyboard.render = (page, sendEmailFormId, registeredCallbacks) => {
 
     // update simple-keyboard when input is changed directly
     document.querySelector("input#email").addEventListener("input", event => {
+      main.resetStartOverTimer();
       checkEmail(event.target.value);
       keyboard.setInput(event.target.value);
     });
 
     function onChange(input) {
       checkEmail(input);
+      main.resetStartOverTimer();
       document.querySelector("input#email").value = input;
       // console.log("Input changed", input);
     }
