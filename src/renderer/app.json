@@ -2301,10 +2301,10 @@
                   "large": "rawdata/M82/1270x1270/M82_Hubble_Optical.bmp"
                 },
                 "filter": "green",
-                "min": 14.5,
+                "min": 14.2,
                 "max": 17967,
                 "scaling": "log",
-                "brightness": 1.2,
+                "brightness": 1,
                 "contrast": 1,
                 "original": {
                   "type": "FITS",
