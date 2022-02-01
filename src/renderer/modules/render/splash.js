@@ -45,16 +45,18 @@ let renderSplash = () => {
   splashElem.style.zIndex = "100";
   splashElem.style.display = "block";
 
-  window.requestAnimationFrame(() => {
-    window.setTimeout(() => {
-      const ctrlBacktick = document.getElementById('ctrl-backtick');
-      const status = ctrlBacktick.querySelector('.status');
-      if (!app.kioskState.working) {
-        status.classList.add('problem');
-        status.innerText = 'CfA Communication: not enabled';
-      }
-    }, 0);
-  });
+  if (u.runningInElectron()) {
+    window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        const ctrlBacktick = document.getElementById('ctrl-backtick');
+        const status = ctrlBacktick.querySelector('.status');
+        if (!app.kioskState.working) {
+          status.classList.add('problem');
+          status.innerText = 'CfA Communication: not enabled';
+        }
+      }, 0);
+    });
+  }
 
   u.addClickAndContextListener('splash', splashElem, () => {
     if (u.runningInElectron()) {
