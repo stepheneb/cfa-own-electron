@@ -51,8 +51,13 @@ if (u.runningInElectron()) {
     if (event.ctrlKey && event.keyCode == 192) {
       event.stopPropagation();
       event.preventDefault();
-      console.log("control + backtic was pressed.");
-      ipcRenderer.send('ctrl-backtic');
+      if (event.shiftKey) {
+        console.log("control + SHIFT + backtic was pressed.");
+        ipcRenderer.send('ctrl-shift-backtic');
+      } else {
+        console.log("control + backtic was pressed.");
+        ipcRenderer.send('ctrl-backtic');
+      }
     }
   });
 }

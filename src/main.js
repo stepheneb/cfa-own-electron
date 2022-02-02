@@ -48,7 +48,6 @@ ipcMain.handle('pageready', async () => {
   kioskStatusState = await performHandShake();
 
   if (admin) {
-    debugger;
     sendCommand('kioskStateUpdate', kioskState);
     sendCommand('kioskLogStateUpdate', kioskLogState);
     sendCommand('kioskStatusUpdate', kioskStatusState);
@@ -271,6 +270,10 @@ if (admin) {
     app.relaunch({ args: argsAddAdmin() });
     app.quit(0);
   });
+  ipcMain.on('ctrl-shift-backtic', () => {
+    mainWindow.setFullScreen(false);
+    mainWindow.webContents.openDevTools();
+  });
 }
 
 // ask to be sent kiosk states
@@ -419,7 +422,6 @@ ipcMain.handle('handshake', async () => {
   if (admin) {
     kioskStatusState = await performHandShake();
     kioskState = await kioskdb.read();
-    debugger;
     sendCommand('kioskStatusUpdate', kioskStatusState);
     sendCommand('kioskStateUpdate', kioskState);
   } else {
@@ -461,7 +463,6 @@ ipcMain.handle('online-status', async (e, obj) => {
 export const finishWithHandshake = async () => {
   let kioskStatusState = await performHandShake();
   if (admin) {
-    debugger;
     sendCommand('kioskStatusUpdate', kioskStatusState);
   } else {
     sendCommand('webConsoleLog', kioskStatusState);
