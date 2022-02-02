@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 
+import svg from './svg.js';
 import Filter from '../filter.js';
 
 let specialEffects = {};
@@ -41,7 +42,7 @@ specialEffects.render = (page, registeredCallbacks) => {
     <div class='special-effects c-custom-checkbox'>
       <div class='title'>Special Effects</div>
       <div class='subtitle notice'>
-        <span class="solid-right-arrow">&#11157</span>Try an effect to enhance your image
+        ${svg.solidRightArrow}Try an effect to enhance your image
       </div>
       <form id="${formId}">
         ${effectsHtml}

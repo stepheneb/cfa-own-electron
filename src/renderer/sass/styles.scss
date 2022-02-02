@@ -1368,10 +1368,15 @@ div.control-collection {
     font-weight: 500;
     padding: 0vh 0vh 0.5vh 0vh;
     &.notice {
+      svg {
+        display: inline-block;
+        vertical-align: middle;
+        width: 1.2em;
+      }
       font-size: var(--notice-subtitle);
       font-weight: 400;
-      text-indent: -1.1vw;
-      margin-left: 1.4vw;
+      text-indent: -1.5em;
+      margin-left: 2.4em;
       margin-bottom: 0.5vh;
     }
   }
@@ -1643,6 +1648,13 @@ div.under-main-layer-controls {
     font-size: var(--control-subtitle);
     font-weight: 500;
     padding-bottom: 3px;
+    &.notice {
+      svg {
+        display: inline-block;
+        vertical-align: middle;
+        width: 1.2em;
+      }
+    }
   }
 }
 

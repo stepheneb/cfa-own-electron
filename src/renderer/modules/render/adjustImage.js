@@ -182,7 +182,7 @@ adjustImage.renderRGB = (page, registeredCallbacks) => {
   return `
     <div class='adjust-layer ${page.category.type}'>
       <div class='subtitle notice'>
-        <span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}
+        ${svg.solidRightArrow}${page.adjustimagetext}
       </div>
       ${brightness(page)}
       ${contrast(page)}
@@ -216,7 +216,7 @@ adjustImage.renderMasterpiece = (page, registeredCallbacks) => {
   return `
     <div class='adjust-layer'>
       <div class='subtitle notice'>
-        <span class="solid-right-arrow">&#11157</span>${page.adjustimagetext}
+        ${svg.solidRightArrow}${page.adjustimagetext}
       </div>
       ${brightness(page)}
       ${contrast(page)}

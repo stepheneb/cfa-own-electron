@@ -1,6 +1,7 @@
 /*jshint esversion: 11 */
 
 import cmap from './cmap.js';
+import svg from './svg.js';
 import u from '../utilities.js';
 
 let colorMaps = {};
@@ -36,7 +37,7 @@ colorMaps.render = (page, registeredCallbacks) => {
     <div id="select-colormaps" class='color-maps'>
       <div class='title'>Color Maps</div>
       <div class='subtitle notice'>
-        <span class="solid-right-arrow">&#11157</span>Select a color range to add color to your image
+        ${svg.solidRightArrow}Select a color range to add color to your image
       </div>
       ${cmapsHtml}
     </div>

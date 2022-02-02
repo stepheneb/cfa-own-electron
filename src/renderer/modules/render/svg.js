@@ -30,6 +30,20 @@ svg.stepBack = `
   </svg>
 `;
 
+svg.solidRightArrow = `
+  <svg class='solid-right-arrow' xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 28">
+    <path class="outline"
+      d="M32 14
+        L15 0
+        L15 7.5
+        L0 7.5
+        L0 20.5
+        L15 20.5
+        L15 28 Z"
+      </path>
+  </svg>
+`;
+
 svg.keyboardShift = `
   <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" viewBox="0 0 72 78">
     <path class="outline"

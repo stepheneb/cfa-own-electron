@@ -241,7 +241,7 @@ class Page {
         <div class='left-column col-left'>
           <div class="control-collection animate d-flex flex-column justify-content-start">
             <div class='subtitle notice'>
-              <span class="solid-right-arrow">&#11157</span>${this.animatetext}
+              ${svg.solidRightArrow}${this.animatetext}
             </div>
             <div class="context animate">${this.context}</div>
             <div id="column-middle-spacer"></div>
@@ -549,7 +549,7 @@ class Page {
     return `
       <div id="image-select-filter-layer-to-adjust"  class='select-layer'>
         <div class='subtitle notice'>
-          <span class="solid-right-arrow">&#11157</span>${this.selectfiltertext}
+          ${svg.solidRightArrow}${this.selectfiltertext}
         </div>
         ${renderButtonsAndPalletes(this)}
       </div>
@@ -596,7 +596,7 @@ class Page {
     return `
       <div class='control-collection'>
         <div class='subtitle notice'>
-          <span class="solid-right-arrow">&#11157</span>${this.findtext}
+          ${svg.solidRightArrow}${this.findtext}
         </div>
         <div id="${this.findApolloSiteContainerId}" class="${this.type}">
           <canvas id="${this.findApolloSiteCanvasId}"></canvas>
@@ -731,7 +731,7 @@ class Page {
     let html = `
       <div class='under-main-layer-controls ${this.type}'>
         <div class="subtitle notice">
-          <span class="solid-right-arrow">&#11157</span> Combine to reveal a full-color image
+          ${svg.solidRightArrow} Combine to reveal a full-color image
         </div>
         <form id="image-select-main-layer">
           <div class="d-flex flex-row justify-content-start align-items-center">
@@ -770,7 +770,7 @@ class Page {
     html += `
       <div class='under-main-layer-controls masterpiece'>
         <div class="subtitle notice">
-          <span class="solid-right-arrow">&#11157</span> Pinch to zoom and pan or use the buttons
+          ${svg.solidRightArrow} Pinch to zoom and pan or use the buttons
         </div>
         ${this.renderZoomSlider(this.registeredCallbacks)}
       </div>
