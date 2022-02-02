@@ -49,7 +49,7 @@ telescopes.updateVisibility = page => {
             let modalImage = modalElem.querySelector('.telescope>.modal-content>.modal-body>.image-container');
             modalImage.style.height = bcrScope.height + 'px';
             modalImage.style.width = bcrScope.width + 'px';
-            let top = bcrScope.top - 75;
+            let top = bcrScope.top - 65;
             modalElem.style.top = top + 'px';
             let right = window.innerWidth - bcrScope.right - (2 + 16 + 21);
             modalElem.style.right = `${right}px`;
@@ -57,7 +57,7 @@ telescopes.updateVisibility = page => {
             scope.bcr = null;
           }
         });
-      }, 100);
+      }, 200);
     });
 
   }
@@ -85,7 +85,7 @@ telescopes.longName = (scope) => {
 
 telescopes.render = (page, registeredCallbacks) => {
   let scopes = page.telescopes;
-  let html = `<div>${app.telescopeData.prologue}</div>`;
+  let html = `<div class='prologue'>${app.telescopeData.prologue}</div>`;
   let modalHtml = '';
   let id, modalId;
   registeredCallbacks.push(callback);
@@ -102,7 +102,7 @@ telescopes.render = (page, registeredCallbacks) => {
     `;
 
     modalHtml += `
-      <div class="modal telescope fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
+      <div class="modal telescope" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}-title" aria-hidden="true">
         <div class="telescope modal-dialog">
           <div class="modal-content">
           <svg type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
