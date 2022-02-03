@@ -413,9 +413,12 @@ class ImageInspect {
       return `
         <div class="data">
           <div class="d-flex flex-row justify-content-start align-items-center">
-            <div class="pos">canvas</div>
-            <div class="pos">x: <span id="${that.cposxId}"></span></div>
-            <div class="pos">y: <span id="${that.cposyId}"></span></div>
+            <div class="pos">Layer: </div>
+            <div class="pos"><span id="${that.layerNameId}"></span></div>
+            <div class="pos">raw value</div>
+            <div class="pos"><span id="${that.cposRawId}"></span></div>
+          </div>
+          <div class="d-flex flex-row justify-content-start align-items-center">
           </div>
           <div class="d-flex flex-row justify-content-start align-items-center">
             <div class="pos">rgb</div>
@@ -423,20 +426,16 @@ class ImageInspect {
             <div class="pos">g: <span id="${that.cposGreenId}"></span></div>
             <div class="pos">b: <span id="${that.cposBlueId}"></span></div>
           </div>
+          <div>&nbsp;</div>
+          <div class="d-flex flex-row justify-content-start align-items-center">
+            <div class="pos">canvas</div>
+            <div class="pos">x: <span id="${that.cposxId}"></span></div>
+            <div class="pos">y: <span id="${that.cposyId}"></span></div>
+          </div>
           <div class="d-flex flex-row justify-content-start align-items-center">
             <div class="pos">rgb ptr</div>
             <div class="pos"><span id="${that.cposPtrId}"></span></div>
           </div>
-          <div>&nbsp;</div>
-          <div class="d-flex flex-row justify-content-start align-items-center">
-            <div class="pos">Layer: </div>
-            <div class="pos"><span id="${that.layerNameId}"></span></div>
-          </div>
-          <div class="d-flex flex-row justify-content-start align-items-center">
-            <div class="pos">raw value</div>
-            <div class="pos"><span id="${that.cposRawId}"></span></div>
-          </div>
-          <div>&nbsp;</div>
           <div class="d-flex flex-row justify-content-start align-items-center">
             <div class="pos">js9.si</div>
             <div class="pos">x: <span id="${that.js9posxId}"></span></div>
