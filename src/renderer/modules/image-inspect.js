@@ -55,8 +55,8 @@ class ImageInspect {
       ['sourceFilterForceGrayId', 'image-inspect-force-gray-filter'],
       ['sourceMinInputId', 'image-inspect-source-min-input'],
       ['sourceMaxInputId', 'image-inspect-source-max-input'],
-      ['sourceBrightnessId', 'image-inspect-source-brightness'],
-      ['sourceContrastId', 'image-inspect-source-contrast'],
+      ['sourceBrightnessInputId', 'image-inspect-source-brightness'],
+      ['sourceContrastInputId', 'image-inspect-source-contrast'],
       ['posxId', 'image-inspect-posx'],
       ['posyId', 'image-inspect-posy'],
       ['cposxId', 'image-inspect-cposx'],
@@ -217,8 +217,14 @@ class ImageInspect {
           </div>
 
           <div class="d-flex flex-row justify-content-start align-items-center">
-            <div class="setting">brightness: <span id="${that.sourceBrightnessId}"></span></div>
-            <div class="setting">contrast: <span id="${that.sourceContrastId}"></span></div>
+            <div class="setting">
+              <label for="${that.sourceBrightnessInputId}">brightness: </label>
+              <input type="number" id="${that.sourceBrightnessInputId}" name="brightness" step="0.05" required</input>
+            </div>
+            <div class="setting">
+              <label for="${that.sourceContrastInputId}">contrast: </label>
+              <input type="number" id="${that.sourceContrastInputId}" name="contrast" step="0.05" required</input>
+            </div>
           </div>
         </div>
       `;
@@ -229,8 +235,13 @@ class ImageInspect {
         that.sourceMaxInputElem = document.getElementById(that.sourceMaxInputId);
         that.updateSourceMinMaxElements();
 
-        that.sourceBrightnessElem = document.getElementById(that.sourceBrightnessId);
-        that.sourceContrastElem = document.getElementById(that.sourceContrastId);
+        // that.sourceBrightnessElem = document.getElementById(that.sourceBrightnessInputId);
+        // that.sourceContrastElem = document.getElementById(that.sourceContrastInputId);
+
+        that.sourceBrightnessInputElem = document.getElementById(that.sourceBrightnessInputId);
+        that.sourceContrastInputElem = document.getElementById(that.sourceContrastInputId);
+        that.updateSourceBrightContrastElements();
+
         that.sourceFilterElem = document.getElementById(that.sourceFilterId);
 
         that.sourceFilterForceGray = document.getElementById(that.sourceFilterForceGrayId);
@@ -255,11 +266,21 @@ class ImageInspect {
             render(page, source);
           }
         });
-        that.sourceMaxInputElem.addEventListener('input', (e) => {
+
+        that.sourceBrightnessInputElem.addEventListener('input', (e) => {
           let source = that.page.selectedSource;
           let value = e.target.valueAsNumber;
-          if (value != source.max) {
-            source.max = value;
+          if (value != source.brightness) {
+            source.brightness = value;
+            render(page, source);
+          }
+        });
+
+        that.sourceContrastInputElem.addEventListener('input', (e) => {
+          let source = that.page.selectedSource;
+          let value = e.target.valueAsNumber;
+          if (value != source.contrast) {
+            source.contrast = value;
             render(page, source);
           }
         });
@@ -472,11 +493,12 @@ class ImageInspect {
 
     this.updateOriginalImage(this.page);
     this.updateSourceMinMaxElements();
+    this.updateSourceBrightContrastElements();
 
     this.sourceFilterElem.textContent = source.filter;
 
-    this.sourceBrightnessElem.textContent = u.roundNumber(source.brightness, 4);
-    this.sourceContrastElem.textContent = u.roundNumber(source.contrast, 4);
+    this.sourceBrightnessInputElem.textContent = u.roundNumber(source.brightness, 4);
+    this.sourceContrastInputElem.textContent = u.roundNumber(source.contrast, 4);
 
     this.cposxElem.textContent = u.roundNumber(this.cpos.x, 4);
     this.cposyElem.textContent = u.roundNumber(this.cpos.y, 4);
@@ -516,6 +538,12 @@ class ImageInspect {
     this.sourceMaxInputElem.setAttribute('min', source.originalMin);
     this.sourceMaxInputElem.setAttribute('max', source.originalMax);
     this.sourceMaxInputElem.valueAsNumber = source.max;
+  }
+
+  updateSourceBrightContrastElements() {
+    let source = this.page.selectedSource;
+    this.sourceBrightnessInputElem.valueAsNumber = source.brightness;
+    this.sourceContrastInputElem.valueAsNumber = source.contrast;
   }
 
   updateOriginalImage(page) {
