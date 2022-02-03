@@ -2505,7 +2505,7 @@
               "y": 615
             },
             "maximumBrightness": 2,
-            "selectedSourceNumber": 1,
+            "selectedSourceNumber": 0,
             "selectedMainLayers": "100",
             "sources": [
               {
