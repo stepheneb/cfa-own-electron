@@ -2512,7 +2512,7 @@
                 "type": "rawdata",
                 "name": "Infrared",
                 "telescope": "spitzer",
-                "context": "The Spitzer Space Telescope captures the infrared light emitted by all the young stars inside the dusty cocoon of the Lagoon Nebula. These stars are hidden if viewed with an optical telescope.",
+                "context": "The Spitzer Space Telescope captures the infrared light emitted by all the young stars inside the dusty cocoon of the Lagoon Nebula. These stars are hidden if viewed with an optical telescope. The dust itself glows in the infrared too.",
                 "path": {
                   "small": "rawdata/lagoon-multi/452x452/Spitzer_Lagoon_Infrared_1636744802567.bmp",
                   "medium": "rawdata/lagoon-multi/905x905/Spitzer_Lagoon_Infrared_1636744802567.bmp",
