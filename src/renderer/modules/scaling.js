@@ -196,17 +196,6 @@ class Scaling {
       ['pointercancel', this.listenerMouseUpTouchEnd],
       ['pointerout', this.listenerMouseUpTouchEnd],
       ['pointerleave', this.listenerMouseUpTouchEnd],
-
-      // ['mousedown', this.listenerMouseDownTouchStart],
-      // ['touchstart', this.listenerMouseDownTouchStart],
-      //
-      // ['mousemove', this.listenerMouseMoveTouchMove],
-      // ['touchmove', this.listenerMouseMoveTouchMove],
-      //
-      // ['mouseleave', this.listenerMouseLeave],
-      // ['mouseup', this.listenerMouseUpTouchEnd],
-      // ['touchend', this.listenerMouseUpTouchEnd],
-
       ['wheel', this.listenerZoom]
     ];
 
@@ -491,7 +480,9 @@ class Scaling {
     this.checkIfMatchingApolloSiteScale();
     this.calcMainWidthsHeightsLimitMoves();
     this.updatePanArrows();
-    // console.log(`scalingCanvasDraw: move: ${this.moveX}, ${this.moveY}, offset: ${this.offsetX}, ${this.offsetY}`);
+    if (app.dev) {
+      console.log(`scalingCanvasDraw: move: ${this.moveX}, ${this.moveY}, offset: ${this.offsetX}, ${this.offsetY}`);
+    }
     this.ctx.drawImage(
       this.sourceImageBitmap,
       this.dx,
@@ -513,7 +504,9 @@ class Scaling {
     this.scalingCanvasDrawfinished = true;
     this.mainCanvasWrapper.style.width = this.imageWidth + 'px';
     this.mainCanvasWrapper.style.height = '72vh';
-    // console.log(this.scalingCanvasDrawArgs());
+    if (app.dev) {
+      // console.log(this.scalingCanvasDrawArgs());
+    }
     this.sendChangeEvent();
   }
 
@@ -907,7 +900,9 @@ class Scaling {
         this.dxOld = dx;
         this.dxOld = dx;
 
-        // console.log(`listenerZoom-pan move: ${this.moveX}, ${this.moveY}; pos: ${pos.x}, ${pos.y}`);
+        if (app.dev) {
+          console.log(`listenerZoom-pan move: ${this.moveX}, ${this.moveY}; pos: ${pos.x}, ${pos.y}`);
+        }
 
         this.queueCanvasDraw();
         // this.redraw = requestAnimationFrame(this.scalingCanvasDraw);
@@ -1117,8 +1112,8 @@ class Scaling {
     this.queueCanvasDraw();
 
     if (app.dev) {
-      // console.log(['start startCoords:', this.startCoords.x, this.startCoords.y, ', pos: ', pos.x, pos.y, ', lastMove: ', this.lastMove.x, this.lastMove.y, ', dragStarted: ', this.dragStarted]);
-      // console.log(this.scalingCanvasDrawArgs());
+      console.log(['start startCoords:', this.startCoords.x, this.startCoords.y, ', pos: ', pos.x, pos.y, ', lastMove: ', this.lastMove.x, this.lastMove.y, ', dragStarted: ', this.dragStarted]);
+      console.log(this.scalingCanvasDrawArgs());
     }
   }
 
@@ -1166,7 +1161,7 @@ class Scaling {
       }
 
       if (app.dev) {
-        // console.log('evCache.length == 2');
+        console.log('evCache.length == 2');
       }
 
       // Calculate the distance between the two pointers
@@ -1176,7 +1171,9 @@ class Scaling {
 
       let centerMove = calcCenterMove(this.previousCenter, currentCenter);
 
-      // console.log('currentCenter: ', currentCenter, ', centerMove: ', centerMove);
+      if (app.dev) {
+        console.log('currentCenter: ', currentCenter, ', centerMove: ', centerMove);
+      }
 
       if (this.previousDistance >= 0 || centerMove >= 0) {
         let deltaDistance = currentDistance - this.previousDistance;
@@ -1186,13 +1183,17 @@ class Scaling {
         this.scalingTrigger = this.scaling ? 0.5 : 5;
         this.panningTrigger = this.isDragging ? 0.5 : 5;
 
-        console.log('*** before test ***: ', currentDistance, deltaDistance, ', scaling: ', this.scaling, ', isDragging: ', this.isDragging);
+        if (app.dev) {
+          console.log('*** before test ***: ', currentDistance, deltaDistance, ', scaling: ', this.scaling, ', isDragging: ', this.isDragging);
+        }
 
         if (deltaDistance >= this.scalingTrigger && !this.isDragging) {
           // The distance between the two pointers has increased
           this.scaling = true;
           pos = null;
-          console.log('*** zoom-in ***: ', currentDistance, deltaDistance);
+          if (app.dev) {
+            console.log('*** zoom-in ***: ', currentDistance, deltaDistance);
+          }
           let newScale = this.scale * this.gestureScaleFactor;
           this.previousDistance = currentDistance;
           this.scaleCanvasContinuousValue(newScale);
@@ -1201,7 +1202,9 @@ class Scaling {
           // The distance between the two pointers has decreased
           this.scaling = true;
           pos = null;
-          console.log('*** zoom-out ***: ', currentDistance, deltaDistance);
+          if (app.dev) {
+            console.log('*** zoom-out ***: ', currentDistance, deltaDistance);
+          }
           let newScale = this.scale / this.gestureScaleFactor;
           this.previousDistance = currentDistance;
           this.scaleCanvasContinuousValue(newScale);
@@ -1238,7 +1241,13 @@ class Scaling {
       let moveY = (pos.y - this.startCoords.y);
       let distance = Math.sqrt(moveX * moveX + moveY + moveY);
 
-      if (this.isDragging || this.canDrag() && this.dragStarted && distance > this.panningTrigger) {
+      // hack to restore regular mouse drag functionality
+      let panningTrigger = true;
+      if (this.evCache.length >= 2) {
+        panningTrigger = (distance > this.panningTrigger)
+      }
+
+      if (this.isDragging || this.canDrag() && this.dragStarted && panningTrigger) {
         this.isDragging = true;
       }
 
@@ -1246,8 +1255,9 @@ class Scaling {
         this.moveX = moveX;
         this.moveY = moveY;
 
-        // console.log('dragging', pos, this.startCoords, this.moveX, this.moveY);
-
+        if (app.dev) {
+          console.log('dragging', pos, this.startCoords, this.moveX, this.moveY);
+        }
         this.calcMainWidthsHeightsLimitMoves();
 
         this.previewZoomMoveX = this.applyScaleToMoveX(this.moveX);
@@ -1262,8 +1272,9 @@ class Scaling {
         // this.redraw = requestAnimationFrame(this.scalingCanvasDraw);
         this.queueCanvasDraw();
 
-        // console.log(`move: ${this.moveX}, ${this.moveY}; pos: ${pos.x}, ${pos.y}`);
-
+        if (app.dev) {
+          console.log(`move: ${this.moveX}, ${this.moveY}; pos: ${pos.x}, ${pos.y}`);
+        }
       }
     }
   }
@@ -1283,7 +1294,9 @@ class Scaling {
       this.redraw = requestAnimationFrame(this.scalingCanvasDraw);
       this.dragStarted = this.isDragging = this.scaling = false;
       this.lastChangeIn = "main";
-      // console.log([name, 'lastMove: ', this.lastMove.x, this.lastMove.y]);
+      if (app.dev) {
+        console.log([name, 'lastMove: ', this.lastMove.x, this.lastMove.y]);
+      }
     }
   }
 
@@ -1293,9 +1306,10 @@ class Scaling {
 
   listenerMouseUpTouchEnd(e) {
     this.removePointerEventFromCache(e);
-    // console.log('MouseUpTouchEnd,', this.evCache.length);
+    if (app.dev) {
+      console.log('MouseUpTouchEnd,', this.evCache.length);
+    }
     this.listenerUpLeaveEnd('up-end');
-    // }
   }
 
   /*
