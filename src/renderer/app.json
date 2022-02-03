@@ -2468,7 +2468,7 @@
           "id": "lagoon-multi",
           "disabled": false,
           "poster": "lagoon-multi",
-          "title": "Lagoon Galaxy",
+          "title": "Lagoon Nebula",
           "the": true,
           "subtitle": "Combine these images and reveal the secrets of objects in space. NASA uses space telescopes that see wavelengths of light invisible to human eyes.",
           "context": "Multiwavelength images reveal the explosion of gas from the center of this galaxy.",
@@ -2476,7 +2476,7 @@
           "adjustimagetext": "Use these sliders to show more detail in the image",
           "saveandsendtext": "This image was taken by one or more of the Spitzer, Hubble, and Chandra Space Telescopes - and enhanced by YOU!",
           "image": {
-            "name": "Lagoon Galaxy",
+            "name": "Lagoon Nebula",
             "source": "",
             "about": {
               "telescopes": [
