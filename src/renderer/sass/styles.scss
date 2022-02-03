@@ -117,7 +117,7 @@ div#splash2 {
 }
 
 div#splash {
-  animation: splash-fadein 10s;
+  animation: splash-fadein 10s ease-in-out;
 }
 
 @keyframes splash-fadein {
@@ -183,9 +183,9 @@ div#splash2 {
   z-index: 10000;
   display: none;
   opacity: 0.5;
-  top: 1vh;
-  left: 2vw;
-  padding: 2vh;
+  top: 0.25em;
+  left: 0.5em;
+  padding: 0.25em 0.5em;
   font-size: 2.6vh;
   font-weight: 500;
   color: white;

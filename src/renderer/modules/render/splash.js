@@ -42,8 +42,6 @@ let renderSplash = () => {
         </div>
       </div>
     `;
-  splashElem.style.zIndex = "100";
-  splashElem.style.display = "block";
 
   if (u.runningInElectron()) {
     window.requestAnimationFrame(() => {
