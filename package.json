@@ -27,7 +27,11 @@
     "name": "Stephen Bannasch",
     "email": "stephen.bannasch@gmail.com"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stepheneb/cfa-own-electron"
+  },
   "private": false,
   "config": {
     "forge": {
