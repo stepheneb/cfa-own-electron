@@ -68,10 +68,12 @@ To debug code running in the main nodejs process:
 3. Push the latest commit with the changes in package.json et al: `git push origin main`
 4. Push the new tag: `git push --follow-tags`
 
+As of the v1.0.0 releease new **patch** releases are generated as follows:
+
 All in one place:
 ```
 git status
-npm version prerelease
+npm version patch
 git push origin main && git push --follow-tags
 ```
 
