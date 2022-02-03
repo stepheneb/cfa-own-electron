@@ -239,16 +239,10 @@ const enableCountdownToRestart = () => {
         main.restart();
       }
     }, 1000);
-    window.addEventListener('pointermove', () => {
-      startTime = performance.now();
-      startingOverElem.classList.remove('changing');
-      values.innerText = '';
-    });
-    window.addEventListener('click', () => {
-      startTime = performance.now();
-      startingOverElem.classList.remove('changing');
-      values.innerText = '';
-    });
+    window.addEventListener('pointermove', () => { main.resetStartOverTimer() });
+    window.addEventListener('pointerdown', () => { main.resetStartOverTimer() });
+    window.addEventListener('pointerup', () => { main.resetStartOverTimer() });
+    window.addEventListener('click', () => { main.resetStartOverTimer() });
   }
 }
 
