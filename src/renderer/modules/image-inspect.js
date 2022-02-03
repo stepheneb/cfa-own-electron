@@ -249,13 +249,19 @@ class ImageInspect {
 
         that.sourceMinInputElem.addEventListener('input', (e) => {
           let source = that.page.selectedSource;
-          source.min = e.target.valueAsNumber;
-          render(page, source);
+          let value = e.target.valueAsNumber;
+          if (value != source.min) {
+            source.min = value;
+            render(page, source);
+          }
         });
         that.sourceMaxInputElem.addEventListener('input', (e) => {
           let source = that.page.selectedSource;
-          source.max = e.target.valueAsNumber;
-          render(page, source);
+          let value = e.target.valueAsNumber;
+          if (value != source.max) {
+            source.max = value;
+            render(page, source);
+          }
         });
 
         function render(page, source) {
