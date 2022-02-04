@@ -77,6 +77,13 @@ npm version patch
 git push origin main && git push --follow-tags
 ```
 
+A pre-release for a patch version:
+
+```
+npm version prepatch
+git push origin main && git push --follow-tags
+```
+
 Pushing the tag to github will kickoff the `release-macos.yml` and `release-windows.yml` github workflows which use github OS containers running npm and electron-forge to build and publish releases for Windows and macOS.
 
 Publishing a new draft release takes about 20 minutes. Check on progress here: https://github.com/stepheneb/cfa-own-electron/actions. After the draft is published add release comments and remove the **draft** status to make the release available for downloading.
