@@ -3,8 +3,8 @@
 
 Successfully built with:
 
-- Node lts/fermium which is currently at v14.17.4, https://modejs.org
-- npm 6.14.14
+- Node lts/gallium which is currently at v16.13.2, https://modejs.org
+- npm 8.1.2
 
 On macOS I typically use nvm to manage multiple versions of node: https://github.com/nvm-sh/nvm
 
