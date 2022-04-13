@@ -388,7 +388,7 @@ const showHandshakeResults = () => {
 const updateOnlineStatus = () => {
   app.online = navigator.onLine;
   if (u.runningInElectron()) {
-    setInterval(() => {
+    setTimeout(() => {
       let obj = { "online": app.online };
       ipcRenderer.invoke('online-status', obj);
     }, 250)
